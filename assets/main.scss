@@ -1,0 +1,33 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+.site-header {
+  border-top: 30px solid $grey-color-dark;
+  border-bottom: 1px solid $grey-color-light;
+  min-height: $spacing-unit * 1.865;
+
+  // Positioning context for the mobile navigation icon
+  position: relative;
+}
+
+// Custom link styles
+.page-link {
+    color: #666; // Gray color for links
+    text-decoration: none; // Remove underline
+    font-weight: 500; // Medium font weight
+    transition: color 0.3s ease, border-bottom 0.3s ease; // Smooth transitions
+
+    &:hover {
+        color: #000; // Black color on hover
+        text-decoration: none; // Remove underline
+    }
+
+    &.active {
+        color: #000; // Black color for active link
+        border-bottom: 2px solid #000; // Black underline
+        font-weight: 600; // Slightly bolder for active link
+    }
+}
