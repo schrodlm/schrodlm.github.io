@@ -1,0 +1,10 @@
+  <!-- Link to the related project -->
+  {% if page.project %}
+    {% assign project = site.projects | where: "slug", page.project | first %}
+    <div class="related-project">
+      <h2>Related Project</h2> 
+      <p>
+        This post is reffering to <a href="{{ project.url }}">{{ project.name }}</a>.
+      </p>
+    </div>
+  {% endif %}

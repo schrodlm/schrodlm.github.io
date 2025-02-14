@@ -14,17 +14,11 @@ layout: default
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}</p>
   </header>
-  <!-- Link to the related project -->
-  {% if page.project %}
-    {% assign project = site.projects | where: "slug", page.project | first %}
-    <div class="related-project">
-      <h2>Related Project</h2> 
-      <p>
-        This post is reffering to <a href="{{ project.url }}">{{ project.name }}</a>.
-      </p>
-    </div>
-  {% endif %}
-</article>
+
+<!-- In _layouts/post.html -->
+<!-- Link related project -->
+{% include related_project.html %}
+
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
