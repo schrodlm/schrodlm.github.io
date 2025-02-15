@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Turing machines and whatnot"
-data: 2024-12-20 20:31:01 +0100
+date: 2024-12-20 20:31:01 +0100
 categories: jekyll update
 project: proj_2
 ---
