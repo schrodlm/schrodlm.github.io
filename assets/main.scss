@@ -14,11 +14,11 @@
 }
 
 // Custom link styles
-.page-link {
+.site-nav .page-link {
     color: #666; // Gray color for links
     text-decoration: none; // Remove underline
     font-weight: 500; // Medium font weight
-    transition: color 0.3s ease, border-bottom 0.3s ease; // Smooth transitions
+    transition: color 0.2s ease, border-bottom 0.2s ease; // Smooth transitions
 
     &:hover {
         color: #000; // Black color on hover
@@ -27,7 +27,6 @@
 
     &.active {
         color: #000; // Black color for active link
-        border-bottom: 2px solid #000; // Black underline
         font-weight: 600; // Slightly bolder for active link
     }
 }
@@ -36,4 +35,10 @@
   width: 18px;
   height: 18px;
   vertical-align: middle; /* Aligns the icon with the middle of the text */
+  fill: #666; /* Default color */
+  transition: fill 0.3s ease; /* Smooth transition for fill */
+  &:hover {
+      fill: #000; // Black color on hover
+      text-decoration: none; // Remove underline
+  }
 }
