@@ -2,14 +2,20 @@
 layout: default
 title: Projects
 ---
-<h1> Projects </h1>
-<ul>
-  {% for project in site.projects %}
-    <li>
-      <h2><a href="{{ project.url }}">{{ project.name }}</a></h2>
-      <h3>{{ project.language}}</h3>
-      <h3>{{ project.status}}</h3>
-      <p>{{ project.content | markdownify }}</p>
-    </li>
-  {% endfor %}
-</ul>
+<div class="projects-container">
+  <h1 class="projects-title">Projects</h1>
+  <ul class="projects-list">
+    {% for project in site.projects %}
+      <li class="project-item">
+        <h2 class="project-name"><a href="{{ project.url }}">{{ project.name }}</a></h2>
+        <div class="project-meta">
+          <span class="project-language">{{ project.language }}</span>
+          <span class="project-status">{{ project.status }}</span>
+        </div>
+        <div class="project-content">
+          {{ project.content | markdownify }}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

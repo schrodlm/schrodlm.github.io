@@ -42,3 +42,78 @@
       text-decoration: none; // Remove underline
   }
 }
+
+/* Projects Container */
+.projects-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333; /* Default text color */
+}
+
+/* Projects Title */
+.projects-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600; /* Bold title */
+}
+
+/* Projects List */
+.projects-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Project Item */
+.project-item {
+  background: #fff;
+  border: 1px solid #e0e0e0; /* Sharp border */
+  border-radius: 4px; /* Slightly rounded corners */
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Project Name */
+.project-name {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  font-weight: 600; /* Bold project name */
+}
+
+.project-name a {
+  text-decoration: none;
+  color: #0077b5; /* Blue color for links */
+}
+
+.project-name a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Project Meta (Language and Status) */
+.project-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.project-language,
+.project-status {
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: #f0f0f0; /* Light gray background */
+}
+
+/* Project Content */
+.project-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.project-content p {
+  margin: 0;
+}
