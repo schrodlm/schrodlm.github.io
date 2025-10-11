@@ -9,7 +9,7 @@ description: Learning project to grasp core ideas of graphical engines.
 tags:
   - watch
 ---
-**file last reviewed:** 26.9.2025
+**file last reviewed:** 11.10.2025
 
 This is a OpenGL-like rendering engine project. It started off in my second year in my bachelor's program. I didn't get very far although it produced some cool outputs.
 
@@ -44,6 +44,8 @@ A working graphic renderer based on [tiny_renderer](github.com/ssloy/tinyrendere
 - [-] Research 
 - [-] Decide on the structure
 - [-] Implement TGAImage interface
+- [-] Implement TGAImage footer handling
+- [-] Add handling of extension and developer areas 
 - [ ] Implement and test opening of RGB TGA Image
 - [ ] Implement and test opening of Grayscale TGA Image
 - [ ] Implement and test opening of Color-mapped TGA Image
