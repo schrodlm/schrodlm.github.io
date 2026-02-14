@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Amortizovanou Slozitost"
+title: "amortizovanou složitost"
 ---
 

@@ -1,5 +1,6 @@
 ---
 references: [https://www.youtube.com/watch?v=Glp7THUpGow, https://mj.ucw.cz/vyuka/dsnotes/07-geom.pdf]
+title: "k-d trees"
 ---
 k-d strom je statická binární stromová datová struktura, která se používá na vyhledávání v multidimenzionálním prostoru (porovnává více kritérií) - podobně jako [range tree](/notes/range-tree/)
 > [!note] Pozor

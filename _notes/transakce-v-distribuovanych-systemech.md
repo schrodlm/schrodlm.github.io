@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Transakce V Distribuovanych Systemech"
+title: "transakce v distribuovaných systémech"
 ---
 
 nějak souvisí s konsenzem ale nevím moc jak. Něco ve smyslu:

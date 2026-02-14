@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Proof Of Stake Pos"
+title: "proof of stake (PoS)"
 ---
 

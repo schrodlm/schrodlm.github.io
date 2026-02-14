@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Cache Aware Model"
+title: "cache-aware model"
 ---
 

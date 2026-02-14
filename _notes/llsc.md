@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Llsc"
+title: "LLSC"
 ---
 
 Dvojice instrukcí používaných k dosažení synchronizace

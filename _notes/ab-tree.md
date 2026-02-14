@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Ab Tree"
+title: "(a,b) tree"
 ---
 
 (a,b)-strom je samo-vyvažovací stromová datová struktura.

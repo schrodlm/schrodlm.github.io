@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Symbolic Execution"
+title: "symbolic execution"
 ---
 
 A powerful technique used in [software verification](/notes/software-verification/).

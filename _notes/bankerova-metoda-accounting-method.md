@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Bankerova Metoda Accounting Method"
+title: "bankéřova metoda (accounting method)"
 ---
 
 Jedná se způsob jak dokázat [amortizovanou složitost](/notes/amortized-complexity/) datových struktur

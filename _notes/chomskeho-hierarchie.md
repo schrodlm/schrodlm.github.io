@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Chomskeho Hierarchie"
+title: "Chomského hierarchie"
 ---
 

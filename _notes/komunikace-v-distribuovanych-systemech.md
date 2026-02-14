@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "komunikace v distribuovaných systémech"
 ---
 Jak si uzly mezi sebou předávají data? Protože nemáme sdílenou paměť, je způsob, jakým si předáváme zprávy, důležitý pro korektní chování systému.
 

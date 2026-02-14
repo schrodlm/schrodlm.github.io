@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Model Checking"
+title: "model checking"
 ---
 
 source: https://www.researchgate.net/publication/220689159_Model_Checking

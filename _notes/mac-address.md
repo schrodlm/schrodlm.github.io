@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Mac Address"
+title: "MAC address"
 ---
 
 MAC is essentially just a unique string that works as a identifier of device provide for its network card during manufacturing proccess. MAC address consists of **48 bits**.

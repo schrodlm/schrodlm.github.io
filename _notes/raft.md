@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Raft"
+title: "RAFT"
 ---
 
 Algoritmus k dosažení [konsenzu](/notes/konsenzus-v-distribuovanych-systemech/).

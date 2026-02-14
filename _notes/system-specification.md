@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "System Specification"
+title: "system specification"
 ---
 
 System specification can be seen as a contract between the consumer and the system developer.

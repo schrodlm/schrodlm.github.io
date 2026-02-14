@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 source: https://www.youtube.com/watch?v=A8oamrHf_cQ
+title: "uspořádání (komunikace v distribuovaných systémech)"
 ---
 Uspořádání zpráv je jedna z garancí definovaných [komunikačním modelem](/notes/komunikacni-model/) distribuovaného systému, která určuje, v jakém pořadí jsou zprávy doručovány aplikacím.
 

@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Rabin Karp Algoritmus"
+title: "Rabin-Karp algoritmus"
 ---
 

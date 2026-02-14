@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "idempotence v RPC"
 ---
 Pro RPC je velmi důležité, aby operace byly [idempotentní](/notes/idempotence/).
 

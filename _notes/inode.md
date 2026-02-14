@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Inode"
+title: "inode"
 ---
 
 A data structure (in Unix-style [file system](/notes/file-system/)) that stores everything about a [file](/notes/file/) except its name and the actual data. (it stores files metadata)

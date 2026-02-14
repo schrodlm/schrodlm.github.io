@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Totalni Funkce"
+title: "totální funkce"
 ---
 
 **Totální funkce** je definovaná na všech vstupech

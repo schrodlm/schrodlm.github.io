@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Cas"
+title: "CAS"
 ---
 
 CAS (compare-and-swap) je atomická instrukce, používaná k dosažení synchronizace

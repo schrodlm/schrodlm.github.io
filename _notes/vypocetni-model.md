@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Vypocetni Model"
+title: "výpočetní model"
 ---
 
 Výpočetní model je formální, matematická abstrakce, která definuje jaké základní kroky a pravidla tvoří výpočet.

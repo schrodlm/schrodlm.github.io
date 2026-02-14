@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Hashovaci Funkce"
+title: "hashovací funkce"
 ---
 
 **Hashovací funkce** je funkce, která mapuje klíče z velkého univerza $U$ do menší množiny indexů ${0, 1, \ldots, m-1}$. Tedy:

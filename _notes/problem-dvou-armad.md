@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Problem Dvou Armad"
+title: "problém dvou armád"
 ---
 
 Dva generálové se musí dohodnout na čase útoku přes nespolehlivý kanál

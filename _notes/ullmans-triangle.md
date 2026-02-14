@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Ullmans Triangle"
+title: "Ullman's triangle"
 ---
 
 The **Ullman Triangle** is a model used to explain the relationship between **data**, **models**, and **reality** (or the real world).

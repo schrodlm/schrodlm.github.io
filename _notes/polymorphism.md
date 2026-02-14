@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Polymorphism"
+title: "polymorphism"
 ---
 

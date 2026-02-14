@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Volba Koordinatora Leader Election"
+title: "volba koordinátora (leader election)"
 ---
 
 Mnoho algoritmů vyžaduje centrálního koordinátora. Pokud koordinátor spadne, musí být zvolen nový. Předpokládá se, že každý proces má unikátní ID.

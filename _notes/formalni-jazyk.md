@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Formalni Jazyk"
+title: "formální jazyk"
 ---
 
 Koncept z teorie teorie formálních jazyků

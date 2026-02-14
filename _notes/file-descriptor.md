@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "File Descriptor"
+title: "file descriptor"
 ---
 
 file descriptor is essentially just a runtime filename used by processes

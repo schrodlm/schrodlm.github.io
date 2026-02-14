@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Wait For Graph Wfg"
+title: "Wait-For-Graph (WFG)"
 ---
 
 **Wait-For-Graph (WFG)** je v podstatě „mapa závislostí“. V distribuovaném systému je to nejpoužívanější způsob, jak zjistit, jestli je systém v  deadlocku.

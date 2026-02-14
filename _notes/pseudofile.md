@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Pseudofile"
+title: "pseudofile"
 ---
 

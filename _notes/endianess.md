@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Endianess"
+title: "endianess"
 ---
 
 **Endianness** refers to the order in which bytes are arranged within larger data types (such as integers) when stored in computer memory. It is important when reading or writing multi-byte data to or from memory, particularly when data is shared between systems with different architectures.

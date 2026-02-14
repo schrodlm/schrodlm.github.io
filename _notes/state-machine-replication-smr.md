@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "State Machine Replication Smr"
+title: "state machine replication (SMR)"
 ---
 
 **Princip:** Repliky jsou **deterministické stavové automaty**.

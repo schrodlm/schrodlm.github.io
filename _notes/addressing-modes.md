@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Addressing Modes"
+title: "addressing modes"
 ---
 
 ## Adresové módy

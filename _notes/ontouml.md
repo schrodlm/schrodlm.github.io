@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Ontouml"
+title: "OntoUML"
 ---
 
 OntoUML is a language for Ontology-driven [conceptual modelling](/notes/conceptual-modelling/). It is built as a [UML] extension based on the [UFO](/notes/ufo/).

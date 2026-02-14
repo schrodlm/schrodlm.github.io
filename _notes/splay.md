@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Splay"
+title: "splay"
 ---
 
 Operation used by [splay tree](/notes/splay-tree/) data structure

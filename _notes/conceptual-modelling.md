@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Conceptual Modelling"
+title: "conceptual modelling"
 ---
 
 Conceptual modeling is typically a **high-level abstraction** of the system being studied. It focuses on defining **entities** (objects or components of interest), **attributes** (properties of those entities), **relationships** (how entities interact with each other), and **processes** (how entities change or interact over time). The model is not concerned with implementation details like data structures or algorithms, which come later in the design process.

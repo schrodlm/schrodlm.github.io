@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Load Balancing V Distribuovanych Systemech"
+title: "load balancing v distribuovaných systémech"
 ---
 
 Cílem je zajistit, aby žádný uzel nebyl přetížen, zatímco jiný zahálí. Tím přímo naplňujeme motivaci pro **scaling** a **výkon**.

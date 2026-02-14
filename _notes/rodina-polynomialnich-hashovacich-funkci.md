@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Rodina Polynomialnich Hashovacich Funkci"
+title: "rodina polynomiálních hashovacích funkcí"
 ---
 
 Systém, který slouží pro obecné sestrojení k-nezávislého systému.

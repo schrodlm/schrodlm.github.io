@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Directory Tree"
+title: "directory tree"
 ---
 
 It is a hierarchy of directories, in Unix-like [file system](/notes/file-system/), the hierarchy starts at a **root directory** (referred to as `/`)

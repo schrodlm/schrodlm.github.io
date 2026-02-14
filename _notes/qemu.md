@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Qemu"
+title: "QEMU"
 ---
 

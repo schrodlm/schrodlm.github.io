@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Chandy Lamport"
+title: "Chandy-Lamport"
 ---
 
 Algoritmus **Chandy-Lamport** je elegantní způsob, jak v distribuovaném systému „vyfotit“ jeho stav (udělat **snapshot**), aniž bychom museli zastavit celý svět. Jelikož v systému neexistují globální hodiny, nemůžeme prostě říct: „Všichni teď hned udělejte fotku.“

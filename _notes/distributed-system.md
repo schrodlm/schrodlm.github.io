@@ -2,8 +2,8 @@
 tags:
   - distributed_system
 language: czech
+title: "distributed system"
 ---
-
 > "Distribuovaný systém je soubor nezávislých počítačů (**uzlů**), které se uživatelům jeví jako jeden jediný systém."
 > - Tanenbaum
 

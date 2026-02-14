@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Komunikacni Model"
+title: "komunikační model"
 ---
 
 ## Komunikační model

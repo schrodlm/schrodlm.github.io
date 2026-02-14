@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Range Tree"
+title: "range tree"
 ---
 
 Range tree je statická binární stromová datová struktura (podobně jako [k-d trees](/notes/k-d-trees/)), která je navíc víceúrovňová a je určená pro efektivní zpracování rozsahových dotazů

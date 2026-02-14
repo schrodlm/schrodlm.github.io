@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Paralelizace Ab Stromu"
+title: "paralelizace (a,b) stromu"
 ---
 
 Klíčem k úspěšné paralelizaci je použití metody sliding window v kombinaci s top-down variantou (a,b)-stromů.

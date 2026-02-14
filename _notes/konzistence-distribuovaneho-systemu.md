@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "konzistence distribuovaného systému"
 ---
 Konzistence popisuje jak moc mají různé uzly stejný (nebo kompatibilní) pohled na data a stav systému.
 

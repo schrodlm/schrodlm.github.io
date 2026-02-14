@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "client-server"
 ---
 Nejběžnější model.
 - **Role:**

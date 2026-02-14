@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "koordinace a synchronizace v distribuovaném systému"
 ---
 # Koordinace a synchronizace v distribuovaných systémech
 

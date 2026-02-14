@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Stm Lib"
+title: "stm-lib"
 ---
 
 It is a language to express SMT problems, the idea was to have a language **common across solvers**.

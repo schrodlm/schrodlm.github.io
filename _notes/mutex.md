@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Mutex"
+title: "mutex"
 ---
 
 mutex je základní synchronizační primitivum, které zajišťuje, že v daný moment pracuje s datovou strukturou pouze jeden proces.

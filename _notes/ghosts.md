@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Ghosts"
+title: "ghosts"
 ---
 
 Pieces of code or data that exist solely for the purpose of verification and do not contribute to the outcome of the computation. This has to be checked by the verification engine. Ghost variables, or ghost fields of records, can only be used in other ghost computations. Otherwise, erasing them before the program is run would lead to incorrect code.

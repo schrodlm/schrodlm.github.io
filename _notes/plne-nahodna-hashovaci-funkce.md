@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Plne Nahodna Hashovaci Funkce"
+title: "plně náhodná hashovací funkce"
 ---
 
 **Plně náhodná [hashovací funkce](/notes/hashovaci-funkce/)** (v materiálech označovaná jako _completely random function_) je teoretický ideál, se kterým srovnáváme ostatní reálné hashovací systémy.

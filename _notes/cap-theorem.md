@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "CAP theorem"
 ---
 V distribuovaném systému, který ukládá data, je **nemožné** dosáhnout současně všech tří následujících vlastností:
 

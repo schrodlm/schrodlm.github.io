@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Eigrp"
+title: "EIGRP"
 ---
 
 Problems:

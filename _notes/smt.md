@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Smt"
+title: "smt"
 ---
 
 ## quantifier-free formulas

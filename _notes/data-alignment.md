@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Data Alignment"
+title: "data alignment"
 ---
 
 ![Image](/assets/img/Pasted image 20240924211749.png)

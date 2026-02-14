@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Ontology"
+title: "ontology"
 ---
 
 An **ontology** is a formal way of organizing and defining knowledge about a particular domain. It describes the **entities** (things) in that domain, the **relationships** between those entities, and the **rules** or **properties** that apply to them. Essentially, it’s like a blueprint or map that helps computers and people understand the structure of a particular subject area and how the elements within it are connected.

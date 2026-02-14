@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Idempotence"
+title: "idempotence"
 ---
 
 #### Definice

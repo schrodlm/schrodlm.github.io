@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Semantics"
+title: "semantics"
 ---
 
 Semantics basically means "**the meaning of**".

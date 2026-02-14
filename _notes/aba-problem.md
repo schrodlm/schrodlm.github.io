@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Aba Problem"
+title: "ABA problém"
 ---
 
 Tento problém je kritickou chybou, která může nastat u [lock-free struktur](/notes/lock-free-struktura/) využívajících [CAS](/notes/cas/).

@@ -3,8 +3,8 @@ tags:
   - distributed_system
   - coordination_mechanism
 language: czech
+title: "token-based koordinace"
 ---
-
 Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech/)
 
 ---

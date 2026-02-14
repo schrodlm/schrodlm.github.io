@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "masivně distribuované systémy"
 ---
 **Definice:** Distribuované systémy s **tisíci až miliony uzlů**, často s **nedůvěryhodnými účastníky** a **otevřeným členstvím**.
 

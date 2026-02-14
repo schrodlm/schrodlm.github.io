@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "B Stromy"
+title: "B-stromy"
 ---
 
 

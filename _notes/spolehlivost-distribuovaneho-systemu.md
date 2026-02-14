@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "spolehlivost distribuovaného systému"
 ---
 **Spolehlivost distribuovaného systému** popisuje, nakolik lze systému důvěřovat, že bude dlouhodobě poskytovat správnou službu navzdory chybám, poruchám a nepředvídatelným podmínkám prostředí.
 

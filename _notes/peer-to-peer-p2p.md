@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "peer-to-peer (P2P)"
 ---
 Architektura pro [distribuovaný systém](/notes/distributed-system/)
 

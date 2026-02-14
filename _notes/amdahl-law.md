@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Amdahl Law"
+title: "amdahl law"
 ---
 

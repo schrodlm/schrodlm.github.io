@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Sprava Prostredku A Procesu V Distribuovanem Systemu"
+title: "správa prostředků a procesů v distribuovaném systému"
 ---
 
 Co to je? V čem je to důležité? Proč to řešíme?

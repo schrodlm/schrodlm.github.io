@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Amortized Analysis"
+title: "amortized analysis"
 ---
 

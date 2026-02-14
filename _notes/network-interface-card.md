@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Network Interface Card"
+title: "network interface card"
 ---
 

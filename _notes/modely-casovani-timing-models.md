@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Modely Casovani Timing Models"
+title: "modely časování (timing models)"
 ---
 
 _Předtím, než navrhneme algoritmus, musíme definovat, co předpokládáme o čase v síti a na uzlech._

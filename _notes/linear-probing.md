@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Linear Probing"
+title: "linear probing"
 ---
 
  Jde o metodu otevřená adresace u [hashovacích funkcí](/notes/hashovaci-funkce/).

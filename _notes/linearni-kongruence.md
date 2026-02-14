@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Linearni Kongruence"
+title: "lineární kongruence"
 ---
 

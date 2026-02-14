@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Io Model"
+title: "IO model"
 ---
 
 Tento model abstrahuje počítač na dvě úrovně paměti:

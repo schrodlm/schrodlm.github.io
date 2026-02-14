@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Lisp Machine"
+title: "lisp machine"
 ---
 
 Články:

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Rozhodovaci Problemy"
+title: "rozhodovací problémy"
 ---
 
 Rozhodovací problémy jsou **nejjednodušší a nejzákladnější typ výpočetních problémů**. 

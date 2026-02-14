@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Lcp Array"
+title: "LCP array"
 ---
 
 

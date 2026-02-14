@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Amortizovana Analyza A2A Stromu"
+title: "amortizovaná analýza (a,2a-stromů)"
 ---
 
 ## Věta o amortizovaném počtu změn pro (a,2a)-stromy

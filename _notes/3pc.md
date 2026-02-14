@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "3Pc"
+title: "3PC"
 ---
 
 ### Three-Phase Commit (3PC)

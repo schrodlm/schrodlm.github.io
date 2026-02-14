@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Suffix Array"
+title: "suffix array"
 ---
 
 Datová struktura pro práci s textem. 

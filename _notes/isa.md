@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Isa"
+title: "isa"
 ---
 
 Instruction set architecture (ISA) is an abstract model that serves as a interface between hardware and software.

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Machine Instruction"
+title: "machine instruction"
 ---
 
 Instruction is a **single operation of a processing unit** defined in its [instruction set](/notes/isa/).

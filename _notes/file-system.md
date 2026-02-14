@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "File System"
+title: "file system"
 ---
 
 file system is a **software-based** disk management

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "File"
+title: "file"
 ---
 
 file is a concept used as an abstraction in the virtualization of storage

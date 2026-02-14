@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "C Template Specialization"
+title: "c++ template specialization"
 ---
 
 It allows you to provide different implementations for specific patterns of template arguments.

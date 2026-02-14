@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "virtuální synchronie"
 ---
 Je to [komunikační model](/notes/komunikacni-model/) ,implementovaný [synchronizačními algoritmy](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu/),zavedený systémem ISIS řeší problém, jak spolehlivě komunikovat ve skupině, kde se dynamicky mění členství (procesy padají a obnovují se).
 

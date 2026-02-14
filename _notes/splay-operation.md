@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Splay Operation"
+title: "splay operation"
 ---
 

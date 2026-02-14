@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "K Nezavislost"
+title: "k-nezávislost"
 ---
 
 Jedná se o vlastnost [rodiny hashovacích funkcí](/notes/rodina-hashovacich-funkci/), která zajišťuje že **hashovací hodnoty na libovolných $k$ různých vstupech se chovají jako náhodné a navzájem nezávislé**, pokud je funkce z rodiny vybrána náhodně.

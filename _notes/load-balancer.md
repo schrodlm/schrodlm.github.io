@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Load Balancer"
+title: "load balancer"
 ---
 

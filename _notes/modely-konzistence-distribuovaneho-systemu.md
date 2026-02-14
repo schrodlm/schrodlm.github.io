@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "modely konzistence distribuovaného systému"
 ---
 Modely konzistence jsou **formální dohody (smlouvy)** o tom, **jaká nekonzistence je povolená a jak se smí projevit**.
 

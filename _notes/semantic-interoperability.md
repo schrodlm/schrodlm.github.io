@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Semantic Interoperability"
+title: "semantic interoperability"
 ---
 
 **Semantic interoperability** refers to the **challenge or problem** of ensuring that different systems not only exchange data but also **interpret the meaning** of that data in the same way. Achieving semantic interoperability means addressing this problem by aligning the **meaning** or **context** of data across systems.

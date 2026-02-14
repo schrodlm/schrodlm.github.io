@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Lock Free Stack"
+title: "lock-free stack"
 ---
 
 

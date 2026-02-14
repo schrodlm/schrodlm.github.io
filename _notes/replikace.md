@@ -1,6 +1,7 @@
 ---
 tags: [distributed_system]
 source: https://www.youtube.com/watch?v=mBUCF1WGI_I
+title: "replikace"
 ---
 Replikace je proces udržování identických kopií dat nebo služeb na více uzlech současně. V distribuovaném systému se jedná o formu **fyzické redundance**.
 

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Ontouml Rigidity"
+title: "OntoUML rigidity"
 ---
 
 In [OntoUML](/notes/ontouml/), **rigidity** describes whether an entity, once classified under a particular class, must always be an instance of that class in all **possible worlds** (scenarios or contexts). Rigidity defines the **necessity** or **contingency** of an entity's classification across time and different situations. It is closely tied to [modal logic](/notes/modal-logic/) by it's definition.

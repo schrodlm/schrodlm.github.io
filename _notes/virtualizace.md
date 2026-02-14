@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Virtualizace"
+title: "virtualizace"
 ---
 
 **Virtualizace** je proces abstrakce výpočetních zdrojů, který umožňuje vytvořit softwarovou (virtuální) reprezentaci něčeho, co tradičně existuje ve fyzické podobě.

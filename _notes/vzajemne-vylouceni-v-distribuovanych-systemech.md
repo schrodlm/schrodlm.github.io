@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Vzajemne Vylouceni V Distribuovanych Systemech"
+title: "vzájemné vyloučení v distribuovaných systémech"
 ---
 
 Jak zajistit, aby do kritické sekce (CS) v [distribuovaných systémech](/notes/distributed-system/) vstoupil v daný okamžik jen jeden proces, když nemáme sdílenou paměť (a nemůžeme tedy použít klasická [synchronizační primitiva](/notes/synchronizacni-primitiva/))? Jedná se o [mechanismus koordinace](/notes/mechanismy-koordinace-v-distribuovanych-systemech/). Existují tři hlavní přístupy.

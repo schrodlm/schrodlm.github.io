@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "logický čas"
 ---
 Logický čas není fyzikální veličina (netiká v sekundách), ale **diskretní číselný systém**, který slouží k zachycení [kauzálních závislostí](/notes/kauzalni-zavislost/) (příčina → následek) mezi událostmi v [distribuovaném systému](/notes/distributed-system/).
 

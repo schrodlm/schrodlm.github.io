@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Maekawas Algorithm"
+title: "Maekawa's algorithm"
 ---
 
 ## Princip: Hlasovací množiny

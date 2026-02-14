@@ -1,6 +1,7 @@
 ---
 tags: [distributed_system]
 language: cz
+title: "mechanismy koordinace v distribuovaných systémech"
 ---
 V distribuovaných systémech bez sdílené paměti potřebujeme **explicitní koordinaci** mezi procesy. Existují tři základní mechanismy, jak toho dosáhnout:
 

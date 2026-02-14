@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Splay Tree"
+title: "splay tree"
 ---
 
 ## Definice

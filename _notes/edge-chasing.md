@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Edge Chasing"
+title: "edge-chasing"
 ---
 
 ### Jak funguje detekce (Algoritmus "Edge-Chasing")

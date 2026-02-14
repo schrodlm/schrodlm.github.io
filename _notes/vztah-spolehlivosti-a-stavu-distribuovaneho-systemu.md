@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Vztah Spolehlivosti A Stavu Distribuovaneho Systemu"
+title: "vztah spolehlivosti a stavu distribuovaného systému"
 ---
 
 Velmi důležitý vztah:

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Type Class Pattern"
+title: "type class pattern"
 ---
 
 The main point of the type class pattern is to **add new functionality to existing code without modifying that code.**

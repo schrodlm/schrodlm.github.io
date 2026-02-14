@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Ltl Linear Temporal Logic"
+title: "LTL (linear temporal logic)"
 ---
 
 ### What is Linear Temporal Logic (LTL)?

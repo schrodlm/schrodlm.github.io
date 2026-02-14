@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Parcialni Funkce"
+title: "parciální funkce"
 ---
 
 Funkce, která nemusí být definována pro celou doménu svých vstupů.

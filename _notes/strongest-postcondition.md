@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Strongest Postcondition"
+title: "strongest postcondition"
 ---
 
 source: https://www.cs.cmu.edu/~aldrich/courses/654-sp09/notes/3-hoare-notes.pdf

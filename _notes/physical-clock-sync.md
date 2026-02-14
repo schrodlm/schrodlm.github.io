@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Physical Clock Sync"
+title: "physical clock sync"
 ---
 
 Snaha o synchronizaci reálného času (hodiny na zdi) kvůli logování, vypršení platnosti (TTL) a interakci s lidmi.

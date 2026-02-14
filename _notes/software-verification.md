@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Software Verification"
+title: "software verification"
 ---
 
 Process of ensuring that a **program behaves as expected according to its specification**

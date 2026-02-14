@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "skupinová komunikace (broadcast)"
 ---
 Velice důležité téma v [komunikaci v distribuovaných systémech](/notes/komunikace-v-distribuovanych-systemech/). Posíláš zprávu na jednu adresu skupiny a middleware se postará, aby ji dostali všichni _aktuální_ členové skupiny podle zvolených doručovacích garancí.
 

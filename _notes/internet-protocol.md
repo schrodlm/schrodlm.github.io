@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Internet Protocol"
+title: "internet protocol"
 ---
 

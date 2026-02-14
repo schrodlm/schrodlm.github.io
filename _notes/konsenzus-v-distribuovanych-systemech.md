@@ -3,6 +3,7 @@ tags:
   - distributed_system
   - consensus
 language: czech
+title: "konsenzus v distribuovaných systémech"
 ---
 **Konsenzus** (agreement, shoda) je fundamentální problém [koordinace](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu/): Jak dosáhnout **shody** mezi procesy na **jedné hodnotě**, i když některé uzly selhávají nebo je síť nespolehlivá?
 

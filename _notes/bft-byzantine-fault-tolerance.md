@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Bft Byzantine Fault Tolerance"
+title: "BFT (byzantine fault tolerance)"
 ---
 
 **Byzantine Fault Tolerance (BFT)** je **vlastnost distribuovaného systému**.  

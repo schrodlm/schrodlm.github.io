@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Mmap"
+title: "mmap"
 ---
 
 

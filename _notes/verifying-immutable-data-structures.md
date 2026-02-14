@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Verifying Immutable Data Structures"
+title: "verifying immutable data structures"
 ---
 
 # [Logical contracts](/notes/logical-contracts/) on data structures

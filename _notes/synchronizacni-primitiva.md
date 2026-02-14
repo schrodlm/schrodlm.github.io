@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Synchronizacni Primitiva"
+title: "synchronizační primitiva"
 ---
 
 [mutex](/notes/mutex/)

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Matrix Transpose"
+title: "matrix_transpose()"
 ---
 
 > [!note] Zobecnění

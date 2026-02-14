@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Prototype Based Paradigm"
+title: "prototype-based paradigm"
 ---
 
 This paradigm tries to get rid of hierarchies created by class-based paradigm, while remaining fundamentally object-oriented.

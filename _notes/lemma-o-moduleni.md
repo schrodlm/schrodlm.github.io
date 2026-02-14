@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Lemma O Moduleni"
+title: "lemma o modulení"
 ---
 
 **Obecný případ (Lemma M):** Když nevíme nic o velikosti $p$ vs $m$ (jen $p>m$), zhorší se nezávislost faktorem **$4$**. (Typicky se uvádí u lineární kongruence).

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Pagemap"
+title: "pagemap"
 ---
 
 Pagemap is a linux interface (rather a [pseudofile](/notes/pseudofile/) system) that is part of /proc filesystem. 

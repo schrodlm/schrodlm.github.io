@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Algebraic Data Types"
+title: "algebraic data types"
 ---
 

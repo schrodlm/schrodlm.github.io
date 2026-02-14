@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Potential Method"
+title: "potential method"
 ---
 
 **Využití:** Slouží k [amortizované analýze](/notes/amortized-analysis/) algoritmů (určení průměrné složitosti operace v nejhorším případě pro posloupnost operací).

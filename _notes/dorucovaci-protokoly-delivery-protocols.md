@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Dorucovaci Protokoly Delivery Protocols"
+title: "doručovací protokoly (delivery protocols"
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Epidemicke Protokoly"
+title: "epidemické protokoly"
 ---
 
 Inspirovány šířením virů. Slouží k dosažení eventual consistency v masivních systémech (např. Cassandra).

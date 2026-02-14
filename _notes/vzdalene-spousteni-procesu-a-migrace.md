@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Vzdalene Spousteni Procesu A Migrace"
+title: "vzdálené spouštění procesů a migrace"
 ---
 
 Jak zařídit, aby kód běžel v distribuovaném systému tam, kde je to nejvýhodnější.

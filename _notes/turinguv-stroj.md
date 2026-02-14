@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Turinguv Stroj"
+title: "turingův stroj"
 ---
 

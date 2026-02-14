@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Scalar Product Hash Family"
+title: "scalar product hash family"
 ---
 
 Systém [hashovacích funkcí](/notes/hashovaci-funkce/) založených na skalárním součinu a důkaz jeho [1-univerzálnosti](/notes/c-univerzalnost/)

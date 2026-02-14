@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Virtual Memory"
+title: "virtual memory"
 ---
 

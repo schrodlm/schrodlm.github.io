@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "K Cestny Mergesort"
+title: "k-cestný mergesort"
 ---
 
 ## Princip

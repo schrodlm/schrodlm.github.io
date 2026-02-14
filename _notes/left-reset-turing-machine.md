@@ -1,7 +1,7 @@
 ---
 date: October 18, 2025
+title: "left reset turing machine"
 ---
-
 ## 1 Předpoklady
 
 Pracuji s definicí [Turingova stroje](/posts/2024-12-20-turing-machine/) z přednášky, tedy přechodová funkce je definována:

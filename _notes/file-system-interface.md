@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "File System Interface"
+title: "file system interface"
 ---
 
 Create interface for abstraction created from introducing [file system](/notes/file-system/)

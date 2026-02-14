@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Vysvetleni Access Lemma Pro Splay Trees"
+title: "vysvětlení access lemma pro splay trees"
 ---
 
 ### Proč definujeme rank $r(x)$?

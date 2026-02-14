@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Zamky Vs Lock Free Struktury"
+title: "zámky vs lock-free struktury"
 ---
 
 > [!note] TL;DR

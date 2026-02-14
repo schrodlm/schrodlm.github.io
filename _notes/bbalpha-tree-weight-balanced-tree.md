@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Bbalpha Tree Weight Balanced Tree"
+title: "BB(alpha) tree (weight balanced tree)"
 ---
 
 # Definice a princip

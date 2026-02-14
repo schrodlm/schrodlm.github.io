@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "Lamportův algoritmus"
 ---
 Lamportův algoritmus je permission-based [synchronizační algoritmus](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu/) pro [distribuované vzájemné vyloučení](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/), který využívá [logické hodiny](/notes/logicky-cas/) k vytvoření totálního uspořádání žádostí. Vedlejší efekt totálního uspořádání je totiž vzájemné vyloučení.
 

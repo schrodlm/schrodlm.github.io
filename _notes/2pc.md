@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "2Pc"
+title: "2PC"
 ---
 
 ### Two-Phase Commit (2PC)

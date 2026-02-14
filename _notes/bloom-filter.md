@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Bloom Filter"
+title: "bloom filter"
 ---
 
 Bloomův filtr je **pravděpodobnostní datová struktura**, která slouží k paměťově velmi úsporné reprezentaci množiny prvků. Umožňuje provádět dvě operace:

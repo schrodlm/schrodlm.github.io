@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Problem Byzantskych Generalu"
+title: "problém byzantských generálů"
 ---
 

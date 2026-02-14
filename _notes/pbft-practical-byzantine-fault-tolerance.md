@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Pbft Practical Byzantine Fault Tolerance"
+title: "PBFT (practical byzantine fault tolerance)"
 ---
 
 Řeší [problém byzantských generálů](/notes/problem-byzantskych-generalu/) a obecně [byzantine failure](/notes/byzantine-failure/)

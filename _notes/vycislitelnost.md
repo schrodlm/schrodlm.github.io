@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Vycislitelnost"
+title: "vyčíslitelnost"
 ---
 
 Fundamentální odvětví teoretické informatiky, které se ptá na otázku: "Lze daný problém vůbec vyřešit pomocí algoritmu?"

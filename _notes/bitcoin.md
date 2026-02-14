@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Bitcoin"
+title: "bitcoin"
 ---
 
 **Masivní decentralizace:** Bitcoin je příkladem systému, kde neexistuje žádná centrální autorita ani "leader" v klasickém smyslu

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Spolehlivost Delivery Semantics"
+title: "spolehlivost (delivery semantics)"
 ---
 
 Spolehlivost je jedna z garancí definovaných [komunikační model](/notes/komunikacni-model/) distribuovaného systému. Definuje, jak moc se systém snaží doručit zprávu a jaké garance poskytuje.

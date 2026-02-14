@@ -2,6 +2,7 @@
 tags:
   - distributed_system
 language: czech
+title: "RPC"
 ---
 RPC je [komunikační model](/notes/komunikacni-model/) a poskytuje koncept volání distribuovaných metod, který je možný využít v jakékoliv DS architektuře. 
 

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Suffix Tree"
+title: "suffix tree"
 ---
 
 Datová struktura pro práci s textem. 

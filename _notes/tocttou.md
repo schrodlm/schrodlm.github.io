@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Tocttou"
+title: "TOCTTOU"
 ---
 
 TOCTTOU (Time-of-check to time-of-use) je typ **[race condition](/notes/race-condition/)**, kdy se stav systému změní mezi okamžikem, kdy OS nebo aplikace něco zkontroluje, a okamžikem, kdy tuto informaci použije.

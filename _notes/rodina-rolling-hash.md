@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Rodina Rolling Hash"
+title: "rodina rolling hash"
 ---
 
 **Vstup (Data):** Koeficienty polynomu (znaky řetězce $x_1​,x_2​,…,x_L$). 

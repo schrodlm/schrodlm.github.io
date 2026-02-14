@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Lock Free Struktura"
+title: "lock-free struktura"
 ---
 
 datová struktura určena pro použití v multi-threaded prostředí

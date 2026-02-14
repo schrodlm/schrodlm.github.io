@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Vztah Konsenzu A Detekce Globalniho Stavu"
+title: "vztah konsenzu a detekce globálního stavu"
 ---
 
 Souvislost těchto dvou problémů je v samotné povaze obou problémů. 

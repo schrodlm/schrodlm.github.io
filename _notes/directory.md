@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Directory"
+title: "directory"
 ---
 
 directory is a concept used as an abstraction in the virtualization of storage

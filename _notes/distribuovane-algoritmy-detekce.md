@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Distribuovane Algoritmy Detekce"
+title: "distribuované algoritmy detekce"
 ---
 

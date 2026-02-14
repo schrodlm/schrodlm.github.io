@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Amortized Complexity"
+title: "amortized complexity"
 ---
 
 Amortizovaná cena =  Skutečná cena + Změna potenciálu($\Delta \phi$)

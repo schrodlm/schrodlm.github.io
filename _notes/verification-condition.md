@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Verification Condition"
+title: "verification condition"
 ---
 
 A verification condition is a logical formula that expresses some aspect of the correctness of a system.

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Tagged Architecture"
+title: "tagged architecture"
 ---
 
 > V dnešní době se nepoužívá, v 80. letech byla "testována" v provozu například v lisp machines

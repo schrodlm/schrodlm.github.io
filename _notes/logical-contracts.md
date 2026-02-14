@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Logical Contracts"
+title: "logical contracts"
 ---
 
 source: https://www.cs.cmu.edu/~15414/s23/s22/lectures/02-contracts.pdf

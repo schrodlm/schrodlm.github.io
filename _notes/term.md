@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Term"
+title: "term"
 ---
 
 **Term** is the most **basic unit** or **operand** within a programming language expression. It represents a single, static value or a straightforward way to access one.

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Rozhodnutelnost"
+title: "rozhodnutelnost"
 ---
 
 Rozhodnutelnost je speciální případ vyčíslitelnosti.

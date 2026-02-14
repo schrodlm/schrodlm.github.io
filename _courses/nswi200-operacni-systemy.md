@@ -1,5 +1,5 @@
 ---
 layout: note
-title: "Nswi200 Operacni Systemy"
+title: "NSWI200 - Operační systémy"
 ---
 

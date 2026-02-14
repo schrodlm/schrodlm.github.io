@@ -6,6 +6,7 @@ layout: project
 github: goob2
 slug: proj_1
 description: Learning project to grasp core ideas of graphical engines.
+title: "Goob the Renderer"
 ---
 **file last reviewed:** 11.10.2025
 

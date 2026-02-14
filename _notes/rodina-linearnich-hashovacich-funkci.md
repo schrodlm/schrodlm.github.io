@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Rodina Linearnich Hashovacich Funkci"
+title: "rodina lineárních hashovacích funkcí"
 ---
 
 ### Lineární hashování $\mathcal{L}$ (linear hashing)

@@ -1,6 +1,6 @@
 ---
 layout: note
-title: "Btor2"
+title: "btor2"
 ---
 
 
