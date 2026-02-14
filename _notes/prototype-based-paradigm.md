@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Prototype Based Paradigm"
+---
+
 This paradigm tries to get rid of hierarchies created by class-based paradigm, while remaining fundamentally object-oriented.
 
 In a prototype-based system, **there is no distinction between blueprints and instances**—any object can serve as a **prototype** for another object. New objects are created by **cloning** an existing prototype.

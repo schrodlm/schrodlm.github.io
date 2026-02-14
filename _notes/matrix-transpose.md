@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Matrix Transpose"
+---
+
 > [!note] Zobecnění
 > Pozor tato implementace je zobecněná i na matice, kde $N$ není mocnina $2$. Tedy musí být připravena na nečtvercové podmatice.
 > Proto `swapAndTranspose()` nerozděluje rovnou na 4 podproblémy, ale jen na 2

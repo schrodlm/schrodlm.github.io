@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Vypocetni Model"
+---
+
 Výpočetní model je formální, matematická abstrakce, která definuje jaké základní kroky a pravidla tvoří výpočet.
 
 Je to teoretický "stroj" nebo systém, který nám umožňuje

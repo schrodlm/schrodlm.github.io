@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Symbolic Execution"
+---
+
 A powerful technique used in [software verification](/notes/software-verification/).
 
 Symbolic execution is a method for analyzing programs by treating program inputs as **symbols** rather than **concrete values**. 

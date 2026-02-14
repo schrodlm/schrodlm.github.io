@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Ab Tree"
+---
+
 (a,b)-strom je samo-vyvažovací stromová datová struktura.
 
 Od ostatních samo-vyvažovacích stromových struktur se liší tím, že v jednom uzlu může být až $b-1$ klíčů a může mít až $b$ dětí.

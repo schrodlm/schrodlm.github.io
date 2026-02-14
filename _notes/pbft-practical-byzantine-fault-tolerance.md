@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Pbft Practical Byzantine Fault Tolerance"
+---
+
 Řeší [problém byzantských generálů](/notes/problem-byzantskych-generalu/) a obecně [byzantine failure](/notes/byzantine-failure/)
 
 

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Vzdalene Spousteni Procesu A Migrace"
+---
+
 Jak zařídit, aby kód běžel v distribuovaném systému tam, kde je to nejvýhodnější.
 
 ## Motivace

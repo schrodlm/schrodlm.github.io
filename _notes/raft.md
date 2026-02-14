@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Raft"
+---
+
 Algoritmus k dosažení [konsenzu](/notes/konsenzus-v-distribuovanych-systemech/).
 Předpokládá parciálně synchronní a crash fault tolerant model.
 

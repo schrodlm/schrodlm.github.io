@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Logical Contracts"
+---
+
 source: https://www.cs.cmu.edu/~15414/s23/s22/lectures/02-contracts.pdf
 For imperative programs there is a line of research on program logics, that is, logics specifically designed to reason about the correctness of programs.
 

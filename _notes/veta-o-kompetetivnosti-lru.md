@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Veta O Kompetetivnosti Lru"
+---
+
 Teoreticky je to velmi důležitá věta v rámci [IO modelu](/notes/io-model/), protože dává **formální garanci**, že algoritmus LRU (s $2 \times$ větší velikostí paměti) není v nejhorším případě **neomezeně horší** než optimální strategie, která zná budoucnost.
 
 Bez této věty by totiž mohlo platit, že:

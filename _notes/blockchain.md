@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Blockchain"
+---
+
 **Blockchain** je **technologie postavená na [P2P architektuře](/notes/peer-to-peer-p2p/)**, která využívá specifickou datovou strukturu k udržování distribuované účetní knihy (distributed ledger).
 
 ### Na čem je postaven? (Architektura)

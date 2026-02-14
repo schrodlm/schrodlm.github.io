@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Maekawas Algorithm"
+---
+
 ## Princip: Hlasovací množiny
 Místo toho, aby si proces $P_i$​ žádal o povolení od _všech_ uzlů v síti, žádá jen o povolení od podmnožiny uzlů, které se říká **hlasovací množina ($V_i$​)**.
 

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Software Verification"
+---
+
 Process of ensuring that a **program behaves as expected according to its specification**
 This also includes checking that software does not have bugs, memory issues or **security vulnerabilities**.
 Goal is to **mathematically** prove that the program will always behave correctly for all possible inputs.

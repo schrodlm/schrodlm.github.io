@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Load Balancing V Distribuovanych Systemech"
+---
+
 Cílem je zajistit, aby žádný uzel nebyl přetížen, zatímco jiný zahálí. Tím přímo naplňujeme motivaci pro **scaling** a **výkon**.
 
 ### Cíle a prostředky

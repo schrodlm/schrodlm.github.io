@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Isa"
+---
+
 Instruction set architecture (ISA) is an abstract model that serves as a interface between hardware and software.
 
 It serves as a blueprint of manufacturers on what CPU design should look like. 

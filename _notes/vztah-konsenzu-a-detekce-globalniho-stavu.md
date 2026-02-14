@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Vztah Konsenzu A Detekce Globalniho Stavu"
+---
+
 Souvislost těchto dvou problémů je v samotné povaze obou problémů. 
 
 Detekce globálního stavu je snaha o **pozorování** reality (co se stalo). Konsenzus je snaha o **dohodu** na realitě (co se má stát).

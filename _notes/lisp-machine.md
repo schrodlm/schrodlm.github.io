@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Lisp Machine"
+---
+
 Články:
 [The lost cause of lisp machines](https://www.tfeb.org/fragments/2025/11/18/the-lost-cause-of-the-lisp-machines/)
 

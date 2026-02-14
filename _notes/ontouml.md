@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Ontouml"
+---
+
 OntoUML is a language for Ontology-driven [conceptual modelling](/notes/conceptual-modelling/). It is built as a [UML] extension based on the [UFO](/notes/ufo/).
 
 It integrates formal ontology principles into UML to create more semantically precise and semantically rich models. 

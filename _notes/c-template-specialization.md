@@ -1,3 +1,8 @@
+---
+layout: note
+title: "C Template Specialization"
+---
+
 It allows you to provide different implementations for specific patterns of template arguments.
 
 We have two types of c++ template specialization:

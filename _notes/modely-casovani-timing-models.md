@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Modely Casovani Timing Models"
+---
+
 _Předtím, než navrhneme algoritmus, musíme definovat, co předpokládáme o čase v síti a na uzlech._
 
 1. **Synchronní systém (Ideál):**

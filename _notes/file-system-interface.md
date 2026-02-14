@@ -1,3 +1,8 @@
+---
+layout: note
+title: "File System Interface"
+---
+
 Create interface for abstraction created from introducing [file system](/notes/file-system/)
 
 This is the API that allows a user-space program to request services from the kernel. Without this interface, a programmer would have to manually calculate disk offsets and flip bits in a bitmap—the OS handles that complexity for us.

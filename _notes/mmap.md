@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Mmap"
+---
+
 
 The `mmap()` (memory map) system call maps files, device or anonymous memory into the virtual address space of a process
 

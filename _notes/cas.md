@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Cas"
+---
+
 CAS (compare-and-swap) je atomická instrukce, používaná k dosažení synchronizace
 
 - Přijímá registr $R$, očekávanou hodnotu `old` a novou hodnotu `new`.

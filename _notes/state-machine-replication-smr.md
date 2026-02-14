@@ -1,3 +1,8 @@
+---
+layout: note
+title: "State Machine Replication Smr"
+---
+
 **Princip:** Repliky jsou **deterministické stavové automaty**.
 - Všechny repliky začínají ve stejném stavu
 - Aplikují **stejné operace** ve **stejném pořadí**

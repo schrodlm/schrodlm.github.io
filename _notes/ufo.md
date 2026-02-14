@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Ufo"
+---
+
 **UFO** (Unified Foundational [ontology](/notes/ontology/)) is a framework for defining common, domain-independent concepts that can be used to model specific domains in a structured way.
 
 ### Key Parts of UFO:

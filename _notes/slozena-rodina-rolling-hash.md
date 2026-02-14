@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Slozena Rodina Rolling Hash"
+---
+
 [2-nezávislý](/notes/k-nezavislost/) systém pro hashování řetězců, vzniklý složením [rodina rolling hash](/notes/rodina-rolling-hash/) ($\mathcal{R}$) a [lineární rodiny](/notes/rodina-linearnich-hashovacich-funkci/) ($\mathcal{L}$).
 
 

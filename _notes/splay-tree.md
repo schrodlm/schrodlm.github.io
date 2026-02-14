@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Splay Tree"
+---
+
 ## Definice
 Jedná se o stromovou datovou strukturu (binary search tree, která se sama vyvažuje pomocí operací `find`, `insert`, `delete`) a zaručuje [amortizovanou složitost](/notes/amortized-complexity/) ($O(\log n)$) na všechny tyto operace. 
 

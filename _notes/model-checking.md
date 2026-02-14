@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Model Checking"
+---
+
 source: https://www.researchgate.net/publication/220689159_Model_Checking
 It is an effective technique for comparing a **system description against its formal specification**, by essentially creating a model of system.
 

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Vysvetleni Access Lemma Pro Splay Trees"
+---
+
 ### Proč definujeme rank $r(x)$?
 Rank představuje jakousi důležitost prvku. List má malý rank. Kořen má největší rank. Prvky který splayujeme se postupně mění rank tak že odebírá rank ostatním prvkům. Vlastně je tam analogie toho, že **čím větší máš podstrom (rank), tím výše ve stromu pravděpodobně jsi**
 

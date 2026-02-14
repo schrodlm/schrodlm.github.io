@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Paralelizace Ab Stromu"
+---
+
 Klíčem k úspěšné paralelizaci je použití metody sliding window v kombinaci s top-down variantou (a,b)-stromů.
 
 ### 1. Základní princip: Top-down přístup

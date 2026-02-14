@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Mutex"
+---
+
 mutex je základní synchronizační primitivum, které zajišťuje, že v daný moment pracuje s datovou strukturou pouze jeden proces.
 
 - **Stavy:** Zamčeno / Odemčeno.

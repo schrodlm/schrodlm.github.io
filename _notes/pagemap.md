@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Pagemap"
+---
+
 Pagemap is a linux interface (rather a [pseudofile](/notes/pseudofile/) system) that is part of /proc filesystem. 
 
 It allows userspace programs to examine the page tables and related information by reading files in /proc

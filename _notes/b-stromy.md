@@ -1,3 +1,8 @@
+---
+layout: note
+title: "B Stromy"
+---
+
 
 
 # (a,b)-tree experiment

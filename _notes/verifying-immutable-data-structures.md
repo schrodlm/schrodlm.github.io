@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Verifying Immutable Data Structures"
+---
+
 # [Logical contracts](/notes/logical-contracts/) on data structures
 So far we were focused on logical contracts of *control structures*: How do functions, assignments and loops give rise to the verification conditions?
 

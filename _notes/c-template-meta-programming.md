@@ -1,3 +1,8 @@
+---
+layout: note
+title: "C Template Meta Programming"
+---
+
 Template meta-programming in C++ is as far as I understand it completely different concept from actually programming in C++. I want to showcase several of it's important concepts. From my experience they are best understood on an example:
 
 I want to introduce a compile-time utility for manipulating lists of types.

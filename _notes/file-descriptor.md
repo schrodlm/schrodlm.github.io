@@ -1,3 +1,8 @@
+---
+layout: note
+title: "File Descriptor"
+---
+
 file descriptor is essentially just a runtime filename used by processes
 
 When process opens a file, the OS doesn't want to look up the [inode](/notes/inode/) of the [file](/notes/file/) every time you read a byte.

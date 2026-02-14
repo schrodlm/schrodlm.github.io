@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Distribuovana Sdilena Pamet"
+---
+
 **Distribuovaná sdílená paměť** je softwarová vrstva (middleware), která umožňuje procesům na různých uzlech přistupovat k datům tak, jako by byly v jedné společné RAM, přestože ve skutečnosti probíhá pod kapotou posílání zpráv (message passing).
 
 ## Pravidla

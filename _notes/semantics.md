@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Semantics"
+---
+
 Semantics basically means "**the meaning of**".
 
 It may help to look at a more familiar case to explain the term.

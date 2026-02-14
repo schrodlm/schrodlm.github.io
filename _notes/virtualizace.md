@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Virtualizace"
+---
+
 **Virtualizace** je proces abstrakce výpočetních zdrojů, který umožňuje vytvořit softwarovou (virtuální) reprezentaci něčeho, co tradičně existuje ve fyzické podobě.
 
 Nejčastěji se tento pojem používá ve smyslu **serverové virtualizace**, což je technika, která umožňuje na jednom fyzickém stroji provozovat více izolovaných operačních systémů současně.

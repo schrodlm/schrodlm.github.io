@@ -1,3 +1,8 @@
+---
+layout: note
+title: "K Cestny Mergesort"
+---
+
 ## Princip
 
 Klasický mergesort slučuje vždy 2 běhy dohromady. k-cestný mergesort slučuje najednou **k běhů**.

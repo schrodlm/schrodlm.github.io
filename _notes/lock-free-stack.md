@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Lock Free Stack"
+---
+
 
 ## Návrh
 

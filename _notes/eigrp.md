@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Eigrp"
+---
+
 Problems:
 	1. auto-summary
 	2. unequal cost/metric load balancing

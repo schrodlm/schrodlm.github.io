@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Transpozice Ctvercove Matice"
+---
+
 Tato implementace algoritmu se zaměřuje na co největší optimalizaci v okruhu IO operací ([IO model](/notes/io-model/))
 
 ## Transpozice čtvercové matice

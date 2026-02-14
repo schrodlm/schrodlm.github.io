@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Deadlock V Distribuovanem Systemu"
+---
+
 **Zablokování** nastává, když skupina procesů vzájemně čeká na prostředky, které drží ostatní členové skupiny, a nikdo nemůže pokračovat. Tedy klasický [race condition](/notes/race-condition/), ale s jiným univerzem než u paralelního programování.
 
 >[!note] Složitost

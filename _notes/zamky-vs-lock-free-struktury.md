@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Zamky Vs Lock Free Struktury"
+---
+
 > [!note] TL;DR
 > - zámky jsou jednodušší a bezpečnější pro běžný kód, 
 > - lock-free je náročnější, ale škáluje a neblokuje.

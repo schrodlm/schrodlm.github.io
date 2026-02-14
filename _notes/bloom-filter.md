@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Bloom Filter"
+---
+
 Bloomův filtr je **pravděpodobnostní datová struktura**, která slouží k paměťově velmi úsporné reprezentaci množiny prvků. Umožňuje provádět dvě operace:
 - `insert`: Vložit prvek do množiny.
 - `find` (query): Zjistit, zda prvek v množině je.

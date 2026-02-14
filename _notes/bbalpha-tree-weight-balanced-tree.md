@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Bbalpha Tree Weight Balanced Tree"
+---
+
 # Definice a princip
 Na rozdíl od AVL stromů, které hlídají **výšku** podstromů, BB(alpha)-stromy hlídají **váhu (počet uzlů)** v podstromech.
 

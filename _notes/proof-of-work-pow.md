@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Proof Of Work Pow"
+---
+
 **Proof of Work (PoW)** je mechanismus, který v masivně distribuovaných systémech nahrazuje důvěru mezi uzly prokazatelným vynaložením výpočetního úsilí. V prostředí, jako je Bitcoin, kde neexistuje centrální autorita, slouží k dosažení globální shody (konsenzu) i v přítomnosti uzlů, které mohou lhát nebo se chovat zákeřně (byzantské chyby).
 
 >[!note] TL;DR

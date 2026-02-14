@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Rodina Rolling Hash"
+---
+
 **Vstup (Data):** Koeficienty polynomu (znaky řetězce $x_1​,x_2​,…,x_L$). 
 **Náhodný klíč:** Bod $a$ (ve kterém polynom vyhodnocujeme)
 > [!important] Co to znamená

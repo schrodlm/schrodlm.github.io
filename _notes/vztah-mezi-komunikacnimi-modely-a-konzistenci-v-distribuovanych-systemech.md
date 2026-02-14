@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Vztah Mezi Komunikacnimi Modely A Konzistenci V Distribuovanych Systemech"
+---
+
 Komunikační modely a konzistence spolu úzce souvisí - **způsob, jakým si komponenty distribuovaného systému vyměňují zprávy, přímo ovlivňuje, jaké záruky konzistence můžete poskytovat**.
 
 ## Základní princip

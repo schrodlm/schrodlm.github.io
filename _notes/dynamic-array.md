@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Dynamic Array"
+---
+
 **Dynamické pole** je datová struktura, která se navenek chová jako běžné pole (přístup k prvkům v čase $O(1)$), ale nemá fixní velikost. Dokáže automaticky měnit svou kapacitu podle toho, kolik prvků do něj vkládáme nebo z něj mažeme.
 
 Implementace ve standardních knihovnách:

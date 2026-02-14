@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Amortizovana Analyza A2A Stromu"
+---
+
 ## Věta o amortizovaném počtu změn pro (a,2a)-stromy
 
 **Věta:** Posloupnost $m$ operací `insert` a `delete` provedených na zpočátku prázdném (a,2a)-stromu provede celkem $O(m)$ modifikací vrcholu.

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Tagged Architecture"
+---
+
 > V dnešní době se nepoužívá, v 80. letech byla "testována" v provozu například v lisp machines
 
 Jde o hardwarový mechanismus, který řeší klíčové problémy dynamicky typovaných jazyků, jako je Lisp, přímo na úrovni procesoru a paměti.

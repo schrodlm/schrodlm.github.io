@@ -1,1 +1,6 @@
+---
+layout: note
+title: "Bounded Model Checking"
+---
+
 thus approach conquers new ground by using capabilities of SAT solvers enriched with decidable theories (SMT) in order to verify system with an infinite state space?? how does that work.

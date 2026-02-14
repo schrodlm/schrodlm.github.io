@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Btor2"
+---
+
 
 It is a word-level model checking format for capturing models of hardware and **potentially software**.
 

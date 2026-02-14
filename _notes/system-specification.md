@@ -1,3 +1,8 @@
+---
+layout: note
+title: "System Specification"
+---
+
 System specification can be seen as a contract between the consumer and the system developer.
 Natural langauge is commonly used to describe the requirements from the system, but it is very susceptible to ambiguity. The use of **formal specification** allows a unique interpretation, as well as developing model checking algorithms. As in modeling, the use of different notations (natural language and specification formalism) may cause a potential discrepancy.
 

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Ltl Linear Temporal Logic"
+---
+
 ### What is Linear Temporal Logic (LTL)?
 
 - LTL is a formalism that allows you to describe how a system evolves over time, where time is represented as a linear sequence of states.

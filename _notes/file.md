@@ -1,3 +1,8 @@
+---
+layout: note
+title: "File"
+---
+
 file is a concept used as an abstraction in the virtualization of storage
 
 - simply a linear array of bytes, each of which you can read or write

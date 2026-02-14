@@ -1,3 +1,8 @@
+---
+layout: note
+title: "C Parameter Pack"
+---
+
 A parameter pack (`typename... T`) can hold zero or more type parameters. It's the foundation of variadic templates.
 
 ```c++

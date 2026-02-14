@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Byzantine Failure"
+---
+
 **Byzantine failure** je selhání, při kterém se proces může chovat **zcela libovolně**, bez dodržení specifikace systému.
 
 To zahrnuje:

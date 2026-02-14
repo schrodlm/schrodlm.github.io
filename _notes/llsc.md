@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Llsc"
+---
+
 Dvojice instrukcí používaných k dosažení synchronizace
 
 - `LL` (Load Linked): Atomické čtení, při kterém si procesor zapamatuje adresu a sleduje ji.

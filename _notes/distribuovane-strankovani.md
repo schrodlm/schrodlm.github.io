@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Distribuovane Strankovani"
+---
+
 **Distribuované stránkování** rozšiřuje koncept virtuální paměti na celou síť. Stránky paměti se dynamicky stěhují tam, kde jsou zrovna potřeba. Je to sice uživatelsky přívětivé, ale extrémně náchylné na síťové zpoždění a tzv. **thrashing** (neustálé stěhování stránek mezi uzly
 
 ### Princip

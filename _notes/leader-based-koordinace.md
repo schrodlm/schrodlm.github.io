@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Leader Based Koordinace"
+---
+
 Tento mechanismus je jedním ze základních návrhových vzorů koordinace. Jeho podstata spočívá v tom, že jeden uzel v rámci skupiny procesů přijímá roli **vůdce (leadera)** a stává se jediným rozhodovacím bodem pro zbytek systému.
 
 >[!note] Kdy se používá

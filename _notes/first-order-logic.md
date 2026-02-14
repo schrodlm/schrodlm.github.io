@@ -1,3 +1,8 @@
+---
+layout: note
+title: "First Order Logic"
+---
+
 **First-order logic (FOL)** is a formal system used in mathematics, computer science, linguistics, and philosophy to describe relationships between objects, properties of objects, and quantification over individual objects. It extends **propositional logic** by allowing the use of variables, quantifiers, predicates, and functions. A first-order language is a language created using first-order logic. Here's a breakdown of its key components and characteristics:
 
 #### Key Elements of First-Order Logic:

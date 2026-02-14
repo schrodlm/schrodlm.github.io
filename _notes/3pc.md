@@ -1,3 +1,8 @@
+---
+layout: note
+title: "3Pc"
+---
+
 ### Three-Phase Commit (3PC)
 
 **Vlastnosti:**

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Verifying Mutable Data Structures"
+---
+
 source: https://www.cs.cmu.edu/~15414/s23/s22/lectures/04-ghosts.pdf
 
 How do we specify and verify simple loops that operate on arrays? 

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Bft Byzantine Fault Tolerance"
+---
+
 **Byzantine Fault Tolerance (BFT)** je **vlastnost distribuovaného systému**.  
 Systém je _Byzantine Fault Tolerant_, pokud funguje správně, i když se některé uzly chovají **byzantsky** (vykazují [byzantine failure](/notes/byzantine-failure/)).
 

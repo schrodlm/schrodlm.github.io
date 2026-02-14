@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Vycislitelnost"
+---
+
 Fundamentální odvětví teoretické informatiky, které se ptá na otázku: "Lze daný problém vůbec vyřešit pomocí algoritmu?"
 
 Vytváří formální podklad toho co je možné vypočítat. **Neřeší paměť ani čas**, ale pouze zda pro daný problém algoritmus vůbec existuje.

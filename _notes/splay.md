@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Splay"
+---
+
 Operation used by [splay tree](/notes/splay-tree/) data structure
 
 `splay` algoritmus, je součástí všech operací (`find`, `insert`, `delete`) [splay stromu](/notes/splay-tree/). Splay je implementován pomocí tří rotačních, které mění strukturu stromu.

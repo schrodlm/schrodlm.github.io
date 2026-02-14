@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Komunikacni Model"
+---
+
 ## Komunikační model
 
 Komunikační model je **vysokoúrovňová abstrakce** nad [komunikací v distribuovaných systémech](/notes/komunikace-v-distribuovanych-systemech/), kterou poskytuje [middleware](/notes/middleware/) distribuovaným aplikacím. 

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Type Class Pattern"
+---
+
 The main point of the type class pattern is to **add new functionality to existing code without modifying that code.**
 
 It's a way to achieve compile-time [polymorphism](/notes/polymorphism/) that is more flexible and less invasive than inheritance.

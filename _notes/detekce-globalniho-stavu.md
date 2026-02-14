@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Detekce Globalniho Stavu"
+---
+
 V distribuovaném systému je stav rozprostřen a neustále se mění vlivem asynchronní komunikace. Detekce globálního stavu (často realizovaná jako **Snapshot**) slouží k:
 
 **Checkpointing a Recovery (Zotavení)**: 

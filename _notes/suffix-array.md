@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Suffix Array"
+---
+
 Datová struktura pro práci s textem. 
 Je to prostorově úspornější alternativa k [suffix tree](/notes/suffix-tree/), přičemž nabízí stejnou funkcionalitu.
 

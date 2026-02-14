@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Lock Free Struktura"
+---
+
 datová struktura určena pro použití v multi-threaded prostředí
 
 - Spoléhají se na **atomické operace** (např. [CAS](/notes/cas/), [LLSC](/notes/llsc/))

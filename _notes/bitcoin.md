@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Bitcoin"
+---
+
 **Masivní decentralizace:** Bitcoin je příkladem systému, kde neexistuje žádná centrální autorita ani "leader" v klasickém smyslu
 
 **Web 3.0:** Představuje posun od centralizovaného webu k distribuovaným protokolům odolným vůči cenzuře.

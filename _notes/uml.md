@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Uml"
+---
+
 UML (Unified Modelling Language) is a general-purpose visual modeling-language that is intended to provide a standard way to visualize the design of a system.
 
 UML provides a standard notation for many types of diagrams which can be roughly divided into three main groups:

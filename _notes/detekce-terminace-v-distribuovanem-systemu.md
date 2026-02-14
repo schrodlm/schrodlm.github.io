@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Detekce Terminace V Distribuovanem Systemu"
+---
+
 Řeší jak poznat zda výpočet opravdu skončil a v síti už "nelétají" žádné zprávy. Nestačí jen, aby byly všechny procesy v pasivním stavu (nečinné). V komunikačních kanálech mohou stále existovat zprávy, které po doručení některý proces opět aktivují
 
 ## Cíl 

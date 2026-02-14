@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Rodina Linearnich Hashovacich Funkci"
+---
+
 ### Lineární hashování $\mathcal{L}$ (linear hashing)
 Toto je základní metoda využívající modulární aritmetiku (založená na [lineární kongruenci](/notes/linearni-kongruence/))
 

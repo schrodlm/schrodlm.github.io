@@ -1,3 +1,8 @@
+---
+layout: note
+title: "C Univerzalnost"
+---
+
 Jedná se o vlastnost [rodiny hashovacích funkcí](/notes/rodina-hashovacich-funkci/), která popisuje pravděpodobnost kolize mezi dvěma různými vstupy. 
 
 ## Definice

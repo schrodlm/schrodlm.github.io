@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Idempotence"
+---
+
 #### Definice
 
 Operace je **idempotentní**, pokud její vícenásobné provedení má stejný efekt jako provedení jediné.  

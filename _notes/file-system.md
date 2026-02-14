@@ -1,3 +1,8 @@
+---
+layout: note
+title: "File System"
+---
+
 file system is a **software-based** disk management
 
 Its job is to transform massive, messy collection of physical disk blocks into abstractions ([files](/notes/file/), [directories](/notes/directory/))

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Crdt Conflict Free Replicated Data Types"
+---
+
 CRDT jsou speciální datové typy (např. počítadla, množiny, seznamy), které jsou navrženy tak, aby mohly být replikovány na více uzlech, kde každý uzel může provádět zápisy **nezávisle a bez koordinace**.
 
 ### Proč existují? (Problém s [konsenzem](/notes/konsenzus-v-distribuovanych-systemech/))

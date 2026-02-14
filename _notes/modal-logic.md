@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Modal Logic"
+---
+
 **Modal logic** is a type of formal logic that extends classical logic by introducing _modalities_, which are expressions that qualify statements. The two most common modalities in modal logic are **necessity** and **possibility**:
 
 - **Necessity** (denoted by ◻): A statement is necessarily true if it is true in all possible worlds.

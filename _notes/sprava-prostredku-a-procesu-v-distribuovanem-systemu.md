@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Sprava Prostredku A Procesu V Distribuovanem Systemu"
+---
+
 Co to je? V čem je to důležité? Proč to řešíme?
 
 Tady jsou asi příklady co spravujeme?

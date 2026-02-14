@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Rodina Polynomialnich Hashovacich Funkci"
+---
+
 Systém, který slouží pro obecné sestrojení k-nezávislého systému.
 
 # Definice $\mathcal{P}_k$

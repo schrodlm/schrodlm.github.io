@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Ghosts"
+---
+
 Pieces of code or data that exist solely for the purpose of verification and do not contribute to the outcome of the computation. This has to be checked by the verification engine. Ghost variables, or ghost fields of records, can only be used in other ghost computations. Otherwise, erasing them before the program is run would lead to incorrect code.
 
 They are essentially auxiliary variables used for reasoning about the code's correctness, typically to track some property or behavior during verification. These variables are eliminated before the program is executed, as they are irrelevant to the final computation.

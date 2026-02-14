@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Verification Condition"
+---
+
 A verification condition is a logical formula that expresses some aspect of the correctness of a system.
 
 VC represents a neccesary properties of the program (such as assertions, preconditions, postconditions, or invariants) that if proven true, guarantee the correctness of the program with respect to specified behaviour.

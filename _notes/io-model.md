@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Io Model"
+---
+
 Tento model abstrahuje počítač na dvě úrovně paměti:
 1. **externí paměť** - neomezeně velká, ale extrémně pomalá
 2. **interní paměť** - velice malá, ale extrémně rychlá

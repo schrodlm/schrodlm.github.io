@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Rodina Hashovacich Funkci"
+---
+
 Rodina [hashovacích funkcí](/notes/hashovaci-funkce/) je **množina více hashovacích funkcí** se stejným typem vstupu a výstupu, ze které můžeme náhodně vybírat.
 
 ## Intuitivní vysvětlení

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Edge Chasing"
+---
+
 ### Jak funguje detekce (Algoritmus "Edge-Chasing")
 
 Místo toho, abychom složitě stavěli celý graf na jednom místě, používá se elegantní metoda posílání speciálních zpráv, tzv. **sond (probes)**.

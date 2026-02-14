@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Transakce V Distribuovanych Systemech"
+---
+
 nějak souvisí s konsenzem ale nevím moc jak. Něco ve smyslu:
 
 Ale zároveň:

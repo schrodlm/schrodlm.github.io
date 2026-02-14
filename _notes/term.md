@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Term"
+---
+
 **Term** is the most **basic unit** or **operand** within a programming language expression. It represents a single, static value or a straightforward way to access one.
 
 - **Key Property:** It **already is a value** or a straightforward way to access one.

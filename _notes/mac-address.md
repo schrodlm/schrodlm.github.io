@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Mac Address"
+---
+
 MAC is essentially just a unique string that works as a identifier of device provide for its network card during manufacturing proccess. MAC address consists of **48 bits**.
 And most of the time it is expressed as six hexadecimal numbers seperated by ":".
 

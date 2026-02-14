@@ -1,3 +1,8 @@
+---
+layout: note
+title: "2Pc"
+---
+
 ### Two-Phase Commit (2PC)
 
 **Vlastnosti:**

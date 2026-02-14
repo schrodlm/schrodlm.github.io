@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Hoare Logic"
+---
+
 source: https://www.cs.cmu.edu/~aldrich/courses/654-sp09/notes/3-hoare-notes.pdf
 
 It is a formal system with a set of logical rules to for **reasoning rigorously about the correctness** of a computer programs.

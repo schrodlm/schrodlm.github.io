@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Rozhodovaci Problemy"
+---
+
 Rozhodovací problémy jsou **nejjednodušší a nejzákladnější typ výpočetních problémů**. 
 
 Jejich cílem je odpovědět na otázku:

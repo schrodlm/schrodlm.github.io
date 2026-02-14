@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Amortized Complexity"
+---
+
 Amortizovaná cena =  Skutečná cena + Změna potenciálu($\Delta \phi$)
 
 - **Skutečná cena:** To, co procesor oddře (hloubka).

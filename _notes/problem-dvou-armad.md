@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Problem Dvou Armad"
+---
+
 Dva generálové se musí dohodnout na čase útoku přes nespolehlivý kanál
 (posel může být zajat). Je dokázáno, že problém nemá řešení –
 nikdy si nemohou být stoprocentně jistí, že druhý generál obdržel

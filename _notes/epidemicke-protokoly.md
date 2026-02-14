@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Epidemicke Protokoly"
+---
+
 Inspirovány šířením virů. Slouží k dosažení eventual consistency v masivních systémech (např. Cassandra).
 
 **Anti-Entropy**

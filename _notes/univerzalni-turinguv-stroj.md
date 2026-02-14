@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Univerzalni Turinguv Stroj"
+---
+
 Univerzální Turingův stroj je základní výpočetní model pro práci se složitostí a vyčíslitelností.
 
 # Definice

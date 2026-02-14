@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Lcp Array"
+---
+
 
 ## Využití se suffixovým polem
 Samotné pole S stačí na jednoduché věci (např. vyhledání výskytu vzorku v textu pomocí binárního vyhledávání ). Ale pro složitější úlohy (hledání nejdelšího společného podřetězce, komprese, histogramy k-gramů) je samotné seřazení málo – potřebujeme vědět, kde se suffixy shodují. Proto se v praxi téměř vždy po S staví i L.

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Vztah Spolehlivosti A Stavu Distribuovaneho Systemu"
+---
+
 Velmi důležitý vztah:
 
 **Čím více stavovosti, tím složitější spolehlivost.**

@@ -1,3 +1,8 @@
+---
+layout: note
+title: "Physical Clock Sync"
+---
+
 Snaha o synchronizaci reálného času (hodiny na zdi) kvůli logování, vypršení platnosti (TTL) a interakci s lidmi.
 - **Problém:** Krystalové oscilátory mají odchylku → vzniká **clock drift**.
 - **Cíl:** Udržet hodiny v toleranci δ (maximální odchylka).
