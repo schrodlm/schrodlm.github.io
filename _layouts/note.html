@@ -2,6 +2,12 @@
 layout: default
 ---
 
+<!-- KaTeX CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+
+<!-- Note Graph CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/note-graph.css' | relative_url }}">
+
 <article class="note">
   <header class="note-header">
     <h1 class="note-title">{{ page.title | escape }}</h1>
@@ -20,3 +26,17 @@ layout: default
   </div>
   {%- endif -%}
 </article>
+
+<!-- KaTeX JS -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError : false
+    });"></script>
+
+<!-- Note Graph JS -->
+<script defer src="{{ '/assets/js/note-graph.js' | relative_url }}"></script>
