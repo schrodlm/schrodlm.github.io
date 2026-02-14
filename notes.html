@@ -1,0 +1,38 @@
+---
+layout: default
+title: Notes
+permalink: /notes/
+---
+
+<div class="notes-page">
+  <!-- Display intro text from landing page if it exists -->
+  {% assign landing_page = site.notes | where: "landing_page", true | first %}
+  {% if landing_page %}
+    <div class="intro-section">
+      {{ landing_page.content }}
+    </div>
+  {% endif %}
+
+  <!-- Auto-generated list of all notes (excluding not_listable items) -->
+  <div class="notes-container">
+    <h2>All Notes</h2>
+    <p class="note-count">{{ site.notes | where_exp: "note", "note.not_listable != true" | size }} notes</p>
+
+    {% assign listable_notes = site.notes | where_exp: "note", "note.not_listable != true" | sort: "title" %}
+
+    <ul class="notes-list">
+      {% for note in listable_notes %}
+        <li class="note-item">
+          <a href="{{ note.url | relative_url }}">{{ note.title | default: note.name }}</a>
+          {% if note.tags and note.tags.size > 0 %}
+            <span class="note-tags">
+              {% for tag in note.tags limit:3 %}
+                <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -36,6 +36,14 @@ collections:
   notes:
     output: true
 
+# Navigation menu (pages to show in header)
+header_pages:
+  - about.html
+  - courses.html
+  - notes.html
+  - projects.html
+  - cv.html
+
 # Build settings
 theme: minima
 plugins:

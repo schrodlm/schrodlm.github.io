@@ -1,0 +1,42 @@
+---
+layout: default
+title: Courses
+permalink: /courses/
+---
+
+<div class="courses-page">
+  <!-- Display intro text from landing page if it exists -->
+  {% assign landing_page = site.courses | where: "landing_page", true | first %}
+  {% if landing_page %}
+    <div class="intro-section">
+      {{ landing_page.content }}
+    </div>
+  {% endif %}
+
+  <!-- Auto-generated list of all courses (excluding not_listable items) -->
+  <div class="courses-container">
+    <h2>All Courses</h2>
+
+    {% assign listable_courses = site.courses | where_exp: "course", "course.not_listable != true" %}
+    {% assign courses_by_uni = listable_courses | group_by: "university" | sort: "name" | reverse %}
+
+    {% for uni_group in courses_by_uni %}
+      {% if uni_group.name != "" %}
+        <h3>{{ uni_group.name }}</h3>
+      {% endif %}
+      <ul class="courses-list">
+        {% assign sorted_courses = uni_group.items | sort: "year" | reverse %}
+        {% for course in sorted_courses %}
+          <li class="course-item">
+            <a href="{{ course.url | relative_url }}">{{ course.title }}</a>
+            <span class="course-meta">
+              {% if course.semester %} • {{ course.semester }}{% endif %}
+              {% if course.difficulty %} • Difficulty: {{ course.difficulty }}/5{% endif %}
+              {% if course.worth_it == true %} 👍{% elsif course.worth_it == false %} 👎{% endif %}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </div>
+</div>
