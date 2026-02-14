@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<article class="note">
+  <header class="note-header">
+    <h1 class="note-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="note-content">
+    {{ content }}
+  </div>
+
+  {%- if page.tags and page.tags.size > 0 -%}
+  <div class="note-tags">
+    <strong>Tags:</strong>
+    {%- for tag in page.tags -%}
+      <span class="tag">{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
+    {%- endfor -%}
+  </div>
+  {%- endif -%}
+</article>

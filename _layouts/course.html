@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+<article class="course">
+  <header class="course-header">
+    <h1 class="course-title">{{ page.title | escape }}</h1>
+
+    <div class="course-meta">
+      {%- if page.university -%}
+        <span class="university">{{ page.university }}</span>
+      {%- endif -%}
+      {%- if page.semester -%}
+        • <span class="semester">{{ page.semester }}</span>
+      {%- endif -%}
+      {%- if page.year -%}
+        • <span class="year">{{ page.year }}</span>
+      {%- endif -%}
+    </div>
+
+    {%- if page.difficulty or page.usefulness or page.teaching_quality -%}
+    <div class="course-ratings">
+      {%- if page.difficulty -%}
+        <span class="rating"><strong>Difficulty:</strong> {{ page.difficulty }}/5</span>
+      {%- endif -%}
+      {%- if page.usefulness -%}
+        <span class="rating"><strong>Usefulness:</strong> {{ page.usefulness }}/5</span>
+      {%- endif -%}
+      {%- if page.teaching_quality -%}
+        <span class="rating"><strong>Teaching Quality:</strong> {{ page.teaching_quality }}/5</span>
+      {%- endif -%}
+      {%- if page.worth_it -%}
+        <span class="rating"><strong>Worth it:</strong> {% if page.worth_it == true %}👍{% else %}👎{% endif %}</span>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+
+    {%- if page.course_page -%}
+    <div class="course-links">
+      <a href="{{ page.course_page }}" target="_blank" rel="noopener">Official Course Page</a>
+    </div>
+    {%- endif -%}
+  </header>
+
+  <div class="course-content">
+    {{ content }}
+  </div>
+
+  {%- if page.tags and page.tags.size > 0 -%}
+  <div class="course-tags">
+    <strong>Tags:</strong>
+    {%- for tag in page.tags -%}
+      <span class="tag">{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
+    {%- endfor -%}
+  </div>
+  {%- endif -%}
+</article>

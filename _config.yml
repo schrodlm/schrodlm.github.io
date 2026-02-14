@@ -31,6 +31,10 @@ github_username:  schrodlm
 collections:
   projects:
     output: true
+  courses:
+    output: true
+  notes:
+    output: true
 
 # Build settings
 theme: minima

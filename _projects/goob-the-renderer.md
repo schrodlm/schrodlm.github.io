@@ -6,8 +6,6 @@ layout: project
 github: goob2
 slug: proj_1
 description: Learning project to grasp core ideas of graphical engines.
-tags:
-  - watch
 ---
 **file last reviewed:** 11.10.2025
 
@@ -27,7 +25,7 @@ A working graphic renderer based on [tiny_renderer](github.com/ssloy/tinyrendere
 
 ## Reference Material
 - tiny_renderer project - https://github.com/ssloy/tinyrenderer
--  format details - http://www.paulbourke.net/dataformats/tga/
+- TGA format details - http://www.paulbourke.net/dataformats/tga/
 
 ## Technical goals
 ### TGA Image System
@@ -41,7 +39,7 @@ A working graphic renderer based on [tiny_renderer](github.com/ssloy/tinyrendere
 - [-] Decide on the project structure
 - [-] Set-up tests (Catch2)
 - [-] Add color module
-- [-] Research 
+- [-] Research TGA
 - [-] Decide on the structure
 - [-] Implement TGAImage interface
 - [-] Implement TGAImage footer handling

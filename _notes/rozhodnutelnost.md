@@ -1,0 +1,1 @@
+Rozhodnutelnost je speciální případ vyčíslitelnosti.
