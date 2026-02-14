@@ -5,7 +5,7 @@ language: czech
 title: "kauzální závislost"
 ---
 **Kauzální závislost** je fundamentální princip, který dává událostem v distribuovaném systému logický řád.
-- **[Logické hodiny](/notes/logicky-cas/)** jsou nástrojem k jejímu **měření**.
+- **[Logické hodiny](/notes/logicky-cas.html)** jsou nástrojem k jejímu **měření**.
 - **Kauzální doručování (Causal Delivery)** je mechanismus, který ji **vynucuje** v síti.
 - **Kauzální konzistence** je záruka, kterou díky tomu dostane **uživatel**.
 

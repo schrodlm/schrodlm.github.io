@@ -4,14 +4,14 @@ title: "splay tree"
 ---
 
 ## Definice
-Jedná se o stromovou datovou strukturu (binary search tree, která se sama vyvažuje pomocí operací `find`, `insert`, `delete`) a zaručuje [amortizovanou složitost](/notes/amortized-complexity/) ($O(\log n)$) na všechny tyto operace. 
+Jedná se o stromovou datovou strukturu (binary search tree, která se sama vyvažuje pomocí operací `find`, `insert`, `delete`) a zaručuje [amortizovanou složitost](/notes/amortized-complexity.html) ($O(\log n)$) na všechny tyto operace. 
 
 To znamená, že jedna operace může trvat worst-case $O(n)$, ale pro $m$ operací platí složitost $O(\log m)$.
 
 ## Princip
-Funguje na principu [splay](/notes/splay/) operace, které udržuje strom přibližně vybalancovaný.
+Funguje na principu [splay](/notes/splay.html) operace, které udržuje strom přibližně vybalancovaný.
 
-Všechny klasické operace (`insert`, `find`, `delete`) jsou zkombinované se [splay](/notes/splay/). Splayování strom restrukturuje a prvek se kterým jsme pracovali se vždy dostane do kořene (a zároveň většinou spraví část stromu)
+Všechny klasické operace (`insert`, `find`, `delete`) jsou zkombinované se [splay](/notes/splay.html). Splayování strom restrukturuje a prvek se kterým jsme pracovali se vždy dostane do kořene (a zároveň většinou spraví část stromu)
 
 > [!important] Z toho plyne
 > Nedávno přistupované uzly mají tendenci zůstávat blíž kořenu (#Access lemma (Věta o přístupu))
@@ -22,12 +22,12 @@ Oproti ostatním samovyvažovacím stromovým strukturám, má splay tree dvě h
 2. Díky principy algoritmu operací `find`, `insert` a `delete` se často přistupované prvky udržují na vrcholu stromu a zaručují rychlý přístup
 
 ## Nevýhody
-1. Jedna konkrétní operace může v nejhorším případě trvat $O(n)$ ([amortized complexity](/notes/amortized-complexity/))
+1. Jedna konkrétní operace může v nejhorším případě trvat $O(n)$ ([amortized complexity](/notes/amortized-complexity.html))
 2. Čtení tedy zapisuje do paměti. `find` operace modifikuje strukturu. (těžší paralelismus, cache trashing)
 
 ---
 ## Splay 
-[splay](/notes/splay/)
+[splay](/notes/splay.html)
 
 ---
 ## Operace
@@ -39,9 +39,9 @@ Myšlenka operace je nalezení libovolného prvku ve splay tree a amortizovaná 
 1. Pokusíme se najít hledaný prvek $x$. (klasickým algoritmem pro binary search tree)
 Můžou nastat dvě situace:
 - prvek $x$ nalezneme
-	2. [splayujeme](/notes/splay/) nalezený prvek do kořene pomocí splay algoritmu
+	2. [splayujeme](/notes/splay.html) nalezený prvek do kořene pomocí splay algoritmu
 - prvek $x$ nenalezneme
-	2. to znamená, že jsem v listu stromu, tento prvek tedy [splayujeme](/notes/splay/) až do kořene (provádíme to z důvodu zachování amortizované složitosti)
+	2. to znamená, že jsem v listu stromu, tento prvek tedy [splayujeme](/notes/splay.html) až do kořene (provádíme to z důvodu zachování amortizované složitosti)
 
 ### `insert(x)`
 Myšlenka operace `insert` je možné vložení nového prvku (pokud se ve stromě již nenachází)
@@ -73,7 +73,7 @@ Nejprve zavedeme značení (bez toho ta věta nedává smysl):
 - $r(x)=\log ​s(x)$ (tzv. **rank** uzlu).
 - Potenciál stromu $\Phi = \sum_{x\in T}{r(x)}$
 
-Moje pochopení termínů v [vysvětlení access lemma pro splay trees](/notes/vysvetleni-access-lemma-pro-splay-trees/)
+Moje pochopení termínů v [vysvětlení access lemma pro splay trees](/notes/vysvetleni-access-lemma-pro-splay-trees.html)
 ### Lemma
 Amortizovaná složitost vysplayování prvku $x$ do kořene $t$ je nejvíce $3 \times (r(t) - r(x)) + 1 = O(\log n)$
 

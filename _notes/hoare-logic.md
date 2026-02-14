@@ -23,7 +23,7 @@ The implementation of a function is **partially correct** with respect to its sp
 
 Note that if the function is called without its preconditions fullfilled, the function can behave in any way at all and still be correct.
 
-## [Strongest postcondition](/notes/strongest-postcondition/) and [weakest precondition](/notes/weakest-precondition/)
+## [Strongest postcondition](/notes/strongest-postcondition.html) and [weakest precondition](/notes/weakest-precondition.html)
 
 Consider the Hoare triple:$$ \{x = 5\} x:= x \cdot 2 \{x >0\} $$
 This triple is clearly correct, because if $x=5$ and we multiply $x$ by $2$ we get $x = 10$ which clearly implies that $x>0$. However, even thought it is correct, this Hoare triple is not as precise as we might like. Specifically, we could write a **stronger postcondition**. One that implies $x > 0$. For example $$ (x > 5)  \land (x < 20) $$

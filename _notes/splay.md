@@ -3,9 +3,9 @@ layout: note
 title: "splay"
 ---
 
-Operation used by [splay tree](/notes/splay-tree/) data structure
+Operation used by [splay tree](/notes/splay-tree.html) data structure
 
-`splay` algoritmus, je součástí všech operací (`find`, `insert`, `delete`) [splay stromu](/notes/splay-tree/). Splay je implementován pomocí tří rotačních, které mění strukturu stromu.
+`splay` algoritmus, je součástí všech operací (`find`, `insert`, `delete`) [splay stromu](/notes/splay-tree.html). Splay je implementován pomocí tří rotačních, které mění strukturu stromu.
 
 Tyto rotační operace se nazývají **zig**, **zig-zag**, **zig-zig** a všechny mají složitost $O(1)$
 

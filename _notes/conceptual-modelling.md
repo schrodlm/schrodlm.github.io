@@ -8,5 +8,5 @@ Conceptual modeling is typically a **high-level abstraction** of the system bein
 Some common tools used for conceptual modeling are:
 
 - **Entity-Relationship Diagrams (ERD)**: Used in database design to model relationships between entities (e.g., customers and orders).
-- **Unified Modeling Language ([UML](/notes/uml/))**: Used in software engineering to visually represent different aspects of a system like class diagrams, sequence diagrams, etc.
+- **Unified Modeling Language ([UML](/notes/uml.html))**: Used in software engineering to visually represent different aspects of a system like class diagrams, sequence diagrams, etc.
 - **Flowcharts**: To represent processes and workflows.

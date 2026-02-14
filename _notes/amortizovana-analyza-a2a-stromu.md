@@ -11,7 +11,7 @@ title: "amortizovaná analýza (a,2a-stromů)"
 
 ### Důkaz
 >[!note] Princip
-> Důkaz využívá [potenciálovou metodu](/notes/potential-method/). 
+> Důkaz využívá [potenciálovou metodu](/notes/potential-method.html). 
 
 Definujeme cenu operace jako počet uzlů, které modifikuje. Cílem je najít takovou potenciálovou funkci $\Phi$, aby amortizovaná cena drahých operací (štěpení a merge uzlů) byla nulová nebo záporná, a pouze základní vložení/smazání mělo konstantní kladnou cenu
 

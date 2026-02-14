@@ -3,7 +3,7 @@ layout: note
 title: "OntoUML rigidity"
 ---
 
-In [OntoUML](/notes/ontouml/), **rigidity** describes whether an entity, once classified under a particular class, must always be an instance of that class in all **possible worlds** (scenarios or contexts). Rigidity defines the **necessity** or **contingency** of an entity's classification across time and different situations. It is closely tied to [modal logic](/notes/modal-logic/) by it's definition.
+In [OntoUML](/notes/ontouml.html), **rigidity** describes whether an entity, once classified under a particular class, must always be an instance of that class in all **possible worlds** (scenarios or contexts). Rigidity defines the **necessity** or **contingency** of an entity's classification across time and different situations. It is closely tied to [modal logic](/notes/modal-logic.html) by it's definition.
 
 ### Modal Logic Background
 
@@ -25,7 +25,7 @@ We can apply these operators to statements about class membership.
 
 - **Class**: `Person`
 - **Instance**: `John`
-- If John is classified as a `Person`, he must remain a `Person` in all possible worlds. In[modal](/notes/modal-logic/) terms: 
+- If John is classified as a `Person`, he must remain a `Person` in all possible worlds. In[modal](/notes/modal-logic.html) terms: 
 	
 	 □John is a Person
 	

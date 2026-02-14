@@ -9,4 +9,4 @@ Dvojice instrukcí používaných k dosažení synchronizace
 	- To sledování většinou funguje na nějaké bázi sledování cache line (s použitím [MESI protokolu])
 - `SC` (Store Conditional): Zápis na adresu, který uspěje **pouze tehdy**, pokud na danou adresu nikdo jiný nezapsal od momentu provedení `LL`. Jinak hlásí chybu .
 
-_Poznámka:_ [CAS](/notes/cas/) lze simulovat pomocí [LLSC](/notes/llsc/), ale naopak to obvykle nejde (kvůli [ABA problému](/notes/aba-problem/)).
+_Poznámka:_ [CAS](/notes/cas.html) lze simulovat pomocí [LLSC](/notes/llsc.html), ale naopak to obvykle nejde (kvůli [ABA problému](/notes/aba-problem.html)).

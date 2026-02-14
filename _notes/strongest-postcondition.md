@@ -9,11 +9,11 @@ The **strongest postcondition** refers to the most precise and detailed conditio
 
 It describes exactly what is true after a program's execution, capturing all the effects of the program in its execution path.
 
-It is the opposite of [weakest precondition](/notes/weakest-precondition/).
+It is the opposite of [weakest precondition](/notes/weakest-precondition.html).
 
-It's particularly useful in tools that perform [symbolic execution](/notes/symbolic-execution/), where the goal is to track exactly what happens to variables and states during the execution path. It is used in [model checking](/notes/model-checking/).
+It's particularly useful in tools that perform [symbolic execution](/notes/symbolic-execution.html), where the goal is to track exactly what happens to variables and states during the execution path. It is used in [model checking](/notes/model-checking.html).
 
-both [weakest precondition](/notes/weakest-precondition/) and strongest postcondition are closely relates to **Hoare's triple**
+both [weakest precondition](/notes/weakest-precondition.html) and strongest postcondition are closely relates to **Hoare's triple**
 
 ## Formally
 The strongest postcondition in Hoare's notation can be defined as $sp(P,C)$ in two parts:

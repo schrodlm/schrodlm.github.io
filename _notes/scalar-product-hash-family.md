@@ -3,11 +3,11 @@ layout: note
 title: "scalar product hash family"
 ---
 
-Systém [hashovacích funkcí](/notes/hashovaci-funkce/) založených na skalárním součinu a důkaz jeho [1-univerzálnosti](/notes/c-univerzalnost/)
+Systém [hashovacích funkcí](/notes/hashovaci-funkce.html) založených na skalárním součinu a důkaz jeho [1-univerzálnosti](/notes/c-univerzalnost.html)
 
 # Definice systému
 Uvažujme hashování vektorů, kde univerzum tvoří $d$-rozměrné vektory nad tělesem $\mathbb{Z}_p^d$​ (kde $p$ je prvočíslo). Tento systém je definován následovně:
-- **[Rodina funkcí](/notes/rodina-hashovacich-funkci/)**: Označme rodinu $S = \{h_t | t \in \mathbb{Z}_p^d\}$
+- **[Rodina funkcí](/notes/rodina-hashovacich-funkci.html)**: Označme rodinu $S = \{h_t | t \in \mathbb{Z}_p^d\}$
 - Parametr: Funkce je určena náhodně zvoleným vektorem $t \in \mathbb{Z}_p^d$
 - Předpis funkce: Pro vektor $x$ je hashovací funkce definována jako skalární součin vektoru $x$ a parametru $t$:
 $$ h_t(x) = t \cdot x = \sum_{i=1}^{d} t_i x_i \mod p$$

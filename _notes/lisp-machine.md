@@ -20,7 +20,7 @@ Navíc byl Lisp jako takový velmi velký a v té době náročný na provoz.
 
 
 ## Hardwarová architektura
-Architektura lisp machine se hodně lišila od typické počítačové architektury, na které jsem zvyklý, jako je CISC nebo RISC. Měla specializované hardwarové prvky a využívala takzvanou [tagged architecture](/notes/tagged-architecture/).
+Architektura lisp machine se hodně lišila od typické počítačové architektury, na které jsem zvyklý, jako je CISC nebo RISC. Měla specializované hardwarové prvky a využívala takzvanou [tagged architecture](/notes/tagged-architecture.html).
 
 Ta umožňovala hardwarovou kontrolu typům tedy procesor lisp machine byl schopný interpretovat tagy přímo v rámci jediné instrukce.
 

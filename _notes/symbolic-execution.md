@@ -3,7 +3,7 @@ layout: note
 title: "symbolic execution"
 ---
 
-A powerful technique used in [software verification](/notes/software-verification/).
+A powerful technique used in [software verification](/notes/software-verification.html).
 
 Symbolic execution is a method for analyzing programs by treating program inputs as **symbols** rather than **concrete values**. 
 Instead of executing program with specific inputs (like running a function with `x = 5`) symbolic execution runs the program with symbolic variables (such as `x = X`, where `X` can **represent any possible input**)

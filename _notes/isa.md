@@ -12,11 +12,11 @@ It serves as a blueprint of manufacturers on what CPU design should look like.
 Specific implementation of a ISA is called a **microarchitecture**. Keep in mind that it is not a hardware realization.
 # What does ISA define
 What exactly does ISA defines varies across different ISAs. In general you can assume that it defines:
-1. **set of [machine instructions](/notes/machine-instruction/) of a processor**
+1. **set of [machine instructions](/notes/machine-instruction.html) of a processor**
 	- `add`, `sub`, `mult`, `mov`, ...
 2. supported data types
 	- IEEE 754 floating point numbers, integers, ...
-3. [addressing modes](/notes/addressing-modes/)
+3. [addressing modes](/notes/addressing-modes.html)
 	- direct, indirect, 
 4. set of registers (if it is not *stack-based ISA*)
 	- number of registers, usecase and meaning of specific registers
@@ -38,7 +38,7 @@ ISA provides a standard interface between the hardware and software. It ensures 
 This compatibility allows softare developers to write applications that can be executed on a wide range of microprocessors without requiring significant modifications or recompilations.
 
 ### Software development
-ISA defines the available instructions, [addressing modes](/notes/addressing-modes/) and data types that programmers use to write software. **It provides a high level abstraction of the underlying software**, so there is no need for developer to understand microprocessor's internal design.
+ISA defines the available instructions, [addressing modes](/notes/addressing-modes.html) and data types that programmers use to write software. **It provides a high level abstraction of the underlying software**, so there is no need for developer to understand microprocessor's internal design.
 
 ### Performance optimization
 ISA influences the performance of a microprocessor. The selection and design of instructions impact the execution speed, code density and efficiency of the processor.

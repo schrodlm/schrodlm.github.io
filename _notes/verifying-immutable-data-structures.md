@@ -3,7 +3,7 @@ layout: note
 title: "verifying immutable data structures"
 ---
 
-# [Logical contracts](/notes/logical-contracts/) on data structures
+# [Logical contracts](/notes/logical-contracts.html) on data structures
 So far we were focused on logical contracts of *control structures*: How do functions, assignments and loops give rise to the verification conditions?
 
 But we will focus on reasoning about data structures. We will explore an example with two elementary data structures (**lists** and **queues**) and verify implementation of queues using two lists.

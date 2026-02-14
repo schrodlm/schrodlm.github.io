@@ -33,7 +33,7 @@ Velký rozdíl je, že u analýzy cache modelů jsou blokové přesuny řízeny 
 Je ale možné si ukázat, že se můžeme k optimální strategii přiblížit a být jen konstantně pomalejší. (#Věta o kompetetivnosti LRU)
 
 Pracujeme se dvěma cache modely:
-- **[cache-aware model](/notes/cache-aware-model/)**
+- **[cache-aware model](/notes/cache-aware-model.html)**
 - **cache-oblivious model**
 
 ### Cache-aware model
@@ -47,11 +47,11 @@ V tomto modelu algoritmus nezná parametry cache. Znamená to, že algoritmus se
 
 ---
 ## Věta o kompetetivnosti LRU
-[věta o kompetetivnosti LRU](/notes/veta-o-kompetetivnosti-lru/)
+[věta o kompetetivnosti LRU](/notes/veta-o-kompetetivnosti-lru.html)
 
 ---
 ## Transpozice čtvercové matice 
 - Jsou zde na příkladu popsány rozdíly a analýza cache-aware a cache-oblivious přístupů
-[transpozice čtvercové matice](/notes/transpozice-ctvercove-matice/)
+[transpozice čtvercové matice](/notes/transpozice-ctvercove-matice.html)
 
 

@@ -5,7 +5,7 @@ title: "type class pattern"
 
 The main point of the type class pattern is to **add new functionality to existing code without modifying that code.**
 
-It's a way to achieve compile-time [polymorphism](/notes/polymorphism/) that is more flexible and less invasive than inheritance.
+It's a way to achieve compile-time [polymorphism](/notes/polymorphism.html) that is more flexible and less invasive than inheritance.
 
 It works by decoupling the data (like `class Person`) from the behaviors that act on it (like `toJson`).
 
@@ -23,7 +23,7 @@ In a traditional OOP approach, if you wanted to make several different classes "
 ### Languages that support it
 It's enabled by two specific language features:
 1. **Generics** (parametric polymorphism), e.g., `template <typename T>` or `trait JsonSerializer[T]`.
-2. **Contextual Resolution** (a way for the compiler to find a type-based value in scope), e.g., C++ **[c++ template specialization](/notes/c-template-specialization/)** or Scala's **`given`/`using`** (implicits)
+2. **Contextual Resolution** (a way for the compiler to find a type-based value in scope), e.g., C++ **[c++ template specialization](/notes/c-template-specialization.html)** or Scala's **`given`/`using`** (implicits)
 	- this provides more granular approach
 
 ## Examples

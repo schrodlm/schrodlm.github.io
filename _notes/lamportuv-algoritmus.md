@@ -4,10 +4,10 @@ tags:
 language: czech
 title: "Lamportův algoritmus"
 ---
-Lamportův algoritmus je permission-based [synchronizační algoritmus](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu/) pro [distribuované vzájemné vyloučení](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/), který využívá [logické hodiny](/notes/logicky-cas/) k vytvoření totálního uspořádání žádostí. Vedlejší efekt totálního uspořádání je totiž vzájemné vyloučení.
+Lamportův algoritmus je permission-based [synchronizační algoritmus](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html) pro [distribuované vzájemné vyloučení](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html), který využívá [logické hodiny](/notes/logicky-cas.html) k vytvoření totálního uspořádání žádostí. Vedlejší efekt totálního uspořádání je totiž vzájemné vyloučení.
 
 ---
-Je to předchůdce Ricart-Agrawaly. Je to **první algoritmus**, který ukázal, jak využít [logické hodiny](/notes/logicky-cas/) pro úplnou synchronizaci.
+Je to předchůdce Ricart-Agrawaly. Je to **první algoritmus**, který ukázal, jak využít [logické hodiny](/notes/logicky-cas.html) pro úplnou synchronizaci.
 > [!note]
 > Lamportův algoritmus se dnes nepoužívá kvůli velkému počtu zpráv, ale je to **perfektní edukativní příklad**, jak fungují logické hodiny v praxi. Ukazuje, že pokud máme Totální uspořádání zpráv, máme i triviální vzájemné vyloučení.
 

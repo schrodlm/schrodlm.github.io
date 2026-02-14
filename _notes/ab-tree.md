@@ -143,9 +143,9 @@ Je tedy vidět, že počet klíčů ve stromě roste s hloubkou exponenciálně.
 ---
 
 ## (a,2a) stromy
-[amortizovaná analýza (a,2a-stromů)](/notes/amortizovana-analyza-a2a-stromu/)
+[amortizovaná analýza (a,2a-stromů)](/notes/amortizovana-analyza-a2a-stromu.html)
 
 ---
 
 ## paralelizace (a,b) stromu
-[paralelizace (a,b) stromu](/notes/paralelizace-ab-stromu/)
+[paralelizace (a,b) stromu](/notes/paralelizace-ab-stromu.html)

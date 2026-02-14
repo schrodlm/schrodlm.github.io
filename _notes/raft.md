@@ -3,7 +3,7 @@ layout: note
 title: "RAFT"
 ---
 
-Algoritmus k dosažení [konsenzu](/notes/konsenzus-v-distribuovanych-systemech/).
+Algoritmus k dosažení [konsenzu](/notes/konsenzus-v-distribuovanych-systemech.html).
 Předpokládá parciálně synchronní a crash fault tolerant model.
 
 Navržen jako srozumitelná alternativa k Paxosu. Rozděluje problém na: Volbu lídra, Replikaci logu a Bezpečnost.

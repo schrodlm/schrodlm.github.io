@@ -10,7 +10,7 @@ title: "distributed system"
 ## Princip
 1. **Spolupráce:** Uzly samy o sobě úkol nezvládnou (nebo by to trvalo dlouho). Musí si práci rozdělit.
 
-2. **[Middleware](/notes/middleware/):** Aby to fungovalo, existuje softwarová vrstva (nad operačním systémem, ale pod aplikací), která řeší, že data jsou jinde, pády uzlů a formátování zpráv. Bez middlewaru je to jen síť počítačů, ne distribuovaný systém.
+2. **[Middleware](/notes/middleware.html):** Aby to fungovalo, existuje softwarová vrstva (nad operačním systémem, ale pod aplikací), která řeší, že data jsou jinde, pády uzlů a formátování zpráv. Bez middlewaru je to jen síť počítačů, ne distribuovaný systém.
 
 3. **Message Passing:** Protože nemáme sdílenou paměť, veškerá synchronizace a výměna dat se děje posíláním jedniček a nul po drátě.
 
@@ -52,37 +52,37 @@ Proč implementovat distribuovaný systém.
 ---
 ## Architektury
 Zde definujeme logické uspořádání komponent a jejich role.
-### [client-server](/notes/client-server/)
-### [peer-to-peer (P2P)](/notes/peer-to-peer-p2p/)
+### [client-server](/notes/client-server.html)
+### [peer-to-peer (P2P)](/notes/peer-to-peer-p2p.html)
 
 ---
-## [Komunikace v distribuovaných systémech](/notes/komunikace-v-distribuovanych-systemech/)
+## [Komunikace v distribuovaných systémech](/notes/komunikace-v-distribuovanych-systemech.html)
 
 ---
-## [Stavovost](/notes/stavovost-distribuovaneho-systemu/)
+## [Stavovost](/notes/stavovost-distribuovaneho-systemu.html)
 V **distribuovaných systémech** má stavovost zásadní význam, protože stav **není soustředěn na jednom místě**, ale je **rozprostřen mezi více uzly**, které spolu komunikují přes síť. To přináší nové problémy, které v lokálním systému vůbec neexistují.
 
 ---
-## [Spolehlivost distribuovaného systému](/notes/spolehlivost-distribuovaneho-systemu/)
+## [Spolehlivost distribuovaného systému](/notes/spolehlivost-distribuovaneho-systemu.html)
 **Spolehlivost distribuovaného systému** popisuje, nakolik lze systému důvěřovat, že bude dlouhodobě poskytovat správnou službu navzdory chybám, poruchám a nepředvídatelným podmínkám prostředí.
 
 ---
-## [Synchronizace a koordinace](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu/)
+## [Synchronizace a koordinace](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html)
 V distribuovaných systémech chybí sdílená paměť a globální hodiny. To vede k nutnosti explicitní **koordinace** procesů. Řešíme dva hlavní okruhy problémů:
 
 1. **Synchronizace času:** Jak sjednotit pohled na čas (fyzický nebo logický).  
 2. **Koordinace akcí:** Jak zajistit, aby procesy spolupracovaly a nepřekážely si (vyloučení, volba leadera, konsenzus).
 
 ---
-## [Distribuovaná sdílená paměť](/notes/distribuovana-sdilena-pamet/) (DSM)
+## [Distribuovaná sdílená paměť](/notes/distribuovana-sdilena-pamet.html) (DSM)
 **Distribuovaná sdílená paměť** je softwarová vrstva (middleware), která umožňuje procesům na různých uzlech přistupovat k datům tak, jako by byly v jedné společné RAM, přestože ve skutečnosti probíhá pod kapotou posílání zpráv (message passing).
 
 ---
-## [správa prostředků a procesů v distribuovaném systému](/notes/sprava-prostredku-a-procesu-v-distribuovanem-systemu/)
+## [správa prostředků a procesů v distribuovaném systému](/notes/sprava-prostredku-a-procesu-v-distribuovanem-systemu.html)
 
 Tato sekce řeší, jak efektivně využívat hardware (CPU, paměť) napříč celým systémem.
 
 ---
-## [Masivně distribuované systémy](/notes/masivne-distribuovane-systemy/)
+## [Masivně distribuované systémy](/notes/masivne-distribuovane-systemy.html)
 - Extrémní škálování
 

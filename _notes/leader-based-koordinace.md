@@ -27,15 +27,15 @@ Tento mechanismus je jedním ze základních návrhových vzorů koordinace. Jeh
 Protože je leader kritickým bodem, systém musí obsahovat mechanismus pro jeho obnovu:
 
 - **Detekce selhání:** Ostatní uzly sledují stav leadera (např. pomocí timeoutů).
-- **[Volba koordinátora](/notes/volba-koordinatora-leader-election/):** Pokud leader selže, musí být okamžitě spuštěn algoritmus pro volbu nového
+- **[Volba koordinátora](/notes/volba-koordinatora-leader-election.html):** Pokud leader selže, musí být okamžitě spuštěn algoritmus pro volbu nového
 
 ### Praktické příklady
 
-- **[RAFT](/notes/raft/):** Typický leader-based algoritmus, kde uzel s aktuálním mandátem řídí replikaci logu.
-- **[RPC](/notes/rpc/):** Samotný princip volání vzdálené procedury vytváří dočasný vztah klient-server (vůdce-následník) pro dané volání.
+- **[RAFT](/notes/raft.html):** Typický leader-based algoritmus, kde uzel s aktuálním mandátem řídí replikaci logu.
+- **[RPC](/notes/rpc.html):** Samotný princip volání vzdálené procedury vytváří dočasný vztah klient-server (vůdce-následník) pro dané volání.
 - **etcd / Consul:** Nástroje pro správu konfigurace (používané např. v Kubernetes), které využívají leader-based konsenzus pro udržení konzistence dat.
 ---
-## Rozdíly s [token-based koordinací](/notes/token-based-koordinace/)
+## Rozdíly s [token-based koordinací](/notes/token-based-koordinace.html)
 Přestože se tyto dva přístupy jeví podobně (alespoň mně) tak je mezi nimi velký rozdíl.
 
 | **Vlastnost**       | **Leader-based**                         | **Token-based**                     |

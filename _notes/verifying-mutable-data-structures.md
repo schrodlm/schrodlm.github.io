@@ -9,7 +9,7 @@ How do we specify and verify simple loops that operate on arrays?
 
 The key construct that we have (loop invariants and variant) are sufficient but become more complex (than with immutable data structures) because they have to express not only of what we **change** in array but also what does **not change**.
 
-This additional requirement makes reasoning about mutable data structures in many cases more difficult than reasoning about [mutable data structures](/notes/verifying-mutable-data-structures/).
+This additional requirement makes reasoning about mutable data structures in many cases more difficult than reasoning about [mutable data structures](/notes/verifying-mutable-data-structures.html).
 
 ## Simple models of complex data structures
 This is a very important technique. 
@@ -32,5 +32,5 @@ We need to find a simpler data structure that has the same intended behaviour. I
 ### Purpose of the model
 The purpose of the model is to **reason** about data structure, but **not compute** with it. So we want to actually erase the code that maintains the model, because actually computing it would negate all the advantages of efficient implementation.
 
-This is the primary purpose of [ghosts](/notes/ghosts/).
+This is the primary purpose of [ghosts](/notes/ghosts.html).
 

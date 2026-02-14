@@ -6,12 +6,12 @@ title: "rodina rolling hash"
 **Vstup (Data):** Koeficienty polynomu (znaky řetězce $x_1​,x_2​,…,x_L$). 
 **Náhodný klíč:** Bod $a$ (ve kterém polynom vyhodnocujeme)
 > [!important] Co to znamená
-> rolling hash systém je **odlišný v tom, co zpracovává**, ačkoliv matematický vzorec vypadá skoro stejně jako u [rodina polynomiálních hashovacích funkcí](/notes/rodina-polynomialnich-hashovacich-funkci/) 
+> rolling hash systém je **odlišný v tom, co zpracovává**, ačkoliv matematický vzorec vypadá skoro stejně jako u [rodina polynomiálních hashovacích funkcí](/notes/rodina-polynomialnich-hashovacich-funkci.html) 
 
 **Definice funkce** (vyhodnocení polynomu v bodě $a$):
 $$ h_a(x) = \sigma_1 a^{d-1} + \sigma_2 a^{d-2} + \dots + \sigma_{d-1} a^{1} + \sigma_d a^0  \mod p$$
 >[!note]
->Znaky řetězce ($\sigma_i$) zde hrají roli koeficientů polynomu náhodný klíč (a) hraje roli neznámé $x$. (obráceně než u [rodina polynomiálních hashovacích funkcí](/notes/rodina-polynomialnich-hashovacich-funkci/))
+>Znaky řetězce ($\sigma_i$) zde hrají roli koeficientů polynomu náhodný klíč (a) hraje roli neznámé $x$. (obráceně než u [rodina polynomiálních hashovacích funkcí](/notes/rodina-polynomialnich-hashovacich-funkci.html))
 
 ---
 
@@ -47,5 +47,5 @@ $$H_{j+1} = (H_j \cdot a - \sigma_j \cdot a^d + \sigma_{j+d}) (\mod p)$$
 > Kdybychom měli mocniny opačně ($a0…a_{d−1}$), museli bychom při posunu **dělit** základem a (násobit modulární inverzí), což je výpočetně náročnější. Proto se pro rolling hash používá tato varianta.
 
 ---
-## [k-nezávislost](/notes/k-nezavislost/)
-**Vlastnost:** Sám o sobě je pouze **[univerzální](/notes/c-univerzalnost/)** (pravděpodobnost kolize $L/p$), ale **není nezávislý**.
+## [k-nezávislost](/notes/k-nezavislost.html)
+**Vlastnost:** Sám o sobě je pouze **[univerzální](/notes/c-univerzalnost.html)** (pravděpodobnost kolize $L/p$), ale **není nezávislý**.

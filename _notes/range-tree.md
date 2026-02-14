@@ -3,7 +3,7 @@ layout: note
 title: "range tree"
 ---
 
-Range tree je statická binární stromová datová struktura (podobně jako [k-d trees](/notes/k-d-trees/)), která je navíc víceúrovňová a je určená pro efektivní zpracování rozsahových dotazů
+Range tree je statická binární stromová datová struktura (podobně jako [k-d trees](/notes/k-d-trees.html)), která je navíc víceúrovňová a je určená pro efektivní zpracování rozsahových dotazů
 
 ## Motivace
 Mějme množinu bodů 
@@ -164,7 +164,7 @@ Abychom udrželi strom vyvážený, používáme strategii váhového vyvažová
 > [!note] Vysvětlení
 >  Mám **jeden obyčejný BB(alpha) strom** (y-strom) a vkládáš do něj prvek.
 > - Pokud se tento strom stane nevyváženým, musíme ho přestavět.
-> - Jak jsme si odvodili u [BB(alpha) tree (weight balanced tree)](/notes/bbalpha-tree-weight-balanced-tree/) stromů: Ačkoliv přestavba stojí  $O(n)$, děje se tak vzácně, že amortizovaná cena vložení do jednoho BB(alpha) stromu je $O(\log n)$.
+> - Jak jsme si odvodili u [BB(alpha) tree (weight balanced tree)](/notes/bbalpha-tree-weight-balanced-tree.html) stromů: Ačkoliv přestavba stojí  $O(n)$, děje se tak vzácně, že amortizovaná cena vložení do jednoho BB(alpha) stromu je $O(\log n)$.
 >
 > Při vložení bodu (x,y) procházíme x-strom od kořene k listu.
 > - Cesta má délku $O(\log n)$.   
@@ -176,7 +176,7 @@ Abychom udrželi strom vyvážený, používáme strategii váhového vyvažová
 $$O(m \log m)$$ 
 - $\log m$ $y$-stromů s lineárním časem konstrukce ($m$)
 
-Díky vlastnostem [váhově vyvážených stromů](/notes/bbalpha-tree-weight-balanced-tree/) se to však děje zřídka (po $\Omega(n)$ vloženích). [Amortizovaná cena](/notes/amortized-analysis/) tohoto kroku je také $O(\log^2 n)$.
+Díky vlastnostem [váhově vyvážených stromů](/notes/bbalpha-tree-weight-balanced-tree.html) se to však děje zřídka (po $\Omega(n)$ vloženích). [Amortizovaná cena](/notes/amortized-analysis.html) tohoto kroku je také $O(\log^2 n)$.
 
 > [!note] Intuice
 > - přestavba jedné hladiny znamená $n$ práce (všechny prvky musíme dát do nějakého $y$ stromu) a hladin je $\log n$
@@ -186,4 +186,4 @@ Díky vlastnostem [váhově vyvážených stromů](/notes/bbalpha-tree-weight-ba
 >- **body už musí být seřazené podle y.**
 
 ### Výsledná složitost
-Celková [amortizovaná časová složitost](/notes/amortized-complexity/) operace `insert(x)` v dynamickém 2D intervalovém stromě je $O(\log^2 n)$.
+Celková [amortizovaná časová složitost](/notes/amortized-complexity.html) operace `insert(x)` v dynamickém 2D intervalovém stromě je $O(\log^2 n)$.

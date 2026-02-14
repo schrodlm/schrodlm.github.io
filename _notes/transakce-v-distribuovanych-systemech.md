@@ -26,5 +26,5 @@ Ale zároveň:
     - **nemáš obecný konsenzus**
 
 ## Algoritmy transakce
-- [2PC](/notes/2pc/)
-- [3PC](/notes/3pc/)
+- [2PC](/notes/2pc.html)
+- [3PC](/notes/3pc.html)

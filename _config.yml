@@ -31,10 +31,13 @@ github_username:  schrodlm
 collections:
   projects:
     output: true
+    permalink: /projects/:name.html
   courses:
     output: true
+    permalink: /courses/:name.html
   notes:
     output: true
+    permalink: /notes/:name.html
 
 # Navigation menu (pages to show in header)
 header_pages:

@@ -3,7 +3,7 @@ layout: note
 title: "linear probing"
 ---
 
- Jde o metodu otevřená adresace u [hashovacích funkcí](/notes/hashovaci-funkce/).
+ Jde o metodu otevřená adresace u [hashovacích funkcí](/notes/hashovaci-funkce.html).
 
 Všechny prvky jsou uloženy přímo v poli o velikosti $m$ (narozdíl od hash chaining).
 

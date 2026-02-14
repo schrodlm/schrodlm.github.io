@@ -3,7 +3,7 @@ layout: note
 title: "k-nezávislost"
 ---
 
-Jedná se o vlastnost [rodiny hashovacích funkcí](/notes/rodina-hashovacich-funkci/), která zajišťuje že **hashovací hodnoty na libovolných $k$ různých vstupech se chovají jako náhodné a navzájem nezávislé**, pokud je funkce z rodiny vybrána náhodně.
+Jedná se o vlastnost [rodiny hashovacích funkcí](/notes/rodina-hashovacich-funkci.html), která zajišťuje že **hashovací hodnoty na libovolných $k$ různých vstupech se chovají jako náhodné a navzájem nezávislé**, pokud je funkce z rodiny vybrána náhodně.
 
 ## Definice
 Řekneme, že rodina hashovacích funkcí je (k,c)-nezávislá, pokud pro jakýchkoliv $k$ různých klíčů $x_1, \dots, x_k \in \mathcal{U}$ a pro jakýchkoliv $k$ hodnot hashů $z1, \dots, z_k \in {0, \dots, m-1}$ platí:
@@ -12,7 +12,7 @@ $$ P_{h\in\mathcal{H}}[h(x_1) = z_1 \land h(x_2) = z_2 \land \dots \land h(x_k) 
 
 >[!note] Terminologie: "k-nezávislost" vs. "(k,c)-nezávislost" 
 > Když se řekne pouze „k-nezávislé“, myslí se tím „(k,c)-nezávislé pro nějakou konstantu c“.
-> - $c=1$: Perfektní k-nezávislost ($1/m^k$). To platí např. pro [polynomy](/notes/rodina-polynomialnich-hashovacich-funkci/) před redukcí modulo $m$.
+> - $c=1$: Perfektní k-nezávislost ($1/m^k$). To platí např. pro [polynomy](/notes/rodina-polynomialnich-hashovacich-funkci.html) před redukcí modulo $m$.
 > - $c\geq 1$: Přibližná nezávislost ($c/m^k$) (např. linear hashing)
 
 >[!note] Co to znamená
@@ -69,7 +69,7 @@ Když se podíváme, kam co budou tyto funkce vracet pro vstup $x=1$:
 
 3. Z poznámky zároveň plyne, že jakmile utočník zjistí, kam se hashuje vstup $x=1$, může jednoznačně určit, jakou hashovací funkci používáme. Tento hashovací systém je tedy 2-nezávislý - utočník nedokáže nedokáže říct nic o $(x_2, y_2)$ jen ze znalosti první dvojice. Platí: $$ P_{h\in\mathcal{H}}[h(x_1) = z_1 \land h(x_2) = z_2] = \frac{1}{m^2} $$
 
-## Vztah s [c-univerzálností](/notes/c-univerzalnost/)
+## Vztah s [c-univerzálností](/notes/c-univerzalnost.html)
 
 Každý 2-nezávislý systém je automaticky 1-univerzální.
 

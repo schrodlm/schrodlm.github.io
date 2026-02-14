@@ -12,4 +12,4 @@ Detekce globálního stavu je snaha o **pozorování** reality (co se stalo). Ko
 	- Aby byl snapshot (globální stav) užitečný v silně konzistentních systémech, musí se uzly často nejdříve **shodnout (konsenzus)** na tom, kdy přesně se má snímek pořídit, aby odpovídal totálnímu uspořádání událostí.
 
 > [!note] Teoretické limity
->Jelikož detekce globálního stavu čelí stejným problémům jako [konsenzus v distribuovaných systémech](/notes/konsenzus-v-distribuovanych-systemech/) (jen rekonstruuje minulost) zatímco konsenzus se snaží určit budoucnost (shodu na hodnotě) - platí pro detekci globálního stavu stejné teoretické limity
+>Jelikož detekce globálního stavu čelí stejným problémům jako [konsenzus v distribuovaných systémech](/notes/konsenzus-v-distribuovanych-systemech.html) (jen rekonstruuje minulost) zatímco konsenzus se snaží určit budoucnost (shodu na hodnotě) - platí pro detekci globálního stavu stejné teoretické limity

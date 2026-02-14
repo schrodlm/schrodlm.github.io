@@ -3,7 +3,7 @@ layout: note
 title: "UFO"
 ---
 
-**UFO** (Unified Foundational [ontology](/notes/ontology/)) is a framework for defining common, domain-independent concepts that can be used to model specific domains in a structured way.
+**UFO** (Unified Foundational [ontology](/notes/ontology.html)) is a framework for defining common, domain-independent concepts that can be used to model specific domains in a structured way.
 
 ### Key Parts of UFO:
 
@@ -26,7 +26,7 @@ In short, UFO helps organize and describe entities, events, and social relations
 ---
 ## Example
 
-Here's a simplified example of how UFO (Unified Foundational Ontology) can be applied in a [conceptual model](/notes/conceptual-modelling/). Let's say we're modeling a **university system**:
+Here's a simplified example of how UFO (Unified Foundational Ontology) can be applied in a [conceptual model](/notes/conceptual-modelling.html). Let's say we're modeling a **university system**:
 
 ### Example 1: **UFO-A (Endurants)** – Objects That Exist Over Time
 

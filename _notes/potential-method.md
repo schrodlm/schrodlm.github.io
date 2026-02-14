@@ -3,7 +3,7 @@ layout: note
 title: "potential method"
 ---
 
-**Využití:** Slouží k [amortizované analýze](/notes/amortized-analysis/) algoritmů (určení průměrné složitosti operace v nejhorším případě pro posloupnost operací).
+**Využití:** Slouží k [amortizované analýze](/notes/amortized-analysis.html) algoritmů (určení průměrné složitosti operace v nejhorším případě pro posloupnost operací).
 
 ### Hlavní myšlenka (Globální pohled)
 

@@ -4,11 +4,11 @@ source: https://www.youtube.com/watch?v=d7nAGI_NZPk
 language: czech
 title: "paxos"
 ---
-Je to základní **rodina protokolů** pro [dosažení konsenzu](/notes/konsenzus-v-distribuovanych-systemech/) využívající [quorum-based koordinace](/notes/quorum-based-koordinace/) v asynchronním systému, kde uzly mohou havarovat, ale nejsou zákeřné (nevyskytují se byzantine failures). Leslie Lamport ho navrhl tak, aby byl matematicky neprůstřelný i v nespolehlivých sítích.
+Je to základní **rodina protokolů** pro [dosažení konsenzu](/notes/konsenzus-v-distribuovanych-systemech.html) využívající [quorum-based koordinace](/notes/quorum-based-koordinace.html) v asynchronním systému, kde uzly mohou havarovat, ale nejsou zákeřné (nevyskytují se byzantine failures). Leslie Lamport ho navrhl tak, aby byl matematicky neprůstřelný i v nespolehlivých sítích.
 
 ## Co Paxos řeší (Pochopení "Proč?")
 
-Hlavním cílem je vytvořit **[replicated state machine](/notes/state-machine-replication-smr/)**.
+Hlavním cílem je vytvořit **[replicated state machine](/notes/state-machine-replication-smr.html)**.
 
 Cílem je tedy dosažení **jediného** konsenzu. Jakmile je konsenzus dosažen, nemůžeme dostat další konsenzus. Musíme celý paxos algoritmus pustit znovu. (Takt to funguje v základním "vanilla" algortimu).
 

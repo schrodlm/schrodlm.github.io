@@ -11,7 +11,7 @@ Mějme těleso $\mathbb{Z}_p^k$ (kde $p$ je prvočíslo) a požadovanou nezávis
 $$ h_t(x) = (\sum_{i=0}^{k-1} t_i x^i \mod p) \mod m$$ 
 (Jde tedy o vyhodnocení náhodného polynomu stupně max. $k-1$ v bodě $x$)
 
-### Vztah k [lineární rodině](/notes/rodina-linearnich-hashovacich-funkci/)
+### Vztah k [lineární rodině](/notes/rodina-linearnich-hashovacich-funkci.html)
 Rodina lineárních funkcí ($h(x)=ax+b$) je ve skutečnosti jen **speciálním případem** polynomiální rodiny, kde zvolíme $k=2$.
 - **Lineární ($k=2$):** Používáme polynom stupně 1 (přímku). Dva body jednoznačně určují funkci → **2-nezávislost**
 - **Polynomiální (obecné k):** Používáme polynom stupně k−1 (křivku). k bodů jednoznačně určuje funkci → **k-nezávislost**
@@ -19,7 +19,7 @@ Rodina lineárních funkcí ($h(x)=ax+b$) je ve skutečnosti jen **speciálním 
 
 ## Zdůvodnění k-nezávislosti
 Pro důkaz využijeme lemma, které popisuje chování $k$-nezávislosti při redukci univerza modulo $m$.
-[lemma o modulení](/notes/lemma-o-moduleni/)
+[lemma o modulení](/notes/lemma-o-moduleni.html)
 
 Důkaz provedeme ve dvou krocích, podobně jako u lineární kongruence.
 

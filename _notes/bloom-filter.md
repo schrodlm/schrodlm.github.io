@@ -18,7 +18,7 @@ Odpověď na doraz (`find`) není vždy 100% přesná:
 
 ## Algoritmus
 **Struktura**
-Máme pole $m$ bitů ($B[0…m−1]$), které jsou na začátku všechny nastaveny na $0$. Máme $k$ [nezávislých](/notes/k-nezavislost/) [hashovacích funkcí](/notes/hashovaci-funkce/) $h_1​,…,h_k​$, které mapují univerzum do rozsahu $[m]$.
+Máme pole $m$ bitů ($B[0…m−1]$), které jsou na začátku všechny nastaveny na $0$. Máme $k$ [nezávislých](/notes/k-nezavislost.html) [hashovacích funkcí](/notes/hashovaci-funkce.html) $h_1​,…,h_k​$, které mapují univerzum do rozsahu $[m]$.
 
 **`insert(x)`**
 Pro vkládaný prvek $x$ spočítáme všech $k$ hashovacích hodnot $h_1(x), \dots, h_k(x)$. V poli $B$ nastavíme bity na těchto indexech na 1.

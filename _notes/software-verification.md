@@ -28,7 +28,7 @@ This approach has it own problems:
 1. Functional programmming - **dependent types**
 	- proofs are expressed in programs (Agda)
 	- proof tactics are expressed as programs (Coq)
-2. Imperative programming - **[logical contracts](/notes/logical-contracts/)**
+2. Imperative programming - **[logical contracts](/notes/logical-contracts.html)**
 	- properties are expressed in contracts
 	- reduce correctness to logical propositions (verification condition)
 	- use **automated theorem provers** to prove VC (SMT solvers)
@@ -41,7 +41,7 @@ They cannot:
 - generate specification
 - tell us how to fix bugs
 
-# Role of [smt](/notes/smt/) in software verification
+# Role of [smt](/notes/smt.html) in software verification
 SMT solvers are used as part of the **automated reasoning** required in software verification.
 
 They help to answer question like: 
@@ -52,15 +52,15 @@ It does that by transforming these question into logical formulas
 
 ## Process 
 #### 1. Abstraction or Symbolic execution
-Software code is abstracted into logical formulas. This may involve using techniques like [symbolic execution](/notes/symbolic-execution/), where **program inputs are treated as symbolic variables rather then concrete values**
+Software code is abstracted into logical formulas. This may involve using techniques like [symbolic execution](/notes/symbolic-execution.html), where **program inputs are treated as symbolic variables rather then concrete values**
 
 Keep in mind that symbolic execution is only one of the techniques used in this broad term, there are other techniques like:
-- [model checking](/notes/model-checking/)
+- [model checking](/notes/model-checking.html)
 - static analysis
 - testing
 
 #### 2. Translation to SMT formulas
-The abstracted logic (often in [first-order logic](/notes/first-order-logic/)) is exressed in the [stm-lib](/notes/stm-lib/) format, and theories (such as integer arithetic, array, or bit-vectors) are defined based on the properties of the program being verified
+The abstracted logic (often in [first-order logic](/notes/first-order-logic.html)) is exressed in the [stm-lib](/notes/stm-lib.html) format, and theories (such as integer arithetic, array, or bit-vectors) are defined based on the properties of the program being verified
 
 #### 3. Checking satisfiability
 The SMT solver checks whether the logical formulas derived from the program aresatisfiable. If they are, it indicated that a bug or a violation of the specification might exist. If the formulas are unsatisfiable, it indicated that program is correct for that specific path.
@@ -80,7 +80,7 @@ int foo(int x) {
 ```
 To verify that this function behaves correctly, you might want to ensure it never causes a runtime error. Let's use an SMT solver to check if any inputs might lead to an error (e.g., `x > 0` failing when it should pass).
 ######  1.Translate to logic
-The condition `x > 0` can be expressed as a formula in [first-order logic](/notes/first-order-logic/). In SMT-LIB, it could be encoded like this:
+The condition `x > 0` can be expressed as a formula in [first-order logic](/notes/first-order-logic.html). In SMT-LIB, it could be encoded like this:
 ```smt-lib
 	(declare-const x Int)
 	(assert (> x 0))

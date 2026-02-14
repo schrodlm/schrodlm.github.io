@@ -24,7 +24,7 @@ title: "masivně distribuované systémy"
 
 ## Fundamentální výzvy
 
-### 1. [Byzantine Generals Problem](/notes/problem-byzantskych-generalu/)
+### 1. [Byzantine Generals Problem](/notes/problem-byzantskych-generalu.html)
 **Problém:** Jak dosáhnout konsenzu, když někteří účastníci jsou zlomyslní?
 
 **Tradiční řešení:** PBFT - Neškáluje nad ~100 uzlů ($O(n²)$ komunikace)
@@ -34,8 +34,8 @@ title: "masivně distribuované systémy"
 **Problém:** Útočník vytvoří tisíce falešných identit a ovládne síť.
 
 **Obrany:**
-- **[proof of work (PoW)](/notes/proof-of-work-pow/)** - útok je drahý (hardware + elektřina)
-- [proof of stake (PoS)](/notes/proof-of-stake-pos/) - útok vyžaduje velké držení aktiv
+- **[proof of work (PoW)](/notes/proof-of-work-pow.html)** - útok je drahý (hardware + elektřina)
+- [proof of stake (PoS)](/notes/proof-of-stake-pos.html) - útok vyžaduje velké držení aktiv
 - **Permissioned networks** - kontrola identit
 
 ### 3. Škálovatelnost
@@ -45,7 +45,7 @@ title: "masivně distribuované systémy"
 3. **Škálovatelnost** (vysoký throughput)
 
 **Trade-off příklady:**
-- [bitcoin](/notes/bitcoin/): Bezpečnost + Decentralizace → nízký throughput (7 tx/s)
+- [bitcoin](/notes/bitcoin.html): Bezpečnost + Decentralizace → nízký throughput (7 tx/s)
 - solana: Škálovatelnost + slabší decentralizace
 - ethereum: Hledání balance pomocí sharding + L2
 
@@ -56,7 +56,7 @@ title: "masivně distribuované systémy"
 - Paxos/Raft: O(N) komunikace → pro 10 000 uzlů neproveditelné
 - PBFT: O(N²) komunikace → neškáluje nad ~100 uzlů
 
-### [Proof of Work](/notes/proof-of-work-pow/) (PoW)
+### [Proof of Work](/notes/proof-of-work-pow.html) (PoW)
 **Princip:** Těžaři soutěží o nalezení hashe splňujícího difficulty.
 
 **Jak funguje:**
@@ -67,7 +67,7 @@ title: "masivně distribuované systémy"
 
 **Použití:** Bitcoin, Ethereum (do 2022)
 
-### [Proof of Stake](/notes/proof-of-stake-pos/) (PoS)
+### [Proof of Stake](/notes/proof-of-stake-pos.html) (PoS)
 **Princip:** Validátoři "stakují" tokeny a jsou vybíráni k vytvoření bloků.
 
 **Jak funguje:**
@@ -86,7 +86,7 @@ title: "masivně distribuované systémy"
 
 ---
 ## Architektonické vzory
-### 1. [Blockchain](/notes/blockchain/)
+### 1. [Blockchain](/notes/blockchain.html)
 
 ### 2. DAG (Directed Acyclic Graph)
 **Alternativa:** Transakce odkazují na několik předchozích (ne lineární řetězec).

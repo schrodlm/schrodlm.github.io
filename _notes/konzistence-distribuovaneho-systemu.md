@@ -6,7 +6,7 @@ title: "konzistence distribuovaného systému"
 ---
 Konzistence popisuje jak moc mají různé uzly stejný (nebo kompatibilní) pohled na data a stav systému.
 
-Problém zajištění **konzistence** vzniká jako přímý a nevyhnutelný důsledek [replikace](/notes/replikace/).
+Problém zajištění **konzistence** vzniká jako přímý a nevyhnutelný důsledek [replikace](/notes/replikace.html).
 
 ---
 Konzistence není binární (ano/ne), ale je to **spektrum**. Můžeme mít stav, který je:
@@ -14,7 +14,7 @@ Konzistence není binární (ano/ne), ale je to **spektrum**. Můžeme mít stav
 1. **Silně konzistentní:** Všechny uzly vidí přesně totéž ve stejný okamžik (chová se to jako jeden počítač).
 2. **Slabě konzistentní:** Uzly se mohou dočasně lišit, ale nakonec se shodnou.
 
-Výběr toho, "jak moc" konzistentní stav potřebujeme, definují **[modely konzistence distribuovaného systému](/notes/modely-konzistence-distribuovaneho-systemu/)**.
+Výběr toho, "jak moc" konzistentní stav potřebujeme, definují **[modely konzistence distribuovaného systému](/notes/modely-konzistence-distribuovaneho-systemu.html)**.
 
 ---
 ## Silná konzistence (strong consistency)
@@ -24,7 +24,7 @@ Model, který se snaží nekonzistenci zcela eliminovat (nebo ji skrýt před u�
     
 - **Cena přístupu:**
     - **Vysoká latence:** Zápis trvá dlouho, protože musíme čekat, až se data propíší na ostatní uzly (nebo alespoň do kvóra).
-    - **Nízká dostupnost ([CAP theorem](/notes/cap-theorem/)):** Pokud se přeruší spojení mezi uzly, systém se musí **zastavit** (přestat přijímat zápisy), aby nevznikla chyba. Nemůže riskovat rozdílná data.
+    - **Nízká dostupnost ([CAP theorem](/notes/cap-theorem.html)):** Pokud se přeruší spojení mezi uzly, systém se musí **zastavit** (přestat přijímat zápisy), aby nevznikla chyba. Nemůže riskovat rozdílná data.
 - **Typické modely:**
     - **Linearizovatelnost (linearizability):** Absolutní shoda s reálným časem (nejpřísnější model).
     - **Sekvenční konzistence (sequential consistency):** Shoda s logickým pořadím operací.
@@ -61,7 +61,7 @@ Nekonzistence je **stav**, kdy se data v různých replikách téhož systému l
 #### 1. Neexistuje globální stav
 - Nejde přesně říct, „v jakém stavu je systém teď“
 - Každý uzel má **svůj lokální pohled**
-- Přestože v distribuovaném systému neexistuje jediný okamžitý globální stav , je možné jej určitým způsobem **odhadnout nebo rekonstruovat**. Viz: [detekce globálního stavu](/notes/detekce-globalniho-stavu/)
+- Přestože v distribuovaném systému neexistuje jediný okamžitý globální stav , je možné jej určitým způsobem **odhadnout nebo rekonstruovat**. Viz: [detekce globálního stavu](/notes/detekce-globalniho-stavu.html)
 
 > [!note] Důsledek
 > - nelze spolehlivě provádět okamžité globální kontroly („všichni hotovo?“)

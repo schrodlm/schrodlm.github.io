@@ -37,7 +37,7 @@ Tato operace je "líná", protože většinu času nic neděláme. Jen občas, k
 ## Amortizovaná analýza složitosti
 Toto je klíčová část. Proč je to efektivní, když přestavba podstromu velikosti k trvá $O(k)$?
 
-**Tvrzení:** Vkládání (`insert`) má [amortizovanou složitost](/notes/amortized-complexity/) $O(\log n)$.
+**Tvrzení:** Vkládání (`insert`) má [amortizovanou složitost](/notes/amortized-complexity.html) $O(\log n)$.
 
 **Důkaz (intuitivní, pomocí kreditů):** Představte si, že jsme právě přestavěli podstrom o velikosti $m$. Je nyní **dokonale vyvážený**.
 
@@ -60,7 +60,7 @@ Díky tomu je průměrná cena vložení jen logaritmická, i když v nejhorší
 ## Využití
 BB(alpha) stromy s líným vyvažováním (přestavbou) se používají tam, kde **nelze použít rotace**.
 
-Typický příklad jsou [k-d trees](/notes/k-d-trees/), v k-d stromech se prostor dělí střídavě podle k-souřadnic.
+Typický příklad jsou [k-d trees](/notes/k-d-trees.html), v k-d stromech se prostor dělí střídavě podle k-souřadnic.
 
 - Pokud byste v k-d stromu chtěli udělat klasickou rotaci (jako v AVL), **zničili byste geometrickou strukturu** dělení prostoru (invariant, že vlevo jsou menší X a vpravo větší X, by po rotaci nemusel platit pro jinou hladinu, kde se dělí podle Y).
 - Proto se u k-d stromů používá **váhové vyvažování s přestavbou**. Když se jedna větev stane příliš těžkou (obsahuje moc bodů v daném výřezu prostoru), celý tento podstrom se smaže a znovu postaví dokonale vyváženě.

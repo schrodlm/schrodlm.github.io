@@ -5,7 +5,7 @@ title: "CRDT (conflict-free replicated data types)"
 
 CRDT jsou speciální datové typy (např. počítadla, množiny, seznamy), které jsou navrženy tak, aby mohly být replikovány na více uzlech, kde každý uzel může provádět zápisy **nezávisle a bez koordinace**.
 
-### Proč existují? (Problém s [konsenzem](/notes/konsenzus-v-distribuovanych-systemech/))
+### Proč existují? (Problém s [konsenzem](/notes/konsenzus-v-distribuovanych-systemech.html))
 
 - **Klasický konsenzus:** Vyžaduje, aby se uzly na každé změně dohodly (výměna zpráv, lídr, kvórum). To je pomalé a nefunguje to, když je síť rozdělená (_network partition_).
     

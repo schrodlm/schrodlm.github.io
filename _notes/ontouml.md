@@ -3,11 +3,11 @@ layout: note
 title: "OntoUML"
 ---
 
-OntoUML is a language for Ontology-driven [conceptual modelling](/notes/conceptual-modelling/). It is built as a [UML] extension based on the [UFO](/notes/ufo/).
+OntoUML is a language for Ontology-driven [conceptual modelling](/notes/conceptual-modelling.html). It is built as a [UML] extension based on the [UFO](/notes/ufo.html).
 
 It integrates formal ontology principles into UML to create more semantically precise and semantically rich models. 
 
-## OntoUML vs [UML](/notes/uml/)
+## OntoUML vs [UML](/notes/uml.html)
 | Aspect               | UML                                           | OntoUML                                                     |
 | -------------------- | --------------------------------------------- | ----------------------------------------------------------- |
 | **Purpose**          | General-purpose software and system modeling  | Ontology-driven conceptual modeling with semantic precision |
@@ -31,7 +31,7 @@ They are used for validation, simulation and prototyping.
 
 ## Relation between instances and classes
 
-In OntoUML, there can be more complex relationships between classes and instances (unlike in [UML](/notes/uml/) strict 1:1). For example, an instance might belong to multiple classes simultaneously, or the classification might change over time.
+In OntoUML, there can be more complex relationships between classes and instances (unlike in [UML](/notes/uml.html) strict 1:1). For example, an instance might belong to multiple classes simultaneously, or the classification might change over time.
 ```
 Class 1: Person
 Attributes: name, age
@@ -44,6 +44,6 @@ Instance: [name: "Alice", age: 30, job title: "Engineer", salary: 60,000]
 
 ## Class attributes
 
-## [](/notes/ontouml-rigidity/)
+## [](/notes/ontouml-rigidity.html)
 
 

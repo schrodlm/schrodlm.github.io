@@ -4,7 +4,7 @@ tags:
 language: czech
 title: "idempotence v RPC"
 ---
-Pro RPC je velmi důležité, aby operace byly [idempotentní](/notes/idempotence/).
+Pro RPC je velmi důležité, aby operace byly [idempotentní](/notes/idempotence.html).
 
 V lokálním programování (na jednom PC) víš, jestli funkce proběhla, nebo program spadl. V distribuovaném systému (nativním prostředí pro RPC) existuje stav neurčitosti kvůli chybě sítě.
 

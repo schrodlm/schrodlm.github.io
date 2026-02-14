@@ -53,7 +53,7 @@ int f(int n)
 
 ## Postconditions
 A postcondition for a function expresses what the caller may assume about its result (and, later, about its effect). It is important that the caller cannot "look inside" the function to reason about its behaviour, but must rely only on the postcondition.
-This is an important principle allowing us to localize the reasoning in individual functions. In essence, functions represent an abstraction boundary that greatly aids the possibility of [program verification](/notes/software-verification/).
+This is an important principle allowing us to localize the reasoning in individual functions. In essence, functions represent an abstraction boundary that greatly aids the possibility of [program verification](/notes/software-verification.html).
 
 In our example the postcondition states that `f` computes the Fibonacci function, but how can we actually say this?
 

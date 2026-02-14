@@ -14,7 +14,7 @@ To zahrnuje:
 - chování, které se tváří korektně, ale **není**
 
 ## Řešení
-Aby systém fungoval správně i při takovém selhání, musí náš distribuovaný systém mít vlastnost [BFT (byzantine fault tolerance)](/notes/bft-byzantine-fault-tolerance/)
+Aby systém fungoval správně i při takovém selhání, musí náš distribuovaný systém mít vlastnost [BFT (byzantine fault tolerance)](/notes/bft-byzantine-fault-tolerance.html)
 
 ## Vznik
 Problém byl definován na těchto dvou příkladech

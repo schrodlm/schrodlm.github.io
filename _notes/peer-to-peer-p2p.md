@@ -4,7 +4,7 @@ tags:
 language: czech
 title: "peer-to-peer (P2P)"
 ---
-Architektura pro [distribuovaný systém](/notes/distributed-system/)
+Architektura pro [distribuovaný systém](/notes/distributed-system.html)
 
 Decentralizovaný model.
 - **Role:** Každý uzel (peer) je zároveň klientem i serverem (tzv. _servent_).

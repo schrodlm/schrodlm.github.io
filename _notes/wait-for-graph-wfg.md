@@ -9,7 +9,7 @@ title: "Wait-For-Graph (WFG)"
 > - **Nástroj:** Detekce distribuovaného deadlocku.
 > - **Princip:** Hledání cyklů v grafu závislostí procesů.
 > - **V distribuovaném prostředí:** Používá se „Edge-Chasing“ (posílání sond po hranách grafu). Pokud se sonda vrátí k odesílateli, existuje cyklus = deadlock.
-> - **Riziko:** „Falešný deadlock“ kvůli zpoždění zpráv (nutnost konzistentního snapshotu ([Chandy-Lamport](/notes/chandy-lamport/))).
+> - **Riziko:** „Falešný deadlock“ kvůli zpoždění zpráv (nutnost konzistentního snapshotu ([Chandy-Lamport](/notes/chandy-lamport.html))).
 ---
 
 >[!note] Ještě TL;DR pro zkoušku

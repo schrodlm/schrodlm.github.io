@@ -6,7 +6,7 @@ title: "vztah mezi komunikačními modely a konzistencí v distribuovaných syst
 Komunikační modely a konzistence spolu úzce souvisí - **způsob, jakým si komponenty distribuovaného systému vyměňují zprávy, přímo ovlivňuje, jaké záruky konzistence můžete poskytovat**.
 
 ## Základní princip
-Konzistence je o tom, **jaký pohled na data mají různé části systému**. Komunikační model určuje, **jak rychle a v jakém pořadí se informace o změnách šíří**. Tento princip popisuje [CAP theorem](/notes/cap-theorem/) a úzce s tímto tématem souvisí.
+Konzistence je o tom, **jaký pohled na data mají různé části systému**. Komunikační model určuje, **jak rychle a v jakém pořadí se informace o změnách šíří**. Tento princip popisuje [CAP theorem](/notes/cap-theorem.html) a úzce s tímto tématem souvisí.
 
 ---
 ## Konkrétní souvislosti

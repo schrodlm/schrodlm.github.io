@@ -4,7 +4,7 @@ title: "suffix array"
 ---
 
 Datová struktura pro práci s textem. 
-Je to prostorově úspornější alternativa k [suffix tree](/notes/suffix-tree/), přičemž nabízí stejnou funkcionalitu.
+Je to prostorově úspornější alternativa k [suffix tree](/notes/suffix-tree.html), přičemž nabízí stejnou funkcionalitu.
 
 # Definice
 Suffixové pole je pole celých čísel, které reprezentuje **lexikograficky (abecedně) seřazené indexy všech suffixů** daného řetězce.
@@ -23,12 +23,12 @@ Myšlenka je jednoduchá:
 > Rankové pole může být triviálně vypočítáno ze sufixového v čase $O(n)$ (jsou mezi sebou inverzní)
 > Důležité pole k rychlé konstrukci suffixového pole
 
-- $L[i]$ ([LCP array](/notes/lcp-array/)) - pole společných prefixů - říká kolik má $i$ společných písmen s $i+1$
+- $L[i]$ ([LCP array](/notes/lcp-array.html)) - pole společných prefixů - říká kolik má $i$ společných písmen s $i+1$
 
 **Souhrn**
 - **$S[i]:$** Říká **KDO** (který suffix je první, druhý...).
 - **$R[i]$:** Říká **KDE** (kde v seřazeném poli je tento konkrétní suffix). Slouží k rychlému přechodu mezi indexem v textu a indexem v SA.
-- **$L[i]$ ([LCP array](/notes/lcp-array/)):** Říká **JAK** (jak moc jsou si sousedé podobní).
+- **$L[i]$ ([LCP array](/notes/lcp-array.html)):** Říká **JAK** (jak moc jsou si sousedé podobní).
 
 **Správná mentální mapa:** 
 1. Postavíme $S$ (k tomu nutně potřebujeme $R$ při algoritmu zdvojování (#Konstrukce (algoritmus zdvojování)). 
@@ -36,7 +36,7 @@ Myšlenka je jednoduchá:
 3. Následně, pokud to úloha vyžaduje, postavíme $L$ (využijeme k tomu hotové $S$ a $R$).
 
 > [!note] Konstrukce LCP
-> [LCP array](/notes/lcp-array/) může být zkonstruováno ze suffixového pole v čase $O(n)$ (LCP array#Konstrukce (Kasaiův algoritmus))
+> [LCP array](/notes/lcp-array.html) může být zkonstruováno ze suffixového pole v čase $O(n)$ (LCP array#Konstrukce (Kasaiův algoritmus))
 
 > [!important] Pozor
 > LCP ani rank nejsou formálně součástí datové struktury suffixového pole
@@ -95,7 +95,7 @@ Existuje hodně využití suffixové pole + LCP pole (např. hledání výskytů
 
 
 ## Vztah k suffix trees
-- **[suffix tree](/notes/suffix-tree/):** Je to stromová struktura, kde každá hrana reprezentuje znaky a každá cesta od kořene k listu reprezentuje jeden suffix.
+- **[suffix tree](/notes/suffix-tree.html):** Je to stromová struktura, kde každá hrana reprezentuje znaky a každá cesta od kořene k listu reprezentuje jeden suffix.
     - _Výhoda:_ Velmi intuitivní pro operace nad řetězci.
     - _Nevýhoda:_ Obrovská spotřeba paměti (mnoho ukazatelů, uzlů). Pro dlouhé texty (např. genom) je nepoužitelný.
 - **suffix array:**

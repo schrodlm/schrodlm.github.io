@@ -29,11 +29,11 @@ systémech řeší OS automaticky (mutexes, semafory, system clock).
 ### 1. Časová synchronizace
 **Otázka:** Jak sjednotit pohled na čas?
 
-#### [Fyzický čas (Physical Clock Sync)](/notes/physical-clock-sync/)
+#### [Fyzický čas (Physical Clock Sync)](/notes/physical-clock-sync.html)
 Synchronizace reálného času (hodiny na zdi) mezi uzly.
 
-#### [Logický čas (Logical Time)](/notes/logicky-cas/)
-Místo sekund měříme [kauzální pořadí](/notes/kauzalni-zavislost/) událostí. 
+#### [Logický čas (Logical Time)](/notes/logicky-cas.html)
+Místo sekund měříme [kauzální pořadí](/notes/kauzalni-zavislost.html) událostí. 
 Pokud události nesouvisí, jsou **souběžné** (concurrent).
 
 **Použití:** Ordering zpráv, conflict detection, debugging distribuovaných systémů
@@ -44,19 +44,19 @@ Pokud události nesouvisí, jsou **souběžné** (concurrent).
 
 Řešíme **synchronizační problémy** - konkrétní koordinační úlohy:
 
-#### [Vzájemné vyloučení (Mutual Exclusion)](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/)
+#### [Vzájemné vyloučení (Mutual Exclusion)](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html)
 **Problém:** Kdo smí vstoupit do kritické sekce?
 
 Náhrada za semafory/mutexy v prostředí bez sdílené paměti.
 
 **Algoritmy:** Centralized, Token Ring, Ricart-Agrawala, Maekawa
 
-#### [Volba koordinátora (Leader Election)](/notes/volba-koordinatora-leader-election/)
+#### [Volba koordinátora (Leader Election)](/notes/volba-koordinatora-leader-election.html)
 Algoritmy pro výběr nového leadera (např. po pádu toho starého).
 **Problém:** Kdo bude vůdce skupiny?
 **Algoritmy:** Bully, Ring-based, Raft election
 
-#### [Konsenzus (Agreement)](/notes/konsenzus-v-distribuovanych-systemech/)
+#### [Konsenzus (Agreement)](/notes/konsenzus-v-distribuovanych-systemech.html)
 **Problém:** Jak se shodnout na jedné hodnotě?
 Dosažení shody mezi procesy i při selháních.
 
@@ -65,25 +65,25 @@ Dosažení shody mezi procesy i při selháních.
 **Limity:** konsenzus v distribuovaných systémech#FLP Impossibility - konsenzus v asynchronním systému 
 s možností selhání není vždy možný
 
-#### [Transakce](/notes/transakce-v-distribuovanych-systemech/)
+#### [Transakce](/notes/transakce-v-distribuovanych-systemech.html)
 **Problém:** Jak zajistit ACID vlastnosti napříč více uzly?
 **Trade-off:** Konzistence vs. dostupnost (blokující při výpadcích)
 **Algoritmy:** 2PC, 3PC
 
-#### [Group Membership](/notes/group-membership/)
+#### [Group Membership](/notes/group-membership.html)
 **Problém:** Kdo je členem skupiny?
 - Kdo všechno je součástí skupiny v daný okamžik
 - Jak se skupina mění při pádech a připojeních
 **Použití:** Multicast groups, cluster management, failure tracking
 
-#### [Detekce globálního stavu](/notes/detekce-globalniho-stavu/)
+#### [Detekce globálního stavu](/notes/detekce-globalniho-stavu.html)
 **Problém:** V jakém stavu náš systém je? Jsou nějaké uzly mrtvé?
 **Trade-off:** Rychlost detekce vs. přesnost (false positives)
 
 ---
 ## Mechanismy koordinace
 
-Všechny synchronizační problémy lze řešit pomocí tří základních [návrhových vzorů](/notes/mechanismy-koordinace-v-distribuovanych-systemech/).
+Všechny synchronizační problémy lze řešit pomocí tří základních [návrhových vzorů](/notes/mechanismy-koordinace-v-distribuovanych-systemech.html).
 
 ---
 ## Klíčová poznání 

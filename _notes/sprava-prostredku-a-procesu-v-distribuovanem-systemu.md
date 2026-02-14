@@ -6,7 +6,7 @@ title: "správa prostředků a procesů v distribuovaném systému"
 Co to je? V čem je to důležité? Proč to řešíme?
 
 Tady jsou asi příklady co spravujeme?
-##  [Distribuované zablokování](/notes/deadlock-v-distribuovanem-systemu/) (deadlock)
+##  [Distribuované zablokování](/notes/deadlock-v-distribuovanem-systemu.html) (deadlock)
 V distribuovaném systému je detekce deadlocku složitější, protože neexistuje centrální tabulka zámků.
 
 - **Strategie:** 
@@ -14,11 +14,11 @@ V distribuovaném systému je detekce deadlocku složitější, protože neexist
 2. _Detekce a zotavení_ (vyhledání cyklu a násilné ukončení procesu).
 
 ---
-## [Vzdálené spouštění procesů a migrace](/notes/vzdalene-spousteni-procesu-a-migrace/)
+## [Vzdálené spouštění procesů a migrace](/notes/vzdalene-spousteni-procesu-a-migrace.html)
 
 
 ---
-### Vyvažování zátěže ([load balancing v distribuovaných systémech](/notes/load-balancing-v-distribuovanych-systemech/))
+### Vyvažování zátěže ([load balancing v distribuovaných systémech](/notes/load-balancing-v-distribuovanych-systemech.html))
 Cílem je zajistit, aby žádný uzel nebyl přetížen, zatímco jiný zahálí. Tím přímo naplňujeme motivaci pro **scaling** a **výkon**.
 
 - **Statické:** Rozdělení úkolů je pevně dané (např. Round Robin).

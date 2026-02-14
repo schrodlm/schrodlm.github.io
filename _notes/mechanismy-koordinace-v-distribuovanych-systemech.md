@@ -5,15 +5,15 @@ title: "mechanismy koordinace v distribuovaných systémech"
 ---
 V distribuovaných systémech bez sdílené paměti potřebujeme **explicitní koordinaci** mezi procesy. Existují tři základní mechanismy, jak toho dosáhnout:
 
-1. [Token-based](/notes/token-based-koordinace/) - Předávání unikátního tokenu
-2. [Permission-based](/notes/permission-based-koordinace/) - Žádost o povolení od ostatních
-3. [Quorum-based](/notes/quorum-based-koordinace/) - Hlasování v podmnožinách
+1. [Token-based](/notes/token-based-koordinace.html) - Předávání unikátního tokenu
+2. [Permission-based](/notes/permission-based-koordinace.html) - Žádost o povolení od ostatních
+3. [Quorum-based](/notes/quorum-based-koordinace.html) - Hlasování v podmnožinách
 
 >[!important] Leader-based 
 >V základní klasifikaci rozlišujeme **3 strategie**:
 >- **Permission-based, Token-based, Quorum-based**.
 >
-> V širším architektonickém pohledu mezi koordinační přístupy patří i [leader-based koordinace](/notes/leader-based-koordinace/), která je jednoduchá, ale leader představuje **single point of failure**
+> V širším architektonickém pohledu mezi koordinační přístupy patří i [leader-based koordinace](/notes/leader-based-koordinace.html), která je jednoduchá, ale leader představuje **single point of failure**
 > Algoritmy typu **RAFT** kombinují **centralizované řízení (Leader)** s **quorum-based rozhodováním** (potvrzení většinou).
 
 ---
@@ -25,10 +25,10 @@ Distribuované systémy řeší **fundamentální problém synchronizace**:
 
 **Konkrétní problémy:**
 
-- Kdo smí vstoupit do kritické sekce? → [Mutual exclusion](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/)
+- Kdo smí vstoupit do kritické sekce? → [Mutual exclusion](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html)
 - V jakém pořadí všichni uvidí zprávy? → doručovací protokoly
-- Na jaké hodnotě se shodneme? → [Konsenzus](/notes/konsenzus-v-distribuovanych-systemech/)
-- Kdo je leader? → [Leader election](/notes/volba-koordinatora-leader-election/)
+- Na jaké hodnotě se shodneme? → [Konsenzus](/notes/konsenzus-v-distribuovanych-systemech.html)
+- Kdo je leader? → [Leader election](/notes/volba-koordinatora-leader-election.html)
 
 Všechny tyto problémy řeší **stejné tři koordinační vzory**.
 

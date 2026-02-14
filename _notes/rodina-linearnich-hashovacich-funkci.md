@@ -4,16 +4,16 @@ title: "rodina lineárních hashovacích funkcí"
 ---
 
 ### Lineární hashování $\mathcal{L}$ (linear hashing)
-Toto je základní metoda využívající modulární aritmetiku (založená na [lineární kongruenci](/notes/linearni-kongruence/))
+Toto je základní metoda využívající modulární aritmetiku (založená na [lineární kongruenci](/notes/linearni-kongruence.html))
 
 **Parametry**
 Zvolíme prvočíslo $p$ a počet přihrádek $m$, kde $m \leq p$.
 
-**[Rodina funkcí](/notes/rodina-hashovacich-funkci/)**
+**[Rodina funkcí](/notes/rodina-hashovacich-funkci.html)**
 Rodina $\mathcal{L}$ se skládá ze všech funkcí tvaru $h_{a,b}$, kde parametry $a$ a $b$ jsou z množiny ${0,\dots, p-1}$.
 
 **Funkce**
-[Hashovací funkce](/notes/hashovaci-funkce/) vypadá následovně:
+[Hashovací funkce](/notes/hashovaci-funkce.html) vypadá následovně:
 $$ h_{a,b} = ((ax + b) \mod p) \mod m$$
 
 **Vlastnosti**
@@ -26,7 +26,7 @@ Chceme dokázat, že systém $\mathcal{L}$ je 2-nezávislý (konkrétně (2,4)-n
 
 Důkaz rozdělíme na dva kroky:
 1. analyzujeme vnitřní lineární funkci v tělese $\mathbb{Z}_p$, 
-2. poté aplikujeme [lemma o modulení](/notes/lemma-o-moduleni/)
+2. poté aplikujeme [lemma o modulení](/notes/lemma-o-moduleni.html)
 
 ### 1. Analýza vnitřní funkce v $\mathbb{Z}_p$
 Uvažujme pomocnou rodinu lineárních funkci bez finálního modula $m$:
@@ -47,7 +47,7 @@ $$
 4. Existuje tedy **právě jedna** dvojice $(a,b)$ z celkových $p^2$ možných dvojic, která podmínku splňuje .
 5. Pravděpodobnost je tedy přesně $1/p^2$. Protože velikost cílového prostoru je $p$, odpovídá hodnota $1/p^2$ přesně definici (2,1)-nezávislosti.
 
-### 2. Aplikace [lemmatu M](/notes/lemma-o-moduleni/)
+### 2. Aplikace [lemmatu M](/notes/lemma-o-moduleni.html)
 Nyní se vrátíme k původní funkci $h_{a,b}​(x)=g_{a,b}​(x)\mod m$.
 1. Víme, že vnitřní rodina funkci (mapující $[p]$) je (2-1)-nezávislá (tedy $c =1, r = p$).
 2. Aplikujeme lemma M, které říká, že po zavedení operace $\mod m$ se nezávislost změní z ($2,c$) na ($2,4c$).

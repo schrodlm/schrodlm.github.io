@@ -7,5 +7,5 @@ I studied software engineering at Czech Technical University FIT for 4 years. Af
 
 This page contains my experiences from different course I've taken over the years and materials that I made for these courses.
 
-FIT ČVUT [fit cvut](/courses/fit-cvut/)
-MFF notes/mff
+- [FIT ČVUT](/courses/fit-cvut.html)
+- [MFF](/courses/mff.html)

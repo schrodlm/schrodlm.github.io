@@ -10,4 +10,4 @@ CAS (compare-and-swap) je atomická instrukce, používaná k dosažení synchro
 
 Umožňuje detekovat, zda jiný proces změnil hodnotu během naší přípravy dat.
 >[!important] Pozor
-Vzniká zde [ABA problém](/notes/aba-problem/)
+Vzniká zde [ABA problém](/notes/aba-problem.html)

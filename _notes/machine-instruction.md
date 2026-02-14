@@ -3,7 +3,7 @@ layout: note
 title: "machine instruction"
 ---
 
-Instruction is a **single operation of a processing unit** defined in its [instruction set](/notes/isa/).
+Instruction is a **single operation of a processing unit** defined in its [instruction set](/notes/isa.html).
 
 ## Practical use of the term instruction
 In practical terms, when somebody mentions an "instruction" they will most likely be reffering to a specific command within a program that "tells" CPU what to do. As for example `ADD R1, R2` which consist of opcode and operands.
@@ -16,7 +16,7 @@ These units can perform really low level operations such as storing/sending info
 
 So finishing an instruction can be viewed as a finishing operation of specific functional unit, that also implies it can be seen as a **state change inside a CPU**
 
-What instruction can specific CPU execute is specified by its [isa](/notes/isa/)
+What instruction can specific CPU execute is specified by its [isa](/notes/isa.html)
 
 ## Processing instructions (instruction cycle)
 Processing of the instruction is done by CPU in a process called instruction cycle (also known as fetch-decode-execute cycle)

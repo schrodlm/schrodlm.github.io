@@ -15,7 +15,7 @@ Ke každému výpočetnímu modelu se vztahuje tzv. **výpočetní síla** - tu 
 Ta říká, jakou množinu problémů můžeme pomocí daného modelu řešit. Různé výpočetní modely mají různou výpočetní sílu, můžeme se tedy ptát, jaké problémy lze daným výpočetním modelem řešit.
 
 ### Nejsilnější výpočetní model
-[Turingův stroj](/notes/turinguv-stroj/) je považován za model, který definuje hranici algoritmické řešitelnosti.
+[Turingův stroj](/notes/turinguv-stroj.html) je považován za model, který definuje hranici algoritmické řešitelnosti.
 
 **Church-Turingova teze:** 
 > "Vše, co je intuitivně algoritmicky vyčíslitelné, je vyčíslitelné Turingovým strojem." *Poznámka:* Je to teze, ne věta, tedy není formálně dokázána.
@@ -32,7 +32,7 @@ Aby mohl být model použitelný pro teorii vyčíslitelnosti nebo složitosti, 
 2. **Formát výstupu**: Jak model reprezentuje výsledek?
 3. **Paměť**: Jak si model ukládá a organizuje data během výpočtu
 4. **Sada atomických operací**: Základní **nedělitelné** kroky, které umí model provést
-	- např. [Turingův stroj](/notes/turinguv-stroj/): Přečti symbol, zapiš symbol, posuň hlavu doleva/doprava
+	- např. [Turingův stroj](/notes/turinguv-stroj.html): Přečti symbol, zapiš symbol, posuň hlavu doleva/doprava
 5. **Řízení**: Mechanismus, který rozhoduje, jaká operace se provede jako další, v závislosti na aktuálním stavu a datech
 
 
@@ -41,7 +41,7 @@ Různé modely se hodí k různým účelům:
 1. Konečné automaty
 	- jsou záměrně velmi výpočetně slabé (nemají stavy ani paměť)
 	- ideální pro rozpoznávání jednoduchých vzorů a ukazují nejnižší třídu výpočetní síly
-2. [Turingův stroj](/notes/univerzalni-turinguv-stroj/)
+2. [Turingův stroj](/notes/univerzalni-turinguv-stroj.html)
 	- záměrně velmi jednoduché, ale maximálně silné
 	- ideální pro zkoumání hranic vyčíslitelnosti
 	- co nedokáže spočítat TS (pravděpodobně) nejde algoritmicky vůbec

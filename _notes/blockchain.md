@@ -3,7 +3,7 @@ layout: note
 title: "blockchain"
 ---
 
-**Blockchain** je **technologie postavená na [P2P architektuře](/notes/peer-to-peer-p2p/)**, která využívá specifickou datovou strukturu k udržování distribuované účetní knihy (distributed ledger).
+**Blockchain** je **technologie postavená na [P2P architektuře](/notes/peer-to-peer-p2p.html)**, která využívá specifickou datovou strukturu k udržování distribuované účetní knihy (distributed ledger).
 
 ### Na čem je postaven? (Architektura)
 
@@ -37,4 +37,4 @@ Pojem blockchain doslova znamená „řetězec bloků“. Jeho integrita je zalo
 5. **Konsenzus:** Proběhne proces shody (např. Proof of Work), který určí, že tento blok je ten pravý.
 6. **Zápis:** Blok je přidán na konec řetězce a synchronizován s ostatními uzly.
 
-> [!tip] **Shrnutí pro DS:** Blockchain je v podstatě [replikovaný stavový automat](/notes/state-machine-replication-smr/), který místo klasického lídra (jako v Raftu) využívá decentralizovaný konsenzus a kryptografické vazby k tomu, aby zajistil shodu v masivním měřítku.
+> [!tip] **Shrnutí pro DS:** Blockchain je v podstatě [replikovaný stavový automat](/notes/state-machine-replication-smr.html), který místo klasického lídra (jako v Raftu) využívá decentralizovaný konsenzus a kryptografické vazby k tomu, aby zajistil shodu v masivním měřítku.

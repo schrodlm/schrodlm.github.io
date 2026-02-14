@@ -3,15 +3,15 @@ layout: note
 title: "file system interface"
 ---
 
-Create interface for abstraction created from introducing [file system](/notes/file-system/)
+Create interface for abstraction created from introducing [file system](/notes/file-system.html)
 
 This is the API that allows a user-space program to request services from the kernel. Without this interface, a programmer would have to manually calculate disk offsets and flip bits in a bitmap—the OS handles that complexity for us.
 
 The interface is a set of system calls provided by the OS to manage the virtualization of storage.
 
 ## Creating files
-`open()` takes a human-readable path (e.g., `/home/user/file.txt`) and returns a [file descriptor](/notes/file-descriptor/)
-- OS performs a path resolution to find the [inode](/notes/inode/) number
+`open()` takes a human-readable path (e.g., `/home/user/file.txt`) and returns a [file descriptor](/notes/file-descriptor.html)
+- OS performs a path resolution to find the [inode](/notes/inode.html) number
 
 ## Accessing files
 - `read()` and `write()` allow process to interact with the array of bytes representing data of a file
@@ -21,7 +21,7 @@ The interface is a set of system calls provided by the OS to manage the virtuali
 ## Naming and metadata
 The interfaces allows us to manipulate the metadata of files as well.
 - **`mkdir()` / `rmdir()`**: Used to create/delete directory files (the name-to-inode mappings).
-- **`stat()` / `fstat()`**: Allows a program to view the metadata inside [inode](/notes/inode/) without actually opening or reading the file data.
+- **`stat()` / `fstat()`**: Allows a program to view the metadata inside [inode](/notes/inode.html) without actually opening or reading the file data.
 - **`link()`** (hard links): Creates a new name in a directory that points to an _existing_ inode number.
 - **`unlink()`**: Removes a name from a directory.
 

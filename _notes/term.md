@@ -30,7 +30,7 @@ In C++, without understanding terms, even `x+++y` becomes ambiguous (is it `x++ 
 Type systems need to know what units to check. Terms are where types originate—a literal has a type, a variable has a type. Expressions then propagate and validate these types through operations.
 
 ## How does it correspond with AST?
-- The term/expression hierarchy directly shapes the [abstract syntax tree](/notes/abstract-syntax-tree/) (AST).
+- The term/expression hierarchy directly shapes the [abstract syntax tree](/notes/abstract-syntax-tree.html) (AST).
 	- Term nodes are the leaves of AST.
 	- expression nodes are the internal operations. 
 	- This ensures the internal representation accurately reflects the intended computation order.

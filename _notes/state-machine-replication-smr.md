@@ -15,7 +15,7 @@ Replica3: start → op1 → op2 → op3 → state_X
 ```
 
 **Jak zajistit stejné pořadí?**
-- [Konsenzus](/notes/konsenzus-v-distribuovanych-systemech/) ([Paxos](/notes/paxos/), [Raft](/notes/raft/))
+- [Konsenzus](/notes/konsenzus-v-distribuovanych-systemech.html) ([Paxos](/notes/paxos.html), [Raft](/notes/raft.html))
 - Total Order Broadcast
 >[!note] Konsenzus
 > state machine replication **vyžaduje konsenzus** → proto Paxos/Raft!

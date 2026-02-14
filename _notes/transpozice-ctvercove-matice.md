@@ -3,7 +3,7 @@ layout: note
 title: "transpozice čtvercové matice"
 ---
 
-Tato implementace algoritmu se zaměřuje na co největší optimalizaci v okruhu IO operací ([IO model](/notes/io-model/))
+Tato implementace algoritmu se zaměřuje na co největší optimalizaci v okruhu IO operací ([IO model](/notes/io-model.html))
 
 ## Transpozice čtvercové matice
 Mějme $N \times N$ matici, která je uložená jako jeden dlouhý vektor velikosti $N^2$. 
@@ -59,7 +59,7 @@ Musíme si dát pozor na to, abychom prvně netransponovali a pak swapovali.
 Místo toho to chceme dělat in-place.
 ![Image](/assets/img/Pasted image 20260106113231.png)
 Na každé číslo v matici sáhneme **právě jednou** (až v momentě, kdy se dostaneme na dno rekurze, $1\times1$ matice).
-#### implementace: [matrix_transpose()](/notes/matrix-transpose/)
+#### implementace: [matrix_transpose()](/notes/matrix-transpose.html)
 
 #### Odvození složitosti
 - `transpose_and_swap()` ($TS$) tedy rekurzí na 4 podproblémy, které jsou zase $TS$

@@ -5,7 +5,7 @@ tags:
 language: czech
 title: "token-based koordinace"
 ---
-Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech/)
+Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech.html)
 
 ---
 ## Princip
@@ -97,7 +97,7 @@ P1 → P2 → P3 → P4 → P1
 ---
 ## Použití v praxi
 
-### 1. [Mutual Exclusion](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/)
+### 1. [Mutual Exclusion](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html)
 
 **Token Ring Algorithm:**
 ```
@@ -116,7 +116,7 @@ while true:
 - Používá strom pro směrování žádostí
 - Snižuje latenci na O(log N)
 
-### 2. [Total Order Multicast](/notes/skupinova-komunikace-broadcast/)
+### 2. [Total Order Multicast](/notes/skupinova-komunikace-broadcast.html)
 
 **Token-based Sequencing:**
 - Token nese **sekvenční číslo**
@@ -130,7 +130,7 @@ if mám_token:
   pošli_token(další)
 ```
 
-### 3. [Leader Election](/notes/volba-koordinatora-leader-election/)
+### 3. [Leader Election](/notes/volba-koordinatora-leader-election.html)
 - Token označuje **aktuálního leadera**
 - Pokud leader spadne, token se regeneruje a nový držitel = nový leader
 - Jednoduchá volba bez hlasování
@@ -179,7 +179,7 @@ if timeout_uplynul():
 
 ## Srovnání s ostatními mechanismy
 
-| Vlastnost | Token-based | [permission-based koordinace](/notes/permission-based-koordinace/) | [quorum-based koordinace](/notes/quorum-based-koordinace/) |
+| Vlastnost | Token-based | [permission-based koordinace](/notes/permission-based-koordinace.html) | [quorum-based koordinace](/notes/quorum-based-koordinace.html) |
 |-----------|-------------|-------------|--------|
 | Počet zpráv | **O(1) - O(log N)** | O(N) | O(√N) - O(N/2) |
 | Odolnost vůči výpadkům | ❌ Nízká | 🟡 Střední | ✅ Vysoká |

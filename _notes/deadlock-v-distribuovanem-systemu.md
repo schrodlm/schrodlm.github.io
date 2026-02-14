@@ -3,12 +3,12 @@ layout: note
 title: "deadlock v distribuovaném systému"
 ---
 
-**Zablokování** nastává, když skupina procesů vzájemně čeká na prostředky, které drží ostatní členové skupiny, a nikdo nemůže pokračovat. Tedy klasický [race condition](/notes/race-condition/), ale s jiným univerzem než u paralelního programování.
+**Zablokování** nastává, když skupina procesů vzájemně čeká na prostředky, které drží ostatní členové skupiny, a nikdo nemůže pokračovat. Tedy klasický [race condition](/notes/race-condition.html), ale s jiným univerzem než u paralelního programování.
 
 >[!note] Složitost
 > V distribuovaném systému je detekce deadlocku složitější, protože neexistuje centrální tabulka zámků.
 
-- **Detekce:** Využívají se algoritmy založené na **grafu čekání ([Wait-For-Graph (WFG)](/notes/wait-for-graph-wfg/))**. Pokud se v distribuovaném grafu objeví cyklus, nastal deadlock.
+- **Detekce:** Využívají se algoritmy založené na **grafu čekání ([Wait-For-Graph (WFG)](/notes/wait-for-graph-wfg.html))**. Pokud se v distribuovaném grafu objeví cyklus, nastal deadlock.
 
 ## Problémy
 
@@ -39,7 +39,7 @@ Materiály uvádějí několik metod, jak cykly v distribuovaném WFG najít:
 - Uzly si mezi sebou posílají informaci o svých závislostech.
 - Při detekci závislosti na vzdáleném uzlu se tato informace "potlačí" dál, dokud se někde nesestaví celý cyklus.
 
-### [Edge chasing](/notes/edge-chasing/) (algoritmus sond)
+### [Edge chasing](/notes/edge-chasing.html) (algoritmus sond)
 - Nejpoužívanější metoda, reprezentovaná algoritmem **Chandy-Misra-Haas**.
 - **Princip:** Pokud je proces blokován, vyšle speciální zprávu (**sondu/probe**) všem procesům, na které čeká.
 ---

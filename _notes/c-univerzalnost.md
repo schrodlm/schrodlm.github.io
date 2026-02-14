@@ -3,7 +3,7 @@ layout: note
 title: "c-univerzálnost"
 ---
 
-Jedná se o vlastnost [rodiny hashovacích funkcí](/notes/rodina-hashovacich-funkci/), která popisuje pravděpodobnost kolize mezi dvěma různými vstupy. 
+Jedná se o vlastnost [rodiny hashovacích funkcí](/notes/rodina-hashovacich-funkci.html), která popisuje pravděpodobnost kolize mezi dvěma různými vstupy. 
 
 ## Definice
 Mějme $\mathcal{H}$ rodinu hashovacích funkcí z univerza $\mathcal{U}$ do $[m]$ (index pole). O rodině $\mathcal{H}$ řekneme, že je c-univerzální pro $c > 0$, pokud $\forall x,y \in \mathcal{U}; x \neq y$ platí

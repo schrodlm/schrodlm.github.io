@@ -3,12 +3,12 @@ layout: note
 title: "ABA problém"
 ---
 
-Tento problém je kritickou chybou, která může nastat u [lock-free struktur](/notes/lock-free-struktura/) využívajících [CAS](/notes/cas/).
+Tento problém je kritickou chybou, která může nastat u [lock-free struktur](/notes/lock-free-struktura.html) využívajících [CAS](/notes/cas.html).
 
 ## Vysvětlení problému
 Nastává, když je uzel recyklován (uvolněn a znovu alokován na stejné adrese). CAS kontroluje pouze **hodnotu** (adresu), ne **identitu** objektu.
 
-## Příklad [lock-free stack](/notes/lock-free-stack/)
+## Příklad [lock-free stack](/notes/lock-free-stack.html)
 
 1. Proces 1 chce udělat POP. Přečte hlavu A a následníka B. (Chystá se udělat A→B).
 2. Proces 1 je pozastaven.
@@ -18,5 +18,5 @@ Nastává, když je uzel recyklován (uvolněn a znovu alokován na stejné adre
 6. **Chyba:** Zásobník má nyní hlavu B, ale B už bylo dříve odebráno a nemělo by tam být .
 
 ## Řešení
-**Použití [LLSC](/notes/llsc/):** `SC` selže, pokud došlo k jakémukoliv zápisu, i když je hodnota stejná.
+**Použití [LLSC](/notes/llsc.html):** `SC` selže, pokud došlo k jakémukoliv zápisu, i když je hodnota stejná.
 **Verzování ukazatelů (Wide CAS):** K ukazateli přidáme číslo verze. Při každé změně ukazatele se verze inkrementuje. Používá se instrukce pracující s dvojnásobnou šířkou slova (WCAS), která kontroluje dvojici (ukazatel, verze) .

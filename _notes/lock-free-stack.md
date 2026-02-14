@@ -25,6 +25,6 @@ Zásobník je reprezentován jako linked list
 
 #### Analýza
 
-- **Korektnost:** [CAS](/notes/cas/) zaručuje, že pokud jiný proces modifikuje hlavu zásobníku mezi naším čtením a zápisem, operace se restartuje.
+- **Korektnost:** [CAS](/notes/cas.html) zaručuje, že pokud jiný proces modifikuje hlavu zásobníku mezi naším čtením a zápisem, operace se restartuje.
 - **Vlastnost Lock-free:** Systém jako celek postupuje. Pokud CAS selže, znamená to, že jiný proces uspěl. Nemůže nastat deadlock (uvíznutí).
 - **Livelock:** Teoreticky se může stát, že jeden proces neustále selhává, protože ho ostatní předbíhají. V praxi je to nepravděpodobné .

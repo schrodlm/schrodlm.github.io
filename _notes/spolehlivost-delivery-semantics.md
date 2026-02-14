@@ -3,7 +3,7 @@ layout: note
 title: "spolehlivost (delivery semantics)"
 ---
 
-Spolehlivost je jedna z garancí definovaných [komunikační model](/notes/komunikacni-model/) distribuovaného systému. Definuje, jak moc se systém snaží doručit zprávu a jaké garance poskytuje.
+Spolehlivost je jedna z garancí definovaných [komunikační model](/notes/komunikacni-model.html) distribuovaného systému. Definuje, jak moc se systém snaží doručit zprávu a jaké garance poskytuje.
 
 ## Typy delivery semantics
 ### at-most-once semantics
@@ -14,7 +14,7 @@ Spolehlivost je jedna z garancí definovaných [komunikační model](/notes/komu
 ### at-least-once semantics
 - **Princip:** Klient opakuje požadavek, dokud nedostane potvrzení.
 - **Garance:** Operace proběhla alespoň jednou, ale může proběhnout vícekrát.
-- **Riziko:** Zde je právě nutná **[idempotence](/notes/idempotence/)**. Pokud operace není idempotentní, systém je nekonzistentní. See [idempotence v RPC](/notes/idempotence-v-rpc/).
+- **Riziko:** Zde je právě nutná **[idempotence](/notes/idempotence.html)**. Pokud operace není idempotentní, systém je nekonzistentní. See [idempotence v RPC](/notes/idempotence-v-rpc.html).
 - **Použití:** Tam, kde je doručení důležité, ale opakování nevadí (čtení dat).
 ## exactly-once semantics
 **Princip:** Ideální (teoretická) garance, že se operace provede **právě jednou**:

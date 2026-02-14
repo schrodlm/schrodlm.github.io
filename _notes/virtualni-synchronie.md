@@ -4,7 +4,7 @@ tags:
 language: czech
 title: "virtuální synchronie"
 ---
-Je to [komunikační model](/notes/komunikacni-model/) ,implementovaný [synchronizačními algoritmy](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu/),zavedený systémem ISIS řeší problém, jak spolehlivě komunikovat ve skupině, kde se dynamicky mění členství (procesy padají a obnovují se).
+Je to [komunikační model](/notes/komunikacni-model.html) ,implementovaný [synchronizačními algoritmy](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html),zavedený systémem ISIS řeší problém, jak spolehlivě komunikovat ve skupině, kde se dynamicky mění členství (procesy padají a obnovují se).
 
 Řeší otázku **"Co se stane, když uzel ve skupině umře?"**
 - _Odpověď:_ Zajistí atomicitu a konzistenci při změně skupiny.
@@ -26,7 +26,7 @@ Toto je definující vlastnost.
 
 > **Garance:** Zpráva poslaná v pohledu Vi​ je doručena buď **všem** nezhavarovaným procesům v tomto pohledu, nebo **nikomu**.
 
-- **Princip "Všechno nebo nic":** Pokud odesílatel spadne, systém ([middleware](/notes/middleware/)) zprávu buď zahodí (pokud ji nemá nikdo živý), nebo ji přeživší procesy "dopošlou" ostatním (pokud ji alespoň jeden stihl přijmout).
+- **Princip "Všechno nebo nic":** Pokud odesílatel spadne, systém ([middleware](/notes/middleware.html)) zprávu buď zahodí (pokud ji nemá nikdo živý), nebo ji přeživší procesy "dopošlou" ostatním (pokud ji alespoň jeden stihl přijmout).
 ### 3. Uspořádání vzhledem k pohledu 
 
 Definuje bariéru.
@@ -80,7 +80,7 @@ To nejdůležitější se děje, když odesílatel spadne uprostřed práce.
 ---
 ## Analogie
 Představ si skupinu lidí v místnosti, kteří si dělají poznámky (replikují data).
-- **[Doručovací algoritmus](/notes/dorucovaci-protokoly-delivery-protocols/) (Total Order):**
+- **[Doručovací algoritmus](/notes/dorucovaci-protokoly-delivery-protocols.html) (Total Order):**
     - Zajistí, že když mluvčí řekne větu, všichni si ji zapíší na řádek 5. Nikdo si ji nezapíše na řádek 6.
         
 - **Virtuální synchronie:**

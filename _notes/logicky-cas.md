@@ -4,7 +4,7 @@ tags:
 language: czech
 title: "logický čas"
 ---
-Logický čas není fyzikální veličina (netiká v sekundách), ale **diskretní číselný systém**, který slouží k zachycení [kauzálních závislostí](/notes/kauzalni-zavislost/) (příčina → následek) mezi událostmi v [distribuovaném systému](/notes/distributed-system/).
+Logický čas není fyzikální veličina (netiká v sekundách), ale **diskretní číselný systém**, který slouží k zachycení [kauzálních závislostí](/notes/kauzalni-zavislost.html) (příčina → následek) mezi událostmi v [distribuovaném systému](/notes/distributed-system.html).
 
 Umožňuje nám odpovědět na otázku: _"Stala se událost A před událostí B, nebo jsou nezávislé?"_ bez použití fyzických hodin.
 

@@ -5,7 +5,7 @@ tags:
 language: czech
 title: "quorum-based koordinace"
 ---
-Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech/)
+Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech.html)
 
 ---
 
@@ -42,7 +42,7 @@ Existuje **trade-off** mezi velikostí quora a počtem zpráv:
 ---
 ## Jak to funguje
 
-### Základní průběh ([Maekawa's algorithm](/notes/maekawas-algorithm/)-style)
+### Základní průběh ([Maekawa's algorithm](/notes/maekawas-algorithm.html)-style)
 
 1. **Sestavení quor:** Každý proces $P_i$ má přiřazenou hlasovací množinu $V_i$
 2. **REQUEST:** $P_i$ chce do CS → pošle `REQUEST(timestamp)` **jen členům $V_i$** (ne všem!)
@@ -74,8 +74,8 @@ Existuje **trade-off** mezi velikostí quora a počtem zpráv:
 - ❌ Velikost quora: $\lceil \frac{N+1}{2} \rceil$ (poměrně velké)
 
 **Použití:**
-- [paxos](/notes/paxos/), [RAFT](/notes/raft/)
-- [Distributed databases](/notes/replikace/)
+- [paxos](/notes/paxos.html), [RAFT](/notes/raft.html)
+- [Distributed databases](/notes/replikace.html)
 
 ### 2. Grid-based Quorum (√N × √N mřížka)
 **Definice:** Uspořádej N uzlů do $\sqrt{N} \times \sqrt{N}$ matice.
@@ -103,7 +103,7 @@ P5 má quorum: {4, 5, 6, 2, 5, 8} = {2, 4, 5, 6, 8}
 - ❌ Méně odolný vůči výpadkům (jeden výpadek může blokovat celý řádek/sloupec)
 
 **Použití:**
-- [Maekawa algorithm](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/)
+- [Maekawa algorithm](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html)
 
 ### 3. Read/Write Quorum (Dynamo-style)
 
@@ -125,7 +125,7 @@ P5 má quorum: {4, 5, 6, 2, 5, 8} = {2, 4, 5, 6, 8}
 - Write-heavy: malé $Q_W$, velké $Q_R$ (rychlý zápis)
 
 **Použití:**
-- [replikace](/notes/replikace/)
+- [replikace](/notes/replikace.html)
 - Distributed key-value stores
 
 ### 4. Weighted Quorum
@@ -196,7 +196,7 @@ Validní quora:
 
 ## Použití v praxi
 
-### 1. [Mutual Exclusion - Maekawa](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/)
+### 1. [Mutual Exclusion - Maekawa](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html)
 ```python
 class MaekawaProcess:
   def request_CS(self):
@@ -237,7 +237,7 @@ class MaekawaProcess:
       send(next_requester, VOTE(self.id))
 ```
 
-### 2. [paxos](/notes/paxos/)
+### 2. [paxos](/notes/paxos.html)
 **Phase 1: Prepare**
 ```python
 def propose(value):
@@ -265,7 +265,7 @@ def propose(value):
     return CHOSEN(final_value)
 ```
 
-### 3. [replikace](/notes/replikace/)
+### 3. [replikace](/notes/replikace.html)
 
 **Write (W=3 z N=5):**
 ```python
@@ -331,7 +331,7 @@ Některá quora jsou větší než jiná
 
 ## Srovnání s ostatními mechanismy
 
-| Vlastnost              | Quorum                      | [permission-based koordinace](/notes/permission-based-koordinace/)  | [token-based koordinace](/notes/token-based-koordinace/) |
+| Vlastnost              | Quorum                      | [permission-based koordinace](/notes/permission-based-koordinace.html)  | [token-based koordinace](/notes/token-based-koordinace.html) |
 | ---------------------- | --------------------------- | ----------------------------- | ------------- | ------------------------ | ------- |
 | Počet zpráv            | **O(√N) - O(N/2)** 🟡       | O(N) ❌                        | O(1) ✅        |                          |         |
 | Odolnost vůči výpadkům | **✅ Vysoká** (majority)     | 🟡 Nízká                      | ❌ Velmi nízká |                          |         |

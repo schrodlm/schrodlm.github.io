@@ -88,4 +88,4 @@ These formulas are useful for verifying that the system behaves as expected:
 - The **liveness property** ensures that the system will eventually fulfill its duties (e.g., always responding to requests).
 - The **next state property** sets strict timing conditions for how quickly the system should respond.
 
-LTL is commonly used in **[model checking](/notes/model-checking/)** to verify that systems, particularly reactive systems like operating systems, network protocols, or hardware controllers, adhere to these kinds of properties.
+LTL is commonly used in **[model checking](/notes/model-checking.html)** to verify that systems, particularly reactive systems like operating systems, network protocols, or hardware controllers, adhere to these kinds of properties.

@@ -14,7 +14,7 @@ Cílem je zajistit, aby žádný uzel nebyl přetížen, zatímco jiný zahálí
 
 >[!note] Souvislost s migrací
 >**Statické vyvažování (Placement):** Rozhodnu se, kde proces poběží, **jen jednou** na samém začátku (při jeho spuštění). Pokud se uzel později přetíží, proces tam prostě „umře“ nebo bude pomalý.
->**Migrační vyvažování (Migratory Load Balancing):** Je mnohem pokročilejší. Systém sleduje zátěž v průběhu času a pokud se situace změní, procesy za běhu stěhuje. Vyžaduje [vzdálené spouštění procesů a migrace](/notes/vzdalene-spousteni-procesu-a-migrace/).
+>**Migrační vyvažování (Migratory Load Balancing):** Je mnohem pokročilejší. Systém sleduje zátěž v průběhu času a pokud se situace změní, procesy za běhu stěhuje. Vyžaduje [vzdálené spouštění procesů a migrace](/notes/vzdalene-spousteni-procesu-a-migrace.html).
 
 ---
 ## Strategie vyvažování (zejména pro clustery)
@@ -41,7 +41,7 @@ Centrální koordinátor udržuje tabulku **"trestných bodů"** pro každý uze
 ### Vektorový algoritmus
 - Každý uzel má vektor L s informacemi o zátěži v systému (své i cizí).
 - Periodicky náhodně vybere jiný uzel a pošle mu polovinu svého vektoru.
-- Tímto "drbem" ([gossip](/notes/epidemicke-protokoly/)_) se informace o volných kapacitách přirozeně a rychle šíří celým systémem.
+- Tímto "drbem" ([gossip](/notes/epidemicke-protokoly.html)_) se informace o volných kapacitách přirozeně a rychle šíří celým systémem.
 
 ---
 ### Iniciace vyvažování (Kdo začne?)

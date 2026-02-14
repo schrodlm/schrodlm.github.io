@@ -3,7 +3,7 @@ layout: note
 title: "TOCTTOU"
 ---
 
-TOCTTOU (Time-of-check to time-of-use) je typ **[race condition](/notes/race-condition/)**, kdy se stav systému změní mezi okamžikem, kdy OS nebo aplikace něco zkontroluje, a okamžikem, kdy tuto informaci použije.
+TOCTTOU (Time-of-check to time-of-use) je typ **[race condition](/notes/race-condition.html)**, kdy se stav systému změní mezi okamžikem, kdy OS nebo aplikace něco zkontroluje, a okamžikem, kdy tuto informaci použije.
 
 ## Proč k tomu dochází
 Problém je v tom, že operace v systémech často nejsou **atomické**.

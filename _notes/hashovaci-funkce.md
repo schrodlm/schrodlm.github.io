@@ -23,8 +23,8 @@ $$h: \mathcal{U} \to [m]$$
 > [!important] Pigeonhole principle 
 > Pokud $|U| > m$, kolize jsou **nevyhnutelné**. Nelze je zcela eliminovat, pouze minimalizovat.
 
-Každá [rodina hashovacích funkcí](/notes/rodina-hashovacich-funkci/) má definované vlastnosti, které popisují pravděpodobnosti kolize:
-[c-univerzálnost](/notes/c-univerzalnost/)
+Každá [rodina hashovacích funkcí](/notes/rodina-hashovacich-funkci.html) má definované vlastnosti, které popisují pravděpodobnosti kolize:
+[c-univerzálnost](/notes/c-univerzalnost.html)
 
 ## Typy hashovacích funkcí
 
@@ -54,8 +54,8 @@ kde $A \in (0,1)$ je konstanta (Knuth doporučuje $A \approx \frac{\sqrt{5}-1}{2
 - **Nevýhody**: Pomalejší než division method
 
 ### 3. Polynomiální hashovací funkce
-[rodina polynomiálních hashovacích funkcí](/notes/rodina-polynomialnich-hashovacich-funkci/)
+[rodina polynomiálních hashovacích funkcí](/notes/rodina-polynomialnich-hashovacich-funkci.html)
 
 ## 4. Rolling hash systém
 Slouží k hashování řetězců (nebo vektorů)
-[složená rodina rolling hash](/notes/slozena-rodina-rolling-hash/)
+[složená rodina rolling hash](/notes/slozena-rodina-rolling-hash.html)

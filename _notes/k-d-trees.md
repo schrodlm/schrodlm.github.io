@@ -2,7 +2,7 @@
 references: [https://www.youtube.com/watch?v=Glp7THUpGow, https://mj.ucw.cz/vyuka/dsnotes/07-geom.pdf]
 title: "k-d trees"
 ---
-k-d strom je statická binární stromová datová struktura, která se používá na vyhledávání v multidimenzionálním prostoru (porovnává více kritérií) - podobně jako [range tree](/notes/range-tree/)
+k-d strom je statická binární stromová datová struktura, která se používá na vyhledávání v multidimenzionálním prostoru (porovnává více kritérií) - podobně jako [range tree](/notes/range-tree.html)
 > [!note] Pozor
 > - tato stromová struktura není samovyvažovací (i když existují samovyvažovací verze adaptive k-d trees)
 > - často se s ní pracuje tak, že pracujeme nad statickými daty
@@ -107,6 +107,6 @@ A teď dosadíme za $h$ (výška stromu je $\log_2 n$):
 $$2^{\frac{log_2 n}{2}} = (2^{\log_2 n})^{1/2} = n^{1/2} = \sqrt n$$
 ---
 # Dynamické k-d stromy
-Standardní k-d strom je skvělý pro statická data (postavíš ho jednou a pak jen hledáš). Pokud do něj ale začneš nekontrolovaně vkládat body, strom se „zkroutí“ a přestane být vyvážený. Tady nastupují [BB(alpha) tree (weight balanced tree)](/notes/bbalpha-tree-weight-balanced-tree/) (Bounded Balance stromy, známé také jako stromy s váhovou vyvážeností).
+Standardní k-d strom je skvělý pro statická data (postavíš ho jednou a pak jen hledáš). Pokud do něj ale začneš nekontrolovaně vkládat body, strom se „zkroutí“ a přestane být vyvážený. Tady nastupují [BB(alpha) tree (weight balanced tree)](/notes/bbalpha-tree-weight-balanced-tree.html) (Bounded Balance stromy, známé také jako stromy s váhovou vyvážeností).
 
 Místo toho, aby byl k-d strom vyvažován rotacemi, použije se technika **částečného přestavění (partial rebuilding)**.

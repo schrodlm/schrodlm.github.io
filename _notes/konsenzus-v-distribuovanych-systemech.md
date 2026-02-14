@@ -5,7 +5,7 @@ tags:
 language: czech
 title: "konsenzus v distribuovaných systémech"
 ---
-**Konsenzus** (agreement, shoda) je fundamentální problém [koordinace](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu/): Jak dosáhnout **shody** mezi procesy na **jedné hodnotě**, i když některé uzly selhávají nebo je síť nespolehlivá?
+**Konsenzus** (agreement, shoda) je fundamentální problém [koordinace](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html): Jak dosáhnout **shody** mezi procesy na **jedné hodnotě**, i když některé uzly selhávají nebo je síť nespolehlivá?
 
 Je to jeden z nejtěžších a nejdůležitějších problémů v distribuovaných systémech.
 
@@ -17,16 +17,16 @@ Je to jeden z nejtěžších a nejdůležitějších problémů v distribuovaný
 
 ## Proč je konsenzus důležitý?
 Konsenzus je **základní stavební kámen** pro:
-- **[State Machine Replication](/notes/state-machine-replication-smr/)** - všechny repliky musí aplikovat operace ve stejném pořadí
-- **[Leader Election](/notes/volba-koordinatora-leader-election/)** - kdo je leader?
-- **[Group Membership](/notes/group-membership/)** - kdo je součástí skupiny?
+- **[State Machine Replication](/notes/state-machine-replication-smr.html)** - všechny repliky musí aplikovat operace ve stejném pořadí
+- **[Leader Election](/notes/volba-koordinatora-leader-election.html)** - kdo je leader?
+- **[Group Membership](/notes/group-membership.html)** - kdo je součástí skupiny?
 - **Distribuované databáze** - na jaké hodnotě se shodneme?
 - **Blockchain** - jaký je další blok v řetězci?
 
 **Bez konsenzu nelze stavět spolehlivé distribuované systémy.**
 
 ---
-## [vztah konsenzu a detekce globálního stavu](/notes/vztah-konsenzu-a-detekce-globalniho-stavu/)
+## [vztah konsenzu a detekce globálního stavu](/notes/vztah-konsenzu-a-detekce-globalniho-stavu.html)
 ---
 ## Formální definice problému
 Proces $P_i$ navrhuje hodnotu $v_i$. Konsenzus algoritmus musí zajistit:
@@ -47,7 +47,7 @@ Každý proces se rozhodne **nejvýše jednou**.
 ---
 ## Teoretické limity
 
-### [problém dvou armád](/notes/problem-dvou-armad/)
+### [problém dvou armád](/notes/problem-dvou-armad.html)
 V nespolehlivé síti nelze dosáhnout 100% jistoty o shodě (nekonečná regrese potvrzení).
 
 ### FLP impossibility
@@ -59,7 +59,7 @@ V asynchronním systému nelze garantovat deterministický konsenzus při selhá
 3. **Randomizace** - probabilistické algoritmy (např. Ben-Or)
 4. **Failure detectors** - odhad, kdo je živý/mrtvý
 
-**Praktické algoritmy ([paxos](/notes/paxos/), [RAFT](/notes/raft/)):**
+**Praktické algoritmy ([paxos](/notes/paxos.html), [RAFT](/notes/raft.html)):**
 - Obětují **garantovanou terminaci** (mohou se zaseknout při edge cases)
 - Ale v praxi fungují dobře (částečná synchronie drží)
 
@@ -69,15 +69,15 @@ V asynchronním systému nelze garantovat deterministický konsenzus při selhá
 ## Podle typu selhání
 
 ### Crash fault tolerance (CFT)
-- [paxos](/notes/paxos/) - složitý, teoreticky elegantní
-- [RAFT](/notes/raft/) - jednodušší
+- [paxos](/notes/paxos.html) - složitý, teoreticky elegantní
+- [RAFT](/notes/raft.html) - jednodušší
 ### Byzantine Fault Tolerance (BFT)
 Algoritmy pro systémy, kde procesy mohou **lhát** nebo se chovat **libovolně špatně**.
-- [PBFT (practical byzantine fault tolerance)](/notes/pbft-practical-byzantine-fault-tolerance/)
+- [PBFT (practical byzantine fault tolerance)](/notes/pbft-practical-byzantine-fault-tolerance.html)
 
 ### Probabilistický BFT:
-- [proof of work (PoW)](/notes/proof-of-work-pow/) - Bitcoin, Ethereum (do 2022)
-- [proof of stake (PoS)](/notes/proof-of-stake-pos/) - Ethereum 2.0, Cardano
+- [proof of work (PoW)](/notes/proof-of-work-pow.html) - Bitcoin, Ethereum (do 2022)
+- [proof of stake (PoS)](/notes/proof-of-stake-pos.html) - Ethereum 2.0, Cardano
 - Škáluje na tisíce uzlů
 
 ## Podle centralizace
@@ -88,7 +88,7 @@ Algoritmy pro systémy, kde procesy mohou **lhát** nebo se chovat **libovolně 
 
 ---
 ## Srovnání nejdůležitějších algoritmů
-| Vlastnost  | [paxos](/notes/paxos/)            | [RAFT](/notes/raft/)                     | [proof of work (PoW)](/notes/proof-of-work-pow/) (Bitcoin)      |
+| Vlastnost  | [paxos](/notes/paxos.html)            | [RAFT](/notes/raft.html)                     | [proof of work (PoW)](/notes/proof-of-work-pow.html) (Bitcoin)      |
 | ---------- | -------------------- | ---------------------------- | -------------------------------------- |
 | Hlavní cíl | Bezpečnost, Obecnost | Srozumitelnost, Implementace | Sybil resistence, Open membership      |
 | Lídr       | Dočasný (Proposer)   | Silný, stabilní              | Probabilistický (kdo najde blok)       |
@@ -142,7 +142,7 @@ Algoritmy pro systémy, kde procesy mohou **lhát** nebo se chovat **libovolně 
 ## Klíčová poznání
 1. **Konsenzus je hard** - FLP dokázal, že v asynchronních systémech je teoreticky neřešitelný
 2. **Praktické algoritmy fungují** - díky částečné synchronii a timeoutům
-3. **Quorum je klíč** - většina algoritmů používá [majority quorum](/notes/quorum-based-koordinace/)
+3. **Quorum je klíč** - většina algoritmů používá [majority quorum](/notes/quorum-based-koordinace.html)
 4. **Trade-off: CFT vs. BFT**
    - CFT (Paxos/Raft): Rychlejší, jednodušší, ale nepočítá se zlovolnými uzly
    - BFT (PBFT/PoW): Odolnější, ale pomalejší a složitější

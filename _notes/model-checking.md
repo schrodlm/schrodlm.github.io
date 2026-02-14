@@ -27,7 +27,7 @@ Explicit state space methods
 - they examine the reachable states using search techniques, the search space represents both the states of the model and the checked property.
 Symbolic model checking
 - uses an efficient data structure called BDD to store sets of states, and progresses from one set of states to another rather than state by state.
-[bounded model checking](/notes/bounded-model-checking/)
+[bounded model checking](/notes/bounded-model-checking.html)
 - encodes a counterexamples as a SAT formula and uses the power of modern SAT solvers.
 - thus approach conquers new ground by using capabilities of SAT solvers enriched with decidable theories (SMT) in order to verify system with an infinite state space
 
@@ -47,11 +47,11 @@ being manifested in the kind of observations that are made about the possible ex
 
 **The modeling also affects the complexity of the verification**; it is tempting to use a modeling formalism that is very expressive, however, there is a clear tradeoff between expressiveness and complexity.
 
-In order to model systems, we work with [first-order languages](/notes/first-order-logic/)![Image](/assets/img/modelling_system_example.pdf)
+In order to model systems, we work with [first-order languages](/notes/first-order-logic.html)![Image](/assets/img/modelling_system_example.pdf)
 this execution model in example is called the ***interleaving model*** and can be used to represent sequential as well as concurrent executions.
 For an intuitive explanation of the interleaving view, assume that the order of occurrences of transitions represent the moment when their effect is taking place.
 
-Another way to represent the model could be with [LTL (linear temporal logic)](/notes/ltl-linear-temporal-logic/) 
+Another way to represent the model could be with [LTL (linear temporal logic)](/notes/ltl-linear-temporal-logic.html) 
 #### State graph from transition system
 Given a transition system, its **state graph** can be defined, which is a graph of states reachable from any of its initial state.
 Each directed edge can be annotated by the transition that is executed to transform its incoming state into its outgoing state.
@@ -72,5 +72,5 @@ Two processors want both to increment a shared variable `x` by 1.
 Modeling this increment as a single atomic transition may reflect the behavior of the actual system if, e.g., the variable `x` is implemented as a register (this is possible, e.g., in the C language). On the other hand, it is also possible that `x` stored in some physical memory location is being first copied into an internal register (in each process, separately), which is incremented before the new value is being copied back to the memory location that holds `x`. In this case, if the initial value is 0, both processes will read the value 0, store it, increment it, and
 store 1 back to `x`; a loss of one increment.
 
-## [Specification](/notes/system-specification/)
+## [Specification](/notes/system-specification.html)
 Very important part of creating a model of a system is to have that system's specification.

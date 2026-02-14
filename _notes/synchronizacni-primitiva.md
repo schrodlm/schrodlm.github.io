@@ -3,6 +3,6 @@ layout: note
 title: "synchronizační primitiva"
 ---
 
-[mutex](/notes/mutex/)
+[mutex](/notes/mutex.html)
 semafor
 monitor

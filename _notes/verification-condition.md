@@ -13,4 +13,4 @@ VC represents a neccesary properties of the program (such as assertions, precond
 2. **Generation of Verification Conditions**: A static analysis tool (such as a verification tool) examines the code and generates a set of logical conditions (VCs) that must hold true for the program to meet its specification.
 3. **Proving VCs**: The VCs are then handed to an automatic theorem prover (such as Z3 or another SMT solver). If all the VCs are proven true, the program is considered verified.
 
-Alghorhitms to determine VC of a program exist. They use concept of [weakest precondition](/notes/weakest-precondition/). 
+Alghorhitms to determine VC of a program exist. They use concept of [weakest precondition](/notes/weakest-precondition.html). 

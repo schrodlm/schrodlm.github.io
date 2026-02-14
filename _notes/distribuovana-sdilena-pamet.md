@@ -6,7 +6,7 @@ title: "distribuovaná sdílená paměť"
 **Distribuovaná sdílená paměť** je softwarová vrstva (middleware), která umožňuje procesům na různých uzlech přistupovat k datům tak, jako by byly v jedné společné RAM, přestože ve skutečnosti probíhá pod kapotou posílání zpráv (message passing).
 
 ## Pravidla
-Zde opět [modely konzistence distribuovaného systému](/notes/modely-konzistence-distribuovaneho-systemu/) definují pravidla, jak se změny v paměti propagují. Čím silnější model, tím jednodušší programování, ale pomalejší systém.
+Zde opět [modely konzistence distribuovaného systému](/notes/modely-konzistence-distribuovaneho-systemu.html) definují pravidla, jak se změny v paměti propagují. Čím silnější model, tím jednodušší programování, ale pomalejší systém.
 
 ### Silné modely (Strong Consistency)
 - **Linearizovatelnost**: Operace jsou viditelné okamžitě v reálném čase. Nejpřísnější, ale nejpomalejší model.
@@ -18,4 +18,4 @@ Zde opět [modely konzistence distribuovaného systému](/notes/modely-konzisten
 
 ---
 ## Implementace
-[distribuované stránkování](/notes/distribuovane-strankovani/)
+[distribuované stránkování](/notes/distribuovane-strankovani.html)

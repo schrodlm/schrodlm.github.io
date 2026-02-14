@@ -44,7 +44,7 @@ std::cout << "Size of All: " << All::size << std::endl;
 ## Concepts
 Okay, how does it work and what concepts does it use?
 
-Let's start from the first line, `TypeList<int, float, long>`. You generate something called a [c++ parameter pack](/notes/c-parameter-pack/). It can hold zero or more type parameters. This is basic templating usage, the interesting things happen when we want to concatenate.
+Let's start from the first line, `TypeList<int, float, long>`. You generate something called a [c++ parameter pack](/notes/c-parameter-pack.html). It can hold zero or more type parameters. This is basic templating usage, the interesting things happen when we want to concatenate.
 
 Let's look at `using All = TypeListConcat<Numbers, Chars, Bools>` and keep in mind that this is done in compile-time.
 
@@ -63,7 +63,7 @@ struct TypeListConcatImpl<TypeList<T1...>, TypeList<T2...>, Rest...> {
 	using R = TypeListConcatImpl<TypeList<T1..., T2...>, Rest...>::R;
 };
 ```
-This uses a concept called [c++ template specialization](/notes/c-template-specialization/) and an idea of recursion. It basically tries to pattern match (partial specialization) the arguments to either the recursive case or the base case. If we pattern match to the recursive case, we glue together the first two arguments and recurse again, until we reach the base case where the list is completely concatenated.
+This uses a concept called [c++ template specialization](/notes/c-template-specialization.html) and an idea of recursion. It basically tries to pattern match (partial specialization) the arguments to either the recursive case or the base case. If we pattern match to the recursive case, we glue together the first two arguments and recurse again, until we reach the base case where the list is completely concatenated.
 
 ### Pattern Matching Details
 

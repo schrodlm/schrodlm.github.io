@@ -5,9 +5,9 @@ title: "komunikační model"
 
 ## Komunikační model
 
-Komunikační model je **vysokoúrovňová abstrakce** nad [komunikací v distribuovaných systémech](/notes/komunikace-v-distribuovanych-systemech/), kterou poskytuje [middleware](/notes/middleware/) distribuovaným aplikacím. 
+Komunikační model je **vysokoúrovňová abstrakce** nad [komunikací v distribuovaných systémech](/notes/komunikace-v-distribuovanych-systemech.html), kterou poskytuje [middleware](/notes/middleware.html) distribuovaným aplikacím. 
 
-Definuje **pravidla interakce** (např. [RPC](/notes/rpc/), message passing, pub/sub) a **garance** ohledně spolehlivosti, pořadí doručení a chování při selhání, čímž skrývá složitost fyzické sítě.
+Definuje **pravidla interakce** (např. [RPC](/notes/rpc.html), message passing, pub/sub) a **garance** ohledně spolehlivosti, pořadí doručení a chování při selhání, čímž skrývá složitost fyzické sítě.
 
 **Komunikační model** je **specifikace** (co chceme). Je implementován konkrétními **protokoly** (jak to uděláme), které používají **algoritmy** (logika implementace).
 
@@ -22,7 +22,7 @@ Definuje **pravidla interakce** (např. [RPC](/notes/rpc/), message passing, pub
 
 Každý komunikační model poskytuje specifické **garance**, které odpovídají na fundamentální otázky:
 
-### 1. [Uspořádání](/notes/usporadani-komunikace-v-distribuovanych-systemech/)
+### 1. [Uspořádání](/notes/usporadani-komunikace-v-distribuovanych-systemech.html)
 **Otázka:** V jakém pořadí zprávy uvidím?
 
 **Garance:**
@@ -31,7 +31,7 @@ Každý komunikační model poskytuje specifické **garance**, které odpovídaj
 - Total order
 - No order (best effort)
 
-### 2. [Spolehlivost](/notes/spolehlivost-delivery-semantics/)
+### 2. [Spolehlivost](/notes/spolehlivost-delivery-semantics.html)
 **Otázka:** Dostanu zprávu vůbec – a kolikrát?
 
 **Garance:**
@@ -45,13 +45,13 @@ Každý komunikační model poskytuje specifické **garance**, které odpovídaj
 **Garance:**
 - Static membership (fixní skupina)
 - Dynamic membership (join/leave)
-- [virtuální synchronie](/notes/virtualni-synchronie/) (view synchrony)
+- [virtuální synchronie](/notes/virtualni-synchronie.html) (view synchrony)
 
 **Platí:**
 - **Point-to-point (1:1):** pořadí + spolehlivost
 - **Multicast (1:N, N:M):** pořadí + spolehlivost + členství
 ---
-## [Vztah ke konzistenci](/notes/vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech/)
+## [Vztah ke konzistenci](/notes/vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech.html)
 
 **Model konzistence** (např. linearizability, causal consistency) je **cílový stav** dat/paměti.
 

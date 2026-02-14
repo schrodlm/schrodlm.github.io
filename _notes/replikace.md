@@ -23,8 +23,8 @@ Replikace je sice nástrojem spolehlivosti, ale jejím přímým vedlejším pro
 **Proč?** 
 - Jakmile existuje více kopií, zpráva o změně stavu putuje k ostatním uzlům **rychlostí sítě**, nikoliv okamžitě 
 - Různé repliky mohou mít **dočasně odlišný stav** 
-- **[Konzistence](/notes/konzistence-distribuovaneho-systemu/)** je pak klíčová vlastnost, která určuje, nakolik jsou data v různých replikách v daném čase shodná.
-- **Trade-off:** Silnější konzistence = vyšší latence a nižší dostupnost ([CAP theorem](/notes/cap-theorem/)) 
+- **[Konzistence](/notes/konzistence-distribuovaneho-systemu.html)** je pak klíčová vlastnost, která určuje, nakolik jsou data v různých replikách v daném čase shodná.
+- **Trade-off:** Silnější konzistence = vyšší latence a nižší dostupnost ([CAP theorem](/notes/cap-theorem.html)) 
 
 ---
 ## Strategie replikace
@@ -36,7 +36,7 @@ V praxi se setkáváme se dvěma hlavními přístupy k šíření změn mezi re
 - Lídr je jediným zdrojem pravdy pro modifikace stavu.
 - **Příklad - RAFT:** Lídr přijímá požadavky a replikuje je jako logy na ostatní uzly. K potvrzení zápisu mu stačí odpověď od **většiny (kvóra)**.
 
-### Aktivní replikace ([state machine replication (SMR)](/notes/state-machine-replication-smr/))
+### Aktivní replikace ([state machine replication (SMR)](/notes/state-machine-replication-smr.html))
 - Všechny repliky jsou si rovny a každá z nich samostatně zpracovává požadavky.
 - Vyžaduje **Totální uspořádání zpráv** (_Total Order_), aby všechny repliky dospěly ke stejnému výslednému stavu.
 ---
@@ -90,13 +90,13 @@ Master: INSERT INTO users VALUES (1, 'Alice')
 ❌ Problém: Non-deterministické funkce (`NOW()`, `RAND()`)
 ![Image](/assets/img/Pasted image 20260118184423.png)
 
-### 2. [Gossip-based](/notes/epidemicke-protokoly/) (Epidemic)
+### 2. [Gossip-based](/notes/epidemicke-protokoly.html) (Epidemic)
 - Každý uzel náhodně šíří změny sousedům
 → Nakonec se všude rozšíří
 
 Škálovatelné, fault-tolerant 
 
-### 3. [CRDT (conflict-free replicated data types)](/notes/crdt-conflict-free-replicated-data-types/)
+### 3. [CRDT (conflict-free replicated data types)](/notes/crdt-conflict-free-replicated-data-types.html)
 - **Princip:** Datové typy navržené tak, aby změny mohly probíhat na libovolné replice nezávisle a bez koordinace (leaderless).
 - **Vlastnost:** Matematicky zaručují, že po synchronizaci (např. pomocí Gossipu) se všechny repliky shodnou na stejném stavu bez vzniku konfliktů
 - **Vztah ke konzistenci:** Dosahují **Eventual consistency** bez nutnosti drahého globálního konsenzu (na rozdíl od RAFTu či Bitcoinu).
@@ -110,6 +110,6 @@ Extrémní forma replikace, kde tři procesy počítají totéž a o výsledku s
 
 ---
 ## Shrnutí
-Podle [CAP theorem](/notes/cap-theorem/) nelze v replikovaném systému při rozdělení sítě zajistit současně konzistenci (C) a dostupnost (A).
+Podle [CAP theorem](/notes/cap-theorem.html) nelze v replikovaném systému při rozdělení sítě zajistit současně konzistenci (C) a dostupnost (A).
 - **CP Systémy:** Preferují shodu replik (konzistenci) za cenu dočasné nedostupnosti.
 - **AP Systémy:** Preferují dostupnost a akceptují dočasnou nekonzistenci replik (_Eventual Consistency_).

@@ -8,10 +8,10 @@ V distribuovaném systému je stav rozprostřen a neustále se mění vlivem asy
 **Checkpointing a Recovery (Zotavení)**: 
 - Pravidelné ukládání konzistentního stavu celého systému na disk. Pokud dojde k havárii (Crash Failure), systém se může restartovat z posledního uloženého snapshotu, místo aby začínal od nuly.
 
-**[detekce uváznutí](/notes/deadlock-v-distribuovanem-systemu/) (deadlock detection)**:
+**[detekce uváznutí](/notes/deadlock-v-distribuovanem-systemu.html) (deadlock detection)**:
 - Zjištění, zda se systém nedostal do cyklického čekání na prostředky, které nikdo neuvolní.
 
-**[Detekce terminace](/notes/detekce-terminace-v-distribuovanem-systemu/) (termination detection)**
+**[Detekce terminace](/notes/detekce-terminace-v-distribuovanem-systemu.html) (termination detection)**
 - Zjištění, zda již všechny uzly dokončily svou práci a v komunikačních kanálech nejsou žádné zprávy, které by mohly vyvolat další aktivitu.
 
 **Distribuované ladění (Debugging)**:
@@ -21,8 +21,8 @@ V distribuovaném systému je stav rozprostřen a neustále se mění vlivem asy
 - Identifikace objektů, na které již neexistuje odkaz nikde v celém distribuovaném systému, aby mohla být uvolněna paměť.
 
 ---
-## [vztah konsenzu a detekce globálního stavu](/notes/vztah-konsenzu-a-detekce-globalniho-stavu/)
+## [vztah konsenzu a detekce globálního stavu](/notes/vztah-konsenzu-a-detekce-globalniho-stavu.html)
 
 ---
 ## Algoritmy pro detekci globálního stavu
-[Chandy-Lamport](/notes/chandy-lamport/)
+[Chandy-Lamport](/notes/chandy-lamport.html)

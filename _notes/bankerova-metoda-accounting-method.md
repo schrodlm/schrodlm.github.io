@@ -3,7 +3,7 @@ layout: note
 title: "bankéřova metoda (accounting method)"
 ---
 
-Jedná se způsob jak dokázat [amortizovanou složitost](/notes/amortized-complexity/) datových struktur
+Jedná se způsob jak dokázat [amortizovanou složitost](/notes/amortized-complexity.html) datových struktur
 
  Je založena na principu **předplácení**.
 - **Analogie:** Prasátko na peníze.

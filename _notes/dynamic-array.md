@@ -45,9 +45,9 @@ Když prvky odebíráme (operace `pop`), chceme uvolnit paměť, pokud je pole p
 
 ## Analýza časové složitosti
 
-Složitost jedné operace v nejhorším případě (worst-case) je $O(n)$, protože musíme vše zkopírovat. Ale [amortizovaná](/notes/amortized-analysis/) (průměrná) složitost je $O(1)$.
+Složitost jedné operace v nejhorším případě (worst-case) je $O(n)$, protože musíme vše zkopírovat. Ale [amortizovaná](/notes/amortized-analysis.html) (průměrná) složitost je $O(1)$.
 
-Použijme tzv. **[Bankéřovu metodu](/notes/bankerova-metoda-accounting-method/):** 
+Použijme tzv. **[Bankéřovu metodu](/notes/bankerova-metoda-accounting-method.html):** 
 Představme si, že každá operace stojí "peníze" (jednotky času). Kopírování prvku stojí $1. Vložení prvku stojí $1.
 
 - Za každé vložení (append) zaplatíme **$3**:    

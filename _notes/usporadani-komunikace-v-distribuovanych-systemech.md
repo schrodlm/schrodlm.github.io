@@ -5,7 +5,7 @@ language: czech
 source: https://www.youtube.com/watch?v=A8oamrHf_cQ
 title: "uspořádání (komunikace v distribuovaných systémech)"
 ---
-Uspořádání zpráv je jedna z garancí definovaných [komunikačním modelem](/notes/komunikacni-model/) distribuovaného systému, která určuje, v jakém pořadí jsou zprávy doručovány aplikacím.
+Uspořádání zpráv je jedna z garancí definovaných [komunikačním modelem](/notes/komunikacni-model.html) distribuovaného systému, která určuje, v jakém pořadí jsou zprávy doručovány aplikacím.
 
 ---
 ## Typy uspořádání
@@ -15,7 +15,7 @@ Musíš vědět, jaké garance pořadí systém nabízí:
 - _Příklad:_ Když já pošlu "$A$" a pak "$B$", všichni dostanou "$A$" a pak "$B$". Ale mezi to se může vklínit zpráva od někoho jiného.
 ![Image](/assets/img/Pasted image 20260118193052.png)
 ### Kauzální uspořádání (causal ordering)
-Je to garance [doručovacího protokolu](/notes/dorucovaci-protokoly-delivery-protocols/), která zajišťuje, že **fyzické doručení zpráv respektuje jejich [kauzální závislost](/notes/kauzalni-zavislost/).**
+Je to garance [doručovacího protokolu](/notes/dorucovaci-protokoly-delivery-protocols.html), která zajišťuje, že **fyzické doručení zpráv respektuje jejich [kauzální závislost](/notes/kauzalni-zavislost.html).**
 ![Image](/assets/img/Pasted image 20260118193339.png)
 
 #### 1. Vztah ke kauzální závislosti
@@ -36,7 +36,7 @@ Protokol nemůže tušit obsah zpráv (neví, že $m_2$​ je odpověď na $m_1$
 ### Totální uspořádání (total ordering)
 - Garance: **Všichni vidí všechno naprosto stejně.**
 - Pokud server A vidí pořadí zpráv $M_1​,M_2​,M_3​$, pak server B, C i D musí vidět $M_1​,M_2​,M_3​$.
-- _Použití:_ Nutné pro [state machine replication (SMR)](/notes/state-machine-replication-smr/)** (aby měly všechny databáze na konci stejná data). Je to nejpomalejší a nejtěžší na implementaci.
+- _Použití:_ Nutné pro [state machine replication (SMR)](/notes/state-machine-replication-smr.html)** (aby měly všechny databáze na konci stejná data). Je to nejpomalejší a nejtěžší na implementaci.
 ![Image](/assets/img/Pasted image 20260118193714.png)
 
 ## Vztah mezi jednotlivými broadcast modely

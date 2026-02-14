@@ -21,7 +21,7 @@ Jazyk je tedy **množina všech vstupů, na které má být odpověď ANO**.
 
 ### Proč právě jazyky?
 
-Protože [univerzální turingův stroj](/notes/univerzalni-turinguv-stroj/) pracuje se slovy.  Když tedy chceme popsat, které vstupy má přijmout, nejpřirozenějším modelem je právě „množina slov“.
+Protože [univerzální turingův stroj](/notes/univerzalni-turinguv-stroj.html) pracuje se slovy.  Když tedy chceme popsat, které vstupy má přijmout, nejpřirozenějším modelem je právě „množina slov“.
 
 
 ## Příklady

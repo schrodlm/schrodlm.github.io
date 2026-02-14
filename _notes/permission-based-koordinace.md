@@ -5,7 +5,7 @@ tags:
 language: czech
 title: "permission-based koordinace"
 ---
-Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech/)
+Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech.html)
 
 ---
 ## Princip
@@ -24,7 +24,7 @@ Proces musí **explicitně požádat ostatní procesy o souhlas** před vykonán
 3. **Čekání:** Pi čeká, až dostane **GRANT od všech** N-1 procesů
 4. **Vstup:** Teprve pak Pi vstoupí do kritické sekce
 5. **RELEASE:** Po opuštění CS pošle Pi všem procesům `RELEASE`, aby uvolnil jejich hlasy
-### Rozhodování o prioritě ([logický čas](/notes/logicky-cas/))
+### Rozhodování o prioritě ([logický čas](/notes/logicky-cas.html))
 ```
 if dostanu REQUEST(Tj) od Pj:
   if nechci_do_CS:
@@ -59,8 +59,8 @@ Proces Pi chce do CS:
 - Explicitní GRANT od všech
 - **Počet zpráv:** 3(N-1) - REQUEST, GRANT, RELEASE
 
-### 3. [Maekawa's algorithm](/notes/maekawas-algorithm/) (quorum, ne čistý permission)
-- Žádá jen **podmnožinu** (√N) procesů → viz [quorum-based koordinace](/notes/quorum-based-koordinace/)
+### 3. [Maekawa's algorithm](/notes/maekawas-algorithm.html) (quorum, ne čistý permission)
+- Žádá jen **podmnožinu** (√N) procesů → viz [quorum-based koordinace](/notes/quorum-based-koordinace.html)
 
 ---
 ## Vlastnosti
@@ -97,7 +97,7 @@ Proces Pi chce do CS:
 **3. Nízká odolnost vůči výpadkům**
 - Pokud **jeden** proces spadne → celý systém zamrzne
 - Všichni čekají na odpověď, která nikdy nepřijde
-- Potřeba [failure detection](/notes/detekce-selhani-failure-detection/) a recovery
+- Potřeba [failure detection](/notes/detekce-selhani-failure-detection.html) a recovery
 
 **4. Režie při nízké konkurenci**
 - I když nikdo nesoutěží, musíš poslat N zpráv
@@ -106,7 +106,7 @@ Proces Pi chce do CS:
 ---
 ## Použití v praxi
 
-### 1. [Mutual Exclusion](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/)
+### 1. [Mutual Exclusion](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html)
 
 **Ricart-Agrawala Algorithm:**
 
@@ -146,7 +146,7 @@ class Process:
     deferred_queue.clear()
 ```
 
-### 2. [Distributed Consensus](/notes/konsenzus-v-distribuovanych-systemech/)
+### 2. [Distributed Consensus](/notes/konsenzus-v-distribuovanych-systemech.html)
 **Two-Phase Commit (2PC):**
 - Koordinátor se ptá všech účastníků: "Můžeme commitnout?"
 - Všichni musí odpovědět ANO → teprve pak commit
@@ -185,7 +185,7 @@ if not received_grant(Pj) and timeout_elapsed():
 - P2 žádá P1 (timestamp T2)
 - Oba odloží odpověď → **deadlock**?
 
-**Řešení:** [logický čas](/notes/logicky-cas/) + deterministické uspořádání
+**Řešení:** [logický čas](/notes/logicky-cas.html) + deterministické uspořádání
 ```
 if T1 < T2:  P1 má přednost, P2 pošle GRANT
 elif T1 > T2: P2 má přednost, P1 pošle GRANT
@@ -197,7 +197,7 @@ elif T1 == T2 and i < j: Pi má přednost (deterministické)
 
 **Problém:** Čekání na všech N procesů = latence nejpomalejšího
 
-**Řešení:** Použij [quorum-based](/notes/quorum-based-koordinace/) místo permission-based
+**Řešení:** Použij [quorum-based](/notes/quorum-based-koordinace.html) místo permission-based
 - Stačí většina (N/2 + 1) odpovědí
 - Trade-off: Složitější logika, ale nižší latence
 
@@ -205,7 +205,7 @@ elif T1 == T2 and i < j: Pi má přednost (deterministické)
 
 ## Srovnání s ostatními mechanismy
 
-| Vlastnost | Permission | [token-based koordinace](/notes/token-based-koordinace/) | [quorum-based koordinace](/notes/quorum-based-koordinace/)|
+| Vlastnost | Permission | [token-based koordinace](/notes/token-based-koordinace.html) | [quorum-based koordinace](/notes/quorum-based-koordinace.html)|
 |-----------|------------|---------|--------|
 | Počet zpráv | **O(N)** ❌ | O(1) ✅ | O(√N) 🟡 |
 | Odolnost vůči výpadkům | 🟡 Nízká-střední | ❌ Nízká | ✅ Vysoká |
@@ -242,7 +242,7 @@ for p in processes:
 broadcast(REQUEST)  # 1 zpráva místo N
 ```
 
-### 3. Voting Sets ([Maekawa's algorithm](/notes/maekawas-algorithm/))
+### 3. Voting Sets ([Maekawa's algorithm](/notes/maekawas-algorithm.html))
 - Místo všech N procesů žádej jen √N
 - Zachováš férové uspořádání, snížíš počet zpráv
 
@@ -275,7 +275,7 @@ broadcast(REQUEST)  # 1 zpráva místo N
 
 ---
 
-## Vztah k [logickému času](/notes/logicky-cas/)
+## Vztah k [logickému času](/notes/logicky-cas.html)
 
 Permission-based algoritmy **kriticky závisí** na Lamportových timestampech:
 
@@ -289,8 +289,8 @@ Permission-based algoritmy **kriticky závisí** na Lamportových timestampech:
 
 ## Související pojmy
 
-- [mechanismy koordinace v distribuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech/)
-- [vzájemné vyloučení v distribuovaných systémech](/notes/vzajemne-vylouceni-v-distribuovanych-systemech/)
+- [mechanismy koordinace v distribuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech.html)
+- [vzájemné vyloučení v distribuovaných systémech](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html)
 - Lamportovy hodiny
-- [konsenzus v distribuovaných systémech](/notes/konsenzus-v-distribuovanych-systemech/)
-- [detekce selhání (failure detection)](/notes/detekce-selhani-failure-detection/)
+- [konsenzus v distribuovaných systémech](/notes/konsenzus-v-distribuovanych-systemech.html)
+- [detekce selhání (failure detection)](/notes/detekce-selhani-failure-detection.html)

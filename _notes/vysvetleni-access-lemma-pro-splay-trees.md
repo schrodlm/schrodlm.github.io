@@ -30,7 +30,7 @@ Vysoký potenciál $\Phi$ degenerovaného stromu představuje předplacenou prá
 
 Pokud je skutečná cena velmi drahá, aby amortizovaná složitost stále platila, bude muset být velká i změna potenciálu, aby se cena vyvážila
 
-### Jak funguje [amortizovaná složitost](/notes/amortized-complexity/)
+### Jak funguje [amortizovaná složitost](/notes/amortized-complexity.html)
 Amortizovaná cena =  Skutečná cena + Změna potenciálu($\Delta \phi$)
 
 - **Skutečná cena:** To, co procesor oddře (hloubka).

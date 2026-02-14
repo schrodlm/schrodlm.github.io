@@ -13,9 +13,9 @@ Je to zastřešující vlastnost, která není o jednom běhu systému, ale o je
 
 Typy redundance:
 1. **Informační redundance:** Přidáme bity navíc pro opravu chyb (ECC paměť, checksumy v paketech).
-2. **Časová redundance:** Když se akce nepovede, zkusíme to znovu (retry logic v [RPC](/notes/rpc/)).
-3. **Fyzická redundance ([replikace](/notes/replikace/)):** Místo jednoho serveru máme tři.
-### [vztah spolehlivosti a stavu distribuovaného systému](/notes/vztah-spolehlivosti-a-stavu-distribuovaneho-systemu/)
+2. **Časová redundance:** Když se akce nepovede, zkusíme to znovu (retry logic v [RPC](/notes/rpc.html)).
+3. **Fyzická redundance ([replikace](/notes/replikace.html)):** Místo jednoho serveru máme tři.
+### [vztah spolehlivosti a stavu distribuovaného systému](/notes/vztah-spolehlivosti-a-stavu-distribuovaneho-systemu.html)
 
 ---
 ## Vlastnosti co chceme

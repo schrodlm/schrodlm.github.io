@@ -3,7 +3,7 @@ layout: note
 title: "složená rodina rolling hash"
 ---
 
-[2-nezávislý](/notes/k-nezavislost/) systém pro hashování řetězců, vzniklý složením [rodina rolling hash](/notes/rodina-rolling-hash/) ($\mathcal{R}$) a [lineární rodiny](/notes/rodina-linearnich-hashovacich-funkci/) ($\mathcal{L}$).
+[2-nezávislý](/notes/k-nezavislost.html) systém pro hashování řetězců, vzniklý složením [rodina rolling hash](/notes/rodina-rolling-hash.html) ($\mathcal{R}$) a [lineární rodiny](/notes/rodina-linearnich-hashovacich-funkci.html) ($\mathcal{L}$).
 
 
 $$ \text{Výsledek} = \underbrace{\text{Lineární}(\underbrace{\text{RollingHash}(\text{Vstup}}_{\text{Krok 1:} \mathcal{R}}}_{\text{Krok 2:}\mathcal{L}}))$$
@@ -32,7 +32,7 @@ Představte si, že chcete zahashovat slovo **"AHOJ"** do tabulky velikosti $m$.
 ## Konstrukce 2-nezávislého systému
 Abychom získali systém, který je 2-nezávislý a zároveň má vlastnost rodina rolling hash#Princip rolling window, musíme sestrojit složenou rodinu hashovacích funkcí $\mathcal{H} = \mathcal{R} \circ \ \mathcal{L}$
 
-Tato rodina vzniká složením [rolling hash rodiny](/notes/rodina-rolling-hash/) ($\mathcal{R}$) a [lineární rodiny](/notes/rodina-linearnich-hashovacich-funkci/) ($\mathcal{L}$)
+Tato rodina vzniká složením [rolling hash rodiny](/notes/rodina-rolling-hash.html) ($\mathcal{R}$) a [lineární rodiny](/notes/rodina-linearnich-hashovacich-funkci.html) ($\mathcal{L}$)
 
 ### Parametry a příprava
 **Vstup**: Řetězec (vektor) $x$ = ($x_1, x_2, \dots, x_L)$ nad abecedou velikosti $a$. Pokud je řetězec kratší, doplníme ho nulami (padding), přičemž nula nesmí být součástí abecedy.
@@ -62,4 +62,4 @@ Samotná polynomiální funkce $h_t​(x)$ (krok 1) je pouze **$L$-univerzální
 
 ---
 ## Výhody
-Umožňuje přepočítat hash při posunu "okna" v textu v čase $O(1)$, což je klíčové pro algoritmy jako [Rabin-Karp algoritmus](/notes/rabin-karp-algoritmus/) .
+Umožňuje přepočítat hash při posunu "okna" v textu v čase $O(1)$, což je klíčové pro algoritmy jako [Rabin-Karp algoritmus](/notes/rabin-karp-algoritmus.html) .
