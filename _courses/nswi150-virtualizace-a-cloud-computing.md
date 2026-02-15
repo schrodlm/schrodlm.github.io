@@ -1,7 +1,7 @@
 ---
 layout: course
-title: "NPRG014 - Koncepty moderních programovacích jazyků"
-course_code: NPRG014
+title: "NSWI150 - Koncepty moderních programovacích jazyků"
+course_code: NSWI150
 university: MFF
 semester: Winter 2025 (1)
 year: 2025
@@ -14,16 +14,14 @@ teaching_quality: 4.5
 worth_it: true
 
 # Links
-course_page: https://...
+course_page: https://teaching.mff.cuni.cz/nswi150-web/
 
 # Tags for filtering/search
 tags:
-	- programming-languages
-	- functional-programming
-	- mff
+	- courses
 ---
 
 ### Review předmětu
-
+Lorem Ipsum
 
 ### Zkouška

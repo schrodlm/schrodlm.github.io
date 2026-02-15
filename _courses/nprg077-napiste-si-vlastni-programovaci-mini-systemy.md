@@ -1,19 +1,19 @@
 ---
 layout: course
-title: "NPRG014 - Koncepty moderních programovacích jazyků"
-course_code: NPRG014
+title: "NPRG077 - Napište si vlastní programovací mini-systém(y)!"
+course_code: NPRG077
 university: MFF
-semester: Winter 2025 (1)
+semester: 1
 year: 2025
 
 # Ratings (1-5 scale for consistency)
-difficulty: 2
-usefulness: 3
-teaching_quality: 4.5
+difficulty: 3
+usefulness: 4
+teaching_quality: 5
 worth_it: true
 
 # Links
-course_page: https://...
+course_page: https://d3s.mff.cuni.cz/teaching/nprg077/
 
 # Tags for filtering/search
 tags:
