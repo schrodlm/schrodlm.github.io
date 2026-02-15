@@ -18,7 +18,7 @@ course_page: https://d3s.mff.cuni.cz/teaching/nswi200/
 
 # Tags for filtering/search
 tags:
-	- courses
+  - courses
 ---
 
 ### Review předmětu

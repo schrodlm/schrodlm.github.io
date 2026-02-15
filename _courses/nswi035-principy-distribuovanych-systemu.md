@@ -3,7 +3,7 @@ layout: course
 title: "NSWI035 - Principy distribuovaných systémů"
 course_code: NSWI035
 university: MFF
-semester: Winter (1)
+semester: 1
 year: 2025
 written: 14-02-2026
 

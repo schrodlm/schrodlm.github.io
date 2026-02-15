@@ -17,7 +17,7 @@ worth_it: true
 
 # Tags for filtering/search
 tags:
-	- courses
+  - courses
 ---
 
 ### Review předmětu

@@ -1,9 +1,9 @@
 ---
 layout: course
-title: "NSWI150 - Koncepty moderních programovacích jazyků"
+title: "NSWI150 - Virtualizace a cloud computing"
 course_code: NSWI150
 university: MFF
-semester: Winter 2025 (1)
+semester: 1
 year: 2025
 written: 14-02-2026
 
@@ -18,7 +18,7 @@ course_page: https://teaching.mff.cuni.cz/nswi150-web/
 
 # Tags for filtering/search
 tags:
-	- courses
+  - courses
 ---
 
 ### Review předmětu
