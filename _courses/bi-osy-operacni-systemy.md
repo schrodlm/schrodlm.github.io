@@ -13,7 +13,6 @@ usefulness: 4
 teaching_quality: 4
 worth_it: true
 ---
-
 ### Review předmětu
 
 

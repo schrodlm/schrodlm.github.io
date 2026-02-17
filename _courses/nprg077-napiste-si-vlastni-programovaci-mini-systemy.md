@@ -17,11 +17,10 @@ course_page: https://d3s.mff.cuni.cz/teaching/nprg077/
 
 # Tags for filtering/search
 tags:
-	- programming-languages
-	- functional-programming
-	- mff
+      - programming-languages
+  - functional-programming
+  - mff
 ---
-
 ### Review předmětu
 
 Pan Petříček je zatím nejpřívětivější učitel, kterého jsem na matfyzu potkal. Nosil nám na hodinu sušenky a byl extrémně ochotný s čímkoliv pomoc.

@@ -20,7 +20,6 @@ course_page: https://d3s.mff.cuni.cz/teaching/nswi200/
 tags:
   - courses
 ---
-
 ### Review předmětu
 Vystudoval jsem bakaláře na FITu a tento předmět jsem si ze zvědavosti zapsal, protože jsem slyšel, že oproti FIT operačním sytémům je zaměřený na praktickou výuku v podobě napsání si vlastního kernelu.
 

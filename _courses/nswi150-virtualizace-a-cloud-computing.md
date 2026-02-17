@@ -20,7 +20,6 @@ course_page: https://teaching.mff.cuni.cz/nswi150-web/
 tags:
   - courses
 ---
-
 ### Review předmětu
 Lorem Ipsum
 

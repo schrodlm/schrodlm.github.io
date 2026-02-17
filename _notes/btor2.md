@@ -3,7 +3,6 @@ layout: note
 title: "btor2"
 ---
 
-
 It is a word-level model checking format for capturing models of hardware and **potentially software**.
 
 It generalizes and extends BTOR format, which is also sort of a generalization of AIGER.

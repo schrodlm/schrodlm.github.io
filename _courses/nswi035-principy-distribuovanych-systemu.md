@@ -18,11 +18,10 @@ course_page: https://teaching.mff.cuni.cz/nswi150-web/
 
 # Tags for filtering/search
 tags:
-	- programming-languages
-	- functional-programming
-	- mff
+  - programming-languages
+  - functional-programming
+  - mff
 ---
-
 ### Review předmětu
 Od předmětu jsem čekal víc. Po zjištění, jak se distribuované systémy učí na top univerzitách, je mi to trošku líto. Tohle je předmět, který má velký potenciál, ale podle mě ho určitě nenaplnil.
 

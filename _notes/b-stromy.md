@@ -4,7 +4,6 @@ title: "B-stromy"
 ---
 
 
-
 # (a,b)-tree experiment
 
 **Autor:** Matěj Schrödl

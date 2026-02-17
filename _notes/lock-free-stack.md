@@ -3,7 +3,6 @@ layout: note
 title: "lock-free stack"
 ---
 
-
 ## Návrh
 
 Zásobník je reprezentován jako linked list

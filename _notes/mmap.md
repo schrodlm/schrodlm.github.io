@@ -3,7 +3,6 @@ layout: note
 title: "mmap"
 ---
 
-
 The `mmap()` (memory map) system call maps files, device or anonymous memory into the virtual address space of a process
 
 Once mapped, the process can directly access the mapped memory just like accessing regular arrays.

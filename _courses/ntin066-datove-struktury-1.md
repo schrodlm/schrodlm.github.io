@@ -20,7 +20,6 @@ course_page: https://iuuk.mff.cuni.cz/~vesely/vyuka/Podzim25/ds1.html
 tags:
   - courses
 ---
-
 ### Review předmětu
 Za mě je to předmět nabitý důležitými informacemi, které se hodí v každé specializaci. Přednášky byly za mě těžko uchopitelné, ale ty nejdůležitější koncepty jsem si z nich odnesl. Hlavní přínos předmětu za mě byly cvičení, které vedl RNDr. Jiří Fink. Podle minulých let studentům nevyhovoval jako přednášející, ale na cvičeních byl super, hodně jsem si z nich odnesl a jelikož nás chodilo opravdu málo tak to bylo hodně individuální. Je třeba si trošku zvyknout jeho způsob mluvení. Má velké mezery mezi větami, takže jsem si často myslel, že jsem řekl něco špatně. Ale ve finále má celkem přátelský přístup a dokáže velice dobře vysvětlovat složité koncepty.
 

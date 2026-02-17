@@ -4,7 +4,6 @@ title: "An unexamined habit"
 date: 20.9.2025
 categories: jekyll update
 ---
-
 I have a weird niche. I adore posts from social media that are supposed to be funny, but if dissected and maybe thought about a little longer than appropriate, actually hide some kind of a deep philosophical message or a concept. I like the idea that small things can contain big truths that not a lot of people search for. The most recent post I saw and I really enjoyed was this one.
 
 > [I just realized I could let the shower warm up before stepping in](https://www.reddit.com/r/CasualConversation/comments/aelh9q/i_just_realized_i_could_let_the_shower_warm_up/)  

@@ -4,13 +4,13 @@ title: "left reset turing machine"
 ---
 ## 1 Předpoklady
 
-Pracuji s definicí [Turingova stroje](/posts/2024-12-20-turing-machine.html) z přednášky, tedy přechodová funkce je definována:
+Pracuji s definicí [Turingova stroje](/posts/turing-machine.html) z přednášky, tedy přechodová funkce je definována:
 
 $$\delta : Q \times \Sigma \rightarrow Q \times \Sigma \times \{R, N, L\}$$
 
 ## 2 Idea
 
-Chci ukázat, že nově sestavený [TS'](/posts/2024-12-20-turing-machine.html) s levým resetem a nekončenou páskou zprava dokáže simulovat standardní [TS](/posts/2024-12-20-turing-machine.html).
+Chci ukázat, že nově sestavený [TS'](/posts/turing-machine.html) s levým resetem a nekončenou páskou zprava dokáže simulovat standardní [TS](/posts/turing-machine.html).
 
 Potřebuju tedy ukázat:
 
@@ -21,19 +21,19 @@ Potřebuju tedy ukázat:
 
 ### 3.1 Setup
 
-Rozšíříme abecedu původního automatu $\Sigma$ na uspořádanou dvojici, pro kterou platí $\Sigma' = \Sigma \cup \Sigma^\#$, kde # kóduje informaci, na kterém políčku pracovní pásky se nachází simulovaná hlava původního automatu [TS](/posts/2024-12-20-turing-machine.html).
+Rozšíříme abecedu původního automatu $\Sigma$ na uspořádanou dvojici, pro kterou platí $\Sigma' = \Sigma \cup \Sigma^\#$, kde # kóduje informaci, na kterém políčku pracovní pásky se nachází simulovaná hlava původního automatu [TS](/posts/turing-machine.html).
 
-Pro tuto vlastnost platí invariant: **Právě jedno políčko pracovní pásky je označené po a před dokončením simulace operace RIGHT nebo LEFT.** Myšlenka je že i hlava původního automatu [TS](/posts/2024-12-20-turing-machine.html) může být jen na jednom místě v jeden čas.
+Pro tuto vlastnost platí invariant: **Právě jedno políčko pracovní pásky je označené po a před dokončením simulace operace RIGHT nebo LEFT.** Myšlenka je že i hlava původního automatu [TS](/posts/turing-machine.html) může být jen na jednom místě v jeden čas.
 
 ### 3.2 Simulace pohybů
 
 #### 3.2.1 Simulace RIGHT
 
-Simulation pohybu doprava je jednoduchá. Můžeme předpokládat, že před začátkem této operace je hlava [TS](/posts/2024-12-20-turing-machine.html), právě na jediném symbolu $a \in \Sigma^\#$. Původní jednokroková operace se transformuje na operaci o třech krocích:
+Simulation pohybu doprava je jednoduchá. Můžeme předpokládat, že před začátkem této operace je hlava [TS](/posts/turing-machine.html), právě na jediném symbolu $a \in \Sigma^\#$. Původní jednokroková operace se transformuje na operaci o třech krocích:
 
-1. Přepsání symbolu na nynější pozici hlavy [TS'](/posts/2024-12-20-turing-machine.html) $a^\#$ na $a$[^1]
+1. Přepsání symbolu na nynější pozici hlavy [TS'](/posts/turing-machine.html) $a^\#$ na $a$[^1]
 2. Simulovaný pohyb doprava
-3. Přepsání symbolu na nynější pozici hlavy [TS'](/posts/2024-12-20-turing-machine.html) $a$ na $a^\#$
+3. Přepsání symbolu na nynější pozici hlavy [TS'](/posts/turing-machine.html) $a$ na $a^\#$
 
 Tímto je simulovaná operace dokončena a invariant stále platí. Složitost této operace je $O(1)$ (s vyšší konstantou) oproti původní $O(\infty)$.
 
@@ -65,7 +65,7 @@ Vždy, když se nacházíme na nejlevějším políčku pásky a simulovaný aut
 
 ## Klíčové pojmy
 
-- [Turing machine](/posts/2024-12-20-turing-machine.html)
+- [Turing machine](/posts/turing-machine.html)
 - left reset
 - simulation
 - complexity

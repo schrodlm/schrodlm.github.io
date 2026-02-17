@@ -19,7 +19,6 @@ worth_it: true
 tags:
   - courses
 ---
-
 ### Review předmětu
 Je to vcelku zajímavý předmět, který je zaměřen spíše na takový průlet různými moderními přístupy k programování. Některé jsou opravdu zajímavé, jiné moc ne.
 
