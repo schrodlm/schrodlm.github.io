@@ -1,8 +1,7 @@
 ---
-layout: note
+related_course: NSWI028
 title: "PWM"
 ---
-
 PWM (Pulse Width Modulation) je technika generování signálu, kde se periodicky střídá HIGH a LOW stav. Poměr HIGH části k celé periodě se nazývá **duty cycle**.
 
 # Duty Cycle

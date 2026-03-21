@@ -1,8 +1,7 @@
 ---
-layout: note
+related_course: NSWI028
 title: "GPIO"
 ---
-
 GPIO (General Purpose Input/Output) je hardwarové rozhraní na mikrokontroléru, které poskytuje softwarově ovladatelné piny.
 
 # GPIO Port
