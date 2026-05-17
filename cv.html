@@ -13,7 +13,7 @@ title: CV
       <li><a href="mailto:matej.schrodl@gmail.com">matej.schrodl@gmail.com</a></li>
       <li>+420 720 178 081</li>
       <li><a href="https://github.com/schrodlm">github.com/schrodlm</a></li>
-      <li><a href="https://www.linkedin.com/in/mat%C4%9Bj-schr%C3%B6dl-643888230/">LinkedIn</a></li>
+      <li><a href="https://www.linkedin.com/in/mat%C4%9Bj-schr%C3%B6dl-643888230/" class="cv-linkedin"><span class="cv-screen-only">LinkedIn</span><span class="cv-print-only">Matěj Schrödl</span></a></li>
       <li><a href="https://leetcode.com/schrodlm">leetcode.com/schrodlm</a></li>
     </ul>
     <a class="cv-download no-print" href="{{ '/assets/pdf/cv.pdf' | relative_url }}">Download PDF ↓</a>
@@ -90,26 +90,26 @@ title: CV
   <section class="cv-section">
     <h2>Education</h2>
 
-    <div class="cv-entry">
+    <div class="cv-entry cv-edu">
       <div class="cv-entry-head">
-        <div>
-          <strong>Faculty of Mathematics and Physics, Charles University</strong>
-          <span class="cv-place">Prague, Czech Republic</span>
-        </div>
+        <strong>Faculty of Mathematics and Physics, Charles University</strong>
+        <span class="cv-place">Prague, Czech Republic</span>
+      </div>
+      <div class="cv-edu-degree-row">
+        <p class="cv-degree">Master's Degree in System Engineering</p>
         <span class="cv-period">September 2025 – present</span>
       </div>
-      <p class="cv-degree">Master's Degree in System Engineering</p>
     </div>
 
-    <div class="cv-entry">
+    <div class="cv-entry cv-edu">
       <div class="cv-entry-head">
-        <div>
-          <strong>Faculty of Information Technology, Czech Technical University</strong>
-          <span class="cv-place">Prague, Czech Republic</span>
-        </div>
+        <strong>Faculty of Information Technology, Czech Technical University</strong>
+        <span class="cv-place">Prague, Czech Republic</span>
+      </div>
+      <div class="cv-edu-degree-row">
+        <p class="cv-degree">Bachelor's Degree in Software Engineering</p>
         <span class="cv-period">September 2021 – June 2025</span>
       </div>
-      <p class="cv-degree">Bachelor's Degree in Software Engineering</p>
     </div>
   </section>
 
@@ -136,7 +136,7 @@ title: CV
       Packaged CLI that turns an Obsidian vault into clean Markdown for static-site generators (Jekyll, Hugo). Pluggable front-matter backends, YAML-driven per-directory mappings, type-safe path wrappers, structured error hierarchy, full unit + integration test suite under GitHub Actions, and a ready-to-use pre-commit hook for validating vaults. Drives my own publishing pipeline.</p>
     </div>
 
-    <div class="cv-entry">
+    <div class="cv-entry cv-entry-breakable">
       <p><strong>Additional:</strong></p>
       <ul class="cv-bullets">
         <li><strong>Single-cycle 32-bit CPU in Verilog</strong> with a custom ISA and testbench.</li>
