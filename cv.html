@@ -3,34 +3,147 @@ layout: default
 title: CV
 ---
 
-<div>
-  <canvas id="pdf-canvas"></canvas>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-<script>
-  const url = '/assets/pdf/cv.pdf';
-  const canvas = document.getElementById('pdf-canvas');
-  const context = canvas.getContext('2d');
+<article class="cv">
+  <header class="cv-header">
+    <div class="cv-header-main">
+      <h1 class="cv-name">Matěj Schrödl</h1>
+      <p class="cv-location">Prague, Czech Republic</p>
+    </div>
+    <ul class="cv-contact">
+      <li><a href="mailto:matej.schrodl@gmail.com">matej.schrodl@gmail.com</a></li>
+      <li>+420 720 178 081</li>
+      <li><a href="https://github.com/schrodlm">github.com/schrodlm</a></li>
+      <li><a href="https://www.linkedin.com/in/mat%C4%9Bj-schr%C3%B6dl-643888230/">LinkedIn</a></li>
+      <li><a href="https://leetcode.com/schrodlm">leetcode.com/schrodlm</a></li>
+    </ul>
+    <a class="cv-download no-print" href="{{ '/assets/pdf/cv.pdf' | relative_url }}">Download PDF ↓</a>
+  </header>
 
-  pdfjsLib.getDocument(url).promise.then(pdf => {
-    pdf.getPage(1).then(page => {
-      const scale = 1.5; // Base scale
-      const pixelRatio = window.devicePixelRatio || 1; // Account for high-DPI displays
-      const viewport = page.getViewport({ scale: scale * pixelRatio });
+  <section class="cv-section">
+    <h2>Experience</h2>
 
-      // Set canvas dimensions
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
+    <div class="cv-entry">
+      <div class="cv-entry-head">
+        <div>
+          <strong>C++ Firmware Developer</strong> — Prusa Research
+        </div>
+        <span class="cv-period">January 2025 – present</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>
+          Day-to-day work on the <a href="https://github.com/prusa3d/Prusa-Firmware-Buddy">Buddy firmware</a>
+          (firmware running on Prusa's FDM 3D printers — MK4, XL, MINI, CORE One):
+          feature development, code review, and bug fixing across the printer lineup. Recent examples:
+          <ul>
+            <li><strong>INDX multitool system:</strong> fan control, inactive-nozzle heating, tool-pickup selftests.</li>
+            <li><strong>Communication infrastructure:</strong> a COBS encoder/decoder for framed serial protocols (with unit tests) and a centralized printer CRC layer integrated into the Modbus stack.</li>
+            <li><strong>OpenCyphal-over-UART (ANFC):</strong> communication bridge for legacy/limited MCU targets — peripheral configuration, HAL integration, a VCAN/UART bridge utility, and Jenkins CI lanes.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
-      // Adjust CSS dimensions to prevent stretching
-      canvas.style.height = `${viewport.height / pixelRatio}px`;
-      canvas.style.width = `${viewport.width / pixelRatio}px`;
+    <div class="cv-entry">
+      <div class="cv-entry-head">
+        <div>
+          <strong>C++ Student Developer</strong> — Siemens Mobility
+        </div>
+        <span class="cv-period">November 2023 – December 2024</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>
+          <strong>Product context:</strong> firmware for a <strong>railway point-machine controller</strong> (the actuator that switches trains between tracks), developed under <strong>CENELEC EN 50128 / SIL</strong> rail-safety standards. The system was structured as about a dozen cooperating C++ components with a formal init/configure/cyclic lifecycle.
+        </li>
+        <li>
+          <strong>Role:</strong> owned two of those components end-to-end (development, code review) within the formal safety process — DOORS-based requirements, formal reviews, and the project's C++ styleguide.
+        </li>
+      </ul>
+    </div>
 
-      // Render the page
-      page.render({
-        canvasContext: context,
-        viewport: viewport,
-      });
-    });
-  });
-</script>
+    <div class="cv-entry">
+      <div class="cv-entry-head">
+        <div>
+          <strong>Java Junior Developer</strong> — Trixi s.r.o
+        </div>
+        <span class="cv-period">February 2023 – September 2023</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>
+          <strong>Smartform (Java/Spring):</strong> built the Slovak-side ingestion service for Trixi's <a href="https://www.smartform.cz/">Smartform</a> — a Czech form-validation / address-autocomplete API used by 1000+ Czech e-shops and enterprises (e.g. Alza, Zonky, Tipsport). Daily S3 batch pulls from the Slovak business register into PostgreSQL via Liquibase migrations, with async REST endpoints for batch retrieval.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Skills</h2>
+    <dl class="cv-skills">
+      <dt>Proficient</dt>
+      <dd>C++ (17/20), C; CMake, GCC arm-none-eabi, Git, gdb, Linux</dd>
+      <dt>Familiar</dt>
+      <dd>Python; FreeRTOS, STM32 HAL; SPI, I2C, UART, CAN, Modbus, OpenCyphal; Jenkins</dd>
+      <dt>Languages</dt>
+      <dd>English (fluent), Czech (native)</dd>
+    </dl>
+  </section>
+
+  <section class="cv-section">
+    <h2>Education</h2>
+
+    <div class="cv-entry">
+      <div class="cv-entry-head">
+        <div>
+          <strong>Faculty of Mathematics and Physics, Charles University</strong>
+          <span class="cv-place">Prague, Czech Republic</span>
+        </div>
+        <span class="cv-period">September 2025 – present</span>
+      </div>
+      <p class="cv-degree">Master's Degree in System Engineering</p>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-head">
+        <div>
+          <strong>Faculty of Information Technology, Czech Technical University</strong>
+          <span class="cv-place">Prague, Czech Republic</span>
+        </div>
+        <span class="cv-period">September 2021 – June 2025</span>
+      </div>
+      <p class="cv-degree">Bachelor's Degree in Software Engineering</p>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Projects</h2>
+
+    <div class="cv-entry">
+      <p><strong>Bachelor's Thesis — Benchmarking Framework for Rotor Models.</strong>
+      Platform for evaluating SMT models generated from machine code in the <a href="https://github.com/cksystemsteaching/selfie/tree/main">Selfie</a> ecosystem. Characterizes such models, compares them against conventional SMT encodings across multiple solvers, and demonstrates the framework on sample benchmarks.</p>
+    </div>
+
+    <div class="cv-entry">
+      <p><strong>Operating System Kernel (team).</strong>
+      Built an OS kernel from scratch in C with a 3-person team for the MSIM (MIPS-like) simulator. Implemented kernel heap allocator, cooperative and preemptive thread scheduling, frame allocator, virtual memory, synchronization primitives, and userspace process support across seven incremental milestones.</p>
+    </div>
+
+    <div class="cv-entry">
+      <p><strong>Parallel and HW-level Code Optimization.</strong>
+      Course portfolio covering CPU-level performance engineering and parallel computing in modern C++. Implemented and benchmarked binary search and Floyd-Warshall with SSE/AVX/AVX-512 intrinsics and MPI; k-means with Intel TBB; an n-body potential simulator with SYCL on heterogeneous hardware; and PySpark deduplication on a Slurm cluster.</p>
+    </div>
+
+    <div class="cv-entry">
+      <p><strong><a href="https://github.com/schrodlm/obsidian-md-converter">obsidian-md-converter</a> — shipped Python tool.</strong>
+      Packaged CLI that turns an Obsidian vault into clean Markdown for static-site generators (Jekyll, Hugo). Pluggable front-matter backends, YAML-driven per-directory mappings, type-safe path wrappers, structured error hierarchy, full unit + integration test suite under GitHub Actions, and a ready-to-use pre-commit hook for validating vaults. Drives my own publishing pipeline.</p>
+    </div>
+
+    <div class="cv-entry">
+      <p><strong>Additional:</strong></p>
+      <ul class="cv-bullets">
+        <li><strong>Single-cycle 32-bit CPU in Verilog</strong> with a custom ISA and testbench.</li>
+        <li><strong>Embedded firmware coursework:</strong> bare-metal drivers and FreeRTOS-based real-time scheduling, including a DMA-driven SPI peripheral backed by internal flash.</li>
+        <li><strong>Cache-conscious data structures (C++):</strong> splay trees, AB-trees, cuckoo hashing, and cache-aware matrix transpose with experimental write-ups.</li>
+        <li>I enjoy algorithmic problems (graph theory, DP, game theory) in C++/Scala — see <a href="https://leetcode.com/schrodlm">LeetCode</a>.</li>
+      </ul>
+    </div>
+  </section>
+</article>

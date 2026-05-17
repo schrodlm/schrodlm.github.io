@@ -117,3 +117,148 @@
 .project-content p {
   margin: 0;
 }
+
+/* ========== CV ========== */
+.cv {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.cv-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.cv-name {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.cv-location {
+  color: #666;
+  margin: 0 0 12px;
+}
+
+.cv-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 0.95rem;
+  color: #444;
+
+  li::after {
+    content: "·";
+    margin-left: 16px;
+    color: #bbb;
+  }
+  li:last-child::after { content: ""; }
+
+  a { color: #0077b5; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+}
+
+.cv-download {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 6px 14px;
+  background: #0077b5;
+  color: #fff !important;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  &:hover { background: #005f8c; text-decoration: none; }
+}
+
+.cv-section {
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 4px;
+    margin: 0 0 14px;
+  }
+}
+
+.cv-entry {
+  margin-bottom: 16px;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.cv-entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+
+  .cv-place {
+    color: #666;
+    margin-left: 8px;
+    font-weight: 400;
+    font-style: italic;
+  }
+}
+
+.cv-period {
+  color: #666;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.cv-degree {
+  margin: 2px 0 0;
+  color: #444;
+  font-style: italic;
+}
+
+.cv-bullets {
+  margin: 4px 0 0;
+  padding-left: 20px;
+
+  li { margin-bottom: 4px; }
+  ul { margin-top: 4px; }
+}
+
+.cv a { color: #0077b5; }
+
+.cv-skills {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+  margin: 0;
+
+  dt { font-weight: 600; }
+  dd { margin: 0; }
+}
+
+/* Print: Playwright uses this when generating cv.pdf */
+@media print {
+  @page { size: A4; margin: 14mm 16mm; }
+
+  body { font-size: 10pt; background: #fff; }
+
+  .site-header, .site-footer, .no-print { display: none !important; }
+
+  .cv { max-width: none; margin: 0; padding: 0; }
+  .cv-name { font-size: 18pt; }
+  .cv-section h2 { font-size: 11pt; }
+
+  .cv-entry, .cv-section { break-inside: avoid; }
+  h2 { break-after: avoid; }
+  a { color: #000; text-decoration: none; }
+}
