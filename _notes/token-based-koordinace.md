@@ -212,4 +212,4 @@ if timeout_uplynul():
 **2. Real-time Systems:**
 - Token ring v průmyslových sítích (Profibus)
 **3. Embedded Systems:**
-- CAN bus používá token-like arbitraci
+- [CAN](/notes/can.html) bus používá token-like arbitraci

@@ -45,3 +45,42 @@ V [PWM](/notes/pwm.html) módu timer **negeneruje interrupt** (pokud ho explicit
 
 # Mapování na piny
 Výstupy timeru jsou propojené s konkrétními [GPIO](/notes/gpio.html) piny přes alternate function. Toto mapování je nadrátované v křemíku a najdeš ho v datasheetu čipu.
+
+# Přerušení timeru
+
+## Update Event Flag (UIF)
+Když counter přeteče (dosáhne ARR a resetuje se), hardware nastaví flag `TIM_FLAG_UPDATE` (bit UIF v registru TIM_SR). Pokud je povoleno update interrupt (`TIM_IT_UPDATE`), vyvolá se ISR. **Flag se musí manuálně vyčistit v ISR** — pokud to neuděláš, přerušení se vyvolá okamžitě znovu (nekonečná smyčka přerušení).
+
+```c
+__HAL_TIM_CLEAR_FLAG(&htim, TIM_FLAG_UPDATE);
+```
+
+## Sdílené IRQ vektory (STM32F4)
+Na STM32F4 není dostatek IRQ linek pro každý timer zvlášť, takže některé timery **sdílejí IRQ vektor**. Název vektoru popisuje, které *eventy* kterých timerů sdílejí daný vektor:
+
+| IRQ Handler                      | Zdroj 1                  | Zdroj 2     |
+| -------------------------------- | ------------------------ | ----------- |
+| `TIM8_UP_TIM13_IRQHandler`       | TIM8 **update** event    | TIM13       |
+| `TIM1_BRK_TIM9_IRQHandler`       | TIM1 **break** event     | TIM9        |
+| `TIM1_UP_TIM10_IRQHandler`       | TIM1 **update** event    | TIM10       |
+| `TIM1_TRG_COM_TIM11_IRQHandler`  | TIM1 **trigger/commut.** | TIM11       |
+
+**UP = update event**, ne "counting up". Přerušení TIM1 jsou rozdělena podle typu eventu do více vektorů, a ke každému je připojen menší timer.
+
+Pokud jsou oba timery na jednom vektoru aktivní, musíš v ISR zkontrolovat flagy obou:
+
+```c
+void TIM8_UP_TIM13_IRQHandler(void)
+{
+  if (__HAL_TIM_GET_FLAG(&htim8, TIM_FLAG_UPDATE)) {
+    __HAL_TIM_CLEAR_FLAG(&htim8, TIM_FLAG_UPDATE);
+    // handle TIM8
+  }
+  if (__HAL_TIM_GET_FLAG(&htim13, TIM_FLAG_UPDATE)) {
+    __HAL_TIM_CLEAR_FLAG(&htim13, TIM_FLAG_UPDATE);
+    // handle TIM13
+  }
+}
+```
+
+Pokud druhý timer nepoužíváš, stačí ošetřit jen ten svůj — ale kontrola flagu je dobrá praxe proti spurious interruptům.

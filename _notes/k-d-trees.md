@@ -4,7 +4,7 @@ title: "k-d trees"
 ---
 k-d strom je statická binární stromová datová struktura, která se používá na vyhledávání v multidimenzionálním prostoru (porovnává více kritérií) - podobně jako [range tree](/notes/range-tree.html)
 > [!note] Pozor
-> - tato stromová struktura není samovyvažovací (i když existují samovyvažovací verze adaptive k-d trees)
+> - tato stromová struktura není samovyvažovací (i když existují samovyvažovací verze [adaptive k-d trees](/notes/adaptive-k-d-trees.html))
 > - často se s ní pracuje tak, že pracujeme nad statickými daty
 
 # Myšlenka
