@@ -17,7 +17,7 @@ course_page: https://d3s.mff.cuni.cz/teaching/nprg077/
 
 # Tags for filtering/search
 tags:
-      - programming-languages
+  - programming-languages
   - functional-programming
   - mff
 ---
