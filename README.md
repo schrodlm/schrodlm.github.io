@@ -72,7 +72,7 @@ map, and its order follows the
 [milestones](https://github.com/schrodlm/schrodlm.github.io/milestones):
 
 - **0 · Foundations**: this knowledge base and the issue tracking
-- **1 · Design language**: ASCII art on a clean white page, with vibrant flora
+- **1 · Design language**: the garden, where every post and note grows its own ASCII flower
 - **2 · Notes**, with an interactive graph view
 - **3 · About**
 - **4 · Courses**
