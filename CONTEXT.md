@@ -102,6 +102,49 @@ My curriculum vitae, a page of the site and a PDF printed from that page
 at every deploy.
 _Avoid_: resume
 
+### How the site looks
+
+**Garden**:
+The band of ASCII plants across the top of the home page, swaying in one
+wind. Every post stands in it as its own flower, among plants that belong to
+no page.
+_Avoid_: header, banner, canopy
+
+**Flower**:
+The ASCII plant a post or note grows from its seed. Every page has exactly
+one, and it never changes while the page lives.
+_Avoid_: icon, avatar, illustration
+
+**Seed**:
+What a page's flower is grown from. The same seed always grows the same
+flower.
+_Avoid_: hash, id
+
+**Specimen**:
+A page's flower as the herbarium presents it: a number, a Latin name, and the
+traits its seed chose (its head, petals, stem and leaves).
+_Avoid_: card, entry
+
+**Specimen card**:
+The museum label at the end of a post or note, naming its specimen and how
+the seed grew it.
+_Avoid_: footer, metadata
+
+**Mark**:
+The one-line glimpse of a flower shown beside a page's title in a list, so
+the list and the garden match.
+_Avoid_: icon, bullet
+
+**Herbarium**:
+The page that shows every specimen together, like a museum hall.
+_Avoid_: gallery, catalogue, index
+
+**Vine**:
+The single vine that hangs beside the text on a post or note, where a
+butterfly, a ladybug and now and then a bee live. Section headings trail a
+short vine of their own.
+_Avoid_: border, divider, decoration
+
 ## Relationships
 
 - The **vault** feeds the site only through a **sync**, which runs the
@@ -112,3 +155,5 @@ _Avoid_: resume
 - A **post** belongs to zero or one **project**, a project has any number of
   posts.
 - A **course** belongs to one university, whose **university page** links it.
+- Every **post** and **note** grows one **flower** from its **seed**; the
+  **herbarium** shows each as a **specimen**, and the **garden** shows the posts.
