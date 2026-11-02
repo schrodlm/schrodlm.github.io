@@ -18,9 +18,14 @@ from the vault disappears from the site.
 _Avoid_: import, export, deploy
 
 **Converter**:
-The tool a sync runs to turn the vault's Obsidian markdown into the site's
-markdown: it rewrites wikilinks, copies images and adds front matter.
+The tool a sync runs to turn the vault's Obsidian markdown into normalized
+markdown. It is a separate project, and the site knows nothing of it.
 _Avoid_: exporter, script
+
+**Normalized markdown**:
+The only input the site accepts: markdown with front matter in the shape the
+site defines. Where it comes from is not the site's concern.
+_Avoid_: neutral markdown, converter output, Obsidian markdown
 
 **Published**:
 Reachable on the live site. A piece of content is published when a sync has
