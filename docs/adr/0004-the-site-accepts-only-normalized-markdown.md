@@ -13,18 +13,15 @@ and every change on one side then leaks into the other.
 
 ## Decision
 
-The site defines one input format, **normalized markdown**, and accepts
-nothing else:
+The site accepts only **normalized markdown**, as the converter's published
+specification defines it: one file per page named by its slug, YAML front
+matter, and a CommonMark dialect with ordinary links and images. The site pins
+the major version of the specification it accepts, and decides only how it
+renders what it receives.
 
-- front matter shaped by each collection's schema;
-- CommonMark with GFM tables, task lists and footnotes, `$…$` and `$$…$$` math,
-  and callouts as `> [!type] Title`;
-- links as ordinary markdown links with absolute site paths, heading anchors in
-  GitHub style, and plain text where a link has nowhere to go;
-- images as ordinary markdown images with absolute paths and no size.
-
-Where normalized markdown comes from is not the site's concern. No decision
-about the site asks anything of whatever produces it.
+Who produces normalized markdown, and how, is not the site's concern. No
+decision about the site asks anything of the producer; what the site needs from
+the format goes to the specification's owner.
 
 ## Consequences
 
@@ -34,3 +31,5 @@ about the site asks anything of whatever produces it.
   normalized markdown; the site's renderer then decides how it looks.
 - Producing normalized markdown from the vault is entirely the converter's
   job, and changing how it does that never touches the site.
+- A new major version of the specification is adopted by a deliberate change
+  to the site.

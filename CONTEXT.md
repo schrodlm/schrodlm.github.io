@@ -23,8 +23,8 @@ markdown. It is a separate project, and the site knows nothing of it.
 _Avoid_: exporter, script
 
 **Normalized markdown**:
-The only input the site accepts: markdown with front matter in the shape the
-site defines. Where it comes from is not the site's concern.
+The only input the site accepts: markdown as the converter's published
+specification defines it. Where it comes from is not the site's concern.
 _Avoid_: neutral markdown, converter output, Obsidian markdown
 
 **Published**:
