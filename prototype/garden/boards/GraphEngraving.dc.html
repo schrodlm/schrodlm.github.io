@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Graph, engraved</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+.wide{display:block}
+@media (max-width: 1100px){.wide{display:none}}
+.titleflower{position:absolute;left:-170px;top:-24px}
+@media (max-width: 1100px){.titleflower{position:static;margin:4px 0 6px}}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" aria-current="page" style="color: #1F2B23; text-decoration: none; font-weight: 600;">[&gt;notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[projects]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[courses]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 1220px; margin: 0 auto; padding: 48px 24px 40px;">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #535F52;">Every note, and how they connect</div>
+<h1 style="margin: 6px 0 6px; font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 38px; font-weight: 600;">The garden map</h1>
+<p style="margin: 0 0 24px; color: #535F52; max-width: 70ch;">All my notes as one garden. Each note is a flower, each vine a link; buds are notes not written yet. Hover a flower to see its neighbours; click it to keep it.</p>
+<div style="overflow-x: auto;"><figure style="margin: 0; width: 1192px; padding: 10px; box-sizing: border-box; border: 1px solid #B9AD93; background: #F1ECDF;">
+<div style="border: 1px solid #D3C8AF; padding: 0;">
+<div style="display: flex; justify-content: space-between; padding: 8px 12px 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #535F52;"><span>Tab. I</span><span>Hortus notarum</span><span>schrodlm.github.io</span></div>
+<div style="position: relative; width: 1168px; height: 980px; overflow: hidden;">
+<img alt="" aria-hidden="true" src="{{plate}}" style="position: absolute; left: 0; top: 0; width: 1170px; height: 980px; image-rendering: pixelated;">
+<sc-for list="{{labels}}" as="l" hint-placeholder-count="8"><span aria-hidden="true" style="position: absolute; left: {{l.left}}; top: {{l.top}}; white-space: nowrap; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: {{l.size}}; line-height: 14px; letter-spacing: 0.01em; padding: 0 2px; background: rgba(241,236,223,0.8); color: {{l.color}}; font-weight: {{l.weight}}; text-shadow: 0 0 2px #F1ECDF, 0 0 2px #F1ECDF, 0 0 3px #F1ECDF; pointer-events: none;">{{l.t}}</span></sc-for>
+<sc-for list="{{spots}}" as="s" hint-placeholder-count="20"><button type="button" aria-label="{{s.aria}}" onMouseEnter="{{s.enter}}" onMouseLeave="{{s.leave}}" onFocus="{{s.enter}}" onBlur="{{s.leave}}" onClick="{{s.pick}}" style="position: absolute; left: {{s.left}}; top: {{s.top}}; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer;"></button></sc-for>
+</div>
+<figcaption style="text-align: center; padding: 2px 12px 12px; font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 14px; color: #535F52;">Hortus notarum: 191 flowers on 304 vines, drawn from the notes as they grow.</figcaption>
+</div></figure></div>
+<div aria-live="polite" style="margin-top: 24px; min-height: 120px;">
+<sc-if value="{{panel.show}}" hint-placeholder-val="{{false}}"><div style="display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: flex-end; padding: 22px 26px; background: #F7F2E4; border: 1px solid #D8CFBA;">
+<div aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px;"><sc-for list="{{panel.flower}}" as="row" hint-placeholder-count="12"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+<div style="flex: 1 1 260px; min-width: 0;"><div style="font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 15px; color: #535F52;">{{panel.latin}}</div><a href="#" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 22px; font-weight: 600;">{{panel.title}}</a></div>
+<div style="flex: 1 1 220px; min-width: 0; font-size: 15px;"><div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; margin-bottom: 6px;">links to</div><sc-for list="{{panel.outs}}" as="m" hint-placeholder-count="4"><div style="display: flex; gap: 8px; align-items: baseline;"><span aria-hidden="true" style="width: 34px; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace;"><sc-for list="{{m.mark}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></span><a href="#">{{m.title}}</a></div></sc-for></div>
+<div style="flex: 1 1 220px; min-width: 0; font-size: 15px;"><div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; margin-bottom: 6px;">linked from</div><sc-for list="{{panel.ins}}" as="m" hint-placeholder-count="4"><div style="display: flex; gap: 8px; align-items: baseline;"><span aria-hidden="true" style="width: 34px; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace;"><sc-for list="{{m.mark}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></span><a href="#">{{m.title}}</a></div></sc-for></div>
+</div></sc-if>
+</div>
+<h2 style="margin: 40px 0 14px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; font-weight: 600; color: #535F52;">wildflowers, not linked yet</h2>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 24px; font-size: 15px;"><sc-for list="{{wild}}" as="m" hint-placeholder-count="12"><div style="display: flex; gap: 8px; align-items: baseline; min-width: 0;"><span aria-hidden="true" style="width: 34px; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace;"><sc-for list="{{m.mark}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></span><a href="#">{{m.title}}</a></div></sc-for></div>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"motion":{"editor":"boolean","default":true,"section":"Flora"},"$preview":{"width":1280,"height":2230}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: -1, sel: -1 };
+
+  componentDidMount() {
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its seed ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split(/[-/]/).filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w) && w !== 'notes' && w !== 'posts');
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The flower's most telling row, as a small mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), rows = p.head.rows;
+    const row = (rows.find((r) => /[@o*]/.test(r)) || rows[0]).trim();
+    return row.split('').map((ch) => ({ t: ch, c: (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1] }));
+  }
+
+  // The museum label: what the seed grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // The garden map as an engraved plate. Every note is a small flower drawn in its specimen's colours,
+  // petals stippled inside a solid outline; its petal count and size grow with its links, and notes
+  // not written yet are buds. Links are fine stippled vines on a gentle curve, with a leaf here and
+  // there on the longer ones. Hovering a note draws its vines solid and opens its neighbours fully.
+  rgb(hex) { return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]; }
+
+  focus() { return this.state.hover >= 0 ? this.state.hover : this.state.sel; }
+
+  near(f) {
+    const D = this.data(), s = new Set();
+    if (f >= 0) for (const [a, b] of D.edges) { if (a === f) s.add(b); if (b === f) s.add(a); }
+    return s;
+  }
+
+  // The petal reach of a flower in plate cells (2 px each), before it opens.
+  reach(n) { return n.stub ? 2.5 : 2 + Math.min(6, Math.sqrt(n.deg) * 1.65); }
+
+  plate() {
+    const D = this.data(), f = this.focus();
+    if (this._plateKey === f && this._plate) return this._plate;
+    const C = 2, w = Math.round(D.PW / C), h = Math.round(D.PH / C);
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d'), img = ctx.createImageData(w, h), d = img.data;
+    const B = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+    const bay = (x, y) => B[(y & 3) * 4 + (x & 3)];
+    const set = (x, y, c) => {
+      x = Math.round(x); y = Math.round(y);
+      if (x < 0 || y < 0 || x >= w || y >= h) return;
+      const i = (y * w + x) * 4; d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+    };
+    const near = this.near(f), on = (i) => f < 0 || i === f || near.has(i);
+    const VINE = this.rgb('#8DA381'), VINE_ON = this.rgb('#2B7349'), PALE = this.rgb('#C8BDA3');
+    const LEAF = this.rgb('#3F8A52'), SHADE = this.rgb('#D2C7AE'), MOSS = this.rgb('#5E8E4A');
+
+    // Stippled shading: a faint engraved shadow to the lower right of every flower.
+    D.nodes.forEach((n, i) => {
+      if (n.wild || !on(i)) return;
+      const R = this.reach(n) + 1.6, cx = n.x / C + 1.6, cy = n.y / C + 1.8;
+      for (let y = Math.floor(cy - R); y <= Math.ceil(cy + R); y++)
+        for (let x = Math.floor(cx - R); x <= Math.ceil(cx + R); x++) {
+          const t = Math.hypot(x - cx, y - cy) / R;
+          if (t <= 1 && bay(x, y) < (1 - t) * 4) set(x, y, SHADE);
+        }
+    });
+
+    // Vines: quadratic curves bowing to one side, stippled one cell in two; solid when lit.
+    const vine = (a, b, mode) => {
+      const A = D.nodes[a], Bn = D.nodes[b];
+      const x0 = A.x / C, y0 = A.y / C, x1 = Bn.x / C, y1 = Bn.y / C;
+      const len = Math.hypot(x1 - x0, y1 - y0) || 1, r = this.rng('vine:' + a + ':' + b);
+      const bow = (r() < 0.5 ? -1 : 1) * (0.1 + r() * 0.1) * len;
+      const qx = (x0 + x1) / 2 - (y1 - y0) / len * bow, qy = (y0 + y1) / 2 + (x1 - x0) / len * bow;
+      const ra = this.reach(A) + 1.5, rb = this.reach(Bn) + 1.5;
+      const steps = Math.ceil(len * 1.6);
+      let last = '', k = 0;
+      const pt = (t) => [(1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * qx + t * t * x1, (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * qy + t * t * y1];
+      const col = mode === 'on' ? VINE_ON : mode === 'dim' ? PALE : VINE;
+      for (let s = 0; s <= steps; s++) {
+        const [x, y] = pt(s / steps), px = Math.round(x), py = Math.round(y);
+        const key = px + ',' + py;
+        if (key === last) continue;
+        last = key; k++;
+        if (Math.hypot(x - x0, y - y0) < ra || Math.hypot(x - x1, y - y1) < rb) continue;
+        if (mode === 'on' || (mode === 'rest' && k % 2 === 0) || (mode === 'dim' && k % 3 === 0)) set(px, py, col);
+      }
+      // A small leaf on longer vines, angled off the stem.
+      if (len > 44 && mode !== 'dim' && (mode === 'on' || r() < 0.5)) {
+        const t = 0.35 + r() * 0.3, [lx, ly] = pt(t), [ax, ay] = pt(t + 0.01);
+        const tan = Math.atan2(ay - ly, ax - lx), side = r() < 0.5 ? -1 : 1, ang = tan + side * 0.75;
+        const ux = Math.cos(ang), uy = Math.sin(ang), vx = -uy, vy = ux, lc = mode === 'on' ? VINE_ON : LEAF;
+        for (let s = 1; s <= 4; s++) {
+          set(lx + ux * s, ly + uy * s, lc);
+          if (s === 2 || s === 3) set(lx + ux * s + vx * side * 0.9, ly + uy * s + vy * side * 0.9, lc);
+        }
+      }
+      if (len > 90 && mode !== 'dim' && r() < 0.4) {
+        const t = 0.15 + r() * 0.1, [lx, ly] = pt(1 - t), [ax, ay] = pt(1 - t + 0.01);
+        const ang = Math.atan2(ay - ly, ax - lx) + 0.8, ux = Math.cos(ang), uy = Math.sin(ang);
+        for (let s = 1; s <= 3; s++) set(lx + ux * s, ly + uy * s, mode === 'on' ? VINE_ON : LEAF);
+      }
+    };
+    for (const [a, b] of D.edges) {
+      const lit = f >= 0 && (a === f || b === f);
+      if (!lit) vine(a, b, f >= 0 ? 'dim' : 'rest');
+    }
+    if (f >= 0) for (const [a, b] of D.edges) if (a === f || b === f) vine(a, b, 'on');
+
+    // Flowers.
+    D.nodes.forEach((n, i) => {
+      if (n.wild) return;
+      const sp = this.specimen('notes/' + n.slug), cx = n.x / C, cy = n.y / C;
+      const mode = f < 0 ? 'rest' : i === f ? 'focus' : near.has(i) ? 'open' : 'dim';
+      const petal = this.rgb(sp.petal[1]), centre = this.rgb(sp.center ? sp.center[1] : '#1F2B23');
+      if (n.stub) {
+        // A bud: a closed green calyx with the petal colour just showing at its tip.
+        const g = mode === 'dim' ? PALE : MOSS, tip = mode === 'dim' ? PALE : petal, s = mode === 'rest' ? 1 : 1.25;
+        for (let y = -3; y <= 3; y++) for (let x = -2; x <= 2; x++) {
+          const e = (x / (1.3 * s)) ** 2 + ((y + 0.4) / (2.2 * s)) ** 2;
+          if (e <= 1) set(cx + x, cy + y, y <= -1 * s ? tip : (e > 0.4 || bay(cx + x | 0, cy + y | 0) < 9 ? g : g));
+        }
+        set(cx, cy + 3 * s, g); set(cx, cy + 4 * s, g);
+        return;
+      }
+      const P = Math.min(8, 4 + Math.floor(n.deg / 2));
+      const open = mode === 'rest' ? 0.85 : mode === 'dim' ? 0.75 : 1.15;
+      const L = this.reach(n) * open + (mode === 'focus' ? 1.5 : 0), W = Math.max(0.9, Math.min(L * 0.3, L * Math.sin(Math.PI / P) * 0.8));
+      const rot = this.rng('rot:' + n.slug)() * Math.PI * 2, seg = Math.PI * 2 / P;
+      const cr = 0.6 + Math.min(1.2, n.deg / 8);
+      const R = Math.ceil(L + 1);
+      for (let y = Math.floor(cy - R); y <= Math.ceil(cy + R); y++)
+        for (let x = Math.floor(cx - R); x <= Math.ceil(cx + R); x++) {
+          const dx = x - cx, dy = y - cy, r = Math.hypot(dx, dy);
+          if (r > L + 0.5) continue;
+          let a = Math.atan2(dy, dx) - rot;
+          a = ((a % seg) + seg) % seg - seg / 2;
+          const u = r * Math.cos(a), v = r * Math.sin(a);
+          const e = ((u - L * 0.58) / (L * 0.46)) ** 2 + (v / W) ** 2;
+          if (r <= cr) { set(x, y, mode === 'dim' ? PALE : centre); continue; }
+          if (e > 1) continue;
+          if (mode === 'dim') { if (e > 0.5 && bay(x, y) < 8) set(x, y, PALE); continue; }
+          // Engraved: a solid outline, the inside stippled, denser toward the tip.
+          const tipward = u / L;
+          if (e > 0.5 || L < 2.6) set(x, y, petal);
+          else if (bay(x, y) < (mode === 'rest' ? 4 : 7) + tipward * 6) set(x, y, petal);
+        }
+    });
+    ctx.putImageData(img, 0, 0);
+    this._plateKey = f;
+    this._plate = cv.toDataURL();
+    return this._plate;
+  }
+
+  labels() {
+    const D = this.data(), f = this.focus(), near = this.near(f), lead = new Set(D.lead);
+    // Captions sit beside their flower where they fit (right, left, below, above), most important
+    // first; they keep off other flowers, and one that fits nowhere is left out.
+    const want = D.nodes.map((n, i) => ({ n, i })).filter(({ n, i }) => !n.wild && (f >= 0 ? (i === f || near.has(i)) : (n.deg >= 7 || lead.has(i))))
+      .sort((a, b) => (b.i === f) - (a.i === f) || b.n.deg - a.n.deg);
+    const boxes = [], out = [];
+    const flowers = D.nodes.map((n, i) => ({ n, i })).filter(({ n, i }) => !n.wild && (f < 0 || i === f || near.has(i))).map(({ n, i }) => {
+      const r = this.reach(n) * 1.3;
+      return { x: n.x - r, y: n.y - r, w: 2 * r, h: 2 * r, i };
+    });
+    const hit = (b, self) => boxes.some((o) => b.x < o.x + o.w && b.x + b.w > o.x && b.y < o.y + o.h && b.y + b.h > o.y)
+      || flowers.some((o) => o.i !== self && b.x < o.x + o.w && b.x + b.w > o.x && b.y < o.y + o.h && b.y + b.h > o.y);
+    for (const { n, i } of want) {
+      const big = i === f, max = big ? 52 : 34;
+      const t = n.title.length > max ? n.title.slice(0, max - 1) + '…' : n.title;
+      const cw = big ? 7.4 : 6.8, w = t.length * cw + 8, h = 14, r = this.reach(n) * 2 * (f >= 0 ? 1.15 : 0.85) + (big ? 8 : 5);
+      const tries = [[n.x + r, n.y - 7], [n.x - r - w, n.y - 7], [n.x - w / 2, n.y + r - 1], [n.x - w / 2, n.y - r - h + 1],
+        [n.x + r - 2, n.y + 3], [n.x + r - 2, n.y - 17], [n.x - r - w + 2, n.y + 3], [n.x - r - w + 2, n.y - 17]];
+      const inside = (b) => b.x >= 8 && b.x + b.w <= D.PW - 8 && b.y >= 6 && b.y + b.h <= D.PH - 6;
+      let spot = tries.map(([x, y]) => ({ x, y, w, h })).find((b) => inside(b) && !hit(b, i));
+      // A hub's caption may lie across its neighbours' petals rather than go missing.
+      if (!spot && (big || n.deg >= 9)) {
+        const over = (b, o) => b.x < o.x + o.w && b.x + b.w > o.x && b.y < o.y + o.h && b.y + b.h > o.y;
+        spot = tries.map(([x, y]) => ({ x, y, w, h })).filter((b) => inside(b) && !boxes.some((o) => over(b, o)))
+          .map((b) => ({ b, k: flowers.filter((o) => o.i !== i && over(b, o)).length })).sort((p, q) => p.k - q.k).map((c) => c.b)[0];
+      }
+      if (!spot && big) spot = { x: n.x + r, y: n.y - 7, w, h };
+      if (!spot) continue;
+      boxes.push(spot);
+      out.push({ t, left: Math.round(spot.x) + 'px', top: Math.round(spot.y) + 'px',
+        color: big ? '#2B7349' : (f >= 0 ? '#1F2B23' : '#3E4A40'), weight: big ? '600' : '400', size: big ? '12px' : '11px' });
+    }
+    return out;
+  }
+
+  spots() {
+    const D = this.data();
+    return D.nodes.map((n, i) => ({ n, i })).filter(({ n }) => !n.wild).map(({ n, i }) => ({
+      aria: n.title, left: (n.x - 11) + 'px', top: (n.y - 11) + 'px',
+      enter: () => this.setState({ hover: i }), leave: () => this.setState({ hover: -1 }),
+      pick: () => this.setState({ sel: this.state.sel === i ? -1 : i }) }));
+  }
+
+  wildflowers() {
+    return this.data().nodes.filter((n) => n.wild).map((n) => ({ title: n.title, mark: n.stub ? [{ t: ',', c: '#5E8E4A' }] : this.mark('notes/' + n.slug) }));
+  }
+
+  panel() {
+    const D = this.data(), s = this.state.sel;
+    if (s < 0) return { show: false };
+    const n = D.nodes[s], spec = this.specimen('notes/' + n.slug);
+    const near = (list) => list.map((slug) => { const m = D.nodes.find((x) => x.slug === slug); return { title: m ? m.title : slug, mark: m ? (m.stub ? [{ t: ',', c: '#5E8E4A' }] : this.mark('notes/' + m.slug)) : [] }; });
+    return { show: true, title: n.title, latin: n.stub ? 'a bud, not written yet' : spec.latin, flower: this.specimenRows('notes/' + n.slug),
+      outs: near(D.out[n.slug] || []), ins: near(D.inn[n.slug] || []) };
+  }
+
+  data() { return this._d || (this._d = {"PW":1170,"PH":980,"nodes":[{"slug":"2pc","title":"2PC","x":524,"y":740,"deg":1,"stub":false,"wild":false},{"slug":"3pc","title":"3PC","x":541,"y":698,"deg":1,"stub":false,"wild":false},{"slug":"ab-tree","title":"(a,b) tree","x":1015,"y":420,"deg":2,"stub":false,"wild":false},{"slug":"aba-problem","title":"ABA problém","x":687,"y":780,"deg":5,"stub":false,"wild":false},{"slug":"abstract-syntax-tree","title":"abstract syntax tree","x":696,"y":832,"deg":1,"stub":false,"wild":false},{"slug":"adaptive-k-d-trees","title":"adaptive k-d trees","x":798,"y":430,"deg":1,"stub":true,"wild":false},{"slug":"addressing-modes","title":"addressing modes","x":765,"y":111,"deg":1,"stub":false,"wild":false},{"slug":"algebraic-data-types","title":"algebraic data types","x":-1,"y":-1,"deg":0,"stub":true,"wild":true},{"slug":"amdahl-law","title":"amdahl law","x":1079,"y":614,"deg":1,"stub":true,"wild":false},{"slug":"amortized-analysis","title":"amortized analysis","x":927,"y":477,"deg":5,"stub":true,"wild":false},{"slug":"amortized-complexity","title":"amortized complexity","x":904,"y":432,"deg":6,"stub":false,"wild":false},{"slug":"amortizovana-analyza-a2a-stromu","title":"amortizovaná analýza (a,2a-stromů)","x":987,"y":446,"deg":2,"stub":false,"wild":false},{"slug":"amortizovanou-slozitost","title":"amortizovanou složitost","x":-1,"y":-1,"deg":0,"stub":true,"wild":true},{"slug":"b-stromy","title":"B-stromy","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"bankerova-metoda-accounting-method","title":"bankéřova metoda (accounting method)","x":891,"y":474,"deg":2,"stub":false,"wild":false},{"slug":"bbalpha-tree-weight-balanced-tree","title":"BB(alpha) tree (weight balanced tree)","x":869,"y":411,"deg":3,"stub":false,"wild":false},{"slug":"bft-byzantine-fault-tolerance","title":"BFT (byzantine fault tolerance)","x":433,"y":726,"deg":2,"stub":false,"wild":false},{"slug":"bitcoin","title":"bitcoin","x":380,"y":606,"deg":3,"stub":false,"wild":false},{"slug":"blockchain","title":"blockchain","x":363,"y":563,"deg":3,"stub":false,"wild":false},{"slug":"bloom-filter","title":"bloom filter","x":836,"y":148,"deg":2,"stub":false,"wild":false},{"slug":"bounded-model-checking","title":"bounded model checking","x":842,"y":696,"deg":1,"stub":false,"wild":false},{"slug":"btor2","title":"btor2","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"byzantine-failure","title":"byzantine failure","x":478,"y":744,"deg":2,"stub":false,"wild":false},{"slug":"c-parameter-pack","title":"c++ parameter pack","x":476,"y":64,"deg":1,"stub":false,"wild":false},{"slug":"c-template-meta-programming","title":"c++ template meta-programming","x":450,"y":88,"deg":2,"stub":false,"wild":false},{"slug":"c-template-specialization","title":"c++ template specialization","x":421,"y":113,"deg":2,"stub":false,"wild":false},{"slug":"c-univerzalnost","title":"c-univerzálnost","x":868,"y":165,"deg":5,"stub":false,"wild":false},{"slug":"cache-aware-model","title":"cache-aware model","x":1048,"y":549,"deg":2,"stub":true,"wild":false},{"slug":"can","title":"CAN","x":637,"y":516,"deg":1,"stub":false,"wild":false},{"slug":"cap-theorem","title":"CAP theorem","x":438,"y":322,"deg":4,"stub":false,"wild":false},{"slug":"cas","title":"CAS","x":741,"y":702,"deg":5,"stub":false,"wild":false},{"slug":"chandy-lamport","title":"Chandy-Lamport","x":331,"y":521,"deg":2,"stub":false,"wild":false},{"slug":"chomskeho-hierarchie","title":"Chomského hierarchie","x":510,"y":856,"deg":1,"stub":true,"wild":false},{"slug":"client-server","title":"client-server","x":402,"y":293,"deg":3,"stub":false,"wild":false},{"slug":"conceptual-modelling","title":"conceptual modelling","x":548,"y":72,"deg":3,"stub":false,"wild":false},{"slug":"crdt-conflict-free-replicated-data-types","title":"CRDT (conflict-free replicated data types)","x":416,"y":409,"deg":2,"stub":false,"wild":false},{"slug":"data-alignment","title":"data alignment","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"deadlock-v-distribuovanem-systemu","title":"deadlock v distribuovaném systému","x":307,"y":482,"deg":5,"stub":false,"wild":false},{"slug":"detekce-globalniho-stavu","title":"detekce globálního stavu","x":353,"y":480,"deg":6,"stub":false,"wild":false},{"slug":"detekce-selhani-failure-detection","title":"detekce selhání (failure detection)","x":569,"y":661,"deg":1,"stub":false,"wild":false},{"slug":"detekce-terminace-v-distribuovanem-systemu","title":"detekce terminace v distribuovaném systému","x":321,"y":582,"deg":1,"stub":false,"wild":false},{"slug":"directory-tree","title":"directory tree","x":54,"y":494,"deg":2,"stub":false,"wild":false},{"slug":"directory","title":"directory","x":99,"y":474,"deg":4,"stub":false,"wild":false},{"slug":"distribuovana-sdilena-pamet","title":"distribuovaná sdílená paměť","x":382,"y":334,"deg":3,"stub":false,"wild":false},{"slug":"distribuovane-algoritmy-detekce","title":"distribuované algoritmy detekce","x":-1,"y":-1,"deg":0,"stub":true,"wild":true},{"slug":"distribuovane-strankovani","title":"distribuované stránkování","x":368,"y":262,"deg":1,"stub":false,"wild":false},{"slug":"distributed-system","title":"distributed system","x":457,"y":388,"deg":13,"stub":false,"wild":false},{"slug":"dorucovaci-protokoly-delivery-protocols","title":"doručovací protokoly (delivery protocols","x":621,"y":428,"deg":2,"stub":true,"wild":false},{"slug":"dynamic-array","title":"dynamic array","x":892,"y":510,"deg":2,"stub":false,"wild":false},{"slug":"edge-chasing","title":"edge-chasing","x":265,"y":464,"deg":1,"stub":false,"wild":false},{"slug":"eigrp","title":"EIGRP","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"embedded-zkouska","title":"EMBEDDED ZKOUŠKA","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"endianess","title":"endianess","x":594,"y":242,"deg":2,"stub":false,"wild":false},{"slug":"epidemicke-protokoly","title":"epidemické protokoly","x":342,"y":357,"deg":2,"stub":false,"wild":false},{"slug":"exti","title":"EXTI","x":365,"y":849,"deg":3,"stub":false,"wild":false},{"slug":"file-descriptor","title":"file descriptor","x":172,"y":518,"deg":4,"stub":false,"wild":false},{"slug":"file-system-interface","title":"file system interface","x":171,"y":564,"deg":4,"stub":false,"wild":false},{"slug":"file-system","title":"file system","x":84,"y":528,"deg":5,"stub":false,"wild":false},{"slug":"file","title":"file","x":125,"y":557,"deg":6,"stub":false,"wild":false},{"slug":"first-order-logic","title":"first-order logic","x":858,"y":761,"deg":2,"stub":false,"wild":false},{"slug":"formalni-jazyk","title":"formální jazyk","x":638,"y":825,"deg":1,"stub":false,"wild":false},{"slug":"ghosts","title":"ghosts","x":276,"y":142,"deg":1,"stub":false,"wild":false},{"slug":"gpio","title":"GPIO","x":409,"y":864,"deg":3,"stub":false,"wild":false},{"slug":"group-membership","title":"group membership","x":602,"y":486,"deg":3,"stub":false,"wild":false},{"slug":"hashovaci-funkce","title":"hashovací funkce","x":854,"y":215,"deg":9,"stub":false,"wild":false},{"slug":"hoare-logic","title":"hoare logic","x":984,"y":702,"deg":2,"stub":false,"wild":false},{"slug":"idempotence-v-rpc","title":"idempotence v RPC","x":548,"y":245,"deg":3,"stub":false,"wild":false},{"slug":"idempotence","title":"idempotence","x":532,"y":201,"deg":2,"stub":false,"wild":false},{"slug":"inode","title":"inode","x":127,"y":511,"deg":5,"stub":false,"wild":false},{"slug":"internet-protocol","title":"internet protocol","x":598,"y":196,"deg":1,"stub":true,"wild":false},{"slug":"interrupt","title":"interrupt","x":354,"y":814,"deg":2,"stub":false,"wild":false},{"slug":"io-model","title":"IO model","x":1026,"y":511,"deg":3,"stub":false,"wild":false},{"slug":"isa","title":"isa","x":724,"y":76,"deg":2,"stub":false,"wild":false},{"slug":"k-cestny-mergesort","title":"k-cestný mergesort","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"k-d-trees","title":"k-d trees","x":833,"y":437,"deg":3,"stub":false,"wild":false},{"slug":"k-nezavislost","title":"k-nezávislost","x":895,"y":188,"deg":8,"stub":false,"wild":false},{"slug":"kauzalni-zavislost","title":"kauzální závislost","x":556,"y":483,"deg":4,"stub":false,"wild":false},{"slug":"komunikace-v-distribuovanych-systemech","title":"komunikace v distribuovaných systémech","x":445,"y":277,"deg":6,"stub":false,"wild":false},{"slug":"komunikacni-model","title":"komunikační model","x":596,"y":351,"deg":8,"stub":false,"wild":false},{"slug":"konsenzus-v-distribuovanych-systemech","title":"konsenzus v distribuovaných systémech","x":486,"y":616,"deg":15,"stub":false,"wild":false},{"slug":"konzistence-distribuovaneho-systemu","title":"konzistence distribuovaného systému","x":379,"y":437,"deg":5,"stub":false,"wild":false},{"slug":"koordinace-a-synchronizace-v-distribuovanem-systemu","title":"koordinace a synchronizace v distribuovaném systému","x":399,"y":479,"deg":13,"stub":false,"wild":false},{"slug":"lamportuv-algoritmus","title":"Lamportův algoritmus","x":502,"y":542,"deg":3,"stub":false,"wild":false},{"slug":"lcp-array","title":"LCP array","x":930,"y":518,"deg":3,"stub":false,"wild":false},{"slug":"leader-based-consensus-algorithm","title":"leader-based consensus algorithm","x":375,"y":388,"deg":1,"stub":false,"wild":false},{"slug":"leader-based-koordinace","title":"leader-based koordinace","x":543,"y":410,"deg":5,"stub":false,"wild":false},{"slug":"left-reset-turing-machine","title":"left reset turing machine","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"lemma-o-moduleni","title":"lemma o modulení","x":949,"y":237,"deg":4,"stub":false,"wild":false},{"slug":"linear-probing","title":"linear probing","x":798,"y":252,"deg":1,"stub":false,"wild":false},{"slug":"linearni-kongruence","title":"lineární kongruence","x":949,"y":330,"deg":1,"stub":true,"wild":false},{"slug":"lisp-machine","title":"lisp machine","x":264,"y":832,"deg":1,"stub":false,"wild":false},{"slug":"llsc","title":"LLSC","x":671,"y":666,"deg":4,"stub":false,"wild":false},{"slug":"load-balancer","title":"load balancer","x":414,"y":243,"deg":1,"stub":true,"wild":false},{"slug":"load-balancing-v-distribuovanych-systemech","title":"load balancing v distribuovaných systémech","x":296,"y":354,"deg":3,"stub":false,"wild":false},{"slug":"load-balancing","title":"load balancing","x":-1,"y":-1,"deg":0,"stub":true,"wild":true},{"slug":"lock-free-stack","title":"lock-free stack","x":760,"y":757,"deg":2,"stub":false,"wild":false},{"slug":"lock-free-struktura","title":"lock-free struktura","x":716,"y":744,"deg":4,"stub":false,"wild":false},{"slug":"logical-contracts","title":"logical contracts","x":865,"y":804,"deg":2,"stub":false,"wild":false},{"slug":"logicky-cas","title":"logický čas","x":513,"y":497,"deg":5,"stub":false,"wild":false},{"slug":"ltl-linear-temporal-logic","title":"LTL (linear temporal logic)","x":798,"y":741,"deg":1,"stub":false,"wild":false},{"slug":"mac-address","title":"MAC address","x":736,"y":904,"deg":2,"stub":false,"wild":false},{"slug":"machine-instruction","title":"machine instruction","x":684,"y":40,"deg":1,"stub":false,"wild":false},{"slug":"maekawas-algorithm","title":"Maekawa's algorithm","x":573,"y":615,"deg":3,"stub":false,"wild":false},{"slug":"marshalling","title":"marshalling","x":583,"y":307,"deg":3,"stub":false,"wild":false},{"slug":"masivne-distribuovane-systemy","title":"masivně distribuované systémy","x":423,"y":519,"deg":6,"stub":false,"wild":false},{"slug":"matrix-transpose","title":"matrix_transpose()","x":1097,"y":499,"deg":1,"stub":false,"wild":false},{"slug":"mechanismy-koordinace-v-distribuovanych-systemech","title":"mechanismy koordinace v distribuovaných systémech","x":592,"y":533,"deg":8,"stub":false,"wild":false},{"slug":"middleware","title":"middleware","x":509,"y":380,"deg":4,"stub":false,"wild":false},{"slug":"mmap","title":"mmap","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"modal-logic","title":"modal logic","x":649,"y":121,"deg":1,"stub":false,"wild":false},{"slug":"model-checking","title":"model checking","x":863,"y":725,"deg":6,"stub":false,"wild":false},{"slug":"modely-casovani-timing-models","title":"modely časování (timing models)","x":465,"y":235,"deg":1,"stub":false,"wild":false},{"slug":"modely-konzistence-distribuovaneho-systemu","title":"modely konzistence distribuovaného systému","x":477,"y":346,"deg":5,"stub":false,"wild":false},{"slug":"mutex","title":"mutex","x":629,"y":646,"deg":2,"stub":false,"wild":false},{"slug":"network-interface-card","title":"network interface card","x":696,"y":868,"deg":1,"stub":true,"wild":false},{"slug":"nvic","title":"NVIC","x":395,"y":829,"deg":3,"stub":false,"wild":false},{"slug":"ontology","title":"ontology","x":516,"y":157,"deg":1,"stub":false,"wild":false},{"slug":"ontouml-rigidity","title":"OntoUML rigidity","x":615,"y":108,"deg":2,"stub":false,"wild":false},{"slug":"ontouml","title":"OntoUML","x":578,"y":93,"deg":4,"stub":false,"wild":false},{"slug":"openmp-101","title":"OpenMP 101","x":1063,"y":581,"deg":2,"stub":false,"wild":false},{"slug":"pagemap","title":"pagemap","x":60,"y":616,"deg":1,"stub":false,"wild":false},{"slug":"paralelizace-ab-stromu","title":"paralelizace (a,b) stromu","x":1038,"y":393,"deg":1,"stub":false,"wild":false},{"slug":"parcialni-funkce","title":"parciální funkce","x":532,"y":827,"deg":1,"stub":false,"wild":false},{"slug":"paxos","title":"paxos","x":443,"y":599,"deg":3,"stub":false,"wild":false},{"slug":"pbft-practical-byzantine-fault-tolerance","title":"PBFT (practical byzantine fault tolerance)","x":470,"y":699,"deg":5,"stub":false,"wild":false},{"slug":"peer-to-peer-p2p","title":"peer-to-peer (P2P)","x":377,"y":520,"deg":3,"stub":false,"wild":false},{"slug":"permission-based-koordinace","title":"permission-based koordinace","x":520,"y":585,"deg":9,"stub":false,"wild":false},{"slug":"physical-clock-sync","title":"physical clock sync","x":530,"y":630,"deg":1,"stub":false,"wild":false},{"slug":"plne-nahodna-hashovaci-funkce","title":"plně náhodná hashovací funkce","x":861,"y":252,"deg":3,"stub":false,"wild":false},{"slug":"polymorphism","title":"polymorphism","x":366,"y":162,"deg":1,"stub":true,"wild":false},{"slug":"potential-method","title":"potential method","x":961,"y":489,"deg":3,"stub":false,"wild":false},{"slug":"problem-byzantskych-generalu","title":"problém byzantských generálů","x":419,"y":682,"deg":2,"stub":true,"wild":false},{"slug":"problem-dvou-armad","title":"problém dvou armád","x":460,"y":654,"deg":1,"stub":false,"wild":false},{"slug":"proof-of-stake-pos","title":"proof of stake (PoS)","x":415,"y":636,"deg":2,"stub":true,"wild":false},{"slug":"proof-of-work-pow","title":"proof of work (PoW)","x":372,"y":652,"deg":3,"stub":false,"wild":false},{"slug":"prototype-based-paradigm","title":"prototype-based paradigm","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"pseudofile","title":"pseudofile","x":84,"y":577,"deg":2,"stub":true,"wild":false},{"slug":"pwm","title":"PWM","x":476,"y":923,"deg":1,"stub":false,"wild":false},{"slug":"qemu","title":"QEMU","x":-1,"y":-1,"deg":0,"stub":true,"wild":true},{"slug":"quorum-based-koordinace","title":"quorum-based koordinace","x":455,"y":555,"deg":9,"stub":false,"wild":false},{"slug":"rabin-karp-algoritmus","title":"Rabin-Karp algoritmus","x":999,"y":160,"deg":1,"stub":true,"wild":false},{"slug":"race-condition","title":"race condition","x":263,"y":510,"deg":2,"stub":false,"wild":false},{"slug":"raft","title":"RAFT","x":577,"y":442,"deg":4,"stub":false,"wild":false},{"slug":"range-tree","title":"range tree","x":868,"y":447,"deg":4,"stub":false,"wild":false},{"slug":"replikace","title":"replikace","x":469,"y":511,"deg":8,"stub":false,"wild":false},{"slug":"rodina-hashovacich-funkci","title":"rodina hashovacích funkcí","x":888,"y":228,"deg":10,"stub":false,"wild":false},{"slug":"rodina-linearnich-hashovacich-funkci","title":"rodina lineárních hashovacích funkcí","x":919,"y":261,"deg":6,"stub":false,"wild":false},{"slug":"rodina-polynomialnich-hashovacich-funkci","title":"rodina polynomiálních hashovacích funkcí","x":921,"y":215,"deg":6,"stub":false,"wild":false},{"slug":"rodina-rolling-hash","title":"rodina rolling hash","x":915,"y":158,"deg":5,"stub":false,"wild":false},{"slug":"rozhodnutelnost","title":"rozhodnutelnost","x":533,"y":885,"deg":1,"stub":false,"wild":false},{"slug":"rozhodovaci-problemy","title":"rozhodovací problémy","x":656,"y":859,"deg":2,"stub":false,"wild":false},{"slug":"rpc","title":"RPC","x":520,"y":332,"deg":7,"stub":false,"wild":false},{"slug":"scalar-product-hash-family","title":"scalar product hash family","x":828,"y":190,"deg":3,"stub":false,"wild":false},{"slug":"semantic-interoperability","title":"semantic interoperability","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"semantics","title":"semantics","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"skupinova-komunikace-broadcast","title":"skupinová komunikace (broadcast)","x":587,"y":397,"deg":3,"stub":false,"wild":false},{"slug":"slew-rate","title":"slew rate","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"slozena-rodina-rolling-hash","title":"složená rodina rolling hash","x":940,"y":184,"deg":6,"stub":false,"wild":false},{"slug":"smt","title":"smt","x":954,"y":781,"deg":1,"stub":false,"wild":false},{"slug":"software-verification","title":"software verification","x":898,"y":768,"deg":6,"stub":false,"wild":false},{"slug":"splay-operation","title":"splay operation","x":962,"y":415,"deg":1,"stub":true,"wild":false},{"slug":"splay-tree-empiric-experiment","title":"splay tree empiric experiment","x":941,"y":444,"deg":5,"stub":false,"wild":false},{"slug":"splay-tree","title":"splay tree","x":928,"y":402,"deg":4,"stub":false,"wild":false},{"slug":"splay","title":"splay","x":923,"y":364,"deg":1,"stub":false,"wild":false},{"slug":"spolehlivost-delivery-semantics","title":"spolehlivost (delivery semantics)","x":540,"y":290,"deg":4,"stub":false,"wild":false},{"slug":"spolehlivost-distribuovaneho-systemu","title":"spolehlivost distribuovaného systému","x":435,"y":451,"deg":5,"stub":false,"wild":false},{"slug":"sprava-prostredku-a-procesu-v-distribuovanem-systemu","title":"správa prostředků a procesů v distribuovaném systému","x":333,"y":438,"deg":4,"stub":false,"wild":false},{"slug":"state-machine-replication-smr","title":"state machine replication (SMR)","x":523,"y":452,"deg":6,"stub":false,"wild":false},{"slug":"stavovost-distribuovaneho-systemu","title":"stavovost distribuovaného systému","x":417,"y":363,"deg":5,"stub":false,"wild":false},{"slug":"stm-lib","title":"stm-lib","x":920,"y":797,"deg":1,"stub":false,"wild":false},{"slug":"strongest-postcondition","title":"strongest postcondition","x":934,"y":706,"deg":4,"stub":false,"wild":false},{"slug":"suffix-array","title":"suffix array","x":922,"y":562,"deg":2,"stub":false,"wild":false},{"slug":"suffix-tree","title":"suffix tree","x":915,"y":597,"deg":1,"stub":false,"wild":false},{"slug":"switch","title":"switch","x":777,"y":939,"deg":1,"stub":false,"wild":false},{"slug":"symbolic-execution","title":"symbolic execution","x":933,"y":742,"deg":2,"stub":false,"wild":false},{"slug":"synchronizacni-primitiva","title":"synchronizační primitiva","x":615,"y":596,"deg":2,"stub":false,"wild":false},{"slug":"system-specification","title":"system specification","x":807,"y":706,"deg":1,"stub":false,"wild":false},{"slug":"tagged-architecture","title":"tagged architecture","x":316,"y":814,"deg":1,"stub":false,"wild":false},{"slug":"term","title":"term","x":748,"y":814,"deg":1,"stub":false,"wild":false},{"slug":"timer-hardware","title":"timer (hardware)","x":446,"y":896,"deg":2,"stub":false,"wild":false},{"slug":"tmux","title":"tmux","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"tocttou","title":"TOCTTOU","x":217,"y":509,"deg":2,"stub":false,"wild":false},{"slug":"token-based-koordinace","title":"token-based koordinace","x":565,"y":570,"deg":8,"stub":false,"wild":false},{"slug":"totalni-funkce","title":"totální funkce","x":584,"y":814,"deg":1,"stub":false,"wild":false},{"slug":"trans-algorithm","title":"trans algorithm","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"transakce-v-distribuovanych-systemech","title":"transakce v distribuovaných systémech","x":505,"y":669,"deg":3,"stub":false,"wild":false},{"slug":"transpozice-ctvercove-matice","title":"transpozice čtvercové matice","x":1061,"y":505,"deg":2,"stub":false,"wild":false},{"slug":"turinguv-stroj","title":"turingův stroj","x":627,"y":943,"deg":1,"stub":true,"wild":false},{"slug":"type-class-pattern","title":"type class pattern","x":393,"y":138,"deg":2,"stub":false,"wild":false},{"slug":"ufo","title":"UFO","x":542,"y":120,"deg":3,"stub":false,"wild":false},{"slug":"ullmans-triangle","title":"Ullman's triangle","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"uml","title":"UML","x":568,"y":40,"deg":2,"stub":false,"wild":false},{"slug":"univerzalni-turinguv-stroj","title":"univerzální turingův stroj","x":632,"y":881,"deg":3,"stub":false,"wild":false},{"slug":"usporadani-komunikace-v-distribuovanych-systemech","title":"uspořádání (komunikace v distribuovaných systémech)","x":552,"y":365,"deg":4,"stub":false,"wild":false},{"slug":"verification-condition","title":"verification condition","x":1000,"y":652,"deg":1,"stub":false,"wild":false},{"slug":"verifying-immutable-data-structures","title":"verifying immutable data structures","x":842,"y":832,"deg":1,"stub":false,"wild":false},{"slug":"verifying-mutable-data-structures","title":"verifying mutable data structures","x":328,"y":160,"deg":1,"stub":false,"wild":false},{"slug":"veta-o-kompetetivnosti-lru","title":"věta o kompetetivnosti LRU","x":996,"y":481,"deg":2,"stub":false,"wild":false},{"slug":"virtual-memory","title":"virtual memory","x":-1,"y":-1,"deg":0,"stub":true,"wild":true},{"slug":"virtualizace","title":"virtualizace","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"virtualni-synchronie","title":"virtuální synchronie","x":488,"y":421,"deg":5,"stub":false,"wild":false},{"slug":"volba-koordinatora-leader-election","title":"volba koordinátora (leader election)","x":479,"y":466,"deg":5,"stub":false,"wild":false},{"slug":"vycislitelnost","title":"vyčíslitelnost","x":585,"y":857,"deg":8,"stub":false,"wild":false},{"slug":"vypocetni-model","title":"výpočetní model","x":611,"y":905,"deg":3,"stub":false,"wild":false},{"slug":"vysvetleni-access-lemma-pro-splay-trees","title":"vysvětlení access lemma pro splay trees","x":896,"y":387,"deg":2,"stub":false,"wild":false},{"slug":"vzajemne-vylouceni-v-distribuovanych-systemech","title":"vzájemné vyloučení v distribuovaných systémech","x":547,"y":528,"deg":9,"stub":false,"wild":false},{"slug":"vzdalene-spousteni-procesu-a-migrace","title":"vzdálené spouštění procesů a migrace","x":316,"y":396,"deg":2,"stub":false,"wild":false},{"slug":"vztah-konsenzu-a-detekce-globalniho-stavu","title":"vztah konsenzu a detekce globálního stavu","x":410,"y":563,"deg":2,"stub":false,"wild":false},{"slug":"vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech","title":"vztah mezi komunikačními modely a konzistencí v distribuovaných systémech","x":505,"y":260,"deg":3,"stub":false,"wild":false},{"slug":"vztah-spolehlivosti-a-stavu-distribuovaneho-systemu","title":"vztah spolehlivosti a stavu distribuovaného systému","x":484,"y":301,"deg":2,"stub":false,"wild":false},{"slug":"wait-for-graph-wfg","title":"Wait-For-Graph (WFG)","x":292,"y":546,"deg":2,"stub":false,"wild":false},{"slug":"watchdog","title":"Watchdog","x":-1,"y":-1,"deg":0,"stub":false,"wild":true},{"slug":"weakest-precondition","title":"weakest precondition","x":969,"y":669,"deg":3,"stub":false,"wild":false},{"slug":"zamky-vs-lock-free-struktury","title":"zámky vs lock-free struktury","x":684,"y":711,"deg":5,"stub":false,"wild":false}],"edges":[[0,185],[1,185],[2,11],[2,121],[3,30],[3,91],[3,95],[3,96],[3,213],[4,178],[5,74],[6,72],[8,119],[9,48],[9,83],[9,130],[9,143],[9,161],[10,14],[10,15],[10,143],[10,161],[10,162],[10,204],[11,130],[14,48],[15,74],[15,143],[16,22],[16,124],[17,104],[17,125],[17,134],[18,104],[18,125],[18,167],[19,64],[19,75],[20,110],[22,124],[23,24],[24,25],[25,188],[26,64],[26,75],[26,145],[26,148],[26,152],[27,71],[27,119],[28,182],[29,80],[29,112],[29,144],[29,208],[30,91],[30,95],[30,96],[30,213],[31,38],[31,210],[32,202],[33,46],[33,92],[33,168],[34,118],[34,189],[34,191],[35,79],[35,144],[37,38],[37,49],[37,141],[37,166],[37,210],[38,40],[38,80],[38,81],[38,207],[39,126],[41,42],[41,57],[42,57],[42,58],[42,68],[43,45],[43,46],[43,112],[46,77],[46,81],[46,84],[46,98],[46,104],[46,107],[46,125],[46,165],[46,166],[46,168],[46,205],[47,193],[47,200],[52,69],[52,103],[53,93],[53,144],[54,62],[54,70],[54,115],[55,56],[55,58],[55,68],[55,181],[56,57],[56,58],[56,68],[57,58],[57,68],[58,68],[58,136],[59,110],[59,159],[60,202],[61,196],[62,115],[62,179],[63,79],[63,81],[63,200],[64,88],[64,128],[64,145],[64,146],[64,147],[64,152],[64,157],[65,170],[65,212],[66,67],[66,151],[66,164],[67,164],[70,115],[71,186],[71,197],[72,101],[74,143],[75,87],[75,128],[75,145],[75,147],[75,148],[75,157],[76,81],[76,98],[76,112],[76,193],[77,78],[77,111],[77,151],[77,155],[77,165],[78,107],[78,151],[78,155],[78,164],[78,193],[78,200],[78,208],[79,81],[79,106],[79,123],[79,124],[79,126],[79,132],[79,133],[79,134],[79,139],[79,142],[79,167],[79,201],[79,207],[80,112],[80,144],[80,168],[81,82],[81,98],[81,106],[81,127],[81,185],[81,200],[81,201],[81,205],[82,98],[82,205],[83,130],[83,171],[85,106],[85,142],[85,151],[85,182],[85,201],[87,145],[87,146],[87,147],[89,146],[90,177],[91,96],[91,213],[93,166],[93,206],[96,213],[97,159],[97,195],[98,126],[99,110],[100,114],[100,173],[102,126],[102,139],[102,205],[103,107],[103,151],[104,131],[104,133],[104,134],[105,186],[106,126],[106,139],[106,182],[106,201],[106,205],[107,200],[109,117],[110,159],[110,170],[110,176],[112,208],[113,175],[113,213],[116,189],[117,118],[118,189],[118,191],[120,136],[122,202],[123,139],[123,167],[124,126],[124,131],[126,139],[126,182],[126,205],[128,145],[129,188],[137,179],[139,142],[139,144],[139,182],[139,205],[140,157],[141,181],[142,167],[144,165],[144,167],[144,168],[145,146],[145,147],[145,148],[145,152],[145,157],[146,147],[146,157],[147,148],[148,157],[149,202],[150,192],[150,202],[151,164],[151,165],[155,182],[158,159],[159,169],[159,174],[160,161],[161,162],[161,197],[162,163],[162,204],[165,209],[166,206],[167,193],[168,209],[170,174],[170,212],[171,172],[175,205],[182,201],[182,205],[183,202],[187,203],[192,202],[192,203],[194,212],[202,203]],"out":{"file-descriptor":["inode","file","tocttou"],"quorum-based-koordinace":["permission-based-koordinace","replikace","raft","vzajemne-vylouceni-v-distribuovanych-systemech","token-based-koordinace","paxos","maekawas-algorithm","mechanismy-koordinace-v-distribuovanych-systemech"],"skupinova-komunikace-broadcast":["komunikacni-model","komunikace-v-distribuovanych-systemech"],"file-system":["file","inode","file-system-interface","directory"],"masivne-distribuovane-systemy":["bitcoin","proof-of-work-pow","problem-byzantskych-generalu","proof-of-stake-pos","blockchain"],"range-tree":["bbalpha-tree-weight-balanced-tree","amortized-analysis","k-d-trees","amortized-complexity"],"io-model":["cache-aware-model","transpozice-ctvercove-matice","veta-o-kompetetivnosti-lru"],"koordinace-a-synchronizace-v-distribuovanem-systemu":["vzajemne-vylouceni-v-distribuovanych-systemech","group-membership","kauzalni-zavislost","mechanismy-koordinace-v-distribuovanych-systemech","transakce-v-distribuovanych-systemech","detekce-globalniho-stavu","physical-clock-sync","logicky-cas","konsenzus-v-distribuovanych-systemech","volba-koordinatora-leader-election"],"bitcoin":["proof-of-work-pow","peer-to-peer-p2p"],"file":["file-system","pseudofile","file-system-interface","file-descriptor","directory","inode"],"vycislitelnost":["rozhodovaci-problemy","parcialni-funkce","rozhodnutelnost","totalni-funkce","vypocetni-model","formalni-jazyk","univerzalni-turinguv-stroj","chomskeho-hierarchie"],"file-system-interface":["file-descriptor","inode","file-system"],"ab-tree":["paralelizace-ab-stromu","amortizovana-analyza-a2a-stromu"],"deadlock-v-distribuovanem-systemu":["race-condition","wait-for-graph-wfg","edge-chasing"],"inode":["file-system","file"],"permission-based-koordinace":["detekce-selhani-failure-detection","mechanismy-koordinace-v-distribuovanych-systemech","quorum-based-koordinace","konsenzus-v-distribuovanych-systemech","vzajemne-vylouceni-v-distribuovanych-systemech","token-based-koordinace","logicky-cas","maekawas-algorithm"],"splay-tree-empiric-experiment":["splay-tree","amortized-complexity","veta-o-kompetetivnosti-lru","amortized-analysis","splay-operation"],"nvic":["gpio","exti","interrupt"],"zamky-vs-lock-free-struktury":["cas","lock-free-struktura","llsc","aba-problem","mutex"],"replikace":["state-machine-replication-smr","cap-theorem","epidemicke-protokoly","konzistence-distribuovaneho-systemu","crdt-conflict-free-replicated-data-types"],"distributed-system":["koordinace-a-synchronizace-v-distribuovanem-systemu","stavovost-distribuovaneho-systemu","middleware","masivne-distribuovane-systemy","peer-to-peer-p2p","komunikace-v-distribuovanych-systemech","distribuovana-sdilena-pamet","client-server","spolehlivost-distribuovaneho-systemu","sprava-prostredku-a-procesu-v-distribuovanem-systemu"],"dynamic-array":["bankerova-metoda-accounting-method","amortized-analysis"],"transpozice-ctvercove-matice":["io-model","matrix-transpose"],"plne-nahodna-hashovaci-funkce":["rodina-hashovacich-funkci","hashovaci-funkce","k-nezavislost"],"virtualni-synchronie":["dorucovaci-protokoly-delivery-protocols","middleware","komunikacni-model","koordinace-a-synchronizace-v-distribuovanem-systemu"],"hoare-logic":["weakest-precondition","strongest-postcondition"],"byzantine-failure":["bft-byzantine-fault-tolerance"],"bft-byzantine-fault-tolerance":["pbft-practical-byzantine-fault-tolerance","byzantine-failure"],"openmp-101":["cache-aware-model","amdahl-law"],"model-checking":["bounded-model-checking","ltl-linear-temporal-logic","system-specification","first-order-logic"],"type-class-pattern":["polymorphism","c-template-specialization"],"bankerova-metoda-accounting-method":["amortized-complexity"],"slozena-rodina-rolling-hash":["rodina-rolling-hash","rodina-linearnich-hashovacich-funkci","rabin-karp-algoritmus","k-nezavislost"],"synchronizacni-primitiva":["mutex"],"rodina-polynomialnich-hashovacich-funkci":["lemma-o-moduleni","rodina-linearnich-hashovacich-funkci"],"hashovaci-funkce":["rodina-polynomialnich-hashovacich-funkci","c-univerzalnost","slozena-rodina-rolling-hash","rodina-hashovacich-funkci"],"konsenzus-v-distribuovanych-systemech":["vztah-konsenzu-a-detekce-globalniho-stavu","paxos","koordinace-a-synchronizace-v-distribuovanem-systemu","proof-of-stake-pos","raft","volba-koordinatora-leader-election","proof-of-work-pow","state-machine-replication-smr","group-membership","pbft-practical-byzantine-fault-tolerance","problem-dvou-armad","quorum-based-koordinace"],"software-verification":["model-checking","symbolic-execution","first-order-logic","logical-contracts","smt","stm-lib"],"detekce-globalniho-stavu":["deadlock-v-distribuovanem-systemu","detekce-terminace-v-distribuovanem-systemu","chandy-lamport","vztah-konsenzu-a-detekce-globalniho-stavu"],"conceptual-modelling":["uml"],"strongest-postcondition":["weakest-precondition","model-checking","symbolic-execution"],"vypocetni-model":["univerzalni-turinguv-stroj","turinguv-stroj"],"mechanismy-koordinace-v-distribuovanych-systemech":["quorum-based-koordinace","permission-based-koordinace","leader-based-koordinace","konsenzus-v-distribuovanych-systemech","vzajemne-vylouceni-v-distribuovanych-systemech","volba-koordinatora-leader-election","token-based-koordinace"],"stavovost-distribuovaneho-systemu":["replikace","konzistence-distribuovaneho-systemu","vztah-spolehlivosti-a-stavu-distribuovaneho-systemu"],"timer-hardware":["gpio","pwm"],"client-server":["load-balancer","stavovost-distribuovaneho-systemu"],"vysvetleni-access-lemma-pro-splay-trees":["amortized-complexity"],"rodina-linearnich-hashovacich-funkci":["lemma-o-moduleni","rodina-hashovacich-funkci","linearni-kongruence","hashovaci-funkce"],"ufo":["conceptual-modelling","ontology"],"komunikacni-model":["usporadani-komunikace-v-distribuovanych-systemech","spolehlivost-delivery-semantics","komunikace-v-distribuovanych-systemech","rpc","virtualni-synchronie","middleware","vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech"],"ontouml-rigidity":["ontouml","modal-logic"],"mac-address":["switch","network-interface-card"],"symbolic-execution":["software-verification"],"komunikace-v-distribuovanych-systemech":["skupinova-komunikace-broadcast","komunikacni-model","rpc","spolehlivost-distribuovaneho-systemu","modely-casovani-timing-models"],"rodina-rolling-hash":["k-nezavislost","rodina-polynomialnich-hashovacich-funkci","c-univerzalnost"],"transakce-v-distribuovanych-systemech":["2pc","3pc"],"directory-tree":["file-system"],"middleware":["marshalling"],"veta-o-kompetetivnosti-lru":["io-model"],"leader-based-koordinace":["rpc","raft","token-based-koordinace","volba-koordinatora-leader-election"],"lisp-machine":["tagged-architecture"],"exti":["gpio","nvic","interrupt"],"directory":["inode","directory-tree"],"vzajemne-vylouceni-v-distribuovanych-systemech":["lamportuv-algoritmus","synchronizacni-primitiva","maekawas-algorithm","mechanismy-koordinace-v-distribuovanych-systemech","distributed-system"],"konzistence-distribuovaneho-systemu":["cap-theorem","detekce-globalniho-stavu","replikace","modely-konzistence-distribuovaneho-systemu"],"stm-lib":["software-verification"],"vztah-konsenzu-a-detekce-globalniho-stavu":["konsenzus-v-distribuovanych-systemech"],"paxos":["quorum-based-koordinace","konsenzus-v-distribuovanych-systemech","state-machine-replication-smr"],"bbalpha-tree-weight-balanced-tree":["k-d-trees","amortized-complexity"],"isa":["addressing-modes","machine-instruction"],"verifying-mutable-data-structures":["ghosts"],"lock-free-struktura":["zamky-vs-lock-free-struktury","cas","llsc"],"endianess":["internet-protocol"],"verification-condition":["weakest-precondition"],"lcp-array":["potential-method","amortized-analysis","suffix-array"],"k-nezavislost":["rodina-hashovacich-funkci","rodina-polynomialnich-hashovacich-funkci","c-univerzalnost"],"spolehlivost-delivery-semantics":["idempotence-v-rpc","idempotence","komunikacni-model"],"leader-based-consensus-algorithm":["distributed-system"],"system-specification":["model-checking"],"rodina-hashovacich-funkci":["rodina-rolling-hash","rodina-linearnich-hashovacich-funkci","hashovaci-funkce","scalar-product-hash-family","rodina-polynomialnich-hashovacich-funkci","slozena-rodina-rolling-hash"],"splay-tree":["amortized-complexity","splay","vysvetleni-access-lemma-pro-splay-trees"],"kauzalni-zavislost":["logicky-cas"],"blockchain":["peer-to-peer-p2p","state-machine-replication-smr"],"vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech":["cap-theorem"],"distribuovana-sdilena-pamet":["modely-konzistence-distribuovaneho-systemu","distribuovane-strankovani"],"potential-method":["amortized-analysis"],"spolehlivost-distribuovaneho-systemu":["replikace","vztah-spolehlivosti-a-stavu-distribuovaneho-systemu","rpc"],"modely-konzistence-distribuovaneho-systemu":["kauzalni-zavislost","vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech","cap-theorem"],"scalar-product-hash-family":["rodina-hashovacich-funkci","hashovaci-funkce","c-univerzalnost"],"usporadani-komunikace-v-distribuovanych-systemech":["komunikacni-model","dorucovaci-protokoly-delivery-protocols","state-machine-replication-smr","kauzalni-zavislost"],"ontouml":["ontouml-rigidity","ufo","conceptual-modelling","uml"],"lamportuv-algoritmus":["koordinace-a-synchronizace-v-distribuovanem-systemu","logicky-cas","vzajemne-vylouceni-v-distribuovanych-systemech"],"sprava-prostredku-a-procesu-v-distribuovanem-systemu":["vzdalene-spousteni-procesu-a-migrace","load-balancing-v-distribuovanych-systemech","deadlock-v-distribuovanem-systemu"],"lemma-o-moduleni":["rodina-polynomialnich-hashovacich-funkci","k-nezavislost","rodina-hashovacich-funkci"],"token-based-koordinace":["volba-koordinatora-leader-election","vzajemne-vylouceni-v-distribuovanych-systemech","can","skupinova-komunikace-broadcast","permission-based-koordinace","mechanismy-koordinace-v-distribuovanych-systemech","quorum-based-koordinace"],"bloom-filter":["hashovaci-funkce","k-nezavislost"],"ltl-linear-temporal-logic":["model-checking"],"load-balancing-v-distribuovanych-systemech":["epidemicke-protokoly","vzdalene-spousteni-procesu-a-migrace"],"state-machine-replication-smr":["raft","konsenzus-v-distribuovanych-systemech","paxos"],"k-d-trees":["range-tree","adaptive-k-d-trees","bbalpha-tree-weight-balanced-tree"],"logical-contracts":["software-verification"],"interrupt":["nvic"],"rpc":["idempotence-v-rpc","komunikacni-model","spolehlivost-delivery-semantics","marshalling"],"tocttou":["race-condition"],"c-univerzalnost":["rodina-hashovacich-funkci"],"linear-probing":["hashovaci-funkce"],"lock-free-stack":["cas"],"suffix-array":["lcp-array","suffix-tree"],"marshalling":["endianess"],"wait-for-graph-wfg":["chandy-lamport"],"idempotence-v-rpc":["idempotence"],"logicky-cas":["kauzalni-zavislost","distributed-system"],"machine-instruction":["isa"],"weakest-precondition":["hoare-logic"],"crdt-conflict-free-replicated-data-types":["konsenzus-v-distribuovanych-systemech"],"llsc":["cas","aba-problem"],"aba-problem":["cas","llsc","lock-free-struktura","lock-free-stack"],"switch":["mac-address"],"term":["abstract-syntax-tree"],"pbft-practical-byzantine-fault-tolerance":["byzantine-failure","problem-byzantskych-generalu","permission-based-koordinace"],"cas":["aba-problem"],"c-template-meta-programming":["c-parameter-pack","c-template-specialization"],"pagemap":["pseudofile"],"splay":["splay-tree"],"amortizovana-analyza-a2a-stromu":["potential-method"],"peer-to-peer-p2p":["distributed-system"],"rozhodovaci-problemy":["univerzalni-turinguv-stroj"],"group-membership":["virtualni-synchronie"],"pwm":["timer-hardware"],"suffix-tree":["suffix-array"],"raft":["konsenzus-v-distribuovanych-systemech"],"verifying-immutable-data-structures":["logical-contracts"]},"inn":{"inode":["file-descriptor","file-system-interface","directory","file-system","file"],"permission-based-koordinace":["quorum-based-koordinace","mechanismy-koordinace-v-distribuovanych-systemech","token-based-koordinace","pbft-practical-byzantine-fault-tolerance"],"komunikacni-model":["skupinova-komunikace-broadcast","usporadani-komunikace-v-distribuovanych-systemech","komunikace-v-distribuovanych-systemech","spolehlivost-delivery-semantics","rpc","virtualni-synchronie"],"file":["file-system","file-descriptor","inode"],"bitcoin":["masivne-distribuovane-systemy"],"bbalpha-tree-weight-balanced-tree":["range-tree","k-d-trees"],"cache-aware-model":["io-model","openmp-101"],"vzajemne-vylouceni-v-distribuovanych-systemech":["koordinace-a-synchronizace-v-distribuovanem-systemu","token-based-koordinace","quorum-based-koordinace","lamportuv-algoritmus","mechanismy-koordinace-v-distribuovanych-systemech","permission-based-koordinace"],"proof-of-work-pow":["bitcoin","masivne-distribuovane-systemy","konsenzus-v-distribuovanych-systemech"],"file-system":["file","inode","directory-tree","file-system-interface"],"rozhodovaci-problemy":["vycislitelnost"],"file-descriptor":["file-system-interface","file"],"paralelizace-ab-stromu":["ab-tree"],"race-condition":["deadlock-v-distribuovanem-systemu","tocttou"],"detekce-selhani-failure-detection":["permission-based-koordinace"],"parcialni-funkce":["vycislitelnost"],"splay-tree":["splay-tree-empiric-experiment","splay"],"gpio":["nvic","timer-hardware","exti"],"cas":["zamky-vs-lock-free-struktury","lock-free-struktura","lock-free-stack","llsc","aba-problem"],"state-machine-replication-smr":["replikace","blockchain","konsenzus-v-distribuovanych-systemech","usporadani-komunikace-v-distribuovanych-systemech","paxos"],"koordinace-a-synchronizace-v-distribuovanem-systemu":["distributed-system","konsenzus-v-distribuovanych-systemech","lamportuv-algoritmus","virtualni-synchronie"],"bankerova-metoda-accounting-method":["dynamic-array"],"io-model":["transpozice-ctvercove-matice","veta-o-kompetetivnosti-lru"],"rodina-hashovacich-funkci":["plne-nahodna-hashovaci-funkce","k-nezavislost","scalar-product-hash-family","c-univerzalnost","rodina-linearnich-hashovacich-funkci","lemma-o-moduleni","hashovaci-funkce"],"dorucovaci-protokoly-delivery-protocols":["virtualni-synchronie","usporadani-komunikace-v-distribuovanych-systemech"],"weakest-precondition":["hoare-logic","strongest-postcondition","verification-condition"],"amortized-complexity":["splay-tree-empiric-experiment","bankerova-metoda-accounting-method","vysvetleni-access-lemma-pro-splay-trees","splay-tree","bbalpha-tree-weight-balanced-tree","range-tree"],"bft-byzantine-fault-tolerance":["byzantine-failure"],"pbft-practical-byzantine-fault-tolerance":["bft-byzantine-fault-tolerance","konsenzus-v-distribuovanych-systemech"],"hashovaci-funkce":["plne-nahodna-hashovaci-funkce","bloom-filter","rodina-hashovacich-funkci","linear-probing","scalar-product-hash-family","rodina-linearnich-hashovacich-funkci"],"veta-o-kompetetivnosti-lru":["splay-tree-empiric-experiment","io-model"],"bounded-model-checking":["model-checking"],"polymorphism":["type-class-pattern"],"rodina-rolling-hash":["slozena-rodina-rolling-hash","rodina-hashovacich-funkci"],"strongest-postcondition":["hoare-logic"],"mutex":["synchronizacni-primitiva","zamky-vs-lock-free-struktury"],"lemma-o-moduleni":["rodina-polynomialnich-hashovacich-funkci","rodina-linearnich-hashovacich-funkci"],"rodina-polynomialnich-hashovacich-funkci":["hashovaci-funkce","lemma-o-moduleni","k-nezavislost","rodina-rolling-hash","rodina-hashovacich-funkci"],"vztah-konsenzu-a-detekce-globalniho-stavu":["konsenzus-v-distribuovanych-systemech","detekce-globalniho-stavu"],"mechanismy-koordinace-v-distribuovanych-systemech":["permission-based-koordinace","koordinace-a-synchronizace-v-distribuovanem-systemu","vzajemne-vylouceni-v-distribuovanych-systemech","token-based-koordinace","quorum-based-koordinace"],"model-checking":["software-verification","system-specification","strongest-postcondition","ltl-linear-temporal-logic"],"deadlock-v-distribuovanem-systemu":["detekce-globalniho-stavu","sprava-prostredku-a-procesu-v-distribuovanem-systemu"],"paxos":["konsenzus-v-distribuovanych-systemech","quorum-based-koordinace","state-machine-replication-smr"],"detekce-terminace-v-distribuovanem-systemu":["detekce-globalniho-stavu"],"amdahl-law":["openmp-101"],"uml":["conceptual-modelling","ontouml"],"lock-free-struktura":["zamky-vs-lock-free-struktury","aba-problem"],"univerzalni-turinguv-stroj":["vypocetni-model","vycislitelnost","rozhodovaci-problemy"],"rozhodnutelnost":["vycislitelnost"],"quorum-based-koordinace":["mechanismy-koordinace-v-distribuovanych-systemech","permission-based-koordinace","paxos","konsenzus-v-distribuovanych-systemech","token-based-koordinace"],"matrix-transpose":["transpozice-ctvercove-matice"],"replikace":["stavovost-distribuovaneho-systemu","quorum-based-koordinace","spolehlivost-distribuovaneho-systemu","konzistence-distribuovaneho-systemu"],"symbolic-execution":["software-verification","strongest-postcondition"],"load-balancer":["client-server"],"middleware":["virtualni-synchronie","distributed-system","komunikacni-model"],"conceptual-modelling":["ufo","ontouml"],"first-order-logic":["software-verification","model-checking"],"usporadani-komunikace-v-distribuovanych-systemech":["komunikacni-model"],"rodina-linearnich-hashovacich-funkci":["slozena-rodina-rolling-hash","rodina-hashovacich-funkci","rodina-polynomialnich-hashovacich-funkci"],"ontouml":["ontouml-rigidity"],"leader-based-koordinace":["mechanismy-koordinace-v-distribuovanych-systemech"],"switch":["mac-address"],"software-verification":["symbolic-execution","stm-lib","logical-contracts"],"skupinova-komunikace-broadcast":["komunikace-v-distribuovanych-systemech","token-based-koordinace"],"k-nezavislost":["rodina-rolling-hash","plne-nahodna-hashovaci-funkce","lemma-o-moduleni","slozena-rodina-rolling-hash","bloom-filter"],"2pc":["transakce-v-distribuovanych-systemech"],"marshalling":["middleware","rpc"],"rpc":["leader-based-koordinace","komunikacni-model","komunikace-v-distribuovanych-systemech","spolehlivost-distribuovaneho-systemu"],"proof-of-stake-pos":["konsenzus-v-distribuovanych-systemech","masivne-distribuovane-systemy"],"tagged-architecture":["lisp-machine"],"konzistence-distribuovaneho-systemu":["stavovost-distribuovaneho-systemu","replikace"],"raft":["leader-based-koordinace","konsenzus-v-distribuovanych-systemech","quorum-based-koordinace","state-machine-replication-smr"],"lamportuv-algoritmus":["vzajemne-vylouceni-v-distribuovanych-systemech"],"group-membership":["koordinace-a-synchronizace-v-distribuovanem-systemu","konsenzus-v-distribuovanych-systemech"],"cap-theorem":["konzistence-distribuovaneho-systemu","vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech","replikace","modely-konzistence-distribuovaneho-systemu"],"totalni-funkce":["vycislitelnost"],"konsenzus-v-distribuovanych-systemech":["vztah-konsenzu-a-detekce-globalniho-stavu","state-machine-replication-smr","mechanismy-koordinace-v-distribuovanych-systemech","permission-based-koordinace","paxos","crdt-conflict-free-replicated-data-types","koordinace-a-synchronizace-v-distribuovanem-systemu","raft"],"k-d-trees":["bbalpha-tree-weight-balanced-tree","range-tree"],"addressing-modes":["isa"],"problem-byzantskych-generalu":["masivne-distribuovane-systemy","pbft-practical-byzantine-fault-tolerance"],"ghosts":["verifying-mutable-data-structures"],"modal-logic":["ontouml-rigidity"],"zamky-vs-lock-free-struktury":["lock-free-struktura"],"internet-protocol":["endianess"],"stavovost-distribuovaneho-systemu":["distributed-system","client-server"],"pseudofile":["file","pagemap"],"potential-method":["lcp-array","amortizovana-analyza-a2a-stromu"],"idempotence-v-rpc":["spolehlivost-delivery-semantics","rpc"],"distributed-system":["leader-based-consensus-algorithm","vzajemne-vylouceni-v-distribuovanych-systemech","logicky-cas","peer-to-peer-p2p"],"pwm":["timer-hardware"],"c-univerzalnost":["hashovaci-funkce","k-nezavislost","scalar-product-hash-family","rodina-rolling-hash"],"logicky-cas":["kauzalni-zavislost","lamportuv-algoritmus","permission-based-koordinace","koordinace-a-synchronizace-v-distribuovanem-systemu"],"masivne-distribuovane-systemy":["distributed-system"],"peer-to-peer-p2p":["blockchain","distributed-system","bitcoin"],"network-interface-card":["mac-address"],"amortized-analysis":["range-tree","potential-method","dynamic-array","lcp-array","splay-tree-empiric-experiment"],"modely-konzistence-distribuovaneho-systemu":["distribuovana-sdilena-pamet","konzistence-distribuovaneho-systemu"],"3pc":["transakce-v-distribuovanych-systemech"],"token-based-koordinace":["leader-based-koordinace","quorum-based-koordinace","permission-based-koordinace","mechanismy-koordinace-v-distribuovanych-systemech"],"kauzalni-zavislost":["modely-konzistence-distribuovaneho-systemu","koordinace-a-synchronizace-v-distribuovanem-systemu","logicky-cas","usporadani-komunikace-v-distribuovanych-systemech"],"chandy-lamport":["detekce-globalniho-stavu","wait-for-graph-wfg"],"spolehlivost-delivery-semantics":["komunikacni-model","rpc"],"synchronizacni-primitiva":["vzajemne-vylouceni-v-distribuovanych-systemech"],"ltl-linear-temporal-logic":["model-checking"],"transpozice-ctvercove-matice":["io-model"],"ontouml-rigidity":["ontouml"],"vypocetni-model":["vycislitelnost"],"distribuovane-strankovani":["distribuovana-sdilena-pamet"],"volba-koordinatora-leader-election":["konsenzus-v-distribuovanych-systemech","token-based-koordinace","leader-based-koordinace","mechanismy-koordinace-v-distribuovanych-systemech","koordinace-a-synchronizace-v-distribuovanem-systemu"],"vzdalene-spousteni-procesu-a-migrace":["sprava-prostredku-a-procesu-v-distribuovanem-systemu","load-balancing-v-distribuovanych-systemech"],"rabin-karp-algoritmus":["slozena-rodina-rolling-hash"],"formalni-jazyk":["vycislitelnost"],"wait-for-graph-wfg":["deadlock-v-distribuovanem-systemu"],"splay":["splay-tree"],"exti":["nvic"],"komunikace-v-distribuovanych-systemech":["distributed-system","komunikacni-model","skupinova-komunikace-broadcast"],"detekce-globalniho-stavu":["konzistence-distribuovaneho-systemu","koordinace-a-synchronizace-v-distribuovanem-systemu"],"can":["token-based-koordinace"],"llsc":["zamky-vs-lock-free-struktury","aba-problem","lock-free-struktura"],"idempotence":["spolehlivost-delivery-semantics","idempotence-v-rpc"],"directory-tree":["directory"],"epidemicke-protokoly":["load-balancing-v-distribuovanych-systemech","replikace"],"ontology":["ufo"],"virtualni-synchronie":["komunikacni-model","group-membership"],"range-tree":["k-d-trees"],"transakce-v-distribuovanych-systemech":["koordinace-a-synchronizace-v-distribuovanem-systemu"],"logical-contracts":["software-verification","verifying-immutable-data-structures"],"maekawas-algorithm":["vzajemne-vylouceni-v-distribuovanych-systemech","quorum-based-koordinace","permission-based-koordinace"],"nvic":["interrupt","exti"],"vztah-spolehlivosti-a-stavu-distribuovaneho-systemu":["stavovost-distribuovaneho-systemu","spolehlivost-distribuovaneho-systemu"],"vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech":["modely-konzistence-distribuovaneho-systemu","komunikacni-model"],"file-system-interface":["file-system","file"],"directory":["file-system","file"],"aba-problem":["zamky-vs-lock-free-struktury","cas","llsc"],"system-specification":["model-checking"],"byzantine-failure":["bft-byzantine-fault-tolerance","pbft-practical-byzantine-fault-tolerance"],"lcp-array":["suffix-array"],"scalar-product-hash-family":["rodina-hashovacich-funkci"],"endianess":["marshalling"],"slozena-rodina-rolling-hash":["hashovaci-funkce","rodina-hashovacich-funkci"],"adaptive-k-d-trees":["k-d-trees"],"turinguv-stroj":["vypocetni-model"],"edge-chasing":["deadlock-v-distribuovanem-systemu"],"load-balancing-v-distribuovanych-systemech":["sprava-prostredku-a-procesu-v-distribuovanem-systemu"],"spolehlivost-distribuovaneho-systemu":["komunikace-v-distribuovanych-systemech","distributed-system"],"isa":["machine-instruction"],"hoare-logic":["weakest-precondition"],"c-template-specialization":["type-class-pattern","c-template-meta-programming"],"problem-dvou-armad":["konsenzus-v-distribuovanych-systemech"],"smt":["software-verification"],"mac-address":["switch"],"abstract-syntax-tree":["term"],"vysvetleni-access-lemma-pro-splay-trees":["splay-tree"],"distribuovana-sdilena-pamet":["distributed-system"],"chomskeho-hierarchie":["vycislitelnost"],"c-parameter-pack":["c-template-meta-programming"],"ufo":["ontouml"],"lock-free-stack":["aba-problem"],"client-server":["distributed-system"],"interrupt":["exti","nvic"],"machine-instruction":["isa"],"physical-clock-sync":["koordinace-a-synchronizace-v-distribuovanem-systemu"],"modely-casovani-timing-models":["komunikace-v-distribuovanych-systemech"],"crdt-conflict-free-replicated-data-types":["replikace"],"linearni-kongruence":["rodina-linearnich-hashovacich-funkci"],"timer-hardware":["pwm"],"splay-operation":["splay-tree-empiric-experiment"],"suffix-tree":["suffix-array"],"amortizovana-analyza-a2a-stromu":["ab-tree"],"stm-lib":["software-verification"],"suffix-array":["suffix-tree","lcp-array"],"tocttou":["file-descriptor"],"sprava-prostredku-a-procesu-v-distribuovanem-systemu":["distributed-system"],"blockchain":["masivne-distribuovane-systemy"]},"lead":[10,24,54,79,110,118,145,202]}); }
+
+  renderVals() {
+    return { plate: this.plate(), labels: this.labels(), spots: this.spots(), panel: this.panel(), wild: this.wildflowers(), roots: this.roots() };
+  }
+}
+</script>
+</body>
+</html>

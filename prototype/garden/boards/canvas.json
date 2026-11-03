@@ -1,0 +1,350 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Branches.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "Note page · branches (experimental)",
+      "w": 1280,
+      "x": 5440,
+      "y": 0
+    },
+    "Clearing.dc.html": {
+      "expand": "fill",
+      "h": 2100,
+      "is_interactive": true,
+      "title": "Project page",
+      "w": 1280,
+      "x": 2720,
+      "y": 0
+    },
+    "Elements.dc.html": {
+      "h": 1500,
+      "title": "The system so far",
+      "w": 1280,
+      "x": 4080,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 1900,
+      "is_interactive": true,
+      "title": "Home",
+      "w": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "Phone.dc.html": {
+      "expand": "fill",
+      "h": 3600,
+      "is_interactive": true,
+      "title": "Note page · phone (390 px)",
+      "w": 390,
+      "x": 6800,
+      "y": 0
+    },
+    "Understory.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "Note page",
+      "w": 1280,
+      "x": 1360,
+      "y": 0
+    },
+    "CalmCanopy.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "is_interactive": true,
+      "title": "1 · Canopy, small",
+      "w": 1280,
+      "x": 0,
+      "y": 4100
+    },
+    "CalmSprig.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "is_interactive": true,
+      "title": "2 · Sprig",
+      "w": 1280,
+      "x": 1360,
+      "y": 4100
+    },
+    "CalmVine.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "is_interactive": true,
+      "title": "3 · One vine",
+      "w": 1280,
+      "x": 2720,
+      "y": 4100
+    },
+    "CalmBough.dc.html": {
+      "expand": "fill",
+      "h": 2800,
+      "is_interactive": true,
+      "title": "4 · Soft bough",
+      "w": 1280,
+      "x": 4080,
+      "y": 4100
+    },
+    "CalmNotebook.dc.html": {
+      "expand": "fill",
+      "h": 2900,
+      "is_interactive": true,
+      "title": "5 · Notebook",
+      "w": 1280,
+      "x": 5440,
+      "y": 4100
+    },
+    "CalmMoss.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "is_interactive": true,
+      "title": "6 · Moss margin",
+      "w": 1280,
+      "x": 6800,
+      "y": 4100
+    },
+    "CalmGarden.dc.html": {
+      "expand": "fill",
+      "h": 2800,
+      "is_interactive": true,
+      "title": "7 · Garden at the end",
+      "w": 1280,
+      "x": 8160,
+      "y": 4100
+    },
+    "GardenHome.dc.html": {
+      "h": 1500,
+      "title": "Home · the garden (each post is a flower)",
+      "w": 1280,
+      "x": 0,
+      "y": 7400,
+      "is_interactive": true,
+      "expand": "fill"
+    },
+    "FlowerPost.dc.html": {
+      "h": 2800,
+      "title": "Post page · its own flower + one vine",
+      "w": 1280,
+      "x": 1360,
+      "y": 7400,
+      "is_interactive": true,
+      "expand": "fill"
+    },
+    "FlowerNote.dc.html": {
+      "h": 2400,
+      "title": "Note page · its own flower + one vine",
+      "w": 1280,
+      "x": 2720,
+      "y": 7400,
+      "is_interactive": true,
+      "expand": "fill"
+    },
+    "FlowerCatalog.dc.html": {
+      "h": 1700,
+      "title": "Herbarium · every flower and its label",
+      "w": 1280,
+      "x": 4080,
+      "y": 7400,
+      "is_interactive": true
+    },
+    "GraphMap.dc.html": {
+      "expand": "fill",
+      "h": 1765,
+      "is_interactive": true,
+      "title": "Graph · A · the garden map",
+      "w": 1280,
+      "x": 0,
+      "y": 10700
+    },
+    "GraphBeds.dc.html": {
+      "expand": "fill",
+      "h": 2455,
+      "is_interactive": true,
+      "title": "Graph · B · garden beds",
+      "w": 1280,
+      "x": 1360,
+      "y": 10700
+    },
+    "GraphNoteRadial.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "Graph · C · a note's neighbourhood",
+      "w": 1280,
+      "x": 2720,
+      "y": 10700
+    },
+    "GraphNoteTree.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "Graph · D · branches and roots",
+      "w": 1280,
+      "x": 4080,
+      "y": 10700
+    },
+    "GraphDither.dc.html": {
+      "expand": "fill",
+      "h": 1930,
+      "is_interactive": true,
+      "title": "Graph · E · the garden map, dithered",
+      "w": 1280,
+      "x": 5440,
+      "y": 10700
+    },
+    "GraphPollen.dc.html": {
+      "expand": "fill",
+      "h": 1950,
+      "is_interactive": true,
+      "title": "Graph · F · pollen clouds",
+      "w": 1280,
+      "x": 6800,
+      "y": 10700
+    },
+    "GraphEngraving.dc.html": {
+      "expand": "fill",
+      "h": 2230,
+      "is_interactive": true,
+      "title": "Graph · G · botanical engraving",
+      "w": 1280,
+      "x": 8160,
+      "y": 10700
+    },
+    "GraphMeadows.dc.html": {
+      "expand": "fill",
+      "h": 2564,
+      "is_interactive": true,
+      "title": "Graph · H · meadows",
+      "w": 1280,
+      "x": 9520,
+      "y": 10700
+    },
+    "GraphEngraving2.dc.html": {
+      "expand": "fill",
+      "h": 1740,
+      "is_interactive": true,
+      "title": "Graph · G2 · engraving, refined",
+      "w": 1280,
+      "x": 10880,
+      "y": 10700
+    },
+    "GraphEngraving3.dc.html": {
+      "expand": "fill",
+      "h": 1740,
+      "is_interactive": true,
+      "title": "Graph · G3 · engraving, woodcut (3 px)",
+      "w": 1280,
+      "x": 12240,
+      "y": 10700
+    },
+    "GraphWoodcut.dc.html": {
+      "expand": "fill",
+      "h": 1740,
+      "is_interactive": true,
+      "title": "Graph · W · woodcut map, refined",
+      "w": 1280,
+      "x": 13600,
+      "y": 10700
+    },
+    "GraphWoodcutNote.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "is_interactive": true,
+      "title": "Graph · W · woodcut, on a note page",
+      "w": 1280,
+      "x": 14960,
+      "y": 10700
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-29T10:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "noteOrder": [
+    "rowtitle",
+    "pagenote",
+    "calmtitle",
+    "gardentitle",
+    "graphtitle"
+  ],
+  "notes": {
+    "pagenote": {
+      "fill": "orange",
+      "text": "Moved here from boards B and C, where it was added on the page:\n\n➡️ Link to the page without the sect",
+      "w": 420,
+      "x": 1360,
+      "y": 2420
+    },
+    "rowtitle": {
+      "kind": "title1",
+      "maxW": 7190,
+      "text": "Jungle ASCII: round 3, one system",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "calmtitle": {
+      "kind": "title1",
+      "maxW": 9440,
+      "text": "Calm post page: seven quieter takes",
+      "x": 0,
+      "y": 3800
+    },
+    "gardentitle": {
+      "kind": "title1",
+      "maxW": 5360,
+      "text": "The garden: each post a flower, one vine, a herbarium",
+      "x": 0,
+      "y": 7100
+    },
+    "graphtitle": {
+      "kind": "title1",
+      "maxW": 16160,
+      "text": "The graph view: the whole garden, and one note’s corner of it",
+      "x": 0,
+      "y": 10400
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Understory.dc.html",
+    "Clearing.dc.html",
+    "Elements.dc.html",
+    "Branches.dc.html",
+    "Phone.dc.html",
+    "CalmCanopy.dc.html",
+    "CalmSprig.dc.html",
+    "CalmVine.dc.html",
+    "CalmBough.dc.html",
+    "CalmNotebook.dc.html",
+    "CalmMoss.dc.html",
+    "CalmGarden.dc.html",
+    "GardenHome.dc.html",
+    "FlowerPost.dc.html",
+    "FlowerNote.dc.html",
+    "FlowerCatalog.dc.html",
+    "GraphMap.dc.html",
+    "GraphBeds.dc.html",
+    "GraphNoteRadial.dc.html",
+    "GraphNoteTree.dc.html",
+    "GraphDither.dc.html",
+    "GraphPollen.dc.html",
+    "GraphEngraving.dc.html",
+    "GraphMeadows.dc.html",
+    "GraphEngraving2.dc.html",
+    "GraphEngraving3.dc.html",
+    "GraphWoodcut.dc.html",
+    "GraphWoodcutNote.dc.html"
+  ],
+  "pages": [],
+  "title": "Jungle ASCII Prototypes"
+}

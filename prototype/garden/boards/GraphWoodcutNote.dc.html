@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>replikace</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+.wide{display:block}
+@media (max-width: 1100px){.wide{display:none}}
+.titleflower{position:absolute;left:-170px;top:-24px}
+@media (max-width: 1100px){.titleflower{position:static;margin:4px 0 6px}}
+.wc-cap{position:absolute;transform:translateY(-50%);font-family:"IBM Plex Mono", ui-monospace, monospace;font-size:12px;line-height:14px;padding:1px 3px;background:rgba(241,236,223,0.88);text-decoration:none}
+.wc-cap:hover{text-decoration:underline}
+.wc-num{display:none;position:absolute;transform:translateY(-50%);font-family:"IBM Plex Mono", ui-monospace, monospace;font-size:11px;color:#535F52}
+.wc-key{display:none}
+@media (max-width: 600px){.wc-cap,.wc-head{display:none}.wc-num{display:block}.wc-key{display:block}}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+<div class="wide" aria-hidden="true" style="position: absolute; top: 0; left: calc(50% + 404px); pointer-events: none; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px;"><div style="position: relative;"><sc-for list="{{vine}}" as="row" hint-placeholder-count="40"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for><span style="position: absolute; left: {{bugs.fly.left}}; top: {{bugs.fly.top}}; white-space: pre; color: #8A4F98;">{{bugs.fly.w}}</span><span style="position: absolute; left: {{bugs.lady.left}}; top: {{bugs.lady.top}}; white-space: pre;"><span style="color: #C24E39;">(</span><span style="color: #1F2B23;">:</span><span style="color: #C24E39;">)</span></span><sc-if value="{{bugs.bee.show}}" hint-placeholder-val="{{false}}"><span style="position: absolute; left: {{bugs.bee.left}}; top: {{bugs.bee.top}}; white-space: pre; color: #A87400;">{{bugs.bee.w}}</span></sc-if></div></div>
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" aria-current="page" style="color: #1F2B23; text-decoration: none; font-weight: 600;">[&gt;notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[projects]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[courses]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 760px; margin: 0 auto; padding: 80px 24px 80px; position: relative;">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;"><a href="#" style="color: #535F52;">notes</a> / distributed systems</div>
+<div style="position: relative;"><div class="titleflower" aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px;"><sc-for list="{{flower}}" as="row" hint-placeholder-count="12"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div><h1 style="margin: 10px 0 8px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 34px; line-height: 1.2; font-weight: 600; color: #1F2B23;">replikace</h1></div>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52; margin-bottom: 32px;">česky · 4 min · #distributed_system · <span style="font-family: 'Literata', Georgia, serif; font-style: italic;">{{card.latin}}</span></div>
+<p style="margin: 0 0 16px;">Replikace je proces udržování identických kopií dat nebo služeb na více uzlech současně. V distribuovaném systému se jedná o formu <strong>fyzické redundance</strong>.</p>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 56px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Motivace</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailA}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<ul style="margin: 0 0 20px; padding-left: 22px; display: flex; flex-direction: column; gap: 8px;">
+<li><strong>Spolehlivost:</strong> při selhání jednoho uzlu data nezmizí a systém může dál poskytovat službu z jiné kopie.</li>
+<li><strong>Dostupnost:</strong> minimalizuje riziko single point of failure.</li>
+<li><strong>Výkon:</strong> paralelní zpracování požadavků a data fyzicky blíže uživateli.</li>
+</ul>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 56px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Hlavní problém: nekonzistence</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailB}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<p style="margin: 0 0 16px;">Jakmile existuje více kopií, zpráva o změně stavu putuje k ostatním uzlům rychlostí sítě, nikoliv okamžitě. <a href="#">Konzistence</a> je pak klíčová vlastnost: silnější konzistence znamená vyšší latenci a nižší dostupnost (<a href="#">CAP theorem</a>).</p>
+<section aria-label="Neighbourhood" style="margin-top: 64px;">
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 0px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Sousedství</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailC}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<figure style="margin: 0;">
+<div style="position: relative; width: 100%; max-width: 702px; aspect-ratio: 702 / 300;">
+<img alt="" aria-hidden="true" src="{{plate}}" style="position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated;">
+<span class="wc-head" aria-hidden="true" style="position: absolute; left: 3%; top: 5%; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #535F52;">linked from</span>
+<span class="wc-head" aria-hidden="true" style="position: absolute; right: 3%; top: 5%; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #535F52;">links to</span>
+<sc-for list="{{caps}}" as="c" hint-placeholder-count="8"><a class="wc-cap" href="#" style="{{c.style}}">{{c.title}}</a><span class="wc-num" aria-hidden="true" style="{{c.numStyle}}">{{c.no}}</span></sc-for>
+<sc-for list="{{far}}" as="s" hint-placeholder-count="12"><a href="#" title="{{s.title}}" aria-label="{{s.title}}" style="position: absolute; {{s.style}} width: 14px; height: 14px;"></a></sc-for>
+<span aria-hidden="true" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, 26px); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; font-weight: 600; color: #2B7349; background: rgba(241,236,223,0.88); padding: 0 3px;">replikace</span>
+</div>
+<ol class="wc-key" style="margin: 14px 0 0; padding: 0; list-style: none; font-size: 15px;">
+<sc-for list="{{caps}}" as="c" hint-placeholder-count="8"><li style="display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px;"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; flex: 0 0 16px;">{{c.no}}</span><span style="min-width: 0;"><a href="#">{{c.title}}</a> <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #535F52; white-space: nowrap;">· {{c.how}}</span></span></li></sc-for>
+</ol>
+<figcaption style="margin-top: 10px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.6; color: #535F52;">Solid vines ending in a leaf lead to notes this one links to; dotted vines come from notes that link here. The faint blooms above and below are two steps away.</figcaption>
+</figure>
+</section><div style="margin-top: 56px;"><section aria-label="This page's flower" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 18px 32px; align-items: flex-end; padding: 24px 28px; background: #F7F2E4; border: 1px solid #D8CFBA;">
+<div aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px;"><sc-for list="{{flower}}" as="row" hint-placeholder-count="12"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+<div style="flex: 1 1 280px; min-width: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.65;">
+<div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #535F52;">Specimen No. {{card.no}} · Herbarium schrodlmensis</div>
+<div style="font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1.3; color: #1F2B23; margin: 4px 0 2px;">{{card.latin}}</div>
+<div style="color: #535F52; margin-bottom: 12px;">grown from “{{card.slug}}” · planted {{card.date}}</div>
+<sc-for list="{{card.lines}}" as="l" hint-placeholder-count="5"><div style="display: flex; gap: 10px;"><span style="color: #535F52; white-space: pre;">{{l.k}}</span><span style="color: #1F2B23; white-space: pre-wrap;">{{l.v}}</span></div></sc-for>
+</div>
+</section></div>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"motion":{"editor":"boolean","default":true,"section":"Flora"},"$preview":{"width":1280,"height":2400}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: -1 };
+
+  componentDidMount() {
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its seed ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split(/[-/]/).filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w) && w !== 'notes' && w !== 'posts');
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The flower's most telling row, as a small mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), rows = p.head.rows;
+    const row = (rows.find((r) => /[@o*]/.test(r)) || rows[0]).trim();
+    return row.split('').map((ch) => ({ t: ch, c: (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1] }));
+  }
+
+  // The museum label: what the seed grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // One long vine beside the text. A butterfly rests on it and every ~40 s flutters to another
+  // leaf; a ladybug climbs up and down the stem; now and then a bee hovers around a bloom.
+  vine() { return [{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\&","c":"#3F8A52"},{"t":"%","c":"#5E8E4A"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"&/","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\%","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"%","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"%","c":"#5E8E4A"},{"t":"&|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"%","c":"#5E8E4A"},{"t":"&|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"&","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"  ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"%|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"@","c":"#2A7099"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"       ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"        ","c":"transparent"}]},{"runs":[{"t":"       ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"        ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"@","c":"#C24E39"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"%","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"&","c":"#5E8E4A"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"@","c":"#C24E39"},{"t":"     ","c":"transparent"}]}]; }
+
+  bugs() {
+    const t = this.state.tick, rest = [[11, 5], [7, 8], [11, 16], [13, 18], [10, 20], [13, 23], [13, 31], [9, 33], [8, 36], [10, 46], [14, 48], [9, 50], [11, 67], [8, 68], [12, 69]], path = [8, 9, 9, 9, 9, 8, 9, 9, 10, 9, 8, 8, 9, 9, 9, 9, 9, 9, 10, 11, 11, 12, 11, 10, 11, 12, 12, 12, 12, 12, 12, 12, 11, 11, 11, 11, 10, 10, 10, 10, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 11, 11, 11, 11, 11, 10, 10, 10, 9, 8, 7, 7, 8, 8, 8, 8, 8, 9, 9, 10, 10, 10], blooms = [[10, 52], [9, 63]];
+    const CW = 7.8, CH = 15, cycle = 160, i = Math.floor(t / cycle), p = t % cycle;
+    const a = rest[i % rest.length], b = rest[(i + 1) % rest.length];
+    let fx, fy, fw;
+    if (p < 140) { fx = a[0]; fy = a[1]; fw = (t % 12) < 8 ? '}{' : '||'; }
+    else { const k = (p - 140) / 20; fx = a[0] + (b[0] - a[0]) * k; fy = a[1] + (b[1] - a[1]) * k - Math.sin(k * Math.PI) * 3; fw = t % 2 ? '}{' : ')('; }
+    const span = 2 * (path.length - 1), q = Math.floor(t * 0.08) % span, ly = q < path.length ? path.length - 1 - q : q - path.length + 1;
+    const bl = blooms[Math.floor(t / 240) % blooms.length];
+    const bx = bl[0] + Math.sin(t * 0.35) * 3, by = bl[1] - 1 + Math.sin(t * 0.22) * 1.5;
+    return {
+      fly: { left: Math.round(fx * CW) + 'px', top: Math.round(fy * CH) + 'px', w: fw },
+      lady: { left: Math.round((path[ly] - 1) * CW) + 'px', top: (ly * CH) + 'px' },
+      bee: { show: (t % 240) < 60, left: Math.round(bx * CW) + 'px', top: Math.round(by * CH) + 'px', w: (t % 2 ? '~' : '-') + '8>' }
+    };
+  }
+
+  // Hand-cut sprites for the small flowers, one character per 3-px cell: p petal, c centre, t the
+  // petal colour showing at a bud's tip, g stem and calyx, d seed, e the seed-head's eye.
+  sprites() {
+    return {
+      cross3: ['.p.', 'pcp', '.p.'],
+      saltire3: ['p.p', '.c.', 'p.p'],
+      four5: ['.p.p.', 'pp.pp', '..c..', 'pp.pp', '.p.p.'],
+      daisy5: ['p.p.p', '.ppp.', 'ppcpp', '.ppp.', 'p.p.p'],
+      sun7: ['...p...', '.p.p.p.', '..ppp..', 'pppcppp', '..ppp..', '.p.p.p.', '...p...'],
+      four7: ['.pp.pp.', 'ppp.ppp', 'pp...pp', '...c...', 'pp...pp', 'ppp.ppp', '.pp.pp.'],
+      bud: ['.t.', 'ttt', 'ggg', '.g.', '.g.'],
+      budOpen: ['t.t', 'ttt', 'ttt', 'ggg', '.g.', '.g.'],
+      seedhead: ['.d.d.', 'd...d', '..e..', 'd...d', '.d.d.', '..g..', '..gg.', '..g..', '..g..'],
+      tulip: ['p.p.p', 'ppppp', '.ppp.', '..g..', '.gg..', '..g..', '..g..'],
+      daisyStem: ['.p.p.', 'ppcpp', '.p.p.', '..g..', '..gg.', '..g..', '..g..']
+    };
+  }
+
+  // Which tier a note's flower is drawn at: 0 tiny (3 cells), 1 small (5), 2 medium (7), 3 drawn.
+  tier(n) { return n.deg <= 1 ? 0 : n.deg <= 3 ? 1 : n.deg <= 5 ? 2 : 3; }
+
+  // A flower's reach in css px, used to keep vines and captions clear of it.
+  reach(n) {
+    if (n.wild || n.stub) return 8;
+    return [5, 8, 11, (3.2 + Math.min(12, Math.sqrt(n.deg) * 3.3)) * 1.3][this.tier(n)];
+  }
+
+  // The cells of one flower, as [x, y, rgb], centred on plate cell (cx, cy).
+  bloom(n, mode, cx, cy) {
+    const C = this.cfg().cell, S = this.sprites(), sp = this.specimen('notes/' + n.slug), r = this.rng('bloom:' + n.slug);
+    const dim = mode === 'dim', up = mode === 'open' || mode === 'focus';
+    const PALE = this.rgb('#D6CDB7'), col = {
+      p: this.rgb(sp.petal[1]), t: this.rgb(sp.petal[1]), c: this.rgb(sp.center ? sp.center[1] : '#1F2B23'),
+      g: this.rgb('#5E8E4A'), d: this.rgb('#8C7C66'), e: this.rgb('#7A5C42') };
+    const out = [];
+    const stamp = (rows, ay, k) => {
+      k = k || 1;
+      const hw = Math.floor(rows[0].length / 2);
+      rows.forEach((row, y) => { for (let x = 0; x < row.length; x++) {
+        const ch = row[x];
+        if (ch === '.') continue;
+        for (let a = 0; a < k; a++) for (let b = 0; b < k; b++)
+          out.push([cx + (x - hw) * k + a - (k > 1 ? 1 : 0), cy + (y - ay) * k + b - (k > 1 ? 1 : 0), dim ? PALE : col[ch]]);
+      } });
+      return out;
+    };
+    const k = mode === 'focus' ? 2 : 1;
+    if (n.wild) {
+      const rows = n.stub ? S.seedhead : (/Tulipa|Nutans|Pollinaria/.test(sp.latin) ? S.tulip : S.daisyStem);
+      return stamp(rows, n.stub ? 2 : 1, k);
+    }
+    if (n.stub) return stamp(up ? S.budOpen : S.bud, 2, k);
+    const t = Math.min(3, this.tier(n) + (up ? 1 : 0)), pick = r() < 0.5;
+    if (t === 0) return stamp(pick ? S.cross3 : S.saltire3, 1);
+    if (t === 1) return stamp(pick ? S.four5 : S.daisy5, 2);
+    if (t === 2) return stamp(pick ? S.sun7 : S.four7, 3);
+    // Larger flowers are drawn: petals outlined and stippled inside, an ink dot at the heart.
+    const B = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+    const P = Math.min(8, 4 + Math.floor(n.deg / 2));
+    const L = Math.max(4, (this.reach(n) * (mode === 'rest' ? 0.85 : dim ? 0.75 : 1.15) + (mode === 'focus' ? 4 : 0)) / C);
+    const W = Math.max(0.9, Math.min(L * 0.3, L * Math.sin(Math.PI / P) * 0.8));
+    const rot = r() * Math.PI * 2, seg = Math.PI * 2 / P, cr = Math.max(0.8, (1.2 + Math.min(2.4, n.deg / 4)) / C);
+    const R = Math.ceil(L + 1);
+    for (let y = -R; y <= R; y++) for (let x = -R; x <= R; x++) {
+      const rr = Math.hypot(x, y);
+      if (rr > L + 0.5) continue;
+      let a = Math.atan2(y, x) - rot;
+      a = ((a % seg) + seg) % seg - seg / 2;
+      const u = rr * Math.cos(a), v = rr * Math.sin(a), e = ((u - L * 0.58) / (L * 0.46)) ** 2 + (v / W) ** 2;
+      const X = cx + x, Y = cy + y, th = B[(Y & 3) * 4 + (X & 3)];
+      if (rr <= cr) { out.push([X, Y, dim ? PALE : (x === 0 && y === 0 ? this.rgb('#1F2B23') : col.c)]); continue; }
+      if (e > 1) continue;
+      if (dim) { if (e > 0.5 && th < 8) out.push([X, Y, PALE]); continue; }
+      if (e > 0.3 || th < (mode === 'rest' ? 4 : 7) + (u / L) * 6) out.push([X, Y, col.p]);
+    }
+    return out;
+  }
+
+
+  cfg() { return { cell: 3 }; }
+  rgb(hex) { return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]; }
+
+  // The note's neighbourhood as a small woodcut plate: the note in the middle as a large flower, the
+  // notes it links to on the right on solid vines ending in a leaf-tip, the notes that link here on
+  // the left on dotted vines, and notes two steps away as faint small blooms above and below.
+  notePlate() {
+    if (this._np) return this._np;
+    const D = this.nd(), C = 3, w = Math.round(D.PW / C), h = Math.round(D.PH / C);
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d'), img = ctx.createImageData(w, h), d = img.data;
+    const set = (x, y, c) => {
+      x = Math.round(x); y = Math.round(y);
+      if (x < 0 || y < 0 || x >= w || y >= h) return;
+      const i = (y * w + x) * 4; d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+    };
+    const SOLID = this.rgb('#2B7349'), DOT = this.rgb('#7E9A73'), RULE = this.rgb('#A99D84'), PAPER = this.rgb('#E6DECB');
+    const grain = this.rng('note-paper');
+    for (let k = 0; k < w * h * 0.012; k++) set(grain() * w, grain() * h, PAPER);
+    for (let x = 2; x < w - 2; x++) { set(x, 2, RULE); if (x % 2 === 0) { set(x, 4, RULE); set(x, h - 5, RULE); } set(x, h - 3, RULE); }
+    for (let y = 2; y < h - 2; y++) { set(2, y, RULE); if (y % 2 === 0) { set(4, y, RULE); set(w - 5, y, RULE); } set(w - 3, y, RULE); }
+    for (const [cx, cy] of [[2, 2], [w - 3, 2], [2, h - 3], [w - 3, h - 3]])
+      for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) set(cx + dx, cy + dy, dx || dy ? this.rgb('#C24E39') : this.rgb('#A87400'));
+
+    const self = D.nodes[0], x0 = self.x / C, y0 = self.y / C;
+    for (const n of D.nodes.slice(1)) {
+      const x1 = n.x / C, y1 = n.y / C, len = Math.hypot(x1 - x0, y1 - y0);
+      const bow = (n.y < self.y ? -1 : 1) * n.side * 0.12 * len;
+      const qx = (x0 + x1) / 2 - (y1 - y0) / len * bow, qy = (y0 + y1) / 2 + (x1 - x0) / len * bow;
+      const pt = (t) => [(1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * qx + t * t * x1, (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * qy + t * t * y1];
+      const solid = n.role !== 'in', ra = this.reach(self) * 1.15 / C + 3, rb = this.reach(n) / C + 2.5;
+      let last = '', k = 0;
+      for (let s = 0; s <= 400; s++) {
+        const [x, y] = pt(s / 400), key = Math.round(x) + ',' + Math.round(y);
+        if (key === last) continue;
+        last = key; k++;
+        if (Math.hypot(x - x0, y - y0) < ra || Math.hypot(x - x1, y - y1) < rb) continue;
+        if (solid || k % 2 === 0) set(x, y, solid ? SOLID : DOT);
+      }
+      // A leaf-tip where a link arrives: at the neighbour for links out, at the note for links in.
+      const tip = (t, toward) => {
+        const [lx, ly] = pt(t), [ax, ay] = pt(toward), a = Math.atan2(ay - ly, ax - lx);
+        for (const side of [-1, 1]) for (let s = 1; s <= 2; s++)
+          set(lx - Math.cos(a + side * 0.75) * s, ly - Math.sin(a + side * 0.75) * s, solid ? SOLID : DOT);
+      };
+      const tb = 1 - (rb + 0.5) / len, ta = (ra + 0.5) / len;
+      if (n.role !== 'in') tip(tb, 1);
+      if (n.role !== 'out') tip(ta, 0);
+    }
+    const paint = (cells) => {
+      const own = new Set(cells.map(([x, y]) => x + ',' + y));
+      for (const [x, y] of cells) for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const X = x + dx, Y = y + dy;
+        if (!own.has(X + ',' + Y) && X >= 0 && Y >= 0 && X < w && Y < h) d[(Y * w + X) * 4 + 3] = 0;
+      }
+      for (const [x, y, c] of cells) set(x, y, c);
+    };
+    // Far notes: the small sprite, its colour washed halfway into the paper.
+    const sand = this.rgb('#F1ECDF');
+    for (const n of D.far) {
+      const cells = this.bloom({ ...n, deg: 1 }, 'rest', Math.round(n.x / C), Math.round(n.y / C));
+      paint(cells.map(([x, y, c]) => [x, y, c.map((v, i) => Math.round(v * 0.45 + sand[i] * 0.55))]));
+    }
+    for (const n of D.nodes.slice(1)) paint(this.bloom(n, 'open', Math.round(n.x / C), Math.round(n.y / C)));
+    paint(this.bloom(self, 'focus', Math.round(x0), Math.round(y0)));
+    ctx.putImageData(img, 0, 0);
+    this._np = cv.toDataURL();
+    return this._np;
+  }
+
+  // Captions face outward from each flower; their positions are in % so they track the plate as it
+  // scales. Each also has a number, used on narrow screens where the captions move below the plate.
+  noteCaps() {
+    const D = this.nd(), pct = (v, of) => (100 * v / of).toFixed(2) + '%';
+    return D.nodes.slice(1).map((n, k) => {
+      const r = this.reach(n) * 1.15 + 7;
+      return { no: k + 1, title: n.title, how: n.role === 'out' ? 'links to' : n.role === 'in' ? 'linked from' : 'both ways',
+        mark: n.stub ? [{ t: ',', c: '#5E8E4A' }] : this.mark('notes/' + n.slug),
+        style: (n.side > 0 ? 'left: ' + pct(n.x + r, D.PW) + '; text-align: left;' : 'right: ' + pct(D.PW - n.x + r, D.PW) + '; text-align: right;')
+          + ' top: ' + pct(n.y, D.PH) + '; max-width: ' + pct((n.side > 0 ? D.PW - n.x : n.x) - r - 24, D.PW) + ';',
+        numStyle: 'left: ' + pct(n.x + (n.side > 0 ? r - 2 : -r - 6), D.PW) + '; top: ' + pct(n.y, D.PH) + ';' };
+    });
+  }
+
+  farSpots() {
+    const D = this.nd(), pct = (v, of) => (100 * v / of).toFixed(2) + '%';
+    return D.far.map((n) => ({ title: n.title, style: 'left: ' + pct(n.x - 7, D.PW) + '; top: ' + pct(n.y - 7, D.PH) + ';' }));
+  }
+
+  nd() { return {"PW":702,"PH":300,"nodes":[{"slug":"replikace","title":"replikace","x":351,"y":150,"deg":8,"stub":false,"role":"self"},{"slug":"cap-theorem","title":"CAP theorem","x":477,"y":54,"deg":4,"stub":false,"role":"out","side":1},{"slug":"crdt-conflict-free-replicated-data-types","title":"CRDT (conflict-free replicated data types)","x":491,"y":118,"deg":2,"stub":false,"role":"out","side":1},{"slug":"epidemicke-protokoly","title":"epidemické protokoly","x":491,"y":182,"deg":2,"stub":false,"role":"out","side":1},{"slug":"state-machine-replication-smr","title":"state machine replication (SMR)","x":477,"y":246,"deg":6,"stub":false,"role":"out","side":1},{"slug":"quorum-based-koordinace","title":"quorum-based koordinace","x":225,"y":54,"deg":9,"stub":false,"role":"in","side":-1},{"slug":"spolehlivost-distribuovaneho-systemu","title":"spolehlivost distribuovaného systému","x":211,"y":118,"deg":5,"stub":false,"role":"in","side":-1},{"slug":"stavovost-distribuovaneho-systemu","title":"stavovost distribuovaného systému","x":211,"y":182,"deg":5,"stub":false,"role":"in","side":-1},{"slug":"konzistence-distribuovaneho-systemu","title":"konzistence distribuovaného systému","x":225,"y":246,"deg":5,"stub":false,"role":"both","side":-1}],"far":[{"slug":"maekawas-algorithm","title":"Maekawa's algorithm","x":279,"y":68,"deg":3,"stub":false},{"slug":"paxos","title":"paxos","x":292,"y":52,"deg":3,"stub":false},{"slug":"raft","title":"RAFT","x":307,"y":40,"deg":4,"stub":false},{"slug":"vzajemne-vylouceni-v-distribuovanych-systemech","title":"vzájemné vyloučení v distribuovaných systémech","x":324,"y":31,"deg":9,"stub":false},{"slug":"komunikace-v-distribuovanych-systemech","title":"komunikace v distribuovaných systémech","x":342,"y":27,"deg":6,"stub":false},{"slug":"vztah-spolehlivosti-a-stavu-distribuovaneho-systemu","title":"vztah spolehlivosti a stavu distribuovaného systému","x":360,"y":27,"deg":2,"stub":false},{"slug":"detekce-globalniho-stavu","title":"detekce globálního stavu","x":378,"y":31,"deg":6,"stub":false},{"slug":"vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech","title":"vztah mezi komunikačními modely a konzistencí v distribuovaných systémech","x":395,"y":40,"deg":3,"stub":false},{"slug":"load-balancing-v-distribuovanych-systemech","title":"load balancing v distribuovaných systémech","x":410,"y":52,"deg":3,"stub":false},{"slug":"usporadani-komunikace-v-distribuovanych-systemech","title":"uspořádání (komunikace v distribuovaných systémech)","x":423,"y":68,"deg":4,"stub":false},{"slug":"mechanismy-koordinace-v-distribuovanych-systemech","title":"mechanismy koordinace v distribuovaných systémech","x":280,"y":233,"deg":8,"stub":false},{"slug":"permission-based-koordinace","title":"permission-based koordinace","x":295,"y":250,"deg":9,"stub":false},{"slug":"token-based-koordinace","title":"token-based koordinace","x":312,"y":263,"deg":8,"stub":false},{"slug":"distributed-system","title":"distributed system","x":331,"y":271,"deg":13,"stub":false},{"slug":"rpc","title":"RPC","x":351,"y":274,"deg":7,"stub":false},{"slug":"client-server","title":"client-server","x":371,"y":271,"deg":3,"stub":false},{"slug":"modely-konzistence-distribuovaneho-systemu","title":"modely konzistence distribuovaného systému","x":390,"y":263,"deg":5,"stub":false},{"slug":"konsenzus-v-distribuovanych-systemech","title":"konsenzus v distribuovaných systémech","x":407,"y":250,"deg":15,"stub":false},{"slug":"blockchain","title":"blockchain","x":422,"y":233,"deg":3,"stub":false}]}; }
+
+  renderVals() {
+    const card = this.label('notes/replikace', 'N-' + this.specimen('notes/replikace').seed.slice(0, 3).toUpperCase(), 'replikace', 'from the notes');
+    return { flower: this.specimenRows('notes/replikace'), card, vine: this.vine(), bugs: this.bugs(), roots: this.roots(), trailA: this.trail('a-rep'), trailB: this.trail('b-rep'), trailC: this.trail('c-rep'), plate: this.notePlate(), caps: this.noteCaps(), far: this.farSpots() };
+  }
+}
+</script>
+</body>
+</html>
