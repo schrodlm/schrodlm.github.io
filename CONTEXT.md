@@ -98,9 +98,21 @@ one note. The code calls it the "note graph", which it is not.
 _Avoid_: graph, note graph
 
 **Graph view**:
-A site-wide, interactive map of every note and the links between them, like
-Obsidian's. Planned, not built.
+The map of how notes link, drawn as plates: one of the whole garden, with
+every note as its flower and every link a vine, and a small one on each note
+page showing that note's neighbourhood.
 _Avoid_: note graph, knowledge map
+
+**Plate**:
+A picture drawn in pixels rather than characters, engraved like a woodcut in
+the garden's tones, with its text laid over it. Only the graph view is drawn
+as plates.
+_Avoid_: canvas, image, illustration
+
+**Wildflower**:
+A note that nothing links to and that links to nothing. On the garden's plate
+it grows on its own stem, apart from the clusters.
+_Avoid_: orphan, isolated note
 
 **CV**:
 My curriculum vitae, a page of the site and a PDF printed from that page
