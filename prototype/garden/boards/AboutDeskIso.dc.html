@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About, the desk</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+.wide{display:block}
+@media (max-width: 1100px){.wide{display:none}}
+.titleflower{position:absolute;left:-170px;top:-24px}
+@media (max-width: 1100px){.titleflower{position:static;margin:4px 0 6px}}
+
+.iso-plate{position:relative;width:100%;aspect-ratio:1170/1000;overflow:hidden}
+.iso-plate img{position:absolute;image-rendering:pixelated;pointer-events:none}
+.iso-hit{position:absolute;padding:0;border:0;background:transparent;cursor:pointer}
+.iso-hit:focus-visible{outline:none;background:rgba(43,115,73,0.12)}
+.iso-cap{position:absolute;transform:translate(-50%,-100%);white-space:nowrap;pointer-events:none;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;line-height:15px;padding:1px 4px;background:rgba(241,236,223,0.92);z-index:80}
+.iso-no{position:absolute;transform:translate(0,-50%);pointer-events:none;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:600;line-height:16px;width:16px;text-align:center;border:1px solid currentColor;border-radius:50%;background:#F1ECDF;z-index:75}
+.iso-card{position:absolute;right:2.2%;top:3.4%;width:300px;z-index:90}
+.iso-key{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px 24px;margin:14px 0 0;padding:0;list-style:none}
+.iso-key button{all:unset;cursor:pointer;display:flex;gap:8px;align-items:baseline;width:100%}
+.iso-key button:hover .iso-kn,.iso-key button:focus-visible .iso-kn{text-decoration:underline}
+.iso-ex{all:unset;cursor:pointer;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;color:#2B7349}
+.iso-ex:hover,.iso-ex:focus-visible{color:#1F2B23;text-decoration:underline}
+@media (max-width: 700px){.iso-cap{display:none}.iso-card{position:static;width:auto;margin-top:12px}.iso-no{font-size:9px;width:12px;line-height:12px}}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" style="color: #2B7349; text-decoration: none;">[notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[projects]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[courses]</a>
+<a href="#" aria-current="page" style="color: #1F2B23; text-decoration: none; font-weight: 600;">[&gt;about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 1220px; margin: 0 auto; padding: 48px 24px 40px;">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #535F52; font-size: 11px;">About</div>
+<h1 style="margin: 6px 0 22px; font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 38px; font-weight: 600;">The desk</h1>
+<figure style="margin: 0;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; padding: 0 4px 8px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #535F52;"><span>Tab. III · Mensa, cum machina aperta</span><button type="button" class="iso-ex" onClick="{{toggle}}" aria-pressed="{{exPressed}}">{{exLabel}}</button></div>
+<div class="iso-plate">
+<img alt="" aria-hidden="true" src="{{ground}}" style="left: 0; top: 0; width: 100%; height: 100%;">
+<sc-for list="{{layers}}" as="l" hint-placeholder-count="14"><img alt="" aria-hidden="true" src="{{l.src}}" style="{{l.style}}"></sc-for>
+<img alt="" aria-hidden="true" src="{{leaders}}" style="left: 0; top: 0; width: 100%; height: 100%; z-index: 70;">
+<sc-for list="{{callouts}}" as="c" hint-placeholder-count="10"><span class="iso-no" aria-hidden="true" style="{{c.style}} color: {{c.color}};">{{c.no}}</span></sc-for>
+<sc-for list="{{hits}}" as="s" hint-placeholder-count="14"><button type="button" class="iso-hit" aria-label="{{s.aria}}" onMouseEnter="{{s.enter}}" onMouseLeave="{{s.leave}}" onFocus="{{s.enter}}" onBlur="{{s.leave}}" onClick="{{s.pick}}" style="{{s.style}} z-index: 85;"></button></sc-for>
+<sc-if value="{{caption.show}}" hint-placeholder-val="{{false}}"><span class="iso-cap" aria-hidden="true" style="{{caption.style}}"><span style="color: {{caption.color}}; font-weight: 600;">{{caption.name}}</span> <span style="color: #535F52;">· {{caption.model}}</span></span></sc-if>
+<sc-if value="{{card.show}}" hint-placeholder-val="{{false}}"><div class="iso-card" aria-live="polite" style="padding: 14px 16px 16px; background: #F7F2E4; border: 1px solid #D8CFBA; box-shadow: 3px 3px 0 #E2D9C4;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #535F52;"><span>Fig. {{card.no}}</span><button type="button" class="iso-ex" onClick="{{card.close}}" style="font-size: 12px;">[put back]</button></div>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 17px; font-weight: 600; margin: 4px 0 0; color: {{card.color}};">{{card.name}}</div>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; color: #1F2B23;">{{card.model}}</div>
+<div style="font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.5; color: #535F52; margin-top: 8px;">[a line about it, written by me]</div>
+</div></sc-if>
+</div>
+<ol class="iso-key">
+<sc-for list="{{key}}" as="k" hint-placeholder-count="10"><li><button type="button" onClick="{{k.pick}}" onMouseEnter="{{k.enter}}" onMouseLeave="{{k.leave}}" onFocus="{{k.enter}}" onBlur="{{k.leave}}"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; color: {{k.color}}; flex: 0 0 18px;">{{k.no}}</span><span style="min-width: 0; font-size: 14px; line-height: 1.45;"><span class="iso-kn" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: {{k.weight}}; color: #1F2B23;">{{k.name}}</span> <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11.5px; color: #535F52;">{{k.model}}</span></span></button></li></sc-for>
+</ol>
+<figcaption style="margin-top: 12px; font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 14px; color: #535F52;">My desk, engraved as if for an old service manual. Hover a part to name it; click it to take it out.</figcaption>
+</figure>
+
+<section style="max-width: 70ch; margin: 56px 0 0;">
+<p style="margin: 0; padding: 22px 26px; border: 1px dashed #C9BFA8; color: #535F52; font-style: italic;">[About text — written by me]</p>
+</section>
+
+<section aria-label="Contact" style="margin: 44px 0 0;">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #535F52; font-size: 11px; margin-bottom: 14px;">Write to me</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px 40px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;">
+<li style="display: flex; align-items: center; gap: 12px;"><img alt="" aria-hidden="true" src="{{icons.mail.url}}" style="width: {{icons.mail.w}}px; image-rendering: pixelated;"><a href="mailto:matej.schrodl@gmail.com">matej.schrodl@gmail.com</a></li>
+<li style="display: flex; align-items: center; gap: 12px;"><img alt="" aria-hidden="true" src="{{icons.gh.url}}" style="width: {{icons.gh.w}}px; image-rendering: pixelated;"><a href="https://github.com/schrodlm">github.com/schrodlm</a></li>
+<li style="display: flex; align-items: center; gap: 12px;"><img alt="" aria-hidden="true" src="{{icons.li.url}}" style="width: {{icons.li.w}}px; image-rendering: pixelated;"><a href="https://www.linkedin.com/in/matej-schrodl354">linkedin.com/in/matej-schrodl354</a></li>
+</ul>
+</section>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"motion":{"editor":"boolean","default":true,"section":"Flora"},"$preview":{"width":1280,"height":1900}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: '', sel: '', ex: false, v: { load: 0, panel: 0 } };
+
+  componentDidMount() {
+    this.boot();
+    return;
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its seed ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split(/[-/]/).filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w) && w !== 'notes' && w !== 'posts');
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The flower's most telling row, as a small mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), rows = p.head.rows;
+    const row = (rows.find((r) => /[@o*]/.test(r)) || rows[0]).trim();
+    return row.split('').map((ch) => ({ t: ch, c: (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1] }));
+  }
+
+  // The museum label: what the seed grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // ---------------------------------------------------------------- geometry & the cutter
+  // World units are millimetres. x runs to the lower right, y to the lower left, z up; the plate is a
+  // fixed 2:1 isometric projection of it, so nothing ever rotates. Depth toward the viewer is x+y+z.
+  K() { return { C: 3, S: 0.215, OX: 66, OY: 92, W: Math.round(this.D().PW / 3), H: Math.round(this.D().PH / 3) }; }
+  P(x, y, z) { const K = this.K(); return [K.OX + (x - y) * K.S, K.OY + ((x + y) / 2 - z) * K.S]; }
+  // A 3-D offset in mm as a 2-D shift in plate cells, whole cells so the grain of the cut stays put.
+  shift(o) { const K = this.K(); return [Math.round((o[0] - o[1]) * K.S), Math.round(((o[0] + o[1]) / 2 - o[2]) * K.S)]; }
+  rgb(hex) { return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]; }
+  mix(a, b, k) { return a.map((v, i) => Math.round(v * (1 - k) + b[i] * k)); }
+
+  // Materials: three inks from light to dark, the crease colour, and how the tone of a face follows
+  // the light (base + k * shadow). Above `hatch` a face is engraved with lines along its own axis.
+  mats() {
+    if (this._mats) return this._mats;
+    const h = (x) => this.rgb(x), SAND = h('#F1ECDF');
+    const m = (l, md, d, e, base, k, hatch) => ({ l: h(l), m: h(md), d: h(d), e: h(e), base, k, hatch });
+    this._mats = {
+      black: m('#ECE5D3', '#8E8B7A', '#1F2B23', '#3B4438', 0.12, 0.6, 0.6),
+      inner: m('#E4DDCA', '#A29E8C', '#3B4438', '#59604F', 0.42, 0.3, 0.5),
+      case: m('#7B7E6C', '#3B4438', '#1F2B23', '#8E8B7A', 0.3, 0.55, 0.62),
+      blackHi: m('#F1ECDF', '#B3AD9C', '#59604F', '#3B4438', 0.05, 0.5, 0.75),
+      walnut: m('#D9B98E', '#9C6B44', '#5C4636', '#E8D5B5', 0.36, 0.42, 0.72),
+      desk: m('#EEE6D3', '#D5BE9A', '#A88B66', '#B79C77', 0.0, 0.5, 0.6),
+      deskEdge: m('#CDB48E', '#9C7E5B', '#5C4636', '#7A5C42', 0.4, 0.4, 0.6),
+      steel: m('#E9E3D3', '#B3AD9C', '#6E6F64', '#F5F0E3', 0.18, 0.5, 0.7),
+      pcb: m('#C9C2AE', '#5E6B55', '#1F2B23', '#3B4438', 0.4, 0.4, 0.8),
+      green: m('#A9C59B', '#3F8A52', '#2B7349', '#C4D8B8', 0.4, 0.4, 0.7),
+      sand: SAND
+    };
+    return this._mats;
+  }
+  litMat(hex) {
+    const a = this.rgb(hex), S = this.rgb('#F1ECDF'), I = this.rgb('#1F2B23');
+    return { l: this.mix(a, S, 0.72), m: this.mix(a, S, 0.25), d: this.mix(a, I, 0.35), e: this.mix(a, S, 0.6), base: 0, k: 0, hatch: 0.66 };
+  }
+
+  // ---- primitives. Each surface is a patch fn(a, b) -> [point, normal] over a in [0, A], b in [0, B] (mm).
+  face(o, U, V, tag, mat, tex, n) {
+    const L = (v) => Math.hypot(v[0], v[1], v[2]), A = L(U), B = L(V);
+    const nn = n || this.cross(U, V);
+    return { A, B, tag, mat, tex, fn: (a, b) => [[o[0] + U[0] * a / A + V[0] * b / B, o[1] + U[1] * a / A + V[1] * b / B, o[2] + U[2] * a / A + V[2] * b / B], nn],
+      corners: [o, this.add(o, U), this.add(o, V), this.add(this.add(o, U), V)] };
+  }
+  cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+  add(a, b) { return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]; }
+  scl(a, k) { return [a[0] * k, a[1] * k, a[2] * k]; }
+
+  // An axis-aligned box: only its top, +x and +y faces can ever face this camera.
+  box(x, y, z, w, d, h, mat, tex) {
+    return [
+      this.face([x, y, z + h], [w, 0, 0], [0, d, 0], 'top', mat, tex, [0, 0, 1]),
+      this.face([x + w, y, z], [0, d, 0], [0, 0, h], 'px', mat, tex, [1, 0, 0]),
+      this.face([x, y + d, z], [w, 0, 0], [0, 0, h], 'py', mat, tex, [0, 1, 0])
+    ];
+  }
+  // A box on any three edge vectors (the laptop's lid): every face, outward normals, back faces culled.
+  obox(o, U, V, W, mat, tex) {
+    const c = this.add(o, this.scl(this.add(this.add(U, V), W), 0.5)), out = [];
+    const mk = (org, e1, e2, tag) => {
+      let n = this.cross(e1, e2);
+      const fc = this.add(org, this.scl(this.add(e1, e2), 0.5)), dv = [fc[0] - c[0], fc[1] - c[1], fc[2] - c[2]];
+      if (n[0] * dv[0] + n[1] * dv[1] + n[2] * dv[2] < 0) n = this.scl(n, -1);
+      out.push(this.face(org, e1, e2, tag, mat, tex, n));
+    };
+    mk(o, U, V, 'W0'); mk(this.add(o, W), U, V, 'W1');
+    mk(o, U, W, 'V0'); mk(this.add(o, V), U, W, 'V1');
+    mk(o, V, W, 'U0'); mk(this.add(o, U), V, W, 'U1');
+    return out;
+  }
+  // A cylinder along x, y or z from `base`, radius r, length len: its side and its far cap.
+  cyl(base, ax, r, len, mat, tex) {
+    const A = { x: [1, 0, 0], y: [0, 1, 0], z: [0, 0, 1] }[ax], e1 = ax === 'z' ? [1, 0, 0] : [0, 0, 1], e2 = this.cross(A, e1);
+    const at = (t, rr, th) => [0, 1, 2].map((i) => base[i] + A[i] * t + rr * (Math.cos(th) * e1[i] + Math.sin(th) * e2[i]));
+    const side = { A: 2 * Math.PI * r, B: len, tag: 'side', mat, tex, fn: (a, b) => { const th = a / r; return [at(b, r, th), [0, 1, 2].map((i) => Math.cos(th) * e1[i] + Math.sin(th) * e2[i])]; } };
+    const cap = { A: r, B: 2 * Math.PI * r, tag: 'cap', mat, tex, fn: (a, b) => [at(len, a, b / r), A] };
+    const corners = [];
+    for (let k = 0; k < 8; k++) corners.push(at(k & 1 ? len : 0, r, k * Math.PI / 2));
+    side.corners = corners; cap.corners = corners;
+    return [side, cap];
+  }
+  // A hose of radius r along a cubic Bézier.
+  tube(p0, p1, p2, p3, r, mat, tex) {
+    const bz = (t) => [0, 1, 2].map((i) => (1 - t) ** 3 * p0[i] + 3 * (1 - t) ** 2 * t * p1[i] + 3 * (1 - t) * t * t * p2[i] + t ** 3 * p3[i]);
+    let len = 0, prev = bz(0);
+    for (let k = 1; k <= 40; k++) { const q = bz(k / 40); len += Math.hypot(q[0] - prev[0], q[1] - prev[1], q[2] - prev[2]); prev = q; }
+    const fn = (a, b) => {
+      const t = b / len, c = bz(t), c2 = bz(Math.min(1, t + 0.01)), c1 = bz(Math.max(0, t - 0.01));
+      let T = [c2[0] - c1[0], c2[1] - c1[1], c2[2] - c1[2]];
+      const tl = Math.hypot(...T); T = this.scl(T, 1 / tl);
+      let e1 = this.cross(T, [0, 0, 1]); if (Math.hypot(...e1) < 0.1) e1 = this.cross(T, [1, 0, 0]);
+      e1 = this.scl(e1, 1 / Math.hypot(...e1));
+      const e2 = this.cross(T, e1), th = a / r, n = [0, 1, 2].map((i) => Math.cos(th) * e1[i] + Math.sin(th) * e2[i]);
+      return [this.add(c, this.scl(n, r)), n];
+    };
+    const corners = [];
+    for (let k = 0; k <= 8; k++) { const c = bz(k / 8); corners.push(this.add(c, [r, r, r]), this.add(c, [-r, -r, -r])); }
+    return [{ A: 2 * Math.PI * r, B: len, tag: 'tube', mat, tex, fn, corners }];
+  }
+
+  // ---- the cutter. Samples every surface finer than a cell, keeps the nearest sample per cell, then
+  // inks it: silhouette, creases between faces, hatching, Bayer dither, and a ring of bare paper.
+  // mode: 'rest' | 'lit' | 'ghost'.
+  cut(surfs, mode, accent, decals, noHalo) {
+    const K = this.K(), M = this.mats(), S = K.S;
+    const B4 = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5], bay = (x, y) => B4[(y & 3) * 4 + (x & 3)];
+    let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    const pts = [];
+    for (const s of surfs) for (const c of s.corners) { const p = this.P(c[0], c[1], c[2]); pts.push(p); x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }
+    x0 = Math.floor(x0) - 2; y0 = Math.floor(y0) - 2; x1 = Math.ceil(x1) + 3; y1 = Math.ceil(y1) + 3;
+    const w = x1 - x0, h = y1 - y0, N = w * h;
+    const dep = new Float32Array(N).fill(-1e9), fid = new Int32Array(N).fill(-1), res = new Array(N);
+    const Lx = -0.33, Ly = 0.5, Lz = 0.8, LN = Math.hypot(Lx, Ly, Lz);
+    const step = 0.36 / S;
+    surfs.forEach((s, si) => {
+      const na = Math.max(1, Math.ceil(s.A / step)), nb = Math.max(1, Math.ceil(s.B / step));
+      for (let i = 0; i <= na; i++) for (let j = 0; j <= nb; j++) {
+        const a = s.A * i / na, b = s.B * j / nb, [Pt, n] = s.fn(a, b);
+        if (n[0] + n[1] + n[2] <= 1e-6) continue;
+        const cx = Math.floor(K.OX + (Pt[0] - Pt[1]) * S) - x0, cy = Math.floor(K.OY + ((Pt[0] + Pt[1]) / 2 - Pt[2]) * S) - y0;
+        if (cx < 0 || cy < 0 || cx >= w || cy >= h) continue;
+        const k = cy * w + cx, dd = Pt[0] + Pt[1] + Pt[2];
+        if (dd < dep[k]) continue;
+        const nl = Math.hypot(n[0], n[1], n[2]), lam = Math.max(0, (n[0] * Lx + n[1] * Ly + n[2] * Lz) / (nl * LN));
+        const mat = s.mat;
+        let r = { t: mat.base + mat.k * (1 - lam), m: mat };
+        if (s.tex) { const q = s.tex(s.tag, a, b, Pt, r.t, cx + x0, cy + y0); if (q === null) continue; if (q) r = Object.assign(r, q); }
+        if (r.h === undefined) r.h = r.t > r.m.hatch && (Math.floor(a * S) % 3 === 0);
+        dep[k] = dd; fid[k] = r.id !== undefined ? r.id : si; res[k] = r;
+      }
+    });
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d'), img = ctx.createImageData(w, h), d = img.data;
+    const put = (k, c) => { d[k * 4] = c[0]; d[k * 4 + 1] = c[1]; d[k * 4 + 2] = c[2]; d[k * 4 + 3] = 255; };
+    const INK = this.rgb('#1F2B23'), RULE = this.rgb('#8C8270'), SAND = M.sand;
+    const lit = mode === 'lit' ? this.litMat(accent) : null, LINE = lit ? this.mix(this.rgb(accent), INK, 0.45) : INK;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const k = y * w + x;
+      if (fid[k] < 0) continue;
+      const empty = (X, Y) => X < 0 || Y < 0 || X >= w || Y >= h || fid[Y * w + X] < 0;
+      const sil = empty(x - 1, y) || empty(x + 1, y) || empty(x, y - 1) || empty(x, y + 1);
+      const r = res[k], m = lit && !r.keep ? lit : r.m;
+      const crease = !r.noEdge && ((x + 1 < w && fid[k + 1] >= 0 && fid[k + 1] !== fid[k] && dep[k + 1] < dep[k] + 40) ||
+        (y + 1 < h && fid[k + w] >= 0 && fid[k + w] !== fid[k] && dep[k + w] < dep[k] + 40));
+      if (mode === 'ghost') { if ((sil || crease) && (x + y) % 2 === 0) put(k, RULE); continue; }
+      if (sil) { put(k, LINE); continue; }
+      if (crease) { put(k, r.edge || m.e); continue; }
+      if (r.c) { put(k, lit && !r.keep ? this.mix(r.c, this.rgb(accent), 0.5) : r.c); continue; }
+      if (r.h) { put(k, m.d); continue; }
+      const t = Math.max(0, Math.min(1, r.t)), b = bay(x + x0, y + y0);
+      put(k, t < 0.5 ? (t * 32 > b + 0.5 ? m.m : m.l) : ((t - 0.5) * 32 > b + 0.5 ? m.d : m.m));
+    }
+    if (decals && mode !== 'ghost') for (const [Pt, c, sz] of decals) {
+      const p = this.P(Pt[0], Pt[1], Pt[2]), cx = Math.floor(p[0]) - x0, cy = Math.floor(p[1]) - y0;
+      for (let dy = 0; dy < (sz || 1); dy++) for (let dx = 0; dx < (sz || 1); dx++) { const X = cx + dx, Y = cy + dy; if (X >= 0 && Y >= 0 && X < w && Y < h && fid[Y * w + X] >= 0) put(Y * w + X, c); }
+    }
+    // The paper ring: bare sand round the silhouette, so a part reads cleanly over whatever is behind.
+    if (mode !== 'ghost' && !noHalo) for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const k = y * w + x;
+      if (fid[k] >= 0) continue;
+      let near = false;
+      for (let dy = -1; dy <= 1 && !near; dy++) for (let dx = -1; dx <= 1; dx++) { const X = x + dx, Y = y + dy; if (X >= 0 && Y >= 0 && X < w && Y < h && fid[Y * w + X] >= 0) { near = true; break; } }
+      if (near) put(k, SAND);
+    }
+    ctx.putImageData(img, 0, 0);
+    return { url: cv.toDataURL(), x0, y0, w, h, hull: this.hull(pts.map((p) => [p[0] - x0, p[1] - y0])), cv };
+  }
+  hull(p) {
+    p = p.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]), lo = [], up = [];
+    for (const q of p) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop(); lo.push(q); }
+    for (const q of p.slice().reverse()) { while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop(); up.push(q); }
+    return lo.slice(0, -1).concat(up.slice(0, -1));
+  }
+
+  // ---------------------------------------------------------------- the things on the desk
+  // Real sizes in mm. The case stands at the right end of the desk, its glass side to the right.
+  T() { return [1150, 110, 10]; }
+  tw(x, y, z) { const t = this.T(); return [x + t[0], y + t[1], z + t[2]]; }
+  tbox(x, y, z, w, d, h, mat, tex) { const t = this.T(); return this.box(x + t[0], y + t[1], z + t[2], w, d, h, mat, tex); }
+
+  // Fan blades in face coordinates: a frame, a ring, seven swept blades and a hub.
+  fanTex(cu, cv, R, mat) {
+    const M = this.mats();
+    return (tag, u, v, P, t) => {
+      const dx = u - cu, dy = v - cv, r = Math.hypot(dx, dy);
+      if (r > R + 2) return { t: t * 0.8, h: false };
+      if (r > R - 3) return { c: M.black.d };
+      if (r < R * 0.3) return r < R * 0.18 ? { t: 0.2, h: false } : { t: 0.55, h: false };
+      const th = Math.atan2(dy, dx) / (2 * Math.PI) + 1;
+      const f = (th * 7 + r / R * 0.9) % 1;
+      return f < 0.5 ? { t: 0.36, h: false } : { c: M.black.d };
+    };
+  }
+
+  build(id, opt) {
+    const M = this.mats(), S = this.K().S, tb = this.tbox.bind(this), BL = M.black, CA = M.case, out = [], dec = [];
+    const H = (hex) => this.rgb(hex);
+    if (id === 'shell') {
+      out.push(...tb(0, 0, 0, 10, 447, 469, CA, (tag, u, v) => tag === 'px' ? { m: M.inner, t: 0.55, h: Math.floor((u + v * 0.5) * S) % 3 === 0 } : undefined));  // the tray, in shadow
+      out.push(...tb(0, 0, 0, 215, 447, 8, CA));                               // the floor
+      out.push(...tb(0, 0, 8, 215, 12, 441, CA, (tag, u, v) => {               // the rear wall, from inside
+        if (tag !== 'py') return;
+        const z = v + 8, I = M.inner;
+        if (z > 300 && z < 440) { const r = Math.hypot(u - 150, z - 370); if (r < 58 && r > 52) return { m: I, t: 0.1, h: false }; if (r < 52) return (Math.floor(u * S) + Math.floor(z * S)) % 2 ? { m: I, t: 0.9, h: false } : { m: I, t: 0.4, h: false }; }
+        if (z > 110 && z < 290 && u > 20 && u < 140) return (z - 110) % 20.3 < 5 ? { m: I, t: 0.1, h: false } : { m: I, t: 0.6, h: false };
+        return { m: I, t: 0.45, h: Math.floor((u + v * 0.5) * S) % 3 === 0 };
+      }));
+    }
+    if (id === 'top') {
+      out.push(...tb(0, 0, 449, 215, 447, 20, CA, (tag, u, v) => {             // the top, meshed
+        if (tag === 'top') {
+          if (v > 405 && u > 150 && u < 200) return { t: Math.floor(u / 12) % 2 ? 0.8 : 0.3, h: false };
+          if (u > 12 && u < 203 && v > 14 && v < 395) return (Math.floor(u * S) + Math.floor(v * S * 1.0)) % 2 ? { t: 0.7, h: false } : { t: 0.3, h: false };
+        }
+      }));
+    }
+    if (id === 'shell') {
+      out.push(...tb(14, 20, -10, 40, 40, 10, CA), ...tb(14, 387, -10, 40, 40, 10, CA), ...tb(161, 20, -10, 40, 40, 10, CA), ...tb(161, 387, -10, 40, 40, 10, CA));
+    }
+    if (id === 'front') {
+      // Ten walnut slats on a black frame; the grain runs up each slat and wanders a little.
+      const tex = (tag, u, v, P, t) => {
+        if (tag === 'top') return { t: 0.55 };
+        if (tag === 'px') return { m: M.walnut, t: 0.62 + (Math.floor(v / 7) % 2) * 0.08 };
+        if (v < 16 || v > 453 || u < 6 || u > 209) return { m: CA, t: 0.7 };
+        const q = (u - 6) / 20.3, k = Math.floor(q), f = q - k;
+        if (f > 0.74) return { m: CA, c: H('#1F2B23') };
+        const g = Math.sin(v * 0.045 + k * 2.1 + Math.sin(v * 0.011 + k) * 2.4) + Math.sin(f * 9 + k);
+        const tt = 0.3 + (f > 0.6 ? 0.25 : f < 0.12 ? -0.08 : 0) + (k % 3) * 0.04;
+        return { m: M.walnut, t: tt + (g > 1.2 ? 0.35 : 0), h: g > 1.55 };
+      };
+      out.push(...tb(0, 427, 0, 215, 20, 469, CA, tex));
+    }
+    if (id === 'side') {
+      out.push(...tb(207, 12, 8, 8, 415, 441, CA, (tag, u, v) => {
+        if (tag !== 'px') return { t: 0.6 };
+        if (u < 10 || u > 405 || v < 10 || v > 431) return { t: 0.85, h: false };
+        const s = (u * 0.9 + v) % 360;
+        if (s > 60 && s < 96) return { t: 0.32, h: false, noEdge: true };
+        if (s > 112 && s < 122) return { t: 0.4, h: false, noEdge: true };
+        return { t: 0.74, h: Math.floor((u + v * 0.5) * S) % 3 === 0 };
+      }));
+    }
+    if (id === 'shroud') {
+      out.push(...tb(10, 12, 8, 197, 415, 104, CA, (tag, u, v) => {
+        if (tag === 'top') return (v > 300 && v < 400 && u > 20 && u < 170 && Math.floor(u * S) % 2 === 0 && Math.floor(v * S) % 2 === 0) ? { t: 0.9, h: false } : { m: M.inner, t: 0.3, h: false };
+        if (tag === 'px' && u > 30 && u < 70 && v > 40 && v < 64) return { t: 0.15, h: false };
+      }));
+    }
+    if (id === 'mobo') {
+      const pcb = (tag, u, v) => {
+        if (tag !== 'px') return;
+        const cu = Math.floor(u * S), cv = Math.floor(v * S);
+        if ((cv % 6 === 0 && cu % 9 < 5) || (cu % 13 === 0 && cv % 7 < 3)) return { m: M.pcb, t: 0.3, h: false };
+        return { m: M.pcb, t: 0.62, h: false };
+      };
+      out.push(...tb(10, 15, 140, 4, 244, 305, M.pcb, pcb));
+      out.push(...tb(14, 15, 328, 26, 24, 114, BL, (tag, u, v) => tag === 'px' && Math.floor(v * S) % 2 === 0 ? { t: 0.3, h: false } : undefined));  // I/O cover
+      out.push(...tb(14, 42, 410, 18, 70, 24, M.blackHi, (tag, u, v) => tag === 'px' && Math.floor(u * S) % 2 === 0 ? { t: 0.75 } : undefined));      // VRM heatsink
+      out.push(...tb(14, 92, 327, 3, 56, 56, M.steel));                                                                                                // socket frame
+      out.push(...tb(14, 30, 252, 7, 95, 7, BL));                                                                                                      // PCIe x16
+      out.push(...tb(14, 30, 172, 7, 95, 6, BL));
+      out.push(...tb(14, 160, 150, 12, 76, 56, M.blackHi, (tag, u, v) => tag === 'px' && (u + v) % 18 < 4 ? { t: 0.75 } : undefined));             // chipset heatsink
+      out.push(...tb(14, 242, 290, 14, 14, 62, BL));                                                                                                   // 24-pin
+      for (let k = 0; k < 4; k++) out.push(...tb(14, 184 + k * 11, 296, 6, 6, 142, k % 2 ? BL : M.pcb));                                            // DIMM slots
+    }
+    if (id === 'cpu') {
+      out.push(...tb(14, 98, 333, 2, 44, 44, M.green));
+      out.push(...tb(16, 100, 335, 4, 40, 40, M.steel, (tag, u, v) => {
+        if (tag !== 'px') return;
+        if ((u < 4 || u > 36) && (v % 11) < 4) return { m: M.green, t: 0.5 };
+        if (v > 24 && v < 27 && u > 8 && u < 32) return { t: 0.65, h: false };
+        if (v > 16 && v < 18 && u > 8 && u < 26) return { t: 0.6, h: false };
+      }));
+      dec.push([this.tw(20, 103, 337), H('#A87400')]);
+    }
+    if (id === 'kraken') {
+      const pump = (tag, u, v) => {
+        if (tag === 'cap') {
+          if (u > 35) return { m: M.blackHi, t: 0.2, h: false };
+          if (u > 31) return { c: H('#8A4F98'), keep: false };
+          if (u < 6) return { t: 0.15, h: false };
+          if ((u > 15 && u < 17.5) || (u > 23 && u < 25)) return { t: 0.45, h: false };
+          return { t: 0.82, h: false };
+        }
+        if (tag === 'side') return { m: BL };
+      };
+      out.push(...this.cyl(this.tw(20, 120, 355), 'x', 40, 52, BL, pump));
+      out.push(...this.tube(this.tw(56, 152, 386), this.tw(80, 240, 432), this.tw(84, 310, 430), this.tw(78, 368, 414), 5.5, BL));
+      out.push(...this.tube(this.tw(60, 154, 362), this.tw(110, 236, 392), this.tw(118, 316, 406), this.tw(122, 368, 404), 5.5, BL));
+    }
+    if (id === 'rad') {
+      out.push(...tb(25, 368, 118, 143, 30, 315, BL, (tag, u, v) => {
+        if (tag === 'top') return { t: 0.4 };
+        const z = v;
+        if (z < 22 || z > 293) return { m: M.blackHi, t: tag === 'px' ? 0.55 : 0.4 };
+        if (tag === 'px') return Math.floor(z * S * 1.5) % 2 ? { t: 0.85, h: false } : { t: 0.45, h: false };
+        return Math.floor(u * S) % 2 ? { t: 0.82, h: false } : { t: 0.42, h: false };
+      }));
+    }
+    if (id === 'fans') {
+      for (const z0 of [125, 267]) out.push(...tb(25, 398, z0, 140, 26, 140, BL, (tag, u, v, P, t) => {
+        if (tag === 'py') return this.fanTex(70, 70, 66)(tag, u, v, P, t);
+        if (tag === 'px') return { t: 0.55 };
+      }));
+    }
+    if (id === 'ram') {
+      for (const y0 of [195, 217]) {
+        out.push(...tb(20, y0, 300, 30, 7, 134, BL, (tag, u, v) => {
+          if (tag === 'py') {
+            if (v < 6 || v > 128) return { t: 0.7 };
+            const s = (u * 1.6 + v) % 16;
+            if (u > 4 && u < 26 && v > 40 && v < 92) return s < 3 ? { t: 0.3, h: false } : { t: 0.78, h: false };
+            return s < 5 ? { t: 0.4, h: false } : { t: 0.62, h: false };
+          }
+          if (tag === 'px') return { t: 0.55 };
+        }));
+        for (let k = 0; k < 12; k++) out.push(...tb(50, y0, 304 + k * 11, 4, 7, 6, M.blackHi));
+      }
+    }
+    if (id === 'gpu') {
+      const flip = opt && opt.flip;
+      const R = 44, cs = [56, 152, 248];
+      out.push(...tb(14, 15, 205, 121, 303, 50, BL, (tag, u, v, P, t) => {
+        if (tag === 'top') {
+          if (flip) {
+            for (const c of cs) { if (Math.hypot(u - 60, v - c) < R + 3) return this.fanTex(60, c, R)(tag, u, v, P, t); }
+            return { t: 0.42 + ((u + v) % 22 < 3 ? 0.3 : 0), h: false };
+          }
+          if (v > 238 && u > 14 && u < 108) return (Math.floor(u * S) + Math.floor(v * S)) % 2 ? { t: 0.9, h: false } : { t: 0.35, h: false };
+          if (u > 8 && u < 30 && v > 30 && v < 120) return { t: 0.22, h: false };
+          return { t: 0.3, h: false };
+        }
+        if (tag === 'px') {
+          if (v > 30 && v < 36) return { m: M.steel, t: 0.3, h: false };
+          if (u > 250 && v > 12 && v < 24) return { m: M.green, t: 0.55, h: false };
+          return { t: 0.72, h: Math.floor(u * S) % 3 === 0 };
+        }
+        if (tag === 'py') return Math.floor(v * S) % 2 ? { t: 0.85, h: false } : { t: 0.5, h: false };
+      }));
+      out.push(...tb(10, 12, 190, 4, 6, 70, M.steel));
+    }
+    if (id === 'ssd') {
+      out.push(...tb(14, 52, 271, 2.5, 80, 22, BL, (tag, u, v) => {
+        if (tag !== 'px') return { t: 0.6 };
+        if (u < 5) return { c: H('#A87400') };
+        if (v > 9 && v < 13 && u > 12 && u < 70) return { t: 0.2, h: false };
+        return { t: 0.8, h: false };
+      }));
+    }
+    if (id === 'psu') {
+      out.push(...tb(22, 16, 10, 150, 160, 86, BL, (tag, u, v) => {
+        if (tag === 'px') {
+          if (u > 20 && u < 140 && v > 18 && v < 68) return v > 50 && v < 56 ? { t: 0.75, h: false } : { m: M.steel, t: (u > 30 && u < 62 && v > 26 && v < 40) ? 0.6 : 0.2, h: false };
+          return { t: 0.7 };
+        }
+        if (tag === 'py') {
+          const cu = Math.floor(u / 16), cvv = Math.floor(v / 22);
+          if (u > 10 && u < 140 && v > 14 && v < 74 && (u % 16) < 11 && (v % 22) < 15) return { t: 0.95, h: false };
+          return { t: 0.45, h: false };
+        }
+        if (tag === 'top') return { t: 0.42, h: Math.floor(u * S) % 2 === 0 && Math.floor(v * S) % 3 === 0 };
+      }));
+    }
+    if (id === 'monitor') this.buildMonitor(out);
+    if (id === 'laptop') this.buildLaptop(out, dec);
+    if (id === 'desk') this.buildDesk(out);
+    return { surfs: out, decals: dec };
+  }
+
+  // The 34" panel bends on a 1500 mm radius, its ends reaching toward the viewer; a stand behind it.
+  buildMonitor(out) {
+    const M = this.mats(), BL = M.black, R = 1500, W = 808, Hh = 363, cx = 470, y0 = 150, z0 = 128, th = 22;
+    out.push(...this.box(372, 30, 0, 196, 210, 9, BL, (tag, u, v) => tag === 'top' ? { t: 0.3 + (Math.floor(u / 22) % 2) * 0.04 } : undefined));
+    out.push(...this.box(452, 62, 9, 36, 24, 236, BL));
+    out.push(...this.box(400, 86, 190, 140, 50, 140, BL));
+    const at = (u, off) => { const ph = (u - W / 2) / R; return [cx + (R + off) * Math.sin(ph) * 1, y0 + (R) * (1 - Math.cos(ph)) - off * Math.cos(ph)]; };
+    const nrm = (u) => { const ph = (u - W / 2) / R; return [-Math.sin(ph), Math.cos(ph), 0]; };
+    // The screen shows this very site, in its sand: a note open on the left, the garden map on the right.
+    const r = this.rng('screen'), rows = [];
+    for (let k = 0; k < 24; k++) rows.push({ l: 60 + r() * 230, c: r() < 0.12 ? '#1D5A8F' : '#8E8B7A', gap: r() < 0.18 });
+    const dots = [];
+    for (let k = 0; k < 24; k++) dots.push([560 + r() * 200, 60 + r() * 200, ['#C24E39', '#8A4F98', '#A87400', '#2A7099', '#B5476E', '#3F8A52'][Math.floor(r() * 6)]]);
+    const PAGE = this.rgb('#F4EFE3');
+    const screen = (tag, u, v, P, t, cx_, cy_) => {
+      if (u < 7 || u > W - 7 || v < 16 || v > Hh - 7) return { t: 0.62, h: false };
+      const top = Hh - 7 - v;                                    // mm down from the screen's top edge
+      if (top < 22) { if (top > 9 && top < 15 && ((u > 40 && u < 120) || (u > 420 && u < 760 && (u - 420) % 58 < 40))) return { c: this.rgb(u < 130 ? '#1F2B23' : '#2B7349') }; return { c: PAGE, noEdge: true }; }
+      if (u > 60 && u < 480) {
+        if (top > 40 && top < 52 && u < 300) return { c: this.rgb('#1F2B23') };
+        const row = Math.floor((top - 66) / 12), rr = rows[row];
+        if (top > 66 && rr && !rr.gap && (top - 66) % 12 < 5 && u < 60 + rr.l + (row % 3) * 40) return { c: this.rgb(rr.c) };
+      }
+      if (u > 530 && u < 790) {
+        for (const [dx, dy, c] of dots) { const d = Math.hypot(u - dx, top - dy); if (d < 5.5) return { c: this.rgb(c) }; }
+        if (Math.abs(Math.sin(u * 0.045) * 40 + 120 - top) < 2.4 && (cx_ + cy_) % 2 === 0) return { c: this.rgb('#86A07A') };
+        if (Math.abs(Math.cos(u * 0.03 + 1) * 50 + 170 - top) < 2.4 && (cx_ + cy_) % 2 === 0) return { c: this.rgb('#86A07A') };
+      }
+      return { c: PAGE, noEdge: true };
+    };
+    out.push({ A: W, B: Hh, tag: 'screen', mat: BL, tex: screen, fn: (u, v) => { const p = at(u, 0); return [[p[0], p[1], z0 + v], nrm(u)]; }, corners: [] });
+    out.push({ A: W, B: th, tag: 'rim', mat: BL, tex: () => ({ t: 0.3 }), fn: (u, v) => { const p = at(u, v); return [[p[0], p[1], z0 + Hh], [0, 0, 1]]; }, corners: [] });
+    out.push({ A: th, B: Hh, tag: 'end', mat: BL, tex: () => ({ t: 0.7 }), fn: (a, v) => { const p = at(W, a); return [[p[0], p[1], z0 + v], [Math.cos((W / 2) / R), Math.sin(W / 2 / R), 0]]; }, corners: [] });
+    const cs = [];
+    for (const u of [0, W / 2, W]) for (const off of [0, th]) for (const z of [z0, z0 + Hh]) { const p = at(u, off); cs.push([p[0], p[1], z]); }
+    for (const s of out) if (!s.corners.length) s.corners = cs;
+  }
+
+  // The ThinkPad, open about 105 degrees: keys, the red TrackPoint and its three buttons, a terminal.
+  buildLaptop(out, dec) {
+    const M = this.mats(), BL = M.black, x0 = 420, y0 = 338, W = 324, D = 227, Hb = 18;
+    const H = (hex) => this.rgb(hex), S = this.K().S;
+    out.push(...this.box(x0, y0, 0, W, D, Hb, BL, (tag, u, v) => {
+      if (tag !== 'top') return { t: 0.62 };
+      if (u > 22 && u < 302 && v > 12 && v < 118) {
+        const cu = Math.floor((u - 22) / 18.7), rv = Math.floor((v - 12) / 18);
+        const fu = (u - 22 - rv * 4) % 18.7, fv = (v - 12) % 18;
+        return fu < 3 || fv < 3 ? { t: 0.85, h: false } : { t: 0.32, h: false };
+      }
+      if (u > 112 && u < 212 && v > 121 && v < 132) return (u - 112) % 33 < 2 ? { t: 0.85, h: false } : (v < 123.5 || v > 129.5) && ((u - 112) % 33 < 6 || (u - 112) % 33 > 29) ? { c: H('#C24E39') } : { t: 0.35, h: false };
+      if (u > 112 && u < 212 && v > 136 && v < 206) return { t: 0.22, h: false };
+      return { t: 0.42, h: false };
+    }));
+    const a = 108 * Math.PI / 180, L = 220;
+    const V = [0, -Math.cos(Math.PI - a) * L * 0 - Math.sin(a - Math.PI / 2) * L, Math.cos(a - Math.PI / 2) * L];
+    const Wd = [0, 6 * Math.cos(a - Math.PI / 2), 6 * Math.sin(a - Math.PI / 2)];
+    const r = this.rng('terminal'), rows = [];
+    for (let k = 0; k < 16; k++) rows.push([8 + r() * 120, r() < 0.2 ? '#A87400' : r() < 0.35 ? '#C9C2AE' : '#5E8E4A']);
+    out.push(...this.obox([x0, y0 + 4, Hb], [W, 0, 0], V, Wd, BL, (tag, u, v) => {
+      if (tag !== 'W1') return { t: 0.55 };
+      if (u < 9 || u > W - 9 || v < 12 || v > L - 9) return { t: 0.5, h: false };
+      const row = Math.floor((L - 16 - v) / 12), rr = rows[row];
+      if (rr && (L - 16 - v) % 12 < 4 && u > 18 && u < 18 + rr[0]) return { c: H(rr[1]) };
+      if (row === 15 && u > 18 && u < 24) return { c: H('#3F8A52') };
+      return { c: H('#24302A'), noEdge: true };
+    }));
+    dec.push([[x0 + 162, y0 + 96, Hb], H('#C24E39'), 1]);
+    dec.push([[x0 + 280, y0 + 200, Hb], H('#C24E39'), 1]);
+  }
+
+  // The desk: a walnut-oiled top, cut away at both ends, with engraved cast shadows on it.
+  buildDesk(out) {
+    const M = this.mats(), S = this.K().S, t = this.T();
+    const casters = [[t[0], t[1], 0, t[0] + 215, t[1] + 447, 479], [400, 86, 190, 540, 136, 330], [65, 120, 128, 875, 170, 491], [420, 300, 0, 744, 342, 230], [420, 338, 0, 744, 565, 18], [452, 62, 0, 488, 86, 245]];
+    const Lx = -0.33, Ly = 0.5, Lz = 0.8;
+    const shadow = (x, y) => {
+      for (const b of casters) {
+        let tmin = 0, tmax = 1e9;
+        for (const [o, dd, lo, hi] of [[x, Lx, b[0], b[3]], [y, Ly, b[1], b[4]], [0, Lz, b[2], b[5]]]) {
+          if (Math.abs(dd) < 1e-9) { if (o < lo || o > hi) { tmax = -1; break; } continue; }
+          let ta = (lo - o) / dd, tb2 = (hi - o) / dd; if (ta > tb2) [ta, tb2] = [tb2, ta];
+          tmin = Math.max(tmin, ta); tmax = Math.min(tmax, tb2);
+        }
+        if (tmax > tmin) return true;
+      }
+      return false;
+    };
+    const X0 = -60, Y0 = -20, WW = 1640, DD = 700;
+    out.push(...this.box(X0, Y0, -32, WW, DD, 32, M.desk, (tag, u, v, P, tone, cx, cy) => {
+      const B4 = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5], b = B4[(cy & 3) * 4 + (cx & 3)];
+      const sx = P[0] - P[1];
+      const Kk = this.K();
+      if (cx < 7 || cy < 7 || cx > Kk.W - 8 || cy > Kk.H - 8) return null;     // the desk runs out under the plate's rule
+      if (tag === 'top') {
+        if (shadow(P[0], P[1])) return { t: 0.55, h: (cx + cy) % 3 === 0, noEdge: true };
+        const g = (v / 34 + Math.sin(u * 0.004 + Math.floor(v / 120)) * 0.8) % 1;
+        return { t: g < 0.06 ? 0.4 : 0.0, h: false, noEdge: true };
+      }
+      if (tag === 'py') return { m: M.deskEdge, t: 0.45, h: Math.floor(u * S) % 3 === 0, noEdge: true };
+      return { m: M.deskEdge, t: 0.7, noEdge: true };
+    }));
+  }
+
+  // ---------------------------------------------------------------- layers, state and motion
+  layerDefs() {
+    // Back to front. Anchor (mm, world) is where a part's leader starts and its caption sits.
+    return [
+      { id: 'monitor', part: 'monitor', anchor: [470, 150, 492], slide: [0, 90, 0], ex: [0, 0, 0], lift: [0, 0, 12] },
+      { id: 'shell', part: 'case', anchor: [107, 223, 470], slide: [0, 0, 0], ex: [0, 0, 0], lift: [0, 0, 10], tower: 1 },
+      { id: 'mobo', part: 'mobo', anchor: [14, 137, 445], slide: [0, 0, 0], ex: [0, 0, 0], lift: [8, 0, 6], tower: 1 },
+      { id: 'ssd', part: 'ssd', anchor: [17, 92, 293], slide: [80, 0, 0], ex: [90, 0, -30], lift: [10, 0, 6], tower: 1 },
+      { id: 'cpu', part: 'cpu', anchor: [20, 120, 377], slide: [120, 0, 0], ex: [130, 0, 40], lift: [10, 0, 6], tower: 1 },
+      { id: 'ram', part: 'ram', anchor: [52, 210, 434], slide: [90, 0, 0], ex: [40, 0, 200], lift: [10, 0, 8], tower: 1 },
+      { id: 'gpu', part: 'gpu', anchor: [135, 166, 255], slide: [170, 0, 0], ex: [220, 0, -30], lift: [10, 0, 6], tower: 1 },
+      { id: 'kraken', part: 'kraken', anchor: [72, 120, 395], slide: [170, 0, 0], ex: [250, 0, 210], lift: [10, 0, 8], tower: 1 },
+      { id: 'rad', part: 'kraken', anchor: [96, 383, 433], slide: [170, 0, 0], ex: [0, 75, 0], lift: [10, 0, 8], tower: 1 },
+      { id: 'psu', part: 'psu', anchor: [172, 96, 96], slide: [210, 0, 0], ex: [170, 0, -60], lift: [10, 0, 6], tower: 1 },
+      { id: 'shroud', part: 'case', anchor: [107, 220, 112], slide: [0, 0, 0], ex: [0, 0, 0], lift: [0, 0, 10], tower: 1 },
+      { id: 'fans', part: 'kraken', anchor: [95, 424, 410], slide: [0, 0, 0], ex: [0, 150, 0], lift: [0, 8, 8], tower: 1 },
+      { id: 'top', part: 'case', anchor: [107, 223, 469], slide: [0, 0, 0], ex: [0, 0, 80], lift: [0, 0, 10], tower: 1 },
+      { id: 'front', part: 'case', anchor: [107, 447, 469], slide: [0, 0, 0], ex: [0, 300, 0], lift: [0, 0, 10], tower: 1 },
+      { id: 'side', part: 'case', anchor: [215, 220, 449], slide: [0, 0, 0], ex: [50, 0, 0], lift: [0, 0, 10], tower: 1 },
+      { id: 'laptop', part: 'laptop', anchor: [582, 338, 232], slide: [0, 110, 0], ex: [0, 0, 0], lift: [0, 0, 12] }
+    ];
+  }
+
+  // Every layer cut three ways (at rest, lit in its part's colour, and as a phantom outline), once.
+  sheets() {
+    if (this._sheets) return this._sheets;
+    const parts = {};
+    for (const p of this.D().parts) parts[p.id] = p;
+    const out = {};
+    for (const L of this.layerDefs()) {
+      const acc = parts[L.part].accent;
+      const b = this.build(L.id), nh = L.part === 'case';
+      out[L.id] = { rest: this.cut(b.surfs, 'rest', acc, b.decals, nh), lit: this.cut(b.surfs, 'lit', acc, b.decals, nh) };
+      if (L.id === 'side' || L.id === 'shroud' || L.id === 'top') out[L.id].ghost = this.cut(b.surfs, 'ghost', acc);
+      if (L.id === 'gpu') { const f = this.build('gpu', { flip: 1 }); out.gpu.flipRest = this.cut(f.surfs, 'rest', acc, f.decals); out.gpu.flipLit = this.cut(f.surfs, 'lit', acc, f.decals); }
+    }
+    this._sheets = out;
+    return out;
+  }
+
+  // The plate's ground: paper grain, the double rule with its corner blooms, and the desk.
+  ground() {
+    if (this._ground) return this._ground;
+    const K = this.K(), w = K.W, h = K.H;
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d'), img = ctx.createImageData(w, h), d = img.data;
+    const set = (x, y, c) => { x = Math.round(x); y = Math.round(y); if (x < 0 || y < 0 || x >= w || y >= h) return; const i = (y * w + x) * 4; d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255; };
+    const PAPER = this.rgb('#E6DECB'), RULE = this.rgb('#A99D84');
+    const g = this.rng('desk-paper');
+    for (let k = 0; k < w * h * 0.012; k++) set(g() * w, g() * h, PAPER);
+    ctx.putImageData(img, 0, 0);
+    const desk = this.build('desk'), dk = this.cut(desk.surfs, 'rest', '#7A5C42');
+    ctx.drawImage(dk.cv, dk.x0, dk.y0);
+    const img2 = ctx.getImageData(0, 0, w, h), d2 = img2.data;
+    const set2 = (x, y, c) => { const i = (y * w + x) * 4; d2[i] = c[0]; d2[i + 1] = c[1]; d2[i + 2] = c[2]; d2[i + 3] = 255; };
+    const m1 = 4, m2 = 6;
+    for (let x = m1; x < w - m1; x++) { set2(x, m1, RULE); set2(x, h - 1 - m1, RULE); }
+    for (let y = m1; y < h - m1; y++) { set2(m1, y, RULE); set2(w - 1 - m1, y, RULE); }
+    for (let x = m2; x < w - m2; x++) if (x % 2 === 0) { set2(x, m2, RULE); set2(x, h - 1 - m2, RULE); }
+    for (let y = m2; y < h - m2; y++) if (y % 2 === 0) { set2(m2, y, RULE); set2(w - 1 - m2, y, RULE); }
+    for (const [cx, cy] of [[m1, m1], [w - 1 - m1, m1], [m1, h - 1 - m1], [w - 1 - m1, h - 1 - m1]])
+      for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) set2(cx + dx, cy + dy, dx || dy ? this.rgb('#C24E39') : this.rgb('#A87400'));
+    ctx.putImageData(img2, 0, 0);
+    this._ground = cv.toDataURL();
+    return this._ground;
+  }
+
+  ease(t) { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); }
+  val(k) { const v = this.state.v || {}; return v[k] || 0; }
+
+  // Where each layer is now: its offset in mm, which sheet it shows, and how solid it is.
+  placed() {
+    const st = this.state, out = [], E = (k) => this.ease(this.val(k));
+    const load = E('load'), panel = E('panel'), ex = E('ex');
+    const shroudGhost = Math.max(ex, E('s:psu'));
+    for (const L of this.layerDefs()) {
+      const h = E('h:' + L.part), s = E('s:' + L.part);
+      let o = [0, 0, 0];
+      const addv = (v, k) => { o = [o[0] + v[0] * k, o[1] + v[1] * k, o[2] + v[2] * k]; };
+      addv(L.lift, Math.max(h, s));
+      addv(L.slide, s);
+      addv(L.ex, ex);
+      if (L.id === 'kraken') addv([230, 0, 0], E('s:cpu'));
+      if (L.id === 'side') addv([110, 0, 60], panel);
+      if (L.id === 'top') addv([0, 0, 170], panel);
+      if (L.tower) addv([0, 0, 90], 1 - load);
+      let ghost = 0;
+      if (L.id === 'side' || L.id === 'top') ghost = panel;
+      if (L.id === 'shroud') ghost = shroudGhost;
+      out.push({ L, o, h: Math.max(h, s), s, ghost, op: L.tower ? load : 1 });
+    }
+    return out;
+  }
+
+  layers() {
+    const K = this.K(), SH = this.sheets(), pct = (v, of) => (100 * v / of).toFixed(3) + '%', out = [];
+    this.placed().forEach((q, i) => {
+      const sh = SH[q.L.id], [dx, dy] = this.shift(q.o);
+      const flip = q.L.id === 'gpu' && Math.hypot(...q.o) > 80;
+      const solid = flip ? (q.h > 0.5 ? sh.flipLit : sh.flipRest) : (q.h > 0.5 ? sh.lit : sh.rest);
+      const z = i + 1 + (q.s > 0.02 ? 40 : 0);
+      const pos = (c) => 'left: ' + pct(c.x0 + dx, K.W) + '; top: ' + pct(c.y0 + dy, K.H) + '; width: ' + pct(c.w, K.W) + '; height: ' + pct(c.h, K.H) + ';';
+      if (q.ghost < 0.999) out.push({ src: solid.url, style: pos(solid) + ' z-index: ' + z + '; opacity: ' + ((1 - q.ghost) * q.op).toFixed(3) + ';' });
+      if (sh.ghost && q.ghost > 0.001) out.push({ src: sh.ghost.url, style: pos(sh.ghost) + ' z-index: ' + (q.L.id === 'side' || q.L.id === 'top' ? 60 : z) + '; opacity: ' + (q.ghost * q.op).toFixed(3) + ';' });
+    });
+    return out;
+  }
+
+  // Thin dotted leaders, along the isometric axes, from where each part sat to where it is now.
+  leaders() {
+    const K = this.K(), pl = this.placed().filter((q) => q.L.id !== 'side' && q.L.id !== 'top' && Math.hypot(...q.o) > 14 && (this.val('ex') > 0.01 || q.s > 0.01));
+    const key = pl.map((q) => q.L.id + q.o.map((v) => Math.round(v)).join(',')).join('|');
+    if (this._ldKey === key) return this._ld;
+    const cv = document.createElement('canvas');
+    cv.width = K.W; cv.height = K.H;
+    const ctx = cv.getContext('2d'), img = ctx.createImageData(K.W, K.H), d = img.data;
+    const RULE = this.rgb('#6E6450'), RED = this.rgb('#C24E39');
+    const set = (x, y, c) => { x = Math.round(x); y = Math.round(y); if (x < 0 || y < 0 || x >= K.W || y >= K.H) return; const i = (y * K.W + x) * 4; d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255; };
+    for (const q of pl) {
+      const t = q.L.tower ? this.T() : [0, 0, 0], a = [q.L.anchor[0] + t[0], q.L.anchor[1] + t[1], q.L.anchor[2] + t[2]];
+      let cur = a.slice(), k = 0;
+      const p0 = this.P(...a);
+      for (const [x, y] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) set(p0[0] + x, p0[1] + y, RED);
+      for (let ax = 0; ax < 3; ax++) {
+        if (Math.abs(q.o[ax]) < 1) continue;
+        const nxt = cur.slice(); nxt[ax] += q.o[ax];
+        const A = this.P(...cur), B = this.P(...nxt), n = Math.ceil(Math.hypot(B[0] - A[0], B[1] - A[1]));
+        let last = '';
+        for (let s = 0; s <= n; s++) {
+          const x = Math.round(A[0] + (B[0] - A[0]) * s / n), y = Math.round(A[1] + (B[1] - A[1]) * s / n), kk = x + ',' + y;
+          if (kk === last) continue; last = kk; k++;
+          if (k % 3 === 0) set(x, y, RULE);
+        }
+        cur = nxt;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    this._ldKey = key;
+    this._ld = cv.toDataURL();
+    return this._ld;
+  }
+
+  partOf(id) { return this.D().parts.find((p) => p.id === id); }
+
+  // Hit areas: the convex outline of each layer as a clip-path, so a click lands on the part itself.
+  hits() {
+    const K = this.K(), SH = this.sheets(), pct = (v, of) => (100 * v / of).toFixed(3) + '%', out = [], panel = this.val('panel');
+    const order = this.placed().map((q, i) => ({ q, i }));
+    order.sort((a, b) => (a.q.L.part === 'case') - (b.q.L.part === 'case') || 0);
+    const list = [];
+    for (const { q, i } of order) {
+      if ((q.L.id === 'side' || q.L.id === 'top') && panel > 0.5) continue;
+      if (q.L.tower && q.L.part !== 'case' && panel < 0.5) continue;
+      list.push({ q, i });
+    }
+    // Case parts lie lowest, so the parts inside win wherever they overlap the case.
+    list.sort((a, b) => ((a.q.L.part === 'case' ? 0 : 1) - (b.q.L.part === 'case' ? 0 : 1)) || a.i - b.i);
+    for (const { q } of list) {
+      const c = SH[q.L.id].rest, [dx, dy] = this.shift(q.o), p = this.partOf(q.L.part);
+      const clip = 'polygon(' + c.hull.map(([x, y]) => (100 * x / c.w).toFixed(1) + '% ' + (100 * y / c.h).toFixed(1) + '%').join(', ') + ')';
+      out.push({ aria: p.name + ': ' + p.model, style: 'left: ' + pct(c.x0 + dx, K.W) + '; top: ' + pct(c.y0 + dy, K.H) + '; width: ' + pct(c.w, K.W) + '; height: ' + pct(c.h, K.H) + '; clip-path: ' + clip + ';',
+        enter: () => this.go({ hover: p.id }), leave: () => this.go({ hover: '' }), pick: () => this.pick(p.id) });
+    }
+    return out;
+  }
+
+  // The caption of the hovered (or chosen) part: real text just above its anchor.
+  caption() {
+    const id = this.state.hover;
+    if (!id) return { show: false };
+    const K = this.K(), p = this.partOf(id), q = this.placed().filter((x) => x.L.part === id).sort((a, b) => b.L.anchor[2] - a.L.anchor[2])[0];
+    const L = q.L, t = L.tower ? this.T() : [0, 0, 0], a = this.P(L.anchor[0] + t[0] + q.o[0], L.anchor[1] + t[1] + q.o[1], L.anchor[2] + t[2] + q.o[2]);
+    const left = Math.max(4, Math.min(96, 100 * a[0] / K.W)), top = 100 * (a[1] - 5) / K.H;
+    return { show: true, name: p.name, model: p.model, color: p.accent, style: 'left: ' + left.toFixed(2) + '%; top: ' + top.toFixed(2) + '%;' };
+  }
+
+  // Numbered call-outs, as in an assembly drawing, while the desk is exploded.
+  callouts() {
+    if (this.val('ex') < 0.6) return [];
+    const K = this.K(), seen = new Set(), out = [];
+    for (const q of this.placed()) {
+      if (seen.has(q.L.part) || q.L.id === 'shroud' || q.L.id === 'side' || q.L.id === 'fans' || q.L.id === 'rad' || q.L.id === 'top') continue;
+      seen.add(q.L.part);
+      const p = this.partOf(q.L.part), t = q.L.tower ? this.T() : [0, 0, 0];
+      const a = this.P(q.L.anchor[0] + t[0] + q.o[0], q.L.anchor[1] + t[1] + q.o[1], q.L.anchor[2] + t[2] + q.o[2]);
+      out.push({ no: p.no, color: p.accent, style: 'left: ' + (100 * (a[0] + 3) / K.W).toFixed(2) + '%; top: ' + (100 * (a[1] - 8) / K.H).toFixed(2) + '%;' });
+    }
+    return out;
+  }
+
+  card() {
+    const id = this.state.sel;
+    if (!id) return { show: false };
+    const p = this.partOf(id);
+    return { show: true, no: p.no, name: p.name, model: p.model, color: p.accent, close: () => this.pick(id) };
+  }
+
+  key() {
+    return this.D().parts.map((p) => ({ no: p.no, name: p.name, model: p.model, color: p.accent,
+      weight: this.state.sel === p.id ? '600' : '400', pick: () => this.pick(p.id), enter: () => this.go({ hover: p.id }), leave: () => this.go({ hover: '' }) }));
+  }
+
+  // ---- motion: one small timer at 50 ms that runs only while something is still moving.
+  targets() {
+    const st = this.state, T = { load: 1, panel: this.val('load') > 0.92 ? 1 : 0, ex: st.ex ? 1 : 0 };
+    for (const p of this.D().parts) { T['h:' + p.id] = st.hover === p.id ? 1 : 0; T['s:' + p.id] = st.sel === p.id ? 1 : 0; }
+    return T;
+  }
+  boot() {
+    this.rm = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.props && this.props.motion === false) this.rm = true;
+    this.state.v = this.rm ? { load: 1, panel: 1 } : { load: 0, panel: 0 };
+    this.kick();
+  }
+  go(s) { this.setState(s); this.kick(); }
+  pick(id) { this.go({ sel: this.state.sel === id ? '' : id }); }
+  toggle() { this.go({ ex: !this.state.ex }); }
+  kick() {
+    if (this.rm) { const T = this.targets(), v = Object.assign({}, this.state.v, T); v.panel = 1; this.setState({ v }); return; }
+    if (this.timer) return;
+    this.timer = setInterval(() => this.step(), 50) || null;
+  }
+  step() {
+    const T = this.targets(), v = Object.assign({}, this.state.v);
+    let moving = false;
+    for (const k in T) {
+      const cur = v[k] || 0, d = T[k] - cur;
+      const rate = k === 'load' ? 0.06 : k === 'panel' ? 0.045 : k === 'ex' ? 0.05 : k[0] === 's' ? 0.09 : 0.2;
+      if (Math.abs(d) <= rate) v[k] = T[k]; else { v[k] = cur + Math.sign(d) * rate; moving = true; }
+    }
+    this.setState({ v });
+    if (!moving) { clearInterval(this.timer); this.timer = null; }
+  }
+
+  // ---- the contact icons, cut from little sprites at the plate's 3-px grain.
+  icon(name) {
+    this._icons = this._icons || {};
+    if (this._icons[name]) return this._icons[name];
+    const S = {
+      mail: ['xxxxxxxxxxx', 'xx.......xx', 'x.x.....x.x', 'x..x...x..x', 'x...x.x...x', 'x....x....x', 'x.........x', 'xxxxxxxxxxx'],
+      gh: ['.....xxxxx.....', '...xxxxxxxxx...', '..x..xxxxx..x..', '.xx...xxx...xx.', '.xx.........xx.', 'xxx.........xxx', 'xxx.........xxx', 'xxx.........xxx', 'xxxx.......xxxx', '.x.xx.....xxxx.', '.xx.xx...xxxxx.', '..xx.....xxxx..', '...xx....xxx...', '.....x...x.....'],
+      li: ['xxxxxxxxxx', 'x.xxxxxxxx', 'xxxxxxxxxx', 'x.xx.x..xx', 'x.xx..xx.x', 'x.xx.xxx.x', 'x.xx.xxx.x', 'x.xx.xxx.x', 'xxxxxxxxxx']
+    }[name];
+    const col = { mail: '#A87400', gh: '#1F2B23', li: '#1D5A8F' }[name];
+    const cv = document.createElement('canvas');
+    cv.width = S[0].length; cv.height = S.length;
+    const ctx = cv.getContext('2d');
+    ctx.fillStyle = col;
+    S.forEach((row, y) => [...row].forEach((ch, x) => { if (ch === 'x') ctx.fillRect(x, y, 1, 1); }));
+    this._icons[name] = { url: cv.toDataURL(), w: S[0].length * 3, h: S.length * 3 };
+    return this._icons[name];
+  }
+
+  D() { return this._d || (this._d = {"PW":1170,"PH":1000,"parts":[{"id":"case","name":"Case","model":"Fractal Design North, Charcoal Black","accent":"#7A5C42","layers":["shell","shroud","top","front","side"],"no":1},{"id":"mobo","name":"Motherboard","model":"ASUS B650E MAX GAMING WIFI","accent":"#5E8E4A","layers":["mobo"],"no":2},{"id":"cpu","name":"Processor","model":"AMD Ryzen 7 9800X3D","accent":"#A87400","layers":["cpu"],"no":3},{"id":"kraken","name":"Cooler","model":"NZXT Kraken Plus 280, black","accent":"#8A4F98","layers":["kraken","rad","fans"],"no":4},{"id":"ram","name":"Memory","model":"Kingston FURY Beast Black, 2 × 16 GB DDR5-6000 CL30","accent":"#B5476E","layers":["ram"],"no":5},{"id":"gpu","name":"Graphics card","model":"MSI GeForce RTX 5070 Ti 16G Ventus 3X OC","accent":"#3F8A52","layers":["gpu"],"no":6},{"id":"ssd","name":"SSD","model":"Samsung 990 EVO Plus 2 TB, M.2","accent":"#2A7099","layers":["ssd"],"no":7},{"id":"psu","name":"Power supply","model":"Corsair RM850x ATX 3.1","accent":"#C24E39","layers":["psu"],"no":8},{"id":"monitor","name":"Monitor","model":"GIGABYTE G34WQC2, 34\" curved ultrawide","accent":"#1D5A8F","layers":["monitor"],"no":9},{"id":"laptop","name":"Laptop","model":"Lenovo ThinkPad P14s Gen 2a","accent":"#C24E39","layers":["laptop"],"no":10}]}); }
+
+  renderVals() {
+    const ex = !!this.state.ex;
+    return { ground: this.ground(), layers: this.layers(), leaders: this.leaders(), hits: this.hits(), caption: this.caption(), callouts: this.callouts(),
+      card: this.card(), key: this.key(), toggle: () => this.toggle(), exLabel: ex ? '[ assemble ]' : '[ explode ]', exPressed: ex ? 'true' : 'false',
+      icons: { mail: this.icon('mail'), gh: this.icon('gh'), li: this.icon('li') }, roots: this.roots() };
+  }
+}
+</script>
+</body>
+</html>

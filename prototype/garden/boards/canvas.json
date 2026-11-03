@@ -259,6 +259,24 @@
       "w": 1280,
       "x": 14960,
       "y": 10700
+    },
+    "AboutDeskIso.dc.html": {
+      "expand": "fill",
+      "h": 2000,
+      "is_interactive": true,
+      "title": "About · B · isometric desk, exploded",
+      "w": 1280,
+      "x": 0,
+      "y": 13800
+    },
+    "AboutDeskBoxes.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "About · C · the desk as a turning model",
+      "w": 1280,
+      "x": 1360,
+      "y": 13800
     }
   },
   "createdOnFiles": {
@@ -274,7 +292,8 @@
     "pagenote",
     "calmtitle",
     "gardentitle",
-    "graphtitle"
+    "graphtitle",
+    "abouttitle"
   ],
   "notes": {
     "pagenote": {
@@ -312,6 +331,13 @@
       "text": "The graph view: the whole garden, and one note’s corner of it",
       "x": 0,
       "y": 10400
+    },
+    "abouttitle": {
+      "kind": "title1",
+      "maxW": 2640,
+      "text": "The About page: my desk, engraved",
+      "x": 0,
+      "y": 13500
     }
   },
   "order": [
@@ -343,7 +369,9 @@
     "GraphEngraving2.dc.html",
     "GraphEngraving3.dc.html",
     "GraphWoodcut.dc.html",
-    "GraphWoodcutNote.dc.html"
+    "GraphWoodcutNote.dc.html",
+    "AboutDeskIso.dc.html",
+    "AboutDeskBoxes.dc.html"
   ],
   "pages": [],
   "title": "Jungle ASCII Prototypes"
