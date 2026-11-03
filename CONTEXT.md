@@ -18,9 +18,14 @@ from the vault disappears from the site.
 _Avoid_: import, export, deploy
 
 **Converter**:
-The tool a sync runs to turn the vault's Obsidian markdown into the site's
-markdown: it rewrites wikilinks, copies images and adds front matter.
+The tool a sync runs to turn the vault's Obsidian markdown into normalized
+markdown. It is a separate project, and the site knows nothing of it.
 _Avoid_: exporter, script
+
+**Normalized markdown**:
+The only input the site accepts: markdown as the converter's published
+specification defines it. Where it comes from is not the site's concern.
+_Avoid_: neutral markdown, converter output, Obsidian markdown
 
 **Published**:
 Reachable on the live site. A piece of content is published when a sync has
@@ -93,9 +98,21 @@ one note. The code calls it the "note graph", which it is not.
 _Avoid_: graph, note graph
 
 **Graph view**:
-A site-wide, interactive map of every note and the links between them, like
-Obsidian's. Planned, not built.
+The map of how notes link, drawn as plates: one of the whole garden, with
+every note as its flower and every link a vine, and a small one on each note
+page showing that note's neighbourhood.
 _Avoid_: note graph, knowledge map
+
+**Plate**:
+A picture drawn in pixels rather than characters, engraved like a woodcut in
+the garden's tones, with its text laid over it. Only the graph view is drawn
+as plates.
+_Avoid_: canvas, image, illustration
+
+**Wildflower**:
+A note that nothing links to and that links to nothing. On the garden's plate
+it grows on its own stem, apart from the clusters.
+_Avoid_: orphan, isolated note
 
 **CV**:
 My curriculum vitae, a page of the site and a PDF printed from that page
