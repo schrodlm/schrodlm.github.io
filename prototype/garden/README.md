@@ -10,6 +10,10 @@ canvas, so they can be regenerated or built on.
 - `gen_woodcut.py`, `gen_woodcut_note.py`, `woodcut_sprites.py`: **the chosen graph view**, the woodcut map and the note-level plate.
 - `gen_boxes.py`: **the chosen About desk**, a small 3D model drawn into a woodcut plate, which you can turn, hover, open and explode.
 - `gen_iso.py`, `BRIEF_PC.md`: the isometric desk it was weighed against, and the brief both were built from.
+- `gen_projects.py`: **the chosen projects section**: plate cards, the project page with its plate header and field journal, and devlogs. **The session trail** is the chosen devlog.
+- `gen_unis.py`: the courses home and the two university pages. **The front-on building plates** are chosen (the generator now draws the isometric ones; the front-on boards are kept in `boards/`).
+- `gen_courses.py`: four treatments of a course review; **B, the meters,** is the chosen one.
+- `BRIEF_SECTIONS.md`: the brief those three were built from.
 - `graph.json`: the note link graph the prototypes were built from.
 - `shoot.js`, `runtime.js`: a local stand-in for the canvas runtime that renders a board and screenshots it with Playwright.
 - `boards/`: the generated boards and the canvas index, as last generated here.

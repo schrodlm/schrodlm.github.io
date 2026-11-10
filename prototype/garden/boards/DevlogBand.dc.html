@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Is it legal to release this</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+.plw{display:block}.pln{display:none}
+@media (max-width: 760px){.plw{display:none}.pln{display:block}.capr{display:none}}
+.wide{display:block}
+@media (max-width: 1100px){.wide{display:none}}
+.titleflower{position:absolute;left:-170px;top:-24px}
+@media (max-width: 1100px){.titleflower{position:static;margin:4px 0 6px}}
+@media (max-width: 600px){.lede{font-size:19px!important}}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+<div class="wide" aria-hidden="true" style="position: absolute; top: 0; left: calc(50% + 404px); pointer-events: none; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px;"><div style="position: relative;"><sc-for list="{{vine}}" as="row" hint-placeholder-count="40"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for><span style="position: absolute; left: {{bugs.fly.left}}; top: {{bugs.fly.top}}; white-space: pre; color: #8A4F98;">{{bugs.fly.w}}</span><span style="position: absolute; left: {{bugs.lady.left}}; top: {{bugs.lady.top}}; white-space: pre;"><span style="color: #C24E39;">(</span><span style="color: #1F2B23;">:</span><span style="color: #C24E39;">)</span></span><sc-if value="{{bugs.bee.show}}" hint-placeholder-val="{{false}}"><span style="position: absolute; left: {{bugs.bee.left}}; top: {{bugs.bee.top}}; white-space: pre; color: #A87400;">{{bugs.bee.w}}</span></sc-if></div></div>
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" style="color: #2B7349; text-decoration: none;">[notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" aria-current="page" style="color: #1F2B23; text-decoration: none; font-weight: 600;">[&gt;projects]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[courses]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; position: relative;">
+<figure style="margin: 0 0 26px;">
+<!-- BAND: a slim version of the project's own plate. Windows lit = sessions so far; the pin = this session. -->
+<div class="plw" style="width: 711px; height: 180px; overflow: hidden;"><img alt="" aria-hidden="true" src="{{band.wide}}" style="display: block; width: 711px; height: 180px; image-rendering: pixelated;"></div>
+<div class="pln" style="width: 342px; max-width: 100%; height: 180px; overflow: hidden;"><img alt="" aria-hidden="true" src="{{band.narrow}}" style="display: block; width: 342px; height: 180px; image-rendering: pixelated;"></div>
+<figcaption style="display: flex; justify-content: space-between; gap: 12px; padding: 7px 2px 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #535F52;"><span>Pl. I · rentczecher</span><span>13 of 22 windows lit</span></figcaption>
+</figure>
+
+<div>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;"><a href="#" style="color: #535F52;">projects</a> / <a href="#" style="color: #535F52;">rentczecher</a> / <a href="#" style="color: #535F52;">field journal</a></div>
+<h1 style="margin: 10px 0 8px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 36px; line-height: 1.2; font-weight: 600; color: #1F2B23;">Is it legal to release this</h1>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52; margin-bottom: 32px; display: flex; flex-wrap: wrap; gap: 2px 8px;">
+<span style="color: #1F2B23;">2026-10-14</span><span>· session <span style="color: #1F2B23;">13</span> of 22</span><span>· PR <a href="https://github.com/schrodlm/rentczecher/pull/128">#128</a></span>
+</div>
+</div>
+
+<p class="lede" style="margin: 0 0 30px; font-size: 21px; line-height: 1.6;">Photos were about to start when one question stopped everything: would releasing rentczecher get me into legal trouble? Two days went into finding out, then into making the repository as clean as it can be. The answer is reassuring, and the project now credits the data it ships, says plainly how it uses the portals, carries a licence, and lists the licences of everything it bundles.</p>
+<div style="display: flex; gap: 16px; padding: 16px 20px; background: #F7F2E4; border: 1px solid #D8CFBA; margin-bottom: 18px;">
+<span style="flex: 0 0 auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #535F52; padding-top: 4px;">Goal</span>
+<span style="flex: 1; min-width: 0;">Know whether publishing the app is safe for me as its maintainer, and fix whatever in the repository makes it less safe than it needs to be.</span>
+</div>
+<nav aria-label="Sections" style="display: flex; flex-wrap: wrap; gap: 4px 20px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;"><span>in this session:</span><a href="#done">done 8</a><a href="#decisions">decisions 6</a><a href="#problems-and-surprises">problems 5</a><a href="#learned">learned 4</a><a href="#next">next 3</a></nav>
+<section aria-labelledby="done" style="margin-top: 52px;"><h2 id="done" style="display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349;">Done<span style="font-size: 13px; font-weight: 400; color: #535F52;">8</span><span aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-size: 13px; font-weight: 400; color: #B9B09A;">........................................................................................................................</span></h2><ul style="list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 12px;"><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>A legal assessment.</strong> Research across Czech and EU law, the portals' own terms and real enforcement practice, written up as one document I could hand to a lawyer: database rights, contract, unfair competition, criminal law, photo copyright and personal data, with a rating for me and for users, and the questions still open.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>A market comparison.</strong> Around twenty paid Czech watchdogs and twenty open-source tools set side by side with rentczecher on price, features, privacy and looks.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>Crediting ČÚZK.</strong> The place data comes from RÚIAN under a licence that asks for a credit, a link to the terms, and a note on what was changed. The map now shows the credit, and the README says what was modified and where the source metadata lives.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>Saying how rentczecher uses the portals.</strong> The README now states that it is independent of the portals, built for one person's own home search, never republishes anything, and that a portal operator with a concern gets a quick answer.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>No real adverts in the tests.</strong> The recorded Sreality responses the tests used were real people's adverts. They are now made-up ones of the same shape.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>A licence.</strong> rentczecher is now GPL-3.0-or-later across the engine, the panel and the desktop shell. Anyone may use, change and share it, and whoever passes it on must pass it on with its source under the same licence. The name and logo are not part of it.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>Knowing what we bundle.</strong> The panel's build now lists the licences of the packages it ships, the first step towards the notices the installers will carry.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[x]</span><span style="flex: 1; min-width: 0;"><strong>The photos had started too.</strong> Before the legal question came up, a photo table, a listing carrying all its photo URLs, and Sreality's full gallery were in progress. They are parked on their own branch.</span></li></ul></section><section aria-labelledby="decisions" style="margin-top: 52px;"><h2 id="decisions" style="display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349;">Decisions<span style="font-size: 13px; font-weight: 400; color: #535F52;">6</span><span aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-size: 13px; font-weight: 400; color: #B9B09A;">........................................................................................................................</span></h2><ul style="list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 12px;"><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">-&gt;</span><span style="flex: 1; min-width: 0;"><strong>Release it.</strong> No court anywhere has acted against a private, free, local home-search tool. Every case found involved a company republishing data to the public. The realistic worst case is a polite letter asking to remove the Sreality support.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">-&gt;</span><span style="flex: 1; min-width: 0;"><strong>Stay the mildest tool on the market, on purpose.</strong> No hosted version, nothing shared between users, no paid tier, every listing linking back to its portal. Those are what keep rentczecher out of the patterns that get sued.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">-&gt;</span><span style="flex: 1; min-width: 0;"><strong>Stop pretending to be Firefox, most likely.</strong> All three portals answered an honest identity naming the project when I tested it, so the browser impersonation buys nothing. The plan is to drop it, and if a portal ever refuses us, stop rather than hide. Still to settle.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">-&gt;</span><span style="flex: 1; min-width: 0;"><strong>Sreality off by default.</strong> The user turns it on knowingly, after seeing what Sreality's terms say.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">-&gt;</span><span style="flex: 1; min-width: 0;"><strong>GPL rather than a permissive licence,</strong> so that rentczecher and every fork of it stay free.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">-&gt;</span><span style="flex: 1; min-width: 0;"><strong>Leave the old fixtures in history.</strong> Rewriting the main branch for six listings with no personal data is not worth breaking every clone.</span></li></ul></section><section aria-labelledby="problems-and-surprises" style="margin-top: 52px;"><h2 id="problems-and-surprises" style="display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349;">Problems and surprises<span style="font-size: 13px; font-weight: 400; color: #535F52;">5</span><span aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-size: 13px; font-weight: 400; color: #B9B09A;">........................................................................................................................</span></h2><ul style="list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 12px;"><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">!</span><span style="flex: 1; min-width: 0;"><strong>Sreality now sells what rentczecher does.</strong> Sreality Premium launched in March at 199 Kč a month with instant alerts and price watching, and its visitor terms banning scraping appeared the same day. That is the main reason the risk is higher than a year ago.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">!</span><span style="flex: 1; min-width: 0;"><strong>Seznam has sued once over this database,</strong> against a commercial site that republished Sreality's listings and photos. The case is still not settled.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">!</span><span style="flex: 1; min-width: 0;"><strong>"Personal use" does not protect data taken from an electronic database.</strong> It protects the photos, but not the listings themselves.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">!</span><span style="flex: 1; min-width: 0;"><strong>My own notes were wrong.</strong> The belief that Sreality needs a browser identity came from network blocks, not from Sreality refusing honest clients.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">!</span><span style="flex: 1; min-width: 0;"><strong>The paid services are riskier than we are and still exist.</strong> Several run central servers scraping every portal for thousands of paying customers, and nobody has stopped them.</span></li></ul></section><section aria-labelledby="learned" style="margin-top: 52px;"><h2 id="learned" style="display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349;">Learned<span style="font-size: 13px; font-weight: 400; color: #535F52;">4</span><span aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-size: 13px; font-weight: 400; color: #B9B09A;">........................................................................................................................</span></h2><ul style="list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 12px;"><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">+</span><span style="flex: 1; min-width: 0;"><strong>The database right is the real question,</strong> and it turns on whether a tool harms the investment behind the database. A tool that serves one person and sends them back to the portal is about as far from that as a scraper can be.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">+</span><span style="flex: 1; min-width: 0;"><strong>What protects a tool is its shape, not its intentions.</strong> The court case closest to rentczecher went against a company because it ran one service for the public. Each person running their own copy is a different thing in law.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">+</span><span style="flex: 1; min-width: 0;"><strong>Terms of use bind less than they claim.</strong> Czech courts do not form a contract from a footer link, and the person who writes the code is not a party at all.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">+</span><span style="flex: 1; min-width: 0;"><strong>Open data comes with homework.</strong> CC BY means a visible credit, a link and a description of changes, not just a line somewhere in the code.</span></li></ul></section><section aria-labelledby="next" style="margin-top: 52px;"><h2 id="next" style="display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349;">Next<span style="font-size: 13px; font-weight: 400; color: #535F52;">3</span><span aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-size: 13px; font-weight: 400; color: #B9B09A;">........................................................................................................................</span></h2><ul style="list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 12px;"><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[ ]</span><span style="flex: 1; min-width: 0;">Replace the Firefox identity, add the Sreality opt-in, and stop a portal that refuses us.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[ ]</span><span style="flex: 1; min-width: 0;">The website for rentczecher.cz.</span></li><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 auto; width: 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #2B7349; white-space: pre; padding-top: 2px;">[ ]</span><span style="flex: 1; min-width: 0;">Then back to the photos.</span></li></ul></section>
+<div style="margin-top: 52px; padding-top: 18px; border-top: 1px solid #D8CFBA; font-size: 15px; line-height: 1.7; color: #535F52;">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 8px;">References</span>portal use, ČÚZK credit and made-up fixtures <a href="https://github.com/schrodlm/rentczecher/pull/128">#128</a> · GPL-3.0-or-later on branch <code style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.86em; background: #E3E8D6; padding: 1px 5px; border-radius: 3px;">license-gpl</code> (commits c1c2f2f to 9da8a4a) · photos parked on branch <code style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.86em; background: #E3E8D6; padding: 1px 5px; border-radius: 3px;">photos</code> and in a stash · <a href="https://claude.ai/artifact/7MCyoS9ixkCmkKnsvBRHeR">legal assessment</a> · <a href="https://claude.ai/artifact/EZaaADTBHR6zrhsZDpJmmC">market comparison</a> · photo tickets <a href="https://github.com/schrodlm/rentczecher/issues/42">#42</a>, <a href="https://github.com/schrodlm/rentczecher/issues/125">#125</a>, <a href="https://github.com/schrodlm/rentczecher/issues/126">#126</a> · CJEU <em>Innoweb v Wegener</em> C-202/12, <em>CV-Online v Melons</em> C-762/19 · <em>Seznam.cz v Valuo Technologies</em>, Vrchní soud v Praze 3 Cmo 60/2020
+</div>
+<nav aria-label="Previous and next session" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 56px;">
+<a href="#" style="flex: 1 1 260px; display: block; text-align: left; padding: 16px 18px; background: #F7F2E4; border: 1px solid #D8CFBA; text-decoration: none;"><div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52;">&lt;- session 12 · 2026-10-12</div><div style="margin-top: 4px; font-size: 17px; line-height: 1.4; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;">A welcome and a choice of language</div></a><a href="#" style="flex: 1 1 260px; display: block; text-align: right; padding: 16px 18px; background: #F7F2E4; border: 1px solid #D8CFBA; text-decoration: none;"><div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52;">session 14 -&gt; · 2026-10-15</div><div style="margin-top: 4px; font-size: 17px; line-height: 1.4; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;">Honest about how it reads the portals</div></a>
+</nav>
+<div style="margin-top: 22px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px;"><a href="#">back to rentczecher's field journal</a></div>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"motion":{"editor":"boolean","default":true,"section":"Flora"},"$preview":{"width":1280,"height":3700}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: -1 };
+
+  componentDidMount() {
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its seed ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split(/[-/]/).filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w) && w !== 'notes' && w !== 'posts');
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The flower's most telling row, as a small mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), rows = p.head.rows;
+    const row = (rows.find((r) => /[@o*]/.test(r)) || rows[0]).trim();
+    return row.split('').map((ch) => ({ t: ch, c: (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1] }));
+  }
+
+  // The museum label: what the seed grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // ---- woodcut plates, cut at 3 px: a plate is drawn once into an offscreen canvas, one canvas
+  // pixel per cell, and shown as a pixelated image.
+  rgb(hex) { return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]; }
+
+  pal() {
+    if (this._pal) return this._pal;
+    const h = { ink: '#1F2B23', rule: '#A99D84', shade: '#DDD3BD', dust: '#C9BDA3', paper: '#E6DECB', cream: '#F7F2E4',
+      bark: '#5C4636', earth: '#7A5C42', moss: '#5E8E4A', fern: '#3F8A52', canopy: '#2B7349', sage: '#9DB38E',
+      lagoon: '#2A7099', hib: '#C24E39', rose: '#B5476E', trace: '#7FA3BD', mango: '#A87400', ochre: '#E9D9AE', copper: '#7FA68A', copperDk: '#4E7F62' };
+    this._pal = {};
+    for (const k in h) this._pal[k] = this.rgb(h[k]);
+    return this._pal;
+  }
+
+  mk(w, h) {
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d'), img = ctx.createImageData(w, h), d = img.data;
+    const B = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+    const P = {
+      w, h,
+      bay: (x, y) => B[(((y | 0) % 4 + 4) % 4) * 4 + (((x | 0) % 4 + 4) % 4)],
+      ox: 0, oy: 0, clip: null,
+      set(x, y, c) {
+        x = Math.round(x) + P.ox; y = Math.round(y) + P.oy;
+        if (x < 0 || y < 0 || x >= w || y >= h) return;
+        if (P.clip && (x < P.clip[0] || y < P.clip[1] || x > P.clip[2] || y > P.clip[3])) return;
+        const i = (y * w + x) * 4;
+        if (!c) { d[i + 3] = 0; return; }
+        d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+      },
+      rect(x, y, rw, rh, c) { for (let j = y; j < y + rh; j++) for (let i = x; i < x + rw; i++) P.set(i, j, c); },
+      // A Bayer tone: lv of 16 cells in each 4x4 block take the colour.
+      tone(x, y, rw, rh, c, lv) { for (let j = y; j < y + rh; j++) for (let i = x; i < x + rw; i++) if (P.bay(i, j) < lv) P.set(i, j, c); },
+      hatch(x, y, rw, rh, c, k) { for (let j = y; j < y + rh; j++) for (let i = x; i < x + rw; i++) if ((i + j) % (k || 3) === 0) P.set(i, j, c); },
+      hl(x0, x1, y, c, ev) { for (let x = x0; x <= x1; x++) if (!ev || x % ev === 0) P.set(x, y, c); },
+      vl(x, y0, y1, c, ev) { for (let y = y0; y <= y1; y++) if (!ev || y % ev === 0) P.set(x, y, c); },
+      fill(x0, y0, x1, y1, fn) { for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) { const c = fn(x, y); if (c) P.set(x, y, c); } },
+      done() { ctx.putImageData(img, 0, 0); return cv.toDataURL(); }
+    };
+    return P;
+  }
+
+  font(f) { return f === 3 ? {"A": ".#.|#.#|###|#.#|#.#", "B": "##.|#.#|##.|#.#|##.", "C": ".##|#..|#..|#..|.##", "D": "##.|#.#|#.#|#.#|##.", "E": "###|#..|##.|#..|###", "F": "###|#..|##.|#..|#..", "G": ".##|#..|#.#|#.#|.##", "H": "#.#|#.#|###|#.#|#.#", "I": "###|.#.|.#.|.#.|###", "K": "#.#|#.#|##.|#.#|#.#", "L": "#..|#..|#..|#..|###", "M": "#.#|###|###|#.#|#.#", "N": "##.|#.#|#.#|#.#|#.#", "O": ".#.|#.#|#.#|#.#|.#.", "P": "##.|#.#|##.|#..|#..", "R": "##.|#.#|##.|#.#|#.#", "S": ".##|#..|.#.|..#|##.", "T": "###|.#.|.#.|.#.|.#.", "U": "#.#|#.#|#.#|#.#|###", "V": "#.#|#.#|#.#|#.#|.#.", "Y": "#.#|#.#|.#.|.#.|.#.", "Z": "###|..#|.#.|#..|###", "0": "###|#.#|#.#|#.#|###", "1": ".#.|##.|.#.|.#.|###", "2": "##.|..#|.#.|#..|###", "3": "##.|..#|.#.|..#|##.", "4": "#.#|#.#|###|..#|..#", "7": "###|..#|.#.|.#.|.#.", "8": "###|#.#|###|#.#|###", "9": "###|#.#|###|..#|##.", "·": "...|...|.#.|...|...", "5": "###|#..|##.|..#|##.", "6": ".##|#..|###|#.#|###", "=": "...|###|...|###|..."} : {"A": ".###.|#...#|#...#|#####|#...#|#...#|#...#", "C": ".###.|#...#|#....|#....|#....|#...#|.###.", "F": "#####|#....|#....|####.|#....|#....|#....", "I": ".###.|..#..|..#..|..#..|..#..|..#..|.###.", "K": "#...#|#..#.|#.#..|##...|#.#..|#..#.|#...#", "M": "#...#|##.##|#.#.#|#.#.#|#...#|#...#|#...#", "T": "#####|..#..|..#..|..#..|..#..|..#..|..#..", "U": "#...#|#...#|#...#|#...#|#...#|#...#|.###.", "V": "#...#|#...#|#...#|#...#|#...#|.#.#.|..#.."}; }
+
+  textW(s, f, k) { k = k || 1; return [...s].length * ((f === 3 ? 3 : 5) + 1) * k - k; }
+
+  // Chunky pixel type; a caron is cut above Č.
+  text(P, s, x, y, c, f, k) {
+    k = k || 1;
+    const G = this.font(f), gw = f === 3 ? 3 : 5;
+    let cx = x;
+    for (const ch0 of s) {
+      const ch = ch0 === 'Č' ? 'C' : ch0, g = G[ch];
+      if (g) {
+        g.split('|').forEach((row, j) => { for (let i = 0; i < gw; i++) if (row[i] === '#') P.rect(cx + i * k, y + j * k, k, k, c); });
+        if (ch0 === 'Č') { const m = Math.floor(gw / 2); P.rect(cx + (m - 1) * k, y - 3 * k, k, k, c); P.rect(cx + (m + 1) * k, y - 3 * k, k, k, c); P.rect(cx + m * k, y - 2 * k, k, k, c); }
+      }
+      cx += (gw + 1) * k;
+    }
+  }
+
+  // Upright letters set round an arc, centred on angle a0 (radians), reading left to right. Each
+  // letter steps on along the arc until it clears the last one, so the steep ends don't crowd.
+  arcText(P, s, cx, cy, r, a0, dir, c) {
+    const chars = [...s], n = chars.length, pt = (a) => [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+    let offs = [];
+    for (let pass = 0, shift = 0; pass < 3; pass++) {
+      offs = [0];
+      for (let i = 1; i < n; i++) {
+        let o = offs[i - 1];
+        const [px, py] = pt(a0 + dir * (offs[i - 1] - shift));
+        o += 3.6 / r;
+        for (;;) { const [x, y] = pt(a0 + dir * (o - shift)), ax = Math.abs(Math.round(x) - Math.round(px)), ay = Math.abs(Math.round(y) - Math.round(py)); if (ax >= 4 || ay >= 6) break; o += 0.004; }
+        offs.push(o);
+      }
+      shift = offs[n - 1] / 2;
+      offs = offs.map((o) => o - shift);
+      if (pass < 2) { const s0 = shift; offs = offs.map((o) => o + s0); shift = s0; }
+    }
+    chars.forEach((ch, i) => {
+      const [x, y] = pt(a0 + dir * offs[i]);
+      this.text(P, ch, Math.round(x - 1), Math.round(y - 2), c, 3, 1);
+    });
+  }
+
+  // The plate mark of the graph view: paper grain, a double rule, a small cross in each corner.
+  frame(P, seed, grain) {
+    const c = this.pal(), w = P.w, h = P.h, g = this.rng('paper:' + seed);
+    if (grain) for (let k = 0; k < w * h * 0.012; k++) P.set(7 + g() * (w - 14), 7 + g() * (h - 14), c.paper);
+    const m1 = 4, m2 = 6;
+    P.hl(m1, w - 1 - m1, m1, c.rule); P.hl(m1, w - 1 - m1, h - 1 - m1, c.rule);
+    P.vl(m1, m1, h - 1 - m1, c.rule); P.vl(w - 1 - m1, m1, h - 1 - m1, c.rule);
+    P.hl(m2, w - 1 - m2, m2, c.rule, 2); P.hl(m2, w - 1 - m2, h - 1 - m2, c.rule, 2);
+    P.vl(m2, m2, h - 1 - m2, c.rule, 2); P.vl(w - 1 - m2, m2, h - 1 - m2, c.rule, 2);
+    for (const [x, y] of [[m1, m1], [w - 1 - m1, m1], [m1, h - 1 - m1], [w - 1 - m1, h - 1 - m1]])
+      for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) P.set(x + dx, y + dy, dx || dy ? c.hib : c.mango);
+  }
+
+  birds(P, pts) { const c = this.pal(); for (const [x, y] of pts) { P.set(x - 1, y - 1, c.ink); P.set(x, y, c.ink); P.set(x + 1, y - 1, c.ink); } }
+
+  // ---- project plates: placeholders, each holding its slot until I cut the project's own ----
+
+  sprite(P, rows, x, y, map) {
+    const c = this.pal();
+    rows.forEach((r, j) => { for (let i = 0; i < r.length; i++) if (map[r[i]]) P.set(x + i, y + j, c[map[r[i]]]); });
+  }
+
+  projPlate(kind, W, H, lit) {
+    this._pp = this._pp || {};
+    const key = [kind, W, H, lit].join(':');
+    if (this._pp[key]) return this._pp[key];
+    const P = this.mk(W, H);
+    this.frame(P, kind + W, true);
+    if (kind === 'rentczecher') this.dusk(P, lit);
+    else if (kind === 'goob') this.render3d(P);
+    else if (kind === 'ascii') this.asciiArt(P);
+    else this.rotorPlate(P, lit * Math.PI / 48);
+    return (this._pp[key] = P.done());
+  }
+
+  // rentczecher: a row of Prague tenement houses at dusk. One by one, a window lights up as a
+  // listing is found, the newest with a pin above it; the watchdog sits on the pavement.
+  dusk(P, lit) {
+    const c = this.pal(), W = P.w, H = P.h, wide = W > 150, small = H <= 64, G = H - Math.round(H * 0.2), fh = small ? 7 : 8;
+    // The sky: a dusk wash, cool above and warm toward the roofs, with a moon.
+    P.fill(7, 7, W - 8, G - 1, (x, y) => {
+      const t = (y - 7) / (G - 8);
+      if (P.bay(x, y) < Math.max(0, 5 - t * 9)) return c.trace;
+      if (P.bay(x + 2, y + 1) < Math.max(0, (t - 0.45) * 13)) return c.ochre;
+      return null;
+    });
+    const mx = wide ? 20 : 13, my = wide ? 19 : 14, mr = wide ? 5 : 4;
+    P.fill(mx - mr, my - mr, mx + mr, my + mr, (x, y) => {
+      const d = Math.hypot(x - mx, y - my), d2 = Math.hypot(x - mx - 2.5, y - my + 1.5);
+      if (d > mr + 0.3 || d2 < mr - 0.6) return null;
+      return d > mr - 0.8 ? c.mango : c.cream;
+    });
+    const g = this.rng('stars' + W);
+    for (let k = 0; k < (wide ? 9 : 5); k++) P.set(10 + g() * (W - 20), 9 + g() * (H * 0.18), c.cream);
+    this.birds(P, wide ? [[44, 14], [50, 11]] : [[30, 11]]);
+    // The houses, side by side: each its own height, wash, roof and rhythm of windows.
+    const r = this.rng('houses' + W), wins = [];
+    const washes = [[c.cream, c.ochre], [c.ochre, c.cream], [c.cream, c.shade], [c.ochre, c.dust], [c.cream, c.sage]];
+    let x = wide ? 38 : 26;
+    const xEnd = W - (wide ? 18 : 9);
+    let n = 0;
+    while (x < xEnd - 14) {
+      const hw = Math.min(xEnd - x, (wide ? 24 : 21) + Math.floor(r() * 9)), bays = Math.max(2, Math.floor((hw - 4) / 6));
+      const maxF = Math.floor((G - 30) / fh), floors = Math.min(maxF, (small ? 2 : 3) + Math.floor(r() * 2)), gf = 9;
+      const top = G - gf - floors * fh - 3, wash = washes[(n + Math.floor(r() * 2)) % washes.length], x1 = x + hw - 1;
+      // Facade with a two-tone wash, outlined, a cornice of two rules.
+      P.fill(x, top, x1, G - 1, (xx, yy) => (P.bay(xx, yy) < 4 ? wash[1] : wash[0]));
+      P.vl(x, top, G - 1, c.ink); P.vl(x1, top, G - 1, c.ink);
+      P.hl(x - 1, x1 + 1, top, c.ink); P.hl(x, x1, top + 1, c.rule); P.hl(x, x1, top + 2, c.dust, 2);
+      // A string course over the shop floor.
+      P.hl(x, x1, G - gf, c.ink); P.hl(x + 1, x1 - 1, G - gf + 1, c.rule);
+      // Roof: a mansard with dormers, a gable, or (once) a corner turret with a copper dome.
+      const kind = n === 2 ? 'dome' : (r() < 0.55 ? 'mansard' : 'gable'), cx = Math.round((x + x1) / 2);
+      if (kind === 'mansard') {
+        const rh = 7;
+        P.fill(x, top - rh, x1, top - 1, (xx, yy) => {
+          const inset = Math.round((top - yy) * 0.45);
+          if (xx < x + inset || xx > x1 - inset) return null;
+          if (yy === top - rh || xx === x + inset || xx === x1 - inset) return c.ink;
+          return ((yy + (xx >> 1)) % 3 === 0) ? c.earth : (P.bay(xx, yy) < 5 ? c.hib : c.dust);
+        });
+        for (let b = 0; b < bays; b += 2) { const dx = x + 4 + b * 6; P.fill(dx, top - 5, dx + 2, top - 2, (xx, yy) => (yy === top - 5 ? c.ink : (xx === dx + 1 ? c.ink : c.cream))); }
+        P.rect(x1 - 6, top - rh - 3, 2, 3, c.ink);
+      } else if (kind === 'gable') {
+        const gh = Math.min(10, Math.floor(hw / 3));
+        P.fill(x + 2, top - gh, x1 - 2, top - 1, (xx, yy) => {
+          const half = Math.round((yy - (top - gh)) * (hw / 2 - 2) / gh);
+          if (Math.abs(xx - cx) > half) return null;
+          if (Math.abs(xx - cx) >= half - 0.5 || yy === top - 1) return c.ink;
+          return P.bay(xx, yy) < 3 ? wash[1] : wash[0];
+        });
+        P.fill(cx - 1, top - Math.round(gh * 0.55), cx + 1, top - Math.round(gh * 0.55) + 2, () => c.ink);
+        P.rect(x + 4, top - 5, 2, 4, c.ink);
+      } else {
+        const dt = top - 4, dr = Math.max(3, Math.min(7, Math.floor(hw / 3), dt - 12));
+        P.fill(cx - dr, dt, cx + dr, top - 1, (xx, yy) => (xx === cx - dr || xx === cx + dr ? c.ink : (P.bay(xx, yy) < 3 ? wash[1] : wash[0])));
+        P.fill(cx - dr, dt - dr, cx + dr, dt - 1, (xx, yy) => {
+          const d = Math.hypot(xx - cx, (yy - dt) * 1.15);
+          if (d > dr + 0.4) return null;
+          if (d > dr - 0.7) return c.copperDk;
+          const t = (xx - cx) / dr * 0.8 + 0.5;
+          return P.bay(xx, yy) < 2 + t * 12 ? c.copperDk : c.copper;
+        });
+        P.vl(cx, dt - dr - 4, dt - dr - 1, c.ink); P.hl(cx - 1, cx + 1, dt - dr - 3, c.ink);
+      }
+      // Windows: dark at dusk, waiting to be found.
+      const off = x + Math.round((hw - bays * 6) / 2) + 2;
+      for (let f = 0; f < floors; f++) {
+        const wy = top + 5 + f * fh;
+        for (let b = 0; b < bays; b++) {
+          const wx = off + b * 6;
+          P.hl(wx - 1, wx + 3, wy - 1, c.ink);
+          P.fill(wx, wy, wx + 2, wy + 4, (xx, yy) => (xx === wx + 1 && yy !== wy + 2 ? c.ink : (P.bay(xx, yy) < 9 ? c.ink : c.lagoon)));
+          if (fh > 7) P.hl(wx - 1, wx + 3, wy + 5, c.rule);
+          wins.push([wx, wy]);
+        }
+      }
+      // Shop floor: a door and a shop window.
+      const dx = n % 2 ? x1 - 7 : x + 3;
+      P.fill(dx, G - 7, dx + 3, G - 1, (xx, yy) => (yy === G - 7 ? c.ink : (P.bay(xx, yy) < 10 ? c.ink : c.bark)));
+      const sx0 = n % 2 ? x + 3 : x + 9, sx1 = n % 2 ? x1 - 10 : x1 - 3;
+      if (sx1 - sx0 > 4) P.fill(sx0, G - 6, sx1, G - 2, (xx, yy) => (yy === G - 6 || yy === G - 2 || xx === sx0 || xx === sx1 ? c.ink : (P.bay(xx, yy) < 6 ? c.ochre : c.lagoon)));
+      x = x1 + 1; n++;
+    }
+    // The listings found so far, lit warm in a fixed order across the street.
+    const order = wins.map((w, i) => [this.rng('win' + i)(), w]).sort((a, b) => a[0] - b[0]).map((a) => a[1]);
+    order.slice(0, lit).forEach(([wx, wy], i) => {
+      P.fill(wx - 1, wy - 1, wx + 3, wy + 5, (xx, yy) => (xx >= wx && xx <= wx + 2 && yy >= wy && yy <= wy + 4 ? (xx === wx + 1 && yy !== wy + 2 ? c.bark : (P.bay(xx, yy) < 13 ? c.mango : c.ochre)) : (xx === wx - 1 || xx === wx + 3) && yy > wy && yy < wy + 4 && P.bay(xx, yy) < 8 ? c.ochre : null));
+      if (i === lit - 1) this.sprite(P, ['.hhh.', 'hccch', 'hccch', '.hhh.', '..h..'], wx - 1, wy - 7, { h: 'hib', c: 'cream' });
+    });
+    // The street: a kerb, cobbles, a lamp, and the watchdog sitting in front, keeping an eye out.
+    P.hl(7, W - 8, G, c.ink);
+    P.fill(7, G + 1, W - 8, H - 8, (xx, yy) => ((xx + (yy % 2) * 2) % 4 === 0 ? c.rule : null));
+    P.hl(7, W - 8, G + 3, c.dust, 2);
+    const lx = wide ? 33 : 23, lt = G - (small ? 17 : 24);
+    P.fill(lx - 5, lt - 2, lx + 5, lt + 8, (xx, yy) => (Math.hypot(xx - lx, (yy - lt - 2) * 0.9) < 5.5 && P.bay(xx, yy) < 4 ? c.ochre : null));
+    P.vl(lx, lt + 4, G + 2, c.ink); P.rect(lx - 1, lt, 3, 4, c.ink); P.set(lx, lt + 1, c.mango); P.set(lx, lt + 2, c.mango); P.set(lx, lt - 1, c.ink);
+    P.hl(lx - 1, lx + 1, G + 2, c.ink);
+    const dog = [
+      '..........k...k........',
+      '..........kk.kk........',
+      '.........kkkkkkk.......',
+      '.........kkkcckkk......',
+      '.........kkkkkkkkkkk...',
+      '.........kkkkkkkkkkkk..',
+      '..........kkkkkkkk.....',
+      '..........hhhhhh.......',
+      '.........kkkkkkk.......',
+      '........kkkkkkkk.......',
+      '.......kkkkkkkkk.......',
+      '......kkkkkkkkkk.......',
+      '.....kkkkkkkkkkk.......',
+      '....kkkkkkkkkkkkk......',
+      'kk..kkkkkkkkkkkkk......',
+      '.kkkkkkkkkkkkkkkk......',
+      '..kkkkkkkkkkkkkkkk.....',
+      '....kkkkkkkk.kkk.kk....',
+    ];
+    const big = !small, dg = big ? dog : dog.filter((_, j) => j % 3 !== 1).map((row) => row.split('').filter((_, i) => i % 3 !== 1).join(''));
+    this.sprite(P, dg, wide ? 9 : 7, H - 9 - dg.length, { k: 'ink', c: 'cream', h: 'hib' });
+  }
+
+  // Goob the Renderer: the classic test scene, a lit sphere and a cube on a checkered floor.
+  render3d(P) {
+    const c = this.pal(), W = P.w, H = P.h, hor = Math.round(H * 0.5), cx = W / 2;
+    P.fill(7, hor, W - 8, H - 8, (x, y) => {
+      const z = 30 / (y - hor + 3), u = Math.floor((x - cx) * z / 9 + 100), v = Math.floor(z * 1.2);
+      const dark = ((u + v) & 1) === 0, fade = Math.min(1, (y - hor) / 14);
+      return dark ? (P.bay(x, y) < 3 + fade * 13 ? c.dust : null) : null;
+    });
+    P.hl(7, W - 8, hor, c.rule);
+    // Sun, top left.
+    const lx = 22, ly = 16;
+    for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) P.set(lx + dx, ly + dy, c.mango);
+    for (const [dx, dy] of [[3, 0], [-3, 0], [0, 3], [0, -3], [2, 2], [-2, -2], [2, -2], [-2, 2]]) P.set(lx + dx, ly + dy, c.mango);
+    // Sphere, Lambert-shaded with a highlight, and its shadow.
+    const sx = Math.round(W * 0.36), sr = Math.round(H * 0.22), sy = hor + 6 - sr;
+    P.fill(sx - sr, hor + 3, sx + sr + 8, hor + 12, (x, y) => (Math.hypot((x - sx - 5) / (sr + 2), (y - hor - 7) / 3.2) < 1 && (x + y) % 2 === 0 ? c.ink : null));
+    P.fill(sx - sr, sy - sr, sx + sr, sy + sr, (x, y) => {
+      const dx = (x - sx) / sr, dy = (y - sy) / sr, d = dx * dx + dy * dy;
+      if (d > 1) return null;
+      if (d > 0.86) return c.ink;
+      const nz = Math.sqrt(1 - d), l = Math.max(0, -dx * 0.55 - dy * 0.6 + nz * 0.58);
+      if (l > 0.93) return c.cream;
+      return P.bay(x, y) < l * 17 ? c.trace : c.lagoon;
+    });
+    // A cube, its three faces cut in three tones.
+    const bx = Math.round(W * 0.62), bs = Math.round(H * 0.3), by = hor + 9 - bs, d = Math.round(bs * 0.45);
+    P.fill(bx, by, bx + bs, by + bs, (x, y) => (x === bx || x === bx + bs || y === by || y === by + bs ? c.ink : ((x + y) % 4 === 0 ? c.rule : c.cream)));
+    for (let k = 1; k <= d; k++) {
+      const oy = Math.round(k * 0.6);
+      P.hl(bx + k, bx + bs + k, by - oy, k === d ? c.ink : ((k % 2) ? c.shade : c.cream));
+      for (let y = by - oy; y <= by + bs - oy; y++) P.set(bx + bs + k, y, (k === d || (y + k) % 2 === 0) ? c.ink : c.bark);
+    }
+    P.vl(bx + d, by - Math.round(d * 0.6), by - Math.round(d * 0.6), c.ink);
+    for (let k = 0; k <= d; k++) { P.set(bx + k, by - Math.round(k * 0.6), c.ink); P.set(bx + bs + k, by + bs - Math.round(k * 0.6), c.ink); }
+    this.text(P, 'TGA', W - 8 - 4 - this.textW('TGA', 3, 1), 11, c.rule, 3, 1);
+  }
+
+  // ASCII Art Generator: a picture on the left, the same picture set in characters on the right.
+  asciiArt(P) {
+    const c = this.pal(), W = P.w, H = P.h, cy = 12, ch = H - 24, pw = Math.round((W - 40) / 2);
+    const scene = (u, v) => {
+      const sun = Math.hypot(u - 0.66, v - 0.36);
+      if (sun < 0.17) return 1;
+      const hill = 0.62 + 0.12 * Math.sin(u * 6.5 + 1) - 0.06 * Math.sin(u * 13);
+      if (v > hill) return 0.12 + 0.18 * (1 - (v - hill) * 2);
+      return 0.5 + 0.35 * (1 - v) - (sun < 0.2 ? -0.15 : 0);
+    };
+    const x0 = 13, x1 = x0 + pw, rx0 = W - 13 - pw;
+    P.fill(x0, cy, x1, cy + ch, (x, y) => {
+      if (x === x0 || x === x1 || y === cy || y === cy + ch) return c.ink;
+      const u = (x - x0) / pw, v = (y - cy) / ch, s = scene(u, v);
+      const hill = 0.62 + 0.12 * Math.sin(u * 6.5 + 1) - 0.06 * Math.sin(u * 13);
+      if (Math.hypot(u - 0.66, v - 0.36) < 0.17) return P.bay(x, y) < 12 ? c.mango : c.ochre;
+      if (v > hill) return P.bay(x, y) < 6 + (v - hill) * 30 ? c.canopy : c.fern;
+      return P.bay(x, y) < (1 - v) * 9 ? c.rose : (P.bay(x, y) < 12 ? c.ochre : c.cream);
+    });
+    // The arrow.
+    const ax = Math.round(W / 2), ay = cy + Math.round(ch / 2);
+    P.hl(ax - 5, ax + 4, ay, c.ink); P.set(ax + 3, ay - 1, c.ink); P.set(ax + 3, ay + 1, c.ink); P.set(ax + 2, ay - 2, c.ink); P.set(ax + 2, ay + 2, c.ink);
+    // The characters: one 3×5 glyph per 4×6 cell, picked by brightness.
+    const G = ['...|...|...|...|...', '...|...|...|...|.#.', '...|.#.|...|.#.|...', '...|...|###|...|...', '...|###|...|###|...',
+      '...|.#.|###|.#.|...', '#.#|.#.|###|.#.|#.#', '#.#|###|#.#|###|#.#', '#.#|..#|.#.|#..|#.#', '###|#.#|###|#..|###'];
+    P.fill(rx0, cy, rx0 + pw, cy + ch, (x, y) => (x === rx0 || x === rx0 + pw || y === cy || y === cy + ch ? c.ink : c.cream));
+    for (let gy = cy + 2; gy + 5 < cy + ch; gy += 6) for (let gx = rx0 + 2; gx + 3 < rx0 + pw; gx += 4) {
+      const u = (gx + 1.5 - rx0) / pw, v = (gy + 2.5 - cy) / ch, s = scene(u, v), sun = s > 0.95;
+      const k = sun ? 9 : Math.max(1, Math.min(9, Math.round((1 - s) * 10)));
+      const col = sun ? c.mango : (s < 0.32 ? c.canopy : (v > 0.4 ? c.rose : c.ink));
+      G[k].split('|').forEach((row, j) => { for (let i = 0; i < 3; i++) if (row[i] === '#') P.set(gx + i, gy + j, col); });
+    }
+  }
+
+  line(P, x0, y0, x1, y1, c, ev) {
+    const n = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0)) || 1;
+    for (let i = 0; i <= n; i++) if (!ev || i % ev === 0) P.set(x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n, c);
+  }
+
+  // Analysis of Rotor Models: machine code feeds the rotor, which emits a BTOR2 circuit; the model
+  // checker unrolls it frame by frame until, at k = 7, the bad state is reached (sat).
+  rotorPlate(P, turn) {
+    const c = this.pal(), W = P.w, H = P.h, wide = W > 150, top = 12, bot = H - 12;
+    // The machine code: a column of RISC-U words in hex.
+    const g = this.rng('riscu'), hx = '0123456789ABCDEF', cols = wide ? 2 : 1, x0 = wide ? 14 : 11;
+    const lines = Math.floor((bot - top + 2) / 7);
+    for (let col = 0; col < cols; col++) for (let j = 0; j < lines; j++) {
+      let w = ''; for (let k = 0; k < 4; k++) w += hx[Math.floor(g() * 16)];
+      this.text(P, w, x0 + col * 19, top + j * 7, j % 3 === 1 ? c.lagoon : c.ink, 3, 1);
+    }
+    const codeR = x0 + cols * 19 - 4;
+    P.vl(codeR + 2, top, top + lines * 7 - 3, c.rule);
+    // The rotor: a toothed wheel, turning when motion is on.
+    const r = wide ? 17 : 9, gx = codeR + 6 + r + (wide ? 8 : 3), gy = Math.round((top + bot) / 2), teeth = wide ? 12 : 8;
+    this.line(P, codeR + 4, gy, gx - r - 3, gy, c.ink, 2);
+    const inGear = (x, y) => {
+      const d = Math.hypot(x - gx, y - gy), a = Math.atan2(y - gy, x - gx) - turn, f = ((a / (Math.PI * 2) * teeth) % 1 + 1) % 1;
+      return d <= (f < 0.45 ? r + (wide ? 3.2 : 2.4) : r) + 0.3;
+    };
+    P.fill(gx - r - 4, gy - r - 4, gx + r + 4, gy + r + 4, (x, y) => {
+      if (!inGear(x, y)) return null;
+      if (!inGear(x - 1, y) || !inGear(x + 1, y) || !inGear(x, y - 1) || !inGear(x, y + 1)) return c.ink;
+      const d = Math.hypot(x - gx, y - gy), a = Math.atan2(y - gy, x - gx) - turn;
+      if (d < r * 0.3) return d < r * 0.13 + 0.5 ? c.ink : c.cream;
+      if (d < r * 0.3 + 1) return c.ink;
+      if (d > r - 1.2 && d < r - 0.2) return c.ink;
+      if (Math.abs(Math.sin(a * 2)) < (wide ? 0.09 : 0.14)) return c.ink;
+      return (x + y) % 3 === 0 ? c.bark : (P.bay(x, y) < 5 ? c.earth : c.cream);
+    });
+    // The unrolled model: frames k = 0 … 7 stacked, the front one drawn as a BTOR2 graph.
+    const K = wide ? 6 : 4, off = wide ? 5 : 3, fx0 = gx + r + (wide ? 14 : 7), fx1 = W - 12;
+    const fw = fx1 - fx0 - (K - 1) * off, fh = bot - top - (K - 1) * off;
+    this.line(P, gx + r + 3, gy, fx0 - 1, gy, c.ink, 2);
+    for (let k = 0; k < K; k++) {
+      const fx = fx0 + k * off, fy = top + (K - 1 - k) * off, front = k === K - 1;
+      P.fill(fx, fy, fx + fw, fy + fh, (x, y) => (x === fx || y === fy || x === fx + fw || y === fy + fh ? c.ink : (front ? c.cream : ((x + y) % 3 === 0 ? c.rule : c.shade))));
+    }
+    const fx = fx0 + (K - 1) * off, fy = top, s = wide ? 2 : 1;
+    this.text(P, 'K=7', fx + 3, fy + 3, c.ink, 3, 1);
+    // Nodes: two states, their next functions, and the bad property.
+    const st = [[fx + 4 * s + 2, fy + Math.round(fh * 0.38)], [fx + 4 * s + 2, fy + Math.round(fh * 0.72)]];
+    const nx = fx + Math.round(fw * 0.5), bx = fx + fw - 6 * s - 3, by = fy + Math.round(fh * 0.55);
+    for (const [x, y] of st) {
+      this.line(P, x + 3 * s, y, nx - 2 * s - 1, y, c.ink);
+      this.line(P, nx + 2 * s + 1, y, bx - 3 * s - 1, by, c.ink);
+      for (let k = 0; k <= nx - x; k += 2) P.set(x + k, y + 3 * s + 2, c.rule);
+      P.fill(x - 2 * s, y - 2 * s, x + 2 * s, y + 2 * s, (xx, yy) => (Math.abs(xx - x) === 2 * s || Math.abs(yy - y) === 2 * s ? c.ink : c.lagoon));
+      P.fill(nx - 2 * s, y - 2 * s, nx + 2 * s, y + 2 * s, (xx, yy) => { const d = Math.hypot(xx - nx, yy - y); return d > 2 * s + 0.5 ? null : (d > 2 * s - 0.6 ? c.ink : c.cream); });
+    }
+    const br = 3 * s + 1;
+    P.fill(bx - br, by - br, bx + br, by + br, (x, y) => { const d = Math.abs(x - bx) + Math.abs(y - by); return d > br ? null : (d > br - 1 ? c.ink : (P.bay(x, y) < 13 ? c.hib : c.rose)); });
+    for (let k = 1; k <= (wide ? 2 : 1); k++) for (let a = 0; a < 16; a++) if (a % 2 === k % 2) P.set(bx + Math.round((br + 2 * k) * Math.cos(a * Math.PI / 8)), by + Math.round((br + 2 * k) * Math.sin(a * Math.PI / 8)), c.hib);
+    this.text(P, 'SAT', fx + fw - 14, fy + 3, c.hib, 3, 1);
+  }
+
+  // The session trail: the project's sessions as stepping stones across a stream; the watchdog
+  // stands on this one. Stones sit at equal steps, so links can lie over them.
+  trailPlate(W, n, cur) {
+    this._tr = this._tr || {};
+    const key = W + ':' + n + ':' + cur;
+    if (this._tr[key]) return this._tr[key];
+    const c = this.pal(), H = 32, P = this.mk(W, H), x0 = 14, x1 = W - 15, step = (x1 - x0) / (n - 1), wy = 20, jit = this.rng('stones' + W);
+    this.frame(P, 'trail' + W, true);
+    P.fill(7, wy - 3, W - 8, H - 8, (x, y) => {
+      if (y === wy - 3) return (x % 7 < 4) ? c.trace : null;
+      if ((y - wy + 3) % 3 === 1 && (x + y * 3) % 9 < 4) return c.cream;
+      return P.bay(x, y) < 2 + (y - wy) * 2 ? c.lagoon : (P.bay(x + 1, y) < 7 ? c.trace : null);
+    });
+    for (let i = 0; i < n; i++) {
+      const cx = Math.round(x0 + i * step), here = i === cur, past = i < cur, rx = here ? (step > 6 ? 4 : 3) : (step > 6 ? 2 + Math.round(jit() * 0.7) : 1), ry = step > 6 ? 2 : 1.6;
+      P.fill(cx - rx - 1, wy - ry - 1, cx + rx + 1, wy + ry + 2, (x, y) => {
+        const d = Math.hypot((x - cx) / (rx + 0.5), (y - wy) / (ry + 0.5));
+        if (d > 1.05 && y === wy + ry + 1 && Math.abs(x - cx) <= rx) return c.cream;
+        if (d > 1.05) return null;
+        if (d > 0.72) return (past || here) ? c.ink : c.rule;
+        if (here) return P.bay(x, y) < 10 ? c.mango : c.ochre;
+        if (!past) return c.cream;
+        return (y < wy) ? c.cream : (P.bay(x, y) < 8 ? c.rule : c.dust);
+      });
+    }
+    // Reeds on both banks.
+    for (const bx of [9, 11, W - 12, W - 10]) for (let k = 0; k < 6; k++) P.set(bx + (k > 3 ? 1 : 0), wy + 2 - k, k > 4 ? c.earth : c.fern);
+    // The watchdog, sitting on this session's stone.
+    const dog = ['.k.k...', '.kkk...', 'kckkkk.', '.kkk...', '.hhh...', 'kkkk...', 'kkkkk..', 'kkkkk..', 'k.k.k..'];
+    const dx = Math.round(x0 + cur * step) - 2;
+    this.sprite(P, dog, dx, wy - 2 - dog.length + 1, { k: 'ink', c: 'cream', h: 'hib' });
+    return (this._tr[key] = P.done());
+  }
+
+  // The field-journal postmark: the project round the rim, the date below, the session in the middle,
+  // with the wavy cancellation lines running off to the left. Inked unevenly, as a stamp is.
+  stamp(top, bottom, mid) {
+    if (this._stamp) return this._stamp;
+    const c = this.pal(), W = 104, H = 66, P = this.mk(W, H), cx = W - 33, cy = 33, R = 30, wear = this.rng('wear');
+    const ink = c.lagoon;
+    for (let k = 0; k < 4; k++) {
+      const y0 = cy - 9 + k * 6;
+      for (let x = 2; x < cx - R - 1; x++) if (wear() > 0.12) P.set(x, y0 + Math.round(1.6 * Math.sin(x / 3.2 + k)), ink);
+    }
+    P.fill(cx - R - 1, cy - R - 1, cx + R + 1, cy + R + 1, (x, y) => {
+      const d = Math.hypot(x - cx, y - cy);
+      if (wear() < 0.08) return null;
+      if (d <= R + 0.5 && d > R - 0.9) return ink;
+      if (d <= R - 2.4 && d > R - 3.3) return ink;
+      return null;
+    });
+    const line = (t, y, k) => { const w = this.textW(t, 3, k); this.text(P, t, cx - Math.floor(w / 2), y, ink, 3, k); };
+    line(top, cy - 15, 1);
+    line(bottom, cy + 11, 1);
+    for (const y of [cy - 8, cy + 8]) { const hw = Math.floor(Math.sqrt((R - 3) * (R - 3) - (y - cy) * (y - cy))); P.hl(cx - hw + 1, cx + hw - 1, y, ink); }
+    const mw = this.textW(mid, 3, 2);
+    this.text(P, mid, cx - Math.floor(mw / 2) + 3, cy - 5, ink, 3, 2);
+    this.text(P, 'NO', cx - Math.floor(mw / 2) - 6, cy - 1, ink, 3, 1);
+    // Knock the wear out of the solid parts too.
+    for (let k = 0; k < 120; k++) P.set(cx - R + wear() * R * 2, cy - R + wear() * R * 2, null);
+    return (this._stamp = P.done());
+  }
+
+  // Small hand-cut markers for the devlog's sections.
+  icon(kind) {
+    this._ic = this._ic || {};
+    if (this._ic[kind]) return this._ic[kind];
+    const c = this.pal(), P = this.mk(11, 11);
+    const art = {
+      done: ['...........', '..........k', '.........kk', '........kk.', 'k......kk..', 'kk....kk...', '.kk..kk....', '..kkkk.....', '...kk......', '...........', '...........'],
+      decisions: ['.....k.....', '..kkkkkkk..', '..kgggggk.k', '..kkkkkkk..', '.....k.....', '.kkkkkkk...', 'k.ehhhhek..', '.kkkkkkk...', '.....k.....', '.....k.....', '...kkkkk...'],
+      problems: ['.....k.....', '....kkk....', '....kmk....', '...kmmmk...', '...kmkmk...', '..kmmkmmk..', '..kmmkmmk..', '.kmmmmmmmk.', '.kmmmkmmmk.', 'kkkkkkkkkkk', '...........'],
+      learned: ['...kkkkk...', '..kmmmmmk..', '.kmmcmmmmk.', '.kmcmmmmmk.', '.kmmmmmmmk.', '..kmmmmmk..', '...kmmmk...', '...kkkkk...', '...keeek...', '...kkkkk...', '....kkk....'],
+      next: ['...........', '.k.........', '.kkkk......', '.kggkkkk...', '.kgggggkk..', '.kggkkkk...', '.kkkk......', '.k.........', '.k.........', '.k.........', 'kkk........']
+    }[kind];
+    this.sprite(P, art, 0, 0, { k: 'ink', g: 'fern', h: 'hib', e: 'earth', m: 'mango', c: 'cream' });
+    return (this._ic[kind] = P.done());
+  }
+
+  // Windows light one by one, about every 2.5 s, then the street starts again; at rest, five are lit.
+  rotorWide() { return { wide: this.projPlate('rotor', 237, 92, this.state.tick % 96), narrow: this.projPlate('rotor', 114, 84, 0) }; }
+
+  litCount(max) { return Math.min(max, (5 + Math.floor(this.state.tick / 10)) % (max + 5)); }
+
+  plates() {
+    const lit = this.litCount(14);
+    return {
+      rcWide: this.projPlate('rentczecher', 237, 92, lit), rcNarrow: this.projPlate('rentczecher', 114, 84, lit),
+      rc: this.projPlate('rentczecher', 114, 64, lit), goob: this.projPlate('goob', 114, 64, 0),
+      ascii: this.projPlate('ascii', 114, 64, 0), rotor: this.projPlate('rotor', 114, 64, 0)
+    };
+  }
+
+  // One long vine beside the text. A butterfly rests on it and every ~40 s flutters to another
+  // leaf; a ladybug climbs up and down the stem; now and then a bee hovers around a bloom.
+  vine() { return [{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\&","c":"#3F8A52"},{"t":"%","c":"#5E8E4A"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"&/","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\%","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"%","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"%","c":"#5E8E4A"},{"t":"&|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"%","c":"#5E8E4A"},{"t":"&|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"&","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"  ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"%|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"@","c":"#2A7099"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"       ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"        ","c":"transparent"}]},{"runs":[{"t":"       ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"        ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"@","c":"#C24E39"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"%","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"&","c":"#5E8E4A"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"@","c":"#C24E39"},{"t":"     ","c":"transparent"}]}]; }
+
+  bugs() {
+    const t = this.state.tick, rest = [[11, 5], [7, 8], [11, 16], [13, 18], [10, 20], [13, 23], [13, 31], [9, 33], [8, 36], [10, 46], [14, 48], [9, 50], [11, 67], [8, 68], [12, 69]], path = [8, 9, 9, 9, 9, 8, 9, 9, 10, 9, 8, 8, 9, 9, 9, 9, 9, 9, 10, 11, 11, 12, 11, 10, 11, 12, 12, 12, 12, 12, 12, 12, 11, 11, 11, 11, 10, 10, 10, 10, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 11, 11, 11, 11, 11, 10, 10, 10, 9, 8, 7, 7, 8, 8, 8, 8, 8, 9, 9, 10, 10, 10], blooms = [[10, 52], [9, 63]];
+    const CW = 7.8, CH = 15, cycle = 160, i = Math.floor(t / cycle), p = t % cycle;
+    const a = rest[i % rest.length], b = rest[(i + 1) % rest.length];
+    let fx, fy, fw;
+    if (p < 140) { fx = a[0]; fy = a[1]; fw = (t % 12) < 8 ? '}{' : '||'; }
+    else { const k = (p - 140) / 20; fx = a[0] + (b[0] - a[0]) * k; fy = a[1] + (b[1] - a[1]) * k - Math.sin(k * Math.PI) * 3; fw = t % 2 ? '}{' : ')('; }
+    const span = 2 * (path.length - 1), q = Math.floor(t * 0.08) % span, ly = q < path.length ? path.length - 1 - q : q - path.length + 1;
+    const bl = blooms[Math.floor(t / 240) % blooms.length];
+    const bx = bl[0] + Math.sin(t * 0.35) * 3, by = bl[1] - 1 + Math.sin(t * 0.22) * 1.5;
+    return {
+      fly: { left: Math.round(fx * CW) + 'px', top: Math.round(fy * CH) + 'px', w: fw },
+      lady: { left: Math.round((path[ly] - 1) * CW) + 'px', top: (ly * CH) + 'px' },
+      bee: { show: (t % 240) < 60, left: Math.round(bx * CW) + 'px', top: Math.round(by * CH) + 'px', w: (t % 2 ? '~' : '-') + '8>' }
+    };
+  }
+
+  renderVals() {
+    return { band: { wide: this.projPlate('rentczecher', 237, 60, 13), narrow: this.projPlate('rentczecher', 114, 60, 13) }, vine: this.vine(), bugs: this.bugs(), roots: this.roots() };
+  }
+}
+</script>
+</body>
+</html>

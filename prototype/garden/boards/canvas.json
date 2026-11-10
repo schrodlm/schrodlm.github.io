@@ -2,6 +2,24 @@
   "v": 3,
   "attachments": {},
   "boards": {
+    "AboutDeskBoxes.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "About · C · the desk as a turning model",
+      "w": 1280,
+      "x": 1360,
+      "y": 13800
+    },
+    "AboutDeskIso.dc.html": {
+      "expand": "fill",
+      "h": 2000,
+      "is_interactive": true,
+      "title": "About · B · isometric desk, exploded",
+      "w": 1280,
+      "x": 0,
+      "y": 13800
+    },
     "Branches.dc.html": {
       "expand": "fill",
       "h": 2300,
@@ -11,48 +29,14 @@
       "x": 5440,
       "y": 0
     },
-    "Clearing.dc.html": {
+    "CalmBough.dc.html": {
       "expand": "fill",
-      "h": 2100,
+      "h": 2800,
       "is_interactive": true,
-      "title": "Project page",
-      "w": 1280,
-      "x": 2720,
-      "y": 0
-    },
-    "Elements.dc.html": {
-      "h": 1500,
-      "title": "The system so far",
+      "title": "4 · Soft bough",
       "w": 1280,
       "x": 4080,
-      "y": 0
-    },
-    "Main.dc.html": {
-      "expand": "fill",
-      "h": 1900,
-      "is_interactive": true,
-      "title": "Home",
-      "w": 1280,
-      "x": 0,
-      "y": 0
-    },
-    "Phone.dc.html": {
-      "expand": "fill",
-      "h": 3600,
-      "is_interactive": true,
-      "title": "Note page · phone (390 px)",
-      "w": 390,
-      "x": 6800,
-      "y": 0
-    },
-    "Understory.dc.html": {
-      "expand": "fill",
-      "h": 2300,
-      "is_interactive": true,
-      "title": "Note page",
-      "w": 1280,
-      "x": 1360,
-      "y": 0
+      "y": 4100
     },
     "CalmCanopy.dc.html": {
       "expand": "fill",
@@ -61,6 +45,33 @@
       "title": "1 · Canopy, small",
       "w": 1280,
       "x": 0,
+      "y": 4100
+    },
+    "CalmGarden.dc.html": {
+      "expand": "fill",
+      "h": 2800,
+      "is_interactive": true,
+      "title": "7 · Garden at the end",
+      "w": 1280,
+      "x": 8160,
+      "y": 4100
+    },
+    "CalmMoss.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "is_interactive": true,
+      "title": "6 · Moss margin",
+      "w": 1280,
+      "x": 6800,
+      "y": 4100
+    },
+    "CalmNotebook.dc.html": {
+      "expand": "fill",
+      "h": 2900,
+      "is_interactive": true,
+      "title": "5 · Notebook",
+      "w": 1280,
+      "x": 5440,
       "y": 4100
     },
     "CalmSprig.dc.html": {
@@ -81,85 +92,110 @@
       "x": 2720,
       "y": 4100
     },
-    "CalmBough.dc.html": {
+    "Clearing.dc.html": {
       "expand": "fill",
-      "h": 2800,
+      "h": 2100,
       "is_interactive": true,
-      "title": "4 · Soft bough",
-      "w": 1280,
-      "x": 4080,
-      "y": 4100
-    },
-    "CalmNotebook.dc.html": {
-      "expand": "fill",
-      "h": 2900,
-      "is_interactive": true,
-      "title": "5 · Notebook",
-      "w": 1280,
-      "x": 5440,
-      "y": 4100
-    },
-    "CalmMoss.dc.html": {
-      "expand": "fill",
-      "h": 2700,
-      "is_interactive": true,
-      "title": "6 · Moss margin",
-      "w": 1280,
-      "x": 6800,
-      "y": 4100
-    },
-    "CalmGarden.dc.html": {
-      "expand": "fill",
-      "h": 2800,
-      "is_interactive": true,
-      "title": "7 · Garden at the end",
-      "w": 1280,
-      "x": 8160,
-      "y": 4100
-    },
-    "GardenHome.dc.html": {
-      "h": 1500,
-      "title": "Home · the garden (each post is a flower)",
-      "w": 1280,
-      "x": 0,
-      "y": 7400,
-      "is_interactive": true,
-      "expand": "fill"
-    },
-    "FlowerPost.dc.html": {
-      "h": 2800,
-      "title": "Post page · its own flower + one vine",
-      "w": 1280,
-      "x": 1360,
-      "y": 7400,
-      "is_interactive": true,
-      "expand": "fill"
-    },
-    "FlowerNote.dc.html": {
-      "h": 2400,
-      "title": "Note page · its own flower + one vine",
+      "title": "Project page",
       "w": 1280,
       "x": 2720,
-      "y": 7400,
+      "y": 0
+    },
+    "CourseA.dc.html": {
+      "expand": "fill",
+      "h": 1900,
       "is_interactive": true,
-      "expand": "fill"
+      "title": "Course page · A · plain",
+      "w": 1280,
+      "x": 4080,
+      "y": 21400
+    },
+    "CourseB.dc.html": {
+      "expand": "fill",
+      "h": 1900,
+      "is_interactive": true,
+      "title": "Course page · B · meters",
+      "w": 1280,
+      "x": 5440,
+      "y": 21400
+    },
+    "CourseC.dc.html": {
+      "expand": "fill",
+      "h": 1900,
+      "is_interactive": true,
+      "title": "Course page · C · label",
+      "w": 1280,
+      "x": 6800,
+      "y": 21400
+    },
+    "CourseD.dc.html": {
+      "expand": "fill",
+      "h": 1900,
+      "is_interactive": true,
+      "title": "Course page · D · garden",
+      "w": 1280,
+      "x": 8160,
+      "y": 21400
+    },
+    "CoursesHome.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "Courses · home · seal",
+      "w": 1280,
+      "x": 0,
+      "y": 21400
+    },
+    "DevlogEntry.dc.html": {
+      "expand": "fill",
+      "h": 3700,
+      "is_interactive": true,
+      "title": "Devlog · plain (baseline)",
+      "w": 1280,
+      "x": 2720,
+      "y": 16500
+    },
+    "Elements.dc.html": {
+      "h": 1500,
+      "title": "The system so far",
+      "w": 1280,
+      "x": 4080,
+      "y": 0
     },
     "FlowerCatalog.dc.html": {
       "h": 1700,
+      "is_interactive": true,
       "title": "Herbarium · every flower and its label",
       "w": 1280,
       "x": 4080,
-      "y": 7400,
-      "is_interactive": true
+      "y": 7400
     },
-    "GraphMap.dc.html": {
+    "FlowerNote.dc.html": {
       "expand": "fill",
-      "h": 1765,
+      "h": 2400,
       "is_interactive": true,
-      "title": "Graph · A · the garden map",
+      "title": "Note page · its own flower + one vine",
+      "w": 1280,
+      "x": 2720,
+      "y": 7400
+    },
+    "FlowerPost.dc.html": {
+      "expand": "fill",
+      "h": 2800,
+      "is_interactive": true,
+      "title": "Post page · its own flower + one vine",
+      "w": 1280,
+      "x": 1360,
+      "y": 7400
+    },
+    "GardenHome.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "Home · the garden (each post is a flower)",
       "w": 1280,
       "x": 0,
-      "y": 10700
+      "y": 7400
     },
     "GraphBeds.dc.html": {
       "expand": "fill",
@@ -168,24 +204,6 @@
       "title": "Graph · B · garden beds",
       "w": 1280,
       "x": 1360,
-      "y": 10700
-    },
-    "GraphNoteRadial.dc.html": {
-      "expand": "fill",
-      "h": 2300,
-      "is_interactive": true,
-      "title": "Graph · C · a note's neighbourhood",
-      "w": 1280,
-      "x": 2720,
-      "y": 10700
-    },
-    "GraphNoteTree.dc.html": {
-      "expand": "fill",
-      "h": 2300,
-      "is_interactive": true,
-      "title": "Graph · D · branches and roots",
-      "w": 1280,
-      "x": 4080,
       "y": 10700
     },
     "GraphDither.dc.html": {
@@ -197,15 +215,6 @@
       "x": 5440,
       "y": 10700
     },
-    "GraphPollen.dc.html": {
-      "expand": "fill",
-      "h": 1950,
-      "is_interactive": true,
-      "title": "Graph · F · pollen clouds",
-      "w": 1280,
-      "x": 6800,
-      "y": 10700
-    },
     "GraphEngraving.dc.html": {
       "expand": "fill",
       "h": 2230,
@@ -213,15 +222,6 @@
       "title": "Graph · G · botanical engraving",
       "w": 1280,
       "x": 8160,
-      "y": 10700
-    },
-    "GraphMeadows.dc.html": {
-      "expand": "fill",
-      "h": 2564,
-      "is_interactive": true,
-      "title": "Graph · H · meadows",
-      "w": 1280,
-      "x": 9520,
       "y": 10700
     },
     "GraphEngraving2.dc.html": {
@@ -242,6 +242,51 @@
       "x": 12240,
       "y": 10700
     },
+    "GraphMap.dc.html": {
+      "expand": "fill",
+      "h": 1765,
+      "is_interactive": true,
+      "title": "Graph · A · the garden map",
+      "w": 1280,
+      "x": 0,
+      "y": 10700
+    },
+    "GraphMeadows.dc.html": {
+      "expand": "fill",
+      "h": 2564,
+      "is_interactive": true,
+      "title": "Graph · H · meadows",
+      "w": 1280,
+      "x": 9520,
+      "y": 10700
+    },
+    "GraphNoteRadial.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "Graph · C · a note's neighbourhood",
+      "w": 1280,
+      "x": 2720,
+      "y": 10700
+    },
+    "GraphNoteTree.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "Graph · D · branches and roots",
+      "w": 1280,
+      "x": 4080,
+      "y": 10700
+    },
+    "GraphPollen.dc.html": {
+      "expand": "fill",
+      "h": 1950,
+      "is_interactive": true,
+      "title": "Graph · F · pollen clouds",
+      "w": 1280,
+      "x": 6800,
+      "y": 10700
+    },
     "GraphWoodcut.dc.html": {
       "expand": "fill",
       "h": 1740,
@@ -260,23 +305,149 @@
       "x": 14960,
       "y": 10700
     },
-    "AboutDeskIso.dc.html": {
+    "Main.dc.html": {
       "expand": "fill",
-      "h": 2000,
+      "h": 1900,
       "is_interactive": true,
-      "title": "About · B · isometric desk, exploded",
+      "title": "Home",
       "w": 1280,
       "x": 0,
-      "y": 13800
+      "y": 0
     },
-    "AboutDeskBoxes.dc.html": {
+    "Phone.dc.html": {
+      "expand": "fill",
+      "h": 3600,
+      "is_interactive": true,
+      "title": "Note page · phone (390 px)",
+      "w": 390,
+      "x": 6800,
+      "y": 0
+    },
+    "ProjectPage.dc.html": {
+      "expand": "fill",
+      "h": 4300,
+      "is_interactive": true,
+      "title": "Project page · plate header (rentczecher)",
+      "w": 1280,
+      "x": 1360,
+      "y": 16500
+    },
+    "ProjectsIndex.dc.html": {
+      "expand": "fill",
+      "h": 1800,
+      "is_interactive": true,
+      "title": "Projects · plate cards",
+      "w": 1280,
+      "x": 0,
+      "y": 16500
+    },
+    "Understory.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "Note page",
+      "w": 1280,
+      "x": 1360,
+      "y": 0
+    },
+    "UniFIT.dc.html": {
       "expand": "fill",
       "h": 1500,
       "is_interactive": true,
-      "title": "About · C · the desk as a turning model",
+      "title": "Courses · FIT ČVUT · seal",
       "w": 1280,
       "x": 1360,
-      "y": 13800
+      "y": 21400
+    },
+    "UniMFF.dc.html": {
+      "expand": "fill",
+      "h": 1800,
+      "is_interactive": true,
+      "title": "Courses · MFF · seal",
+      "w": 1280,
+      "x": 2720,
+      "y": 21400
+    },
+    "CoursesHomeBuilding.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "Courses · home · building, front",
+      "w": 1280,
+      "x": 0,
+      "y": 23500
+    },
+    "UniFITBuilding.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "Courses · FIT ČVUT · building, front",
+      "w": 1280,
+      "x": 1360,
+      "y": 23500
+    },
+    "UniMFFBuilding.dc.html": {
+      "expand": "fill",
+      "h": 1800,
+      "is_interactive": true,
+      "title": "Courses · MFF · building, front",
+      "w": 1280,
+      "x": 2720,
+      "y": 23500
+    },
+    "DevlogBand.dc.html": {
+      "expand": "fill",
+      "h": 3700,
+      "is_interactive": true,
+      "title": "Devlog · A · project band",
+      "w": 1280,
+      "x": 4080,
+      "y": 16500
+    },
+    "DevlogTrail.dc.html": {
+      "expand": "fill",
+      "h": 3700,
+      "is_interactive": true,
+      "title": "Devlog · B · session trail",
+      "w": 1280,
+      "x": 5440,
+      "y": 16500
+    },
+    "DevlogStamp.dc.html": {
+      "expand": "fill",
+      "h": 3700,
+      "is_interactive": true,
+      "title": "Devlog · C · postmark",
+      "w": 1280,
+      "x": 6800,
+      "y": 16500
+    },
+    "CoursesHomeIso.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "Courses · home · isometric",
+      "w": 1280,
+      "x": 0,
+      "y": 25600
+    },
+    "UniFITIso.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "Courses · FIT ČVUT · isometric",
+      "w": 1280,
+      "x": 1360,
+      "y": 25600
+    },
+    "UniMFFIso.dc.html": {
+      "expand": "fill",
+      "h": 1800,
+      "is_interactive": true,
+      "title": "Courses · MFF · isometric",
+      "w": 1280,
+      "x": 2720,
+      "y": 25600
     }
   },
   "createdOnFiles": {
@@ -293,15 +464,65 @@
     "calmtitle",
     "gardentitle",
     "graphtitle",
-    "abouttitle"
+    "abouttitle",
+    "projtitle",
+    "coursetitle"
   ],
   "notes": {
+    "abouttitle": {
+      "kind": "title1",
+      "maxW": 2640,
+      "text": "The About page: my desk, engraved",
+      "w": 240,
+      "x": 0,
+      "y": 13500
+    },
+    "calmtitle": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Calm post page: seven quieter takes",
+      "w": 240,
+      "x": 0,
+      "y": 3800
+    },
+    "coursetitle": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Courses: the universities, and four ways to show a review",
+      "w": 240,
+      "x": 0,
+      "y": 21100
+    },
+    "gardentitle": {
+      "kind": "title1",
+      "maxW": 5360,
+      "text": "The garden: each post a flower, one vine, a herbarium",
+      "w": 240,
+      "x": 0,
+      "y": 7100
+    },
+    "graphtitle": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "The graph view: the whole garden, and one note’s corner of it",
+      "w": 240,
+      "x": 0,
+      "y": 10400
+    },
     "pagenote": {
       "fill": "orange",
       "text": "Moved here from boards B and C, where it was added on the page:\n\n➡️ Link to the page without the sect",
       "w": 420,
       "x": 1360,
       "y": 2420
+    },
+    "projtitle": {
+      "kind": "title1",
+      "maxW": 4000,
+      "text": "Projects and their devlogs",
+      "w": 240,
+      "x": 0,
+      "y": 16200
     },
     "rowtitle": {
       "kind": "title1",
@@ -310,34 +531,6 @@
       "w": 240,
       "x": 0,
       "y": -300
-    },
-    "calmtitle": {
-      "kind": "title1",
-      "maxW": 9440,
-      "text": "Calm post page: seven quieter takes",
-      "x": 0,
-      "y": 3800
-    },
-    "gardentitle": {
-      "kind": "title1",
-      "maxW": 5360,
-      "text": "The garden: each post a flower, one vine, a herbarium",
-      "x": 0,
-      "y": 7100
-    },
-    "graphtitle": {
-      "kind": "title1",
-      "maxW": 16160,
-      "text": "The graph view: the whole garden, and one note’s corner of it",
-      "x": 0,
-      "y": 10400
-    },
-    "abouttitle": {
-      "kind": "title1",
-      "maxW": 2640,
-      "text": "The About page: my desk, engraved",
-      "x": 0,
-      "y": 13500
     }
   },
   "order": [
@@ -371,7 +564,26 @@
     "GraphWoodcut.dc.html",
     "GraphWoodcutNote.dc.html",
     "AboutDeskIso.dc.html",
-    "AboutDeskBoxes.dc.html"
+    "AboutDeskBoxes.dc.html",
+    "ProjectsIndex.dc.html",
+    "ProjectPage.dc.html",
+    "DevlogEntry.dc.html",
+    "CoursesHome.dc.html",
+    "UniFIT.dc.html",
+    "UniMFF.dc.html",
+    "CourseA.dc.html",
+    "CourseB.dc.html",
+    "CourseC.dc.html",
+    "CourseD.dc.html",
+    "CoursesHomeBuilding.dc.html",
+    "UniFITBuilding.dc.html",
+    "UniMFFBuilding.dc.html",
+    "DevlogBand.dc.html",
+    "DevlogTrail.dc.html",
+    "DevlogStamp.dc.html",
+    "CoursesHomeIso.dc.html",
+    "UniFITIso.dc.html",
+    "UniMFFIso.dc.html"
   ],
   "pages": [],
   "title": "Jungle ASCII Prototypes"

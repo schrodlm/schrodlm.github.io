@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Courses</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+.plw{display:block}.pln{display:none}
+@media (max-width: 760px){.plw{display:none}.pln{display:block}.capr{display:none}}
+.crow{display:grid;grid-template-columns:84px minmax(0,1fr) auto;column-gap:16px;row-gap:2px;align-items:baseline;padding:11px 8px;margin:0 -8px;border-top:1px solid #E2D9C4}
+.crow:hover{background:#ECE5D3}
+.crow .cc{grid-column:1;grid-row:1}.crow .cn{grid-column:2;grid-row:1}.crow .vd{grid-column:3;grid-row:1;white-space:nowrap}.crow .cr{grid-column:2/4;grid-row:2}
+@media (max-width: 560px){.crow{grid-template-columns:minmax(0,1fr) auto}.crow .cc{grid-column:1;grid-row:1}.crow .vd{grid-column:2;grid-row:1}.crow .cn{grid-column:1/3;grid-row:2}.crow .cr{grid-column:1/3;grid-row:3}}
+.irow{display:grid;grid-template-columns:84px minmax(0,1fr) auto;column-gap:16px;align-items:baseline;padding:5px 0}
+@media (max-width: 560px){.irow{grid-template-columns:minmax(0,1fr) auto}.irow .cn{grid-column:1/3;grid-row:2}}
+.uni{flex:1 1 300px;min-width:0;max-width:342px}
+@media (max-width: 760px){.uni{max-width:none}}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" style="color: #2B7349; text-decoration: none;">[notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[projects]</a>
+<a href="#" aria-current="page" style="color: #1F2B23; text-decoration: none; font-weight: 600;">[&gt;courses]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 760px; margin: 0 auto; padding: 80px 24px 80px; position: relative;">
+<h1 style="margin: 0 0 22px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 36px; line-height: 1.2; font-weight: 600; color: #1F2B23;">Courses</h1>
+<p style="margin: 0 0 16px;">I studied software engineering at Czech Technical University FIT for 4 years. After successfully finishing my bachelor's degree I decided to change universities for my master's degree and started attending Charles' University (Mathematical and Physical faculty - MFF).</p>
+<p style="margin: 0 0 16px;">This page contains my experiences from different course I've taken over the years and materials that I made for these courses.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 36px 28px; margin: 44px 0 0;">
+<div class="uni">
+<a href="#" aria-label="FIT ČVUT" style="display: block; width: 342px; max-width: 100%; height: 252px; overflow: hidden;"><img alt="" aria-hidden="true" src="{{plates.fit}}" style="display: block; width: 342px; height: 252px; image-rendering: pixelated;"></a>
+<div style="padding: 14px 2px 0;">
+<a href="#" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 22px; font-weight: 600; text-decoration: none;">FIT ČVUT <span aria-hidden="true">→</span></a>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; margin: 4px 0 6px;">bachelor's · 2021–2025 · 1 course</div>
+<div style="font-size: 15px; line-height: 1.5; color: #535F52; font-style: italic;">Fakulta informačních technologií, České vysoké učení technické v Praze</div>
+</div></div>
+<div class="uni">
+<a href="#" aria-label="MFF" style="display: block; width: 342px; max-width: 100%; height: 252px; overflow: hidden;"><img alt="" aria-hidden="true" src="{{plates.mff}}" style="display: block; width: 342px; height: 252px; image-rendering: pixelated;"></a>
+<div style="padding: 14px 2px 0;">
+<a href="#" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 22px; font-weight: 600; text-decoration: none;">MFF <span aria-hidden="true">→</span></a>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; margin: 4px 0 6px;">master's · since 2025 · 7 courses</div>
+<div style="font-size: 15px; line-height: 1.5; color: #535F52; font-style: italic;">Matematicko-fyzikální fakulta, Univerzita Karlova</div>
+</div></div>
+</div>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 72px 0 14px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">All courses</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #B9AD93; letter-spacing: -0.5px;">|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''|''''</div></div>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; margin: -4px 0 8px;">every course with a page · oldest first</div>
+<ul style="list-style: none; margin: 0; padding: 0;"><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">BI-OSY</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Operační systémy</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">FIT · 2022/23 winter</span></li><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">NPRG014</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Koncepty moderních programovacích jazyků</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">MFF · 2025/26 winter</span></li><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">NPRG077</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Napište si vlastní programovací mini-systém(y)!</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">MFF · 2025/26 winter</span></li><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">NSWI035</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Principy distribuovaných systémů</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">MFF · 2025/26 winter</span></li><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">NSWI150</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Virtualizace a cloud computing</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">MFF · 2025/26 winter</span></li><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">NSWI200</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Operační systémy</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">MFF · 2025/26 winter</span></li><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">NTIN066</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Datové struktury 1</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">MFF · 2025/26 winter</span></li><li class="irow"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;">NSWI028</span><a class="cn" href="#" style="font-size: 16px; line-height: 1.4;">Embedded Systems</a><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; white-space: nowrap;">MFF · 2025/26 summer</span></li></ul>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"emblem":{"editor":"enum","default":"building","options":["mark","building"],"section":"Emblem"},"motion":{"editor":"boolean","default":true,"section":"Emblem"},"$preview":{"width":1280,"height":1500}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: -1 };
+
+  componentDidMount() {
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its seed ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split(/[-/]/).filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w) && w !== 'notes' && w !== 'posts');
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The flower's most telling row, as a small mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), rows = p.head.rows;
+    const row = (rows.find((r) => /[@o*]/.test(r)) || rows[0]).trim();
+    return row.split('').map((ch) => ({ t: ch, c: (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1] }));
+  }
+
+  // The museum label: what the seed grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // ---- woodcut plates, cut at 3 px: a plate is drawn once into an offscreen canvas, one canvas
+  // pixel per cell, and shown as a pixelated image.
+  rgb(hex) { return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]; }
+
+  pal() {
+    if (this._pal) return this._pal;
+    const h = { ink: '#1F2B23', rule: '#A99D84', shade: '#DDD3BD', dust: '#C9BDA3', paper: '#E6DECB', cream: '#F7F2E4',
+      bark: '#5C4636', earth: '#7A5C42', moss: '#5E8E4A', fern: '#3F8A52', canopy: '#2B7349', sage: '#9DB38E',
+      lagoon: '#2A7099', hib: '#C24E39', rose: '#B5476E', trace: '#7FA3BD', mango: '#A87400', ochre: '#E9D9AE', copper: '#7FA68A', copperDk: '#4E7F62' };
+    this._pal = {};
+    for (const k in h) this._pal[k] = this.rgb(h[k]);
+    return this._pal;
+  }
+
+  mk(w, h) {
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d'), img = ctx.createImageData(w, h), d = img.data;
+    const B = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+    const P = {
+      w, h,
+      bay: (x, y) => B[(((y | 0) % 4 + 4) % 4) * 4 + (((x | 0) % 4 + 4) % 4)],
+      ox: 0, oy: 0, clip: null,
+      set(x, y, c) {
+        x = Math.round(x) + P.ox; y = Math.round(y) + P.oy;
+        if (x < 0 || y < 0 || x >= w || y >= h) return;
+        if (P.clip && (x < P.clip[0] || y < P.clip[1] || x > P.clip[2] || y > P.clip[3])) return;
+        const i = (y * w + x) * 4;
+        if (!c) { d[i + 3] = 0; return; }
+        d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+      },
+      rect(x, y, rw, rh, c) { for (let j = y; j < y + rh; j++) for (let i = x; i < x + rw; i++) P.set(i, j, c); },
+      // A Bayer tone: lv of 16 cells in each 4x4 block take the colour.
+      tone(x, y, rw, rh, c, lv) { for (let j = y; j < y + rh; j++) for (let i = x; i < x + rw; i++) if (P.bay(i, j) < lv) P.set(i, j, c); },
+      hatch(x, y, rw, rh, c, k) { for (let j = y; j < y + rh; j++) for (let i = x; i < x + rw; i++) if ((i + j) % (k || 3) === 0) P.set(i, j, c); },
+      hl(x0, x1, y, c, ev) { for (let x = x0; x <= x1; x++) if (!ev || x % ev === 0) P.set(x, y, c); },
+      vl(x, y0, y1, c, ev) { for (let y = y0; y <= y1; y++) if (!ev || y % ev === 0) P.set(x, y, c); },
+      fill(x0, y0, x1, y1, fn) { for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) { const c = fn(x, y); if (c) P.set(x, y, c); } },
+      done() { ctx.putImageData(img, 0, 0); return cv.toDataURL(); }
+    };
+    return P;
+  }
+
+  font(f) { return f === 3 ? {"A": ".#.|#.#|###|#.#|#.#", "B": "##.|#.#|##.|#.#|##.", "C": ".##|#..|#..|#..|.##", "D": "##.|#.#|#.#|#.#|##.", "E": "###|#..|##.|#..|###", "F": "###|#..|##.|#..|#..", "G": ".##|#..|#.#|#.#|.##", "H": "#.#|#.#|###|#.#|#.#", "I": "###|.#.|.#.|.#.|###", "K": "#.#|#.#|##.|#.#|#.#", "L": "#..|#..|#..|#..|###", "M": "#.#|###|###|#.#|#.#", "N": "##.|#.#|#.#|#.#|#.#", "O": ".#.|#.#|#.#|#.#|.#.", "P": "##.|#.#|##.|#..|#..", "R": "##.|#.#|##.|#.#|#.#", "S": ".##|#..|.#.|..#|##.", "T": "###|.#.|.#.|.#.|.#.", "U": "#.#|#.#|#.#|#.#|###", "V": "#.#|#.#|#.#|#.#|.#.", "Y": "#.#|#.#|.#.|.#.|.#.", "Z": "###|..#|.#.|#..|###", "0": "###|#.#|#.#|#.#|###", "1": ".#.|##.|.#.|.#.|###", "2": "##.|..#|.#.|#..|###", "3": "##.|..#|.#.|..#|##.", "4": "#.#|#.#|###|..#|..#", "7": "###|..#|.#.|.#.|.#.", "8": "###|#.#|###|#.#|###", "9": "###|#.#|###|..#|##.", "·": "...|...|.#.|...|..."} : {"A": ".###.|#...#|#...#|#####|#...#|#...#|#...#", "C": ".###.|#...#|#....|#....|#....|#...#|.###.", "F": "#####|#....|#....|####.|#....|#....|#....", "I": ".###.|..#..|..#..|..#..|..#..|..#..|.###.", "K": "#...#|#..#.|#.#..|##...|#.#..|#..#.|#...#", "M": "#...#|##.##|#.#.#|#.#.#|#...#|#...#|#...#", "T": "#####|..#..|..#..|..#..|..#..|..#..|..#..", "U": "#...#|#...#|#...#|#...#|#...#|#...#|.###.", "V": "#...#|#...#|#...#|#...#|#...#|.#.#.|..#.."}; }
+
+  textW(s, f, k) { k = k || 1; return [...s].length * ((f === 3 ? 3 : 5) + 1) * k - k; }
+
+  // Chunky pixel type; a caron is cut above Č.
+  text(P, s, x, y, c, f, k) {
+    k = k || 1;
+    const G = this.font(f), gw = f === 3 ? 3 : 5;
+    let cx = x;
+    for (const ch0 of s) {
+      const ch = ch0 === 'Č' ? 'C' : ch0, g = G[ch];
+      if (g) {
+        g.split('|').forEach((row, j) => { for (let i = 0; i < gw; i++) if (row[i] === '#') P.rect(cx + i * k, y + j * k, k, k, c); });
+        if (ch0 === 'Č') { const m = Math.floor(gw / 2); P.rect(cx + (m - 1) * k, y - 3 * k, k, k, c); P.rect(cx + (m + 1) * k, y - 3 * k, k, k, c); P.rect(cx + m * k, y - 2 * k, k, k, c); }
+      }
+      cx += (gw + 1) * k;
+    }
+  }
+
+  // Upright letters set round an arc, centred on angle a0 (radians), reading left to right. Each
+  // letter steps on along the arc until it clears the last one, so the steep ends don't crowd.
+  arcText(P, s, cx, cy, r, a0, dir, c) {
+    const chars = [...s], n = chars.length, pt = (a) => [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+    let offs = [];
+    for (let pass = 0, shift = 0; pass < 3; pass++) {
+      offs = [0];
+      for (let i = 1; i < n; i++) {
+        let o = offs[i - 1];
+        const [px, py] = pt(a0 + dir * (offs[i - 1] - shift));
+        o += 3.6 / r;
+        for (;;) { const [x, y] = pt(a0 + dir * (o - shift)), ax = Math.abs(Math.round(x) - Math.round(px)), ay = Math.abs(Math.round(y) - Math.round(py)); if (ax >= 4 || ay >= 6) break; o += 0.004; }
+        offs.push(o);
+      }
+      shift = offs[n - 1] / 2;
+      offs = offs.map((o) => o - shift);
+      if (pass < 2) { const s0 = shift; offs = offs.map((o) => o + s0); shift = s0; }
+    }
+    chars.forEach((ch, i) => {
+      const [x, y] = pt(a0 + dir * offs[i]);
+      this.text(P, ch, Math.round(x - 1), Math.round(y - 2), c, 3, 1);
+    });
+  }
+
+  // The plate mark of the graph view: paper grain, a double rule, a small cross in each corner.
+  frame(P, seed, grain) {
+    const c = this.pal(), w = P.w, h = P.h, g = this.rng('paper:' + seed);
+    if (grain) for (let k = 0; k < w * h * 0.012; k++) P.set(7 + g() * (w - 14), 7 + g() * (h - 14), c.paper);
+    const m1 = 4, m2 = 6;
+    P.hl(m1, w - 1 - m1, m1, c.rule); P.hl(m1, w - 1 - m1, h - 1 - m1, c.rule);
+    P.vl(m1, m1, h - 1 - m1, c.rule); P.vl(w - 1 - m1, m1, h - 1 - m1, c.rule);
+    P.hl(m2, w - 1 - m2, m2, c.rule, 2); P.hl(m2, w - 1 - m2, h - 1 - m2, c.rule, 2);
+    P.vl(m2, m2, h - 1 - m2, c.rule, 2); P.vl(w - 1 - m2, m2, h - 1 - m2, c.rule, 2);
+    for (const [x, y] of [[m1, m1], [w - 1 - m1, m1], [m1, h - 1 - m1], [w - 1 - m1, h - 1 - m1]])
+      for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) P.set(x + dx, y + dy, dx || dy ? c.hib : c.mango);
+  }
+
+  plate(uni, kind, W, H) {
+    this._plates = this._plates || {};
+    const key = [uni, kind, W, H].join(':');
+    if (this._plates[key]) return this._plates[key];
+    const P = this.mk(W, H);
+    if (kind === 'mark') {
+      this.frame(P, key, true);
+      (uni === 'fit' ? this.sealFIT(P) : this.sealMFF(P));
+    } else {
+      // Scenes are cut inside the plate mark, then the mark is ruled over them. The MFF scene is
+      // drawn once at the wide size; the card shows the part with the church and the faculty.
+      P.clip = [7, 7, W - 8, H - 8];
+      if (uni === 'fit') this.dejvice(P);
+      else { if (W < 150) { P.ox = -84; P.oy = -4; } this.malaStrana(P); P.ox = 0; P.oy = 0; }
+      P.clip = null;
+      this.frame(P, key, false);
+    }
+    return (this._plates[key] = P.done());
+  }
+
+  // ---- (i) the seals: the faculty's initials in pixel type, in a frame of my own ----
+
+  // FIT: the initials on a chip, its pins running out as traces across the plate.
+  sealFIT(P) {
+    const c = this.pal(), W = P.w, H = P.h, cx = Math.floor(W / 2), cy = Math.floor(H / 2), S = 48, x0 = cx - S / 2, y0 = cy - S / 2;
+    const r = this.rng('fit-traces'), pins = 7, gap = 6, p0 = Math.round((S - (pins - 1) * gap) / 2) - 1;
+    // Traces first, so the chip sits on top of them.
+    const via = (x, y) => { for (const [dx, dy] of [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]]) P.set(x + dx, y + dy, c.lagoon); };
+    for (let i = 0; i < pins; i++) {
+      const py = y0 + p0 + i * gap + 1;
+      for (const side of [-1, 1]) {
+        if ((i + (side > 0 ? 1 : 0)) % 2 && i !== 3) continue;
+        const start = side < 0 ? x0 - 5 : x0 + S + 4, end = side < 0 ? 12 + Math.floor(r() * 10) : W - 13 - Math.floor(r() * 10);
+        const jog = Math.round(start + side * (4 + r() * Math.max(4, Math.abs(end - start) * 0.5)));
+        const dy = i < pins / 2 ? -1 : 1, steps = i === 3 ? 0 : 2 + Math.floor(r() * 3);
+        let x = start, y = py;
+        while (side < 0 ? x > jog : x < jog) { P.set(x, y, c.trace); x += side; }
+        for (let k = 0; k < steps; k++) { P.set(x, y, c.trace); x += side; y += dy; }
+        while (side < 0 ? x > end : x < end) { P.set(x, y, c.trace); x += side; }
+        if (Math.abs(end - start) > 8) via(x, y);
+      }
+      // Pins on top and bottom are short stubs with a pad.
+      const px = x0 + p0 + i * gap + 1;
+      for (const side of [-1, 1]) {
+        const ys = side < 0 ? y0 - 5 : y0 + S + 4, len = 2 + (i % 2) * 2;
+        for (let k = 0; k <= len; k++) P.set(px, ys + side * k, c.trace);
+        if (i % 2) via(px, ys + side * (len + 2));
+      }
+    }
+    // A woodcut shadow, hatched, to the lower right.
+    P.fill(x0 + 3, y0 + 3, x0 + S + 2, y0 + S + 2, (x, y) => (x + y) % 3 === 0 ? c.dust : null);
+    // Pins.
+    for (let i = 0; i < pins; i++) {
+      const o = p0 + i * gap;
+      P.rect(x0 - 4, y0 + o, 4, 3, c.rule); P.rect(x0 + S, y0 + o, 4, 3, c.rule);
+      P.rect(x0 + o, y0 - 4, 3, 4, c.rule); P.rect(x0 + o, y0 + S, 3, 4, c.rule);
+      P.set(x0 - 4, y0 + o + 1, c.ink); P.set(x0 + S + 3, y0 + o + 1, c.ink); P.set(x0 + o + 1, y0 - 4, c.ink); P.set(x0 + o + 1, y0 + S + 3, c.ink);
+    }
+    // The body, cut in ink with its corners rounded; a cream rule inside; the pin-one dot.
+    P.fill(x0, y0, x0 + S - 1, y0 + S - 1, (x, y) => {
+      const ex = Math.min(x - x0, x0 + S - 1 - x), ey = Math.min(y - y0, y0 + S - 1 - y);
+      return ex + ey < 2 ? null : c.ink;
+    });
+    for (let k = 4; k < S - 4; k++) { P.set(x0 + k, y0 + 3, c.cream); P.set(x0 + k, y0 + S - 4, c.cream); P.set(x0 + 3, y0 + k, c.cream); P.set(x0 + S - 4, y0 + k, c.cream); }
+    for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) P.set(x0 + 7 + dx, y0 + 7 + dy, c.cream);
+    // Letters knocked out of the block.
+    const fw = this.textW('FIT', 5, 2);
+    this.text(P, 'FIT', cx - Math.floor(fw / 2), cy - 6, c.cream, 5, 2);
+    P.hl(cx - Math.floor(fw / 2), cx - Math.floor(fw / 2) + fw - 1, cy + 10, c.lagoon);
+    const t1 = this.textW('ČVUT', 3, 1), t2 = this.textW('PRAHA', 3, 1);
+    this.text(P, 'ČVUT', cx - Math.floor(t1 / 2), y0 + 11, c.cream, 3, 1);
+    this.text(P, 'PRAHA', cx - Math.floor(t2 / 2), cy + 13, c.cream, 3, 1);
+  }
+
+  // MFF: a round seal, the university's Latin name round its rim, a wave on squared paper behind.
+  sealMFF(P) {
+    const c = this.pal(), W = P.w, H = P.h, cx = Math.floor(W / 2), cy = Math.floor(H / 2), R = 35, Ri = 19;
+    // Squared paper and a slow wave across the plate, faint, behind the seal.
+    for (let y = 12; y < H - 12; y += 6) for (let x = 12; x < W - 12; x += 6) P.set(x, y, c.dust);
+    let ly = null;
+    if (W > 150) for (let x = 10; x < W - 10; x++) {
+      const y = Math.round(cy + 8 * Math.sin((x - cx) / 10 + 0.6));
+      if (ly !== null) for (let k = Math.min(ly, y); k <= Math.max(ly, y); k++) if (x % 2 === 0 || k !== y) P.set(x, k, c.rose);
+      ly = y;
+    }
+    P.hl(10, W - 11, cy, c.dust, 2);
+    // Shadow, then the disc: a double rim, a band for the inscription, a beaded inner ring.
+    P.fill(cx - R, cy - R, cx + R + 3, cy + R + 3, (x, y) => {
+      const d = Math.hypot(x - cx - 2.5, y - cy - 2.5);
+      return d <= R + 0.5 && Math.hypot(x - cx, y - cy) > R + 0.5 && (x + y) % 3 === 0 ? c.dust : null;
+    });
+    P.fill(cx - R - 1, cy - R - 1, cx + R + 1, cy + R + 1, (x, y) => {
+      const d = Math.hypot(x - cx, y - cy);
+      if (d > R + 0.5) return null;
+      if (d > R - 1.5) return c.ink;
+      if (d > R - 2.5) return c.cream;
+      if (d > R - 3.5) return c.ink;
+      if (d <= Ri + 0.5 && d > Ri - 0.5) return c.ink;
+      if (d <= Ri + 2.3 && d > Ri + 1.3) return (Math.round(Math.atan2(y - cy, x - cx) * 28) % 2) ? c.rule : c.cream;
+      return c.cream;
+    });
+    this.arcText(P, 'UNIVERSITAS', cx, cy, R - 8.5, -Math.PI / 2, 1, c.ink);
+    this.arcText(P, 'CAROLINA', cx, cy, R - 8.5, Math.PI / 2, -1, c.ink);
+    for (const sx of [-1, 1]) {
+      const x = cx + sx * (R - 8), y = cy;
+      for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) P.set(x + dx, y + dy, dx || dy ? c.hib : c.mango);
+    }
+    // The initials, a star above, and a small wave beneath.
+    const fw = this.textW('MFF', 5, 2);
+    this.text(P, 'MFF', cx - Math.floor(fw / 2), cy - 7, c.ink, 5, 2);
+    for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) P.set(cx + dx, cy - 12 + dy, dx || dy ? c.hib : c.mango);
+    for (let x = -8; x <= 8; x++) P.set(cx + x, cy + 11 + Math.round(1.3 * Math.sin(x / 1.5)), c.hib);
+  }
+
+  // ---- (ii) the buildings, cut after photographs ----
+
+  tree(P, cx, base, r, seed, tall) {
+    const c = this.pal(), g = this.rng('tree:' + seed), trunk = tall || Math.max(3, Math.round(r * 0.6)), cy = base - trunk - r + 1;
+    const lobes = [[0, 0, r]];
+    for (let k = 0; k < 5; k++) { const a = g() * Math.PI * 2; lobes.push([Math.cos(a) * r * 0.6, Math.sin(a) * r * 0.5 - 1, r * (0.5 + g() * 0.3)]); }
+    const inside = (x, y) => lobes.some(([lx, ly, lr]) => Math.hypot(x - cx - lx, (y - cy - ly) * 1.1) <= lr);
+    P.rect(cx, cy + 2, r > 5 ? 2 : 1, base - cy - 2, c.bark);
+    P.fill(Math.floor(cx - r * 1.8), Math.floor(cy - r * 1.5), Math.ceil(cx + r * 1.8), Math.ceil(cy + r * 1.5), (x, y) => {
+      if (!inside(x, y)) return null;
+      if (!inside(x - 1, y) || !inside(x + 1, y) || !inside(x, y - 1) || !inside(x, y + 1)) return c.canopy;
+      const t = ((x - cx) + (y - cy) * 1.2) / (r * 2) + 0.5;
+      return P.bay(x, y) < 3 + t * 12 ? c.fern : c.sage;
+    });
+  }
+
+  // Sky: a Bayer wash of blue, densest at the top.
+  sky(P, y0, y1, lv0, col) {
+    for (let y = y0; y <= y1; y++) {
+      const lv = Math.round(lv0 * Math.pow(1 - (y - y0) / (y1 - y0), 1.3));
+      for (let x = 0; x < P.w; x++) if (P.bay(x, y) < lv) P.set(x, y, col);
+    }
+  }
+
+  // A woodcut cloud: a bumpy cream mass, outlined, its underside stippled.
+  cloud(P, cx, cy, w, h, seed) {
+    const c = this.pal(), g = this.rng('cloud:' + seed), lobes = [];
+    for (let k = 0; k < 6; k++) lobes.push([cx - w / 2 + (k + 0.5) * w / 6, cy - (g() * h * 0.6) * Math.sin((k + 0.5) / 6 * Math.PI), h * (0.45 + g() * 0.3)]);
+    const inside = (x, y) => y <= cy + h * 0.35 && lobes.some(([lx, ly, lr]) => Math.hypot((x - lx) / 1.4, y - ly) <= lr);
+    P.fill(Math.floor(cx - w), Math.floor(cy - h * 2), Math.ceil(cx + w), Math.ceil(cy + h), (x, y) => {
+      if (!inside(x, y)) return null;
+      if (!inside(x, y - 1) || !inside(x - 1, y) || !inside(x + 1, y)) return c.dust;
+      if (!inside(x, y + 1)) return c.dust;
+      return y > cy && P.bay(x, y) < 5 ? c.shade : c.cream;
+    });
+  }
+
+  // Linear interpolation through a list of [f, v] points.
+  lerp(pts, f) {
+    for (let i = 1; i < pts.length; i++) if (f <= pts[i][0]) { const [a, va] = pts[i - 1], [b, vb] = pts[i]; return b === a ? vb : va + (vb - va) * (f - a) / (b - a); }
+    return pts[pts.length - 1][1];
+  }
+
+  // FIT: the new ČVUT building at Thákurova 9, seen from the plaza. Two terracotta end wings with
+  // punched windows; between them the white centre in a shallow chevron, banded with ribbon
+  // windows; the freestanding white pylon in front, taller than the block; a brick stepped plinth.
+  dejvice(P) {
+    const c = this.pal(), W = P.w, H = P.h, wide = W > 150;
+    const bx0 = wide ? 74 : 20, bw = wide ? 112 : 80, base = wide ? 68 : 62, bh = wide ? 37 : 31, k = bh / 273;
+    const brick = this.rgb('#B65A3C'), brickDk = this.rgb('#8E4430'), glass = this.rgb('#2E3B40');
+    const X = (f) => bx0 + f * bw, Y = (py) => base - (535 - py) * k;
+    const TOP = [[0, 292], [0.08, 281], [0.18, 290], [0.385, 334], [0.74, 284], [0.7401, 263], [0.78, 258], [1, 304]];
+    const BOT = [[0, 535], [0.18, 532], [0.385, 517], [0.74, 532], [1, 538]];
+    this.sky(P, 7, base - 8, 4, c.lagoon);
+    if (wide) { this.cloud(P, 46, 22, 34, 7, 'a'); this.cloud(P, 205, 30, 26, 5, 'b'); }
+    else { this.cloud(P, 22, 22, 18, 5, 'a'); }
+    // Trees behind the left end, and the old campus far off to the right.
+    if (wide) {
+      P.fill(196, base - 14, 222, base, (x, y) => (y === base - 14 || x === 196 ? c.rule : (P.bay(x, y) < 6 ? c.dust : c.shade)));
+      for (let x = 199; x < 220; x += 4) P.rect(x, base - 11, 2, 2, c.rule), P.rect(x, base - 6, 2, 2, c.rule);
+    }
+    // The block, column by column.
+    const lit = this.rng('fit-win');
+    const bx1 = Math.round(X(1));
+    for (let x = Math.round(X(0)); x <= bx1; x++) {
+      const f = (x - bx0) / bw, topF = Y(this.lerp(TOP, f)), botF = Y(this.lerp(BOT, f)), top = Math.round(topF), bot = Math.round(botF);
+      const face = f < 0.08 ? 'lside' : f < 0.18 ? 'lwing' : f < 0.385 ? 'cl' : f < 0.74 ? 'cr' : f < 0.78 ? 'rfront' : 'rwing';
+      for (let y = top; y <= bot; y++) {
+        const t = (y + 0.5 - topF) / Math.max(1, botF - topF);
+        let col;
+        if (face === 'cl' || face === 'cr') {
+          const s = t * 9, st = Math.floor(s), fr = s - st;
+          if (y === top) col = c.ink;
+          else if (st >= 8) col = (Math.round(x) % 4 === 0 ? c.cream : glass);
+          else if (fr > 0.40 && fr < 0.86) col = glass;
+          else col = face === 'cl' ? (P.bay(x, y) < 4 ? c.dust : c.cream) : (fr > 0.86 && fr < 0.98 && P.bay(x, y) < 3 ? c.dust : c.cream);
+        } else {
+          const shade = face === 'lside' || face === 'rfront';
+          col = y === top ? c.ink : (P.bay(x, y) < (shade ? 9 : 3) ? brickDk : brick);
+        }
+        P.set(x, y, col);
+      }
+      // A rule where two faces meet.
+      for (const e of [0.08, 0.18, 0.385, 0.74, 0.78]) if (Math.abs(f - e) < 0.5 / bw) for (let y = top; y <= bot; y++) P.set(x, y, e === 0.385 ? c.dust : c.ink);
+    }
+    P.vl(Math.round(X(0)), Math.round(Y(292)), Math.round(Y(535)), c.ink); P.vl(bx1, Math.round(Y(304)), Math.round(Y(538)), c.ink);
+    // Punched windows in the brick wings: a loose grid, some left out.
+    const punch = (f0, f1, cols, rows, sz, seed) => {
+      const g = this.rng('punch:' + seed);
+      for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) {
+        if (g() < 0.22) continue;
+        const f = f0 + (i + 0.5) * (f1 - f0) / cols, x = Math.round(X(f)) - (sz >> 1);
+        const top = Y(this.lerp(TOP, f)), bot = Y(this.lerp(BOT, f)), y = Math.round(top + (j + 0.7) * (bot - top) / (rows + 0.6));
+        P.rect(x, y, sz, sz, g() < 0.12 ? c.ochre : glass);
+      }
+    };
+    punch(0.09, 0.17, wide ? 2 : 2, 9, 2, 'l');
+    punch(0.79, 0.99, wide ? 4 : 3, 8, wide ? 3 : 2, 'r');
+    punch(0.01, 0.07, 1, 9, 1, 's');
+    // The stepped brick plinth across the front, then the grey plaza and the lawn.
+    for (let s = 0; s < 3; s++) {
+      const fa = 0.14 - s * 0.03, fb = 0.80 + s * 0.02, y = base + 1 + s;
+      P.hl(Math.round(X(fa)), Math.round(X(fb)), y, s % 2 ? brickDk : brick);
+    }
+    const pz1 = H - 8;
+    P.fill(7, base + 4, W - 8, pz1, (x, y) => (P.bay(x, y) < 5 ? c.dust : c.shade));
+    P.hl(7, W - 8, base + 4, c.rule);
+    P.fill(7, pz1 - 6, W - 8, H - 8, (x, y) => {
+      const edge = Math.round(H - 8 - (x / W - 0.25) * (wide ? 16 : 12));
+      if (y < edge) return null;
+      if (y === edge) return c.canopy;
+      return P.bay(x, y) < 6 ? c.fern : c.moss;
+    });
+    // The pylon: a slender white slab, freestanding, taller than the building.
+    const px = Math.round(X(0.3)), pw = wide ? 7 : 5, ptop = wide ? 9 : 10, pbot = base + 3;
+    P.fill(px, ptop, px + pw - 1, pbot, (x, y) => {
+      if (x === px || x === px + pw - 1 || y === ptop) return c.ink;
+      if (x >= px + pw - 3) return (x + y) % 3 === 0 ? c.rule : c.shade;
+      return (y - ptop) % 9 === 8 ? c.shade : c.cream;
+    });
+    P.hl(px - 1, px + pw, pbot + 1, c.rule);
+    // A lamp post on the plaza.
+    const lx = Math.round(X(0.47));
+    P.vl(lx, base - 13, base + 6, c.ink); P.hl(lx - 1, lx + 1, base - 13, c.ink);
+    // Trees: a tall group to the left, a few to the right.
+    if (wide) {
+      this.tree(P, 20, base + 3, 11, 'f1', 10); this.tree(P, 44, base + 3, 9, 'f2', 9); this.tree(P, 64, base + 3, 7, 'f3', 6);
+      this.tree(P, 192, base + 3, 7, 'f4', 5); this.tree(P, 214, base + 3, 6, 'f5', 5);
+    } else {
+      this.tree(P, 12, base + 3, 7, 'f1', 6); this.tree(P, 104, base + 3, 5, 'f4', 4);
+    }
+  }
+
+  // MFF: Malostranské náměstí at dusk. The faculty is the long plain grey-white palace on the
+  // right, thirteen bays under a dark hipped roof with chimneys along the ridge; St Nicholas's
+  // belfry and green dome rise behind it on the left; arcaded houses close the square on the left,
+  // and the tram rails curve across the cobbles.
+  malaStrana(P) {
+    const c = this.pal(), G = 68, wide = P.w > 150;
+    const slate = this.rgb('#4A4F52'), slateLt = this.rgb('#6B6F6E'), grey = this.rgb('#D9D6CC'), stone = this.rgb('#BDB6A6');
+    const roofRed = this.rgb('#9A4A34'), navy = this.rgb('#24406B');
+    const warm = this.rgb('#E4B455'), lit = (x, y) => (P.bay(x, y) < 3 ? c.mango : warm);
+    const glass = (x, y) => (P.bay(x, y) < 12 ? c.ink : slate);
+    // Prague blue at dusk.
+    for (let y = 7; y <= 50; y++) {
+      const t = (y - 7) / 43, lv1 = Math.round(11 * Math.pow(1 - t, 1.2)), lv2 = Math.round(4 * Math.pow(1 - t, 2));
+      for (let x = 0; x < 240; x++) { const b = P.bay(x, y); if (b < lv2) P.set(x, y, navy); else if (b < lv1) P.set(x, y, c.lagoon); }
+    }
+    // Petřín behind, a low dark hill.
+    P.fill(40, 40, 112, 52, (x, y) => (y >= 46 - 5 * Math.sin((x - 40) / 72 * Math.PI) ? (P.bay(x, y) < 10 ? c.canopy : c.moss) : null));
+    // The belfry: stages narrowing up to a green-copper cupola, a clock on the upper stage.
+    const tx = 104;
+    const stage = (x0, x1, y0, y1) => P.fill(x0, y0, x1, y1, (x, y) => (x === x0 || x === x1 || y === y0 ? c.ink : (x > x1 - 3 && (x + y) % 3 === 0 ? c.dust : c.cream)));
+    stage(tx - 6, tx + 6, 35, G); stage(tx - 5, tx + 5, 28, 35); stage(tx - 4, tx + 4, 21, 28);
+    P.hl(tx - 7, tx + 7, 35, c.ink); P.hl(tx - 6, tx + 6, 28, c.ink);
+    for (const ax of [tx - 3, tx + 2]) P.fill(ax, 29, ax + 1, 34, (x, y) => (y === 29 && x === ax + 1 ? null : c.ink));
+    P.fill(tx - 1, 38, tx + 1, 45, (x, y) => (y === 38 && x !== tx ? null : c.ink));
+    for (const [ddx, ddy] of [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]]) P.set(tx + ddx, 24 + ddy, c.ink);
+    P.set(tx, 24, c.mango);
+    [[9, 20], [9, 19], [7, 18], [5, 17], [5, 16], [7, 15], [5, 14], [3, 13], [1, 12], [1, 11]].forEach(([wd, y]) => {
+      for (let x = tx - (wd >> 1); x <= tx + (wd >> 1); x++) P.set(x, y, x === tx - (wd >> 1) || x === tx + (wd >> 1) ? c.copperDk : (x > tx + 1 && P.bay(x, y) < 8 ? c.copperDk : c.copper));
+    });
+    P.vl(tx, 8, 10, c.ink); P.hl(tx - 1, tx + 1, 9, c.ink);
+    // The church between belfry and palace: body, drum, the great dome and its lantern.
+    const dx = 122;
+    P.fill(110, 38, 132, G, (x, y) => (y === 38 ? c.ink : ((x + y) % 4 === 0 ? c.dust : c.cream)));
+    P.fill(108, 36, 134, 40, (x, y) => (y >= 40 - Math.min(x - 108, 134 - x) * 0.6 ? (y === 36 ? c.ink : (P.bay(x, y) < 9 ? roofRed : c.hib)) : null));
+    P.fill(dx - 9, 26, dx + 9, 37, (x, y) => {
+      if (x === dx - 9 || x === dx + 9 || y === 26) return c.ink;
+      const k = (x - dx + 90) % 4;
+      if (k === 0) return c.dust;
+      if (k === 2 && y > 28 && y < 35) return y === 29 && false ? null : c.ink;
+      return x > dx + 4 && (x + y) % 3 === 0 ? c.dust : c.cream;
+    });
+    P.fill(dx - 11, 17, dx + 11, 26, (x, y) => {
+      const d = Math.hypot((x - dx) / 11, (y - 26) / 8.5);
+      if (d > 1.03) return null;
+      if (d > 0.93 || y === 26) return c.copperDk;
+      if (Math.abs(x - dx) % 4 === 0 && d < 0.85) return c.copperDk;
+      const t = (x - dx) / 11 * 0.7 + 0.45 - (26 - y) / 8.5 * 0.3;
+      return P.bay(x, y) < 1 + t * 13 ? c.copperDk : c.copper;
+    });
+    P.fill(dx - 2, 12, dx + 2, 17, (x, y) => (x === dx - 2 || x === dx + 2 ? c.ink : (x === dx && y > 13 ? c.ink : c.cream)));
+    P.rect(dx - 1, 10, 3, 2, c.copperDk); P.vl(dx, 7, 9, c.ink); P.hl(dx - 1, dx + 1, 8, c.ink);
+    // A small green spire beside the dome.
+    P.fill(132, 28, 134, 38, (x, y) => (x === 133 || y > 33 ? c.copperDk : c.copper)); P.vl(133, 25, 27, c.copperDk);
+    // Houses in front of the church.
+    const house = (x0, x1, roofY, faceY, tone, rows, seed, arcade) => {
+      const g = this.rng('house:' + seed);
+      P.fill(x0, roofY, x1, faceY - 1, (x, y) => {
+        const inset = Math.round((faceY - y) * 0.7);
+        if (x < x0 + inset - 1 || x > x1 - inset + 1) return null;
+        return y === roofY || x === x0 + inset - 1 || x === x1 - inset + 1 ? c.ink : (P.bay(x, y) < 10 ? slate : slateLt);
+      });
+      P.fill(x0, faceY, x1, G, (x, y) => (x === x0 || x === x1 || y === faceY ? c.ink : (P.bay(x, y) < tone ? stone : c.cream)));
+      const n = Math.floor((x1 - x0 - 2) / 4);
+      for (let r = 0; r < rows; r++) for (let i = 0; i < n; i++) {
+        const x = x0 + 2 + i * 4 + Math.floor(((x1 - x0 - 2) - n * 4) / 2), y = faceY + 2 + r * 4;
+        if (y + 2 > G - (arcade ? 7 : 3)) continue;
+        P.fill(x, y, x + 1, y + 2, g() < 0.18 ? lit : glass);
+      }
+      if (arcade) for (let x = x0 + 2; x + 4 < x1; x += 6) P.fill(x, G - 6, x + 4, G - 1, (xx, y) => {
+        const top = G - 4;
+        if (y < top && Math.hypot(xx - x - 2, y - top) > 2.4) return null;
+        return Math.hypot(xx - x - 2, y - top) > 1.6 && y < top ? c.ink : (P.bay(xx, y) < 7 ? c.mango : c.ochre);
+      });
+    };
+    house(8, 34, 43, 48, 7, 5, 'a', true); house(34, 52, 46, 50, 2, 4, 'b', true); house(52, 74, 46, 50, 9, 4, 'c', true);
+    house(74, 98, 50, 54, 3, 3, 'd', true); house(98, 111, 47, 52, 1, 3, 'e', false); house(111, 129, 53, 56, 6, 3, 'f', false);
+    // The faculty: hipped roof, chimneys, and the long grey-white facade.
+    const x0 = 129, x1 = 198, eave = 38, ridge = 31;
+    P.fill(x0 - 1, ridge, x1 + 4, eave - 1, (x, y) => {
+      const inset = Math.round((eave - y) * 0.9);
+      if (x < x0 - 1 + inset || x > x1 + 4 - inset) return null;
+      if (y === ridge || x === x0 - 1 + inset || x === x1 + 4 - inset) return c.ink;
+      return P.bay(x, y) < 11 ? slate : slateLt;
+    });
+    for (let x = x0 + 8; x < x1 - 4; x += 6) { const h = 2 + ((x * 7) % 3); P.fill(x, ridge - h, x + 1, ridge - 1, (xx, y) => (y === ridge - h ? c.ink : (xx === x ? c.cream : c.dust))); }
+    for (let x = x0 + 6; x < x1 - 2; x += 10) { P.rect(x, eave - 3, 2, 2, c.dust); }
+    P.fill(x1 + 1, eave, x1 + 4, G, (x, y) => (x === x1 + 4 ? c.ink : ((x + y) % 3 === 0 ? c.rule : c.dust)));
+    P.fill(x0, eave, x1, G, (x, y) => (x === x0 || x === x1 ? c.ink : (P.bay(x, y) < 5 ? grey : c.cream)));
+    P.hl(x0 - 1, x1 + 4, eave, c.ink); P.hl(x0, x1, eave + 1, c.dust); P.hl(x0, x1, 61, c.dust);
+    const bays = 13, bw = (x1 - x0) / bays, rows = [[40, 2], [45, 3], [51, 3], [57, 3], [63, 3]], g = this.rng('mff-win');
+    rows.forEach(([y, h], r) => {
+      for (let b = 0; b < bays; b++) {
+        if (r === 4 && b === 1) continue;
+        const x = Math.round(x0 + (b + 0.5) * bw) - 1;
+        const on = r < 4 && g() < 0.3;
+        P.fill(x, y, x + 1, y + h - 1, on ? lit : glass);
+        P.hl(x - 1, x + 2, y + h, c.dust);
+      }
+    });
+    // The stone portal at the left of the ground floor.
+    const pd = Math.round(x0 + 1.5 * bw) - 1;
+    P.fill(pd - 2, 59, pd + 3, G, (x, y) => (x === pd - 2 || x === pd + 3 || y === 59 ? stone : (y === 60 ? stone : c.ink)));
+    // The tall house beyond the street on the right.
+    P.fill(215, 24, 229, G, (x, y) => (x === 215 || y === 24 ? c.ink : ((x + y) % 3 === 0 ? c.rule : (P.bay(x, y) < 8 ? stone : grey))));
+    P.fill(215, 19, 229, 23, (x, y) => (y >= 24 - (x - 215) * 0.9 ? (P.bay(x, y) < 11 ? slate : slateLt) : null));
+    for (let y = 28; y < G - 3; y += 7) for (let x = 219; x < 228; x += 5) P.fill(x, y, x + 1, y + 2, glass);
+    // The cobbled square, and two tracks curving away across it.
+    P.hl(0, 240, G, c.ink);
+    P.fill(0, G + 1, 240, 92, (x, y) => {
+      const sp = y < G + 6 ? 3 : 4;
+      return ((x + (y % 2) * 2) % sp === 0 && y % 2 === 0) ? c.rule : (P.bay(x, y) < 2 ? this.rgb('#D9B9A0') : null);
+    });
+    const rail = (b0, b1, b2) => {
+      let last = null;
+      for (let s = 0; s <= 400; s++) {
+        const t = s / 400, x = (1 - t) * (1 - t) * b0[0] + 2 * (1 - t) * t * b1[0] + t * t * b2[0], y = (1 - t) * (1 - t) * b0[1] + 2 * (1 - t) * t * b1[1] + t * t * b2[1];
+        const k = Math.round(x) + ',' + Math.round(y); if (k === last) continue; last = k; P.set(x, y, c.bark);
+      }
+    };
+    [[0, 3], [7, 5], [17, 8], [24, 10]].forEach(([dxb, ye]) => rail([80 + dxb, 92], [72 + dxb * 0.5, G + ye], [4, G + ye]));
+    // The tram, at the stop in front of the arcades.
+    if (wide) this.tramDraw(P, 14, G - 9);
+  }
+
+  // A Prague tram: red below, a cream band, windows, a pantograph.
+  tramDraw(P, ox, oy) {
+    const c = this.pal(), L = 1, R = 30;
+    const set = (x, y, col) => P.set(ox + x, oy + y, col);
+    for (const [x, y] of [[12, 0], [13, 0], [14, 0], [15, 0], [16, 0], [17, 0], [18, 0], [19, 0], [13, 1], [18, 1], [14, 2], [17, 2], [15, 3], [16, 3]]) set(x, y, c.ink);
+    for (let y = 4; y <= 13; y++) for (let x = L; x <= R; x++) {
+      const ex = Math.min(x - L, R - x);
+      let col;
+      if (y === 4 && ex < 2) continue;
+      if (y === 5 && ex < 1) continue;
+      if (y === 4 || x === L || x === R || (y === 5 && ex < 2)) col = c.ink;
+      else if (y === 5) col = c.hib;
+      else if (y >= 6 && y <= 8) col = (ex > 1 && (x - L) % 5 !== 0) ? (P.bay(x, y) < 6 ? c.mango : c.ochre) : c.cream;
+      else if (y === 9) col = c.cream;
+      else if (y === 13) col = c.ink;
+      else if ((x === 9 || x === 22) && y < 13) col = c.ink;
+      else col = c.hib;
+      set(x, y, col);
+    }
+    for (const wx of [6, 25]) { for (let x = wx - 2; x <= wx + 2; x++) set(x, 14, c.ink); }
+  }
+
+  emblem() {
+ return this.props.emblem === 'building' ? 'building' : 'mark'; }
+
+  plates() {
+    const k = this.emblem();
+    return { fit: this.plate('fit', k, 114, 84), mff: this.plate('mff', k, 114, 84), fitWide: this.plate('fit', k, 237, 92), mffWide: this.plate('mff', k, 237, 92) };
+  }
+
+  cap() {
+    return this.emblem() === 'mark'
+      ? { fit: 'a pixel seal set from its initials, not the official logo', mff: 'a pixel seal set from its initials, not the official logo' }
+      : { fit: 'the new ČVUT building, Thákurova 9, Dejvice', mff: 'Malostranské náměstí 25, beside St Nicholas' };
+  }
+
+  renderVals() {
+    return { plates: this.plates(), cap: this.cap(), roots: this.roots() };
+  }
+}
+</script>
+</body>
+</html>

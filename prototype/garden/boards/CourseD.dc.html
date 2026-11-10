@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Course page D</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+.wide{display:block}
+@media (max-width: 1100px){.wide{display:none}}
+.titleflower{position:absolute;left:-170px;top:-24px}
+@media (max-width: 1100px){.titleflower{position:static;margin:4px 0 6px}}
+@media (max-width: 560px){
+  h1{font-size: 28px !important}
+  .facts dt{padding-right: 16px !important}
+  .bverdict{order: -1}
+  .cwrap{padding: 18px 16px 20px !important}
+  .dwrap{padding: 18px 14px !important}
+  .drow{gap: 12px !important}
+  .drow .dl{width: 11ch !important}
+  .stampcol{flex-direction: row !important; width: 100%; justify-content: space-between; padding: 0 !important}
+}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" style="color: #2B7349; text-decoration: none;">[notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[projects]</a>
+<a href="#" aria-current="page" style="color: #1F2B23; text-decoration: none; font-weight: 600;">[&gt;courses]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 760px; margin: 0 auto; padding: 80px 24px 80px; position: relative;">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;"><a href="#" style="color: #535F52;">courses</a> / <a href="#" style="color: #535F52;">{{c.university}}</a> / {{c.code}}</div>
+<h1 lang="cs" style="margin: 10px 0 8px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 34px; line-height: 1.2; font-weight: 600; color: #1F2B23;">{{c.name}}</h1>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52; margin-bottom: 32px;">{{c.code}} · {{c.university}} · semester {{c.semester}}, {{c.year}} · česky · {{c.minutes}} min</div>
+<section aria-label="Ratings" class="dwrap" style="position: relative; display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; padding: 22px 28px; background: #F7F2E4; border: 1px solid #D8CFBA; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.5;">
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+<sc-for list="{{garden}}" as="g" hint-placeholder-count="3"><div class="drow" style="display: flex; align-items: center; gap: 6px 18px;" aria-label="{{g.aria}}">
+<div class="dl" style="width: 13ch; flex: none;"><div style="color: #535F52; white-space: nowrap;">{{g.k}}</div><div style="color: #1F2B23; white-space: nowrap;"><span style="font-weight: 600; font-size: 16px;">{{g.txt}}</span> <span style="color: #535F52;">/ 5</span></div></div>
+<div aria-hidden="true" style="font-size: 13px; line-height: 15px;"><sc-for list="{{g.art}}" as="row" hint-placeholder-count="3"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div></sc-for>
+</div>
+<div class="stampcol" style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 4px 8px;">
+<sc-if value="{{c.worth}}" hint-placeholder-val="{{false}}"><div class="stamp" style="white-space: nowrap; border: 3px double #2B7349; color: #2B7349; padding: 8px 14px 6px; transform: rotate(-4deg); text-align: center;"><div style="font-size: 20px; font-weight: 600; letter-spacing: 0.08em;">WORTH IT</div><div style="font-size: 11px; letter-spacing: 0.1em;">reviewed {{c.written}}</div></div></sc-if><sc-if value="{{c.notWorth}}" hint-placeholder-val="{{true}}"><div class="stamp" style="white-space: nowrap; border: 3px double #C24E39; color: #1F2B23; padding: 8px 14px 6px; transform: rotate(-4deg); text-align: center;"><div style="font-size: 20px; font-weight: 600; letter-spacing: 0.08em;">NOT WORTH IT</div><div style="font-size: 11px; letter-spacing: 0.1em; color: #535F52;">reviewed {{c.written}}</div></div></sc-if>
+<div style="text-align: center; font-size: 13px; white-space: nowrap;"><a href="{{c.url}}">course page</a><span aria-hidden="true"> ↗</span></div>
+</div>
+</section>
+<div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 2px 12px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px;"><sc-for list="{{c.tags}}" as="t" hint-placeholder-count="2"><a href="#" style="color: #535F52;">{{t}}</a></sc-for></div>
+<div style="height: -16px;"></div>
+<article lang="cs">
+<sc-for list="{{c.body}}" as="b" hint-placeholder-count="6"><sc-if value="{{b.h}}" hint-placeholder-val="{{false}}"><div style="display: flex; align-items: baseline; gap: 14px; margin: 56px 0 16px;"><h2 style="margin: 0; white-space: nowrap; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349;">{{b.text}}</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{b.trail}}" as="q" hint-placeholder-count="3"><span style="color: {{q.c}}">{{q.t}}</span></sc-for></div></div></sc-if><sc-if value="{{b.p}}" hint-placeholder-val="{{true}}"><p style="margin: 0 0 16px;">{{b.text}}</p></sc-if></sc-for>
+</article>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 64px 0 16px;"><h2 style="margin: 0; white-space: nowrap; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349;">My notes for this course</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailNotes}}" as="q" hint-placeholder-count="3"><span style="color: {{q.c}}">{{q.t}}</span></sc-for></div></div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+<sc-for list="{{notes}}" as="n" hint-placeholder-count="3"><li style="display: flex; align-items: baseline; gap: 10px;"><span aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; width: 32px; flex: none; white-space: pre;"><sc-for list="{{n.mark}}" as="q" hint-placeholder-count="3"><span style="color: {{q.c}}">{{q.t}}</span></sc-for></span><a href="#" style="font-size: 17px;">{{n.title}}</a></li></sc-for>
+</ul>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"course": {"editor": "enum", "default": "NSWI035 · not worth it", "options": ["NSWI035 · not worth it", "NSWI200 · worth it"], "section": "Content"}, "testHalfSteps": {"editor": "boolean", "default": false, "section": "Content"}, "motion": {"editor": "boolean", "default": true, "section": "Flora"}, "$preview": {"width": 1280, "height": 2000}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: -1 };
+
+  componentDidMount() {
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its seed ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split(/[-/]/).filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w) && w !== 'notes' && w !== 'posts');
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The flower's most telling row, as a small mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), rows = p.head.rows;
+    const row = (rows.find((r) => /[@o*]/.test(r)) || rows[0]).trim();
+    return row.split('').map((ch) => ({ t: ch, c: (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1] }));
+  }
+
+  // The museum label: what the seed grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // One long vine beside the text. A butterfly rests on it and every ~40 s flutters to another
+  // leaf; a ladybug climbs up and down the stem; now and then a bee hovers around a bloom.
+  vine() { return [{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\&","c":"#3F8A52"},{"t":"%","c":"#5E8E4A"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"&/","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\%","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"%","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"&","c":"#2B7349"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"%","c":"#5E8E4A"},{"t":"&|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"%","c":"#5E8E4A"},{"t":"&|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"&","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"            ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"  ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"%|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"@","c":"#2A7099"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"           ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"    ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"       ","c":"transparent"},{"t":"/","c":"#3F8A52"},{"t":"        ","c":"transparent"}]},{"runs":[{"t":"       ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"        ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"@","c":"#C24E39"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"|","c":"#3F8A52"},{"t":"       ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"\\","c":"#3F8A52"},{"t":"      ","c":"transparent"}]},{"runs":[{"t":"         ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"        ","c":"transparent"},{"t":"&","c":"#5E8E4A"},{"t":"%","c":"#2B7349"},{"t":"\\","c":"#3F8A52"},{"t":"     ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"|%","c":"#3F8A52"},{"t":"&","c":"#5E8E4A"},{"t":"   ","c":"transparent"}]},{"runs":[{"t":"          ","c":"transparent"},{"t":"@","c":"#C24E39"},{"t":"     ","c":"transparent"}]}]; }
+
+  bugs() {
+    const t = this.state.tick, rest = [[11, 5], [7, 8], [11, 16], [13, 18], [10, 20], [13, 23], [13, 31], [9, 33], [8, 36], [10, 46], [14, 48], [9, 50], [11, 67], [8, 68], [12, 69]], path = [8, 9, 9, 9, 9, 8, 9, 9, 10, 9, 8, 8, 9, 9, 9, 9, 9, 9, 10, 11, 11, 12, 11, 10, 11, 12, 12, 12, 12, 12, 12, 12, 11, 11, 11, 11, 10, 10, 10, 10, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 11, 11, 11, 11, 11, 10, 10, 10, 9, 8, 7, 7, 8, 8, 8, 8, 8, 9, 9, 10, 10, 10], blooms = [[10, 52], [9, 63]];
+    const CW = 7.8, CH = 15, cycle = 160, i = Math.floor(t / cycle), p = t % cycle;
+    const a = rest[i % rest.length], b = rest[(i + 1) % rest.length];
+    let fx, fy, fw;
+    if (p < 140) { fx = a[0]; fy = a[1]; fw = (t % 12) < 8 ? '}{' : '||'; }
+    else { const k = (p - 140) / 20; fx = a[0] + (b[0] - a[0]) * k; fy = a[1] + (b[1] - a[1]) * k - Math.sin(k * Math.PI) * 3; fw = t % 2 ? '}{' : ')('; }
+    const span = 2 * (path.length - 1), q = Math.floor(t * 0.08) % span, ly = q < path.length ? path.length - 1 - q : q - path.length + 1;
+    const bl = blooms[Math.floor(t / 240) % blooms.length];
+    const bx = bl[0] + Math.sin(t * 0.35) * 3, by = bl[1] - 1 + Math.sin(t * 0.22) * 1.5;
+    return {
+      fly: { left: Math.round(fx * CW) + 'px', top: Math.round(fy * CH) + 'px', w: fw },
+      lady: { left: Math.round((path[ly] - 1) * CW) + 'px', top: (ly * CH) + 'px' },
+      bee: { show: (t % 240) < 60, left: Math.round(bx * CW) + 'px', top: Math.round(by * CH) + 'px', w: (t % 2 ? '~' : '-') + '8>' }
+    };
+  }
+
+  courses() { return {"NSWI035":{"code":"NSWI035","name":"Principy distribuovaných systémů","university":"MFF","semester":1,"year":2025,"written":"2026-02-14","ratings":{"difficulty":2,"usefulness":2,"teaching":1},"worth":false,"url":"https://teaching.mff.cuni.cz/nswi150-web/","urlText":"teaching.mff.cuni.cz/nswi150-web","tags":["#programming-languages","#functional-programming","#mff"],"minutes":2,"body":[{"h":true,"p":false,"text":"Review předmětu","seed":"NSWI035:Review předmětu"},{"p":true,"h":false,"text":"Od předmětu jsem čekal víc. Po zjištění, jak se distribuované systémy učí na top univerzitách, je mi to trošku líto. Tohle je předmět, který má velký potenciál, ale podle mě ho určitě nenaplnil."},{"p":true,"h":false,"text":"Určitě to není tím, že by pan Zavoral měl nedostatečné znalosti. Je vidět, že se v tomto prostředí dlouho pohybuje, ale přednášky pro mě zkrátka byly velmi nudné a neinteraktivní. Typicky přednášky probíhají jako úmorný hodinu a půl dlouhý monolog, kde většinou popisuje nějaký algoritmus, který nemáte tušení k čemu reálně je. Skripta existují jen v podobě prezentací plných pseudomatematických formalismů (z toho jsem reálně ztrácel hlavu) a klíčových slov, ze kterých jsem se nedokázal učit."},{"p":true,"h":false,"text":"V oblasti distribuovaných systémů je všechno spojené se vším, ale to jsem zjistil až při učení na zkoušku z materiálů jiných univerzit, protože z přednášek pana Zavorala jsem to prostě nevyčetl."},{"p":true,"h":false,"text":"Předmět má určitě potenciál. Distribuované systémy jsou plné zajímavých problémů, které jinde nenajdete, a ještě unikátnějších přístupů k nim."},{"h":true,"p":false,"text":"Zkouška","seed":"NSWI035:Zkouška"},{"p":true,"h":false,"text":"Zkouška pro mě byla náročná, protože jsem zkrátka nevěděl, na co se přesně učit."},{"p":true,"h":false,"text":"Nedoporučuju se mu tomuto předmětu úplně vyhnout, protože témata jsou upřímně zajímavá, ale nečekejte od toho moc. Ta témata jsem ocenil až když jsem se učil na zkoušku od lepších učitelů a lepších skript."}]},"NSWI200":{"code":"NSWI200","name":"Operační systémy","university":"MFF","semester":1,"year":2025,"written":"2026-02-15","ratings":{"difficulty":4,"usefulness":5,"teaching":5},"worth":true,"url":"https://d3s.mff.cuni.cz/teaching/nswi200/","urlText":"d3s.mff.cuni.cz/teaching/nswi200","tags":["#courses"],"minutes":1,"body":[{"h":true,"p":false,"text":"Review předmětu","seed":"NSWI200:Review předmětu"},{"p":true,"h":false,"text":"Vystudoval jsem bakaláře na FITu a tento předmět jsem si ze zvědavosti zapsal, protože jsem slyšel, že oproti FIT operačním sytémům je zaměřený na praktickou výuku v podobě napsání si vlastního kernelu."},{"p":true,"h":false,"text":"Musím říct, že je to jeden z nejlepších předmětů, který jsem za moje univerzitní studium měl. Všichni vyučující předmětu jsou vstřícní a měl jsem z nich pocit, že je to baví. Celý předmět je moc hezky zpracovaný a každá přednáška i cvičení jsou plné užitečných informací. Přestože už jsem předmět jednou měl na jiné univerzitě, z tohoto předmětu jsem si odnesl úplně nový pohled na věc a fakt hodně informací."},{"p":true,"h":false,"text":"Z pohledu časové náročnosti je předmět náročnější, ale jako výsledek toho můžete říkat, že jste napsali vlastní kernel a opravdu tušíte jak fungují operační systémy (a ne jen teoreticky, ale i prakticky)."},{"p":true,"h":false,"text":"Každému doporučuji zapsat a ještě jednou chválím všechny vyučující."}]}}; }
+
+  course() {
+    const all = this.courses(), key = String(this.props.course || 'NSWI035').slice(0, 7);
+    const c = Object.assign({}, all[key] || all.NSWI035);
+    const r = Object.assign({}, c.ratings);
+    // The half-step test: every rating moves up by half a point (a 5 drops to 4.5), to check 4.5 renders well.
+    if (this.props.testHalfSteps) for (const k in r) r[k] = r[k] < 5 ? r[k] + 0.5 : 4.5;
+    c.r = r; c.notWorth = !c.worth;
+    c.body = c.body.map((b) => b.h ? Object.assign({}, b, { trail: this.trail('course:' + b.seed) }) : b);
+    return c;
+  }
+
+  key(k) { return k + ' ' + '.'.repeat(Math.max(2, 14 - k.length)); }
+
+  fmt(v) { return Number.isInteger(v) ? String(v) : v.toFixed(1); }
+
+  // The plain list of ratings every variant shares.
+  rat(c) {
+    const hint = { difficulty: '5 is hardest', usefulness: '5 is most useful', teaching: '5 is best taught' };
+    return ['difficulty', 'usefulness', 'teaching'].map((k) => {
+      const v = c.r[k], txt = this.fmt(v);
+      return { k, v, txt, hint: hint[k], aria: k + ' ' + txt + ' out of 5', meter: this.meter(v), pips: this.pips(v),
+        key: this.key(k), pad: txt.padStart(3, ' ') };
+    });
+  }
+
+  // Five two-character cells: a full point is a solid cell, a half point a half-filled one.
+  meter(v) {
+    const out = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i > 1) out.push({ t: ' ', c: 'transparent' });
+      if (v >= i) out.push({ t: '\u2588\u2588', c: '#2B7349' });
+      else if (v >= i - 0.5) { out.push({ t: '\u2588', c: '#2B7349' }); out.push({ t: '\u2591', c: '#9C9481' }); }
+      else out.push({ t: '\u2591\u2591', c: '#9C9481' });
+    }
+    return out;
+  }
+
+  // The label's quieter scale: small marks like a ruler.
+  pips(v) {
+    const out = [];
+    for (let i = 1; i <= 5; i++) out.push(v >= i ? { t: '\u25A0', c: '#5C4636' } : v >= i - 0.5 ? { t: '\u25E7', c: '#5C4636' } : { t: '\u25A1', c: '#B9B09A' });
+    return out.map((r, i) => i ? [{ t: ' ', c: 'transparent' }, r] : [r]).flat();
+  }
+
+  // ---- D: each rating drawn as a strip of the garden: sun in the sky, fruit on a branch, thorns on a bramble.
+  strip(rows, slots, v, draw) {
+    const W = slots * 5 + 1, g = this.grid(W, rows);
+    for (let i = 0; i < slots; i++) draw(g, 1 + i * 5, v >= i + 1 ? 2 : v >= i + 0.5 ? 1 : 0, i);
+    return g;
+  }
+
+  sunArt(v) {
+    const SUN = '#A87400', DIM = '#C29A4A', CLOUD = '#9A9483';
+    const g = this.strip(2, 5, v, (g, x, f) => {
+      const put = (s, y, c) => { for (let j = 0; j < s.length; j++) g.put(x + j, y, s[j], c); };
+      if (f === 2) { put('\\|/', 0, SUN); put('-O-', 1, SUN); }
+      else if (f === 1) { put('.|.', 0, DIM); put('-o-', 1, DIM); }
+      else { put('.-.', 0, CLOUD); g.put(x - 1, 1, '(', CLOUD); put('___', 1, CLOUD); g.put(x + 3, 1, ')', CLOUD); }
+    });
+    return this.toRows(g);
+  }
+
+  fruitArt(v, seed) {
+    const r = this.rng('fruit:' + seed), W = 26, g = this.grid(W, 3);
+    for (let x = 0; x < W; x++) g.put(x, 0, x % 6 === 4 ? '&' : '~', x % 6 === 4 ? '#3F8A52' : '#5C4636');
+    for (let i = 0; i < 5; i++) {
+      const x = 2 + i * 5, f = v >= i + 1 ? 2 : v >= i + 0.5 ? 1 : 0;
+      if (f === 2) { g.put(x, 1, '|', '#5E8E4A'); g.put(x - 1, 2, '(', '#C24E39'); g.put(x, 2, '@', r() < 0.5 ? '#C24E39' : '#A87400'); g.put(x + 1, 2, ')', '#C24E39'); }
+      else if (f === 1) { g.put(x, 1, '|', '#5E8E4A'); g.put(x, 2, 'o', '#5E8E4A'); }
+      else g.put(x, 1, ',', '#9A9483');
+    }
+    return this.toRows(g);
+  }
+
+  thornArt(v) {
+    const W = 26, g = this.grid(W, 3);
+    for (let x = 0; x < W; x++) g.put(x, 1, x % 2 ? '~' : '-', '#5C4636');
+    for (let i = 0; i < 5; i++) {
+      const x = 2 + i * 5, f = v >= i + 1 ? 2 : v >= i + 0.5 ? 1 : 0;
+      if (f >= 1) { g.put(x, 0, '^', '#7A5C42'); g.put(x, 1, '+', '#5C4636'); }
+      if (f === 2) g.put(x, 2, 'v', '#7A5C42');
+    }
+    return this.toRows(g);
+  }
+
+  garden(c) {
+    const one = (k, what, art) => ({ k, what, txt: this.fmt(c.r[k]), aria: k + ' ' + this.fmt(c.r[k]) + ' out of 5', art });
+    return [
+      one('teaching', 'sun', this.sunArt(c.r.teaching)),
+      one('usefulness', 'fruit', this.fruitArt(c.r.usefulness, c.code)),
+      one('difficulty', 'thorns', this.thornArt(c.r.difficulty))
+    ];
+  }
+
+  notes(c) {
+    return [1, 2, 3].map((i) => ({ title: '[a note I wrote for this course]', mark: this.mark('notes/' + c.code.toLowerCase() + '-placeholder-' + i) }));
+  }
+
+  renderVals() {
+    const c = this.course(), rat = this.rat(c);
+    const key = (k) => this.key(k);
+    return { c, rat, garden: this.garden(c), notes: this.notes(c), lk: { page: key('course page'), tags: key('tags') },
+             trailNotes: this.trail('course-notes:' + c.code), roots: this.roots(), vine: this.vine(), bugs: this.bugs() };
+  }
+}
+</script>
+</body>
+</html>
