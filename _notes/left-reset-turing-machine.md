@@ -1,6 +1,7 @@
 ---
 date: October 18, 2025
 title: "left reset turing machine"
+layout: note
 ---
 ## 1 Předpoklady
 

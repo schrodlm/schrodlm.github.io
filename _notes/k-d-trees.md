@@ -3,10 +3,11 @@ references:
   - "https://www.youtube.com/watch?v=Glp7THUpGow"
   - "https://mj.ucw.cz/vyuka/dsnotes/07-geom.pdf"
 title: "k-d trees"
+layout: note
 ---
 k-d strom je statická binární stromová datová struktura, která se používá na vyhledávání v multidimenzionálním prostoru (porovnává více kritérií) - podobně jako [range tree](/notes/range-tree.html)
 > [!note] Pozor
-> - tato stromová struktura není samovyvažovací (i když existují samovyvažovací verze [adaptive k-d trees](/notes/adaptive-k-d-trees.html))
+> - tato stromová struktura není samovyvažovací (i když existují samovyvažovací verze adaptive k-d trees)
 > - často se s ní pracuje tak, že pracujeme nad statickými daty
 
 # Myšlenka
@@ -17,7 +18,7 @@ Takže kořen začne s výběrem jedné z dimenzí (dejme tomu dimenze $x$). Dě
 
 Vizuálně se nad tím dá uvažovat tak, že kořen rozděluje náš k-dimenzionální prostor na dvě půlky v dimenzi $x$. Jeho děti pak rozdělují již přidělenou půlku v dimenzi $y$.
 
-![Image](/assets/img/Pasted image 20260108183444.png)
+![Image](/assets/img/Pasted%20image%2020260108183444.png)
 
 ## Charakteristické vlastnosti
 Jelikož se počet bodů snižuje o polovinu v každé hladině, platí že výška stromu je $O(\log n)$, kde $n$ je celkový počet bodů

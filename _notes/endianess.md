@@ -27,7 +27,7 @@ Value:   78 56 34 12
 ## Endiannes in systems
 
 **Big endian**
-	- traditionally used in system like older PowerPC and soem network protocols (TCP/IP, [internet protocol](/notes/internet-protocol.html))
+	- traditionally used in system like older PowerPC and soem network protocols (TCP/IP, internet protocol)
 **Little endian**
 	- used in x86 processors, ARM processors and most modern computers
 

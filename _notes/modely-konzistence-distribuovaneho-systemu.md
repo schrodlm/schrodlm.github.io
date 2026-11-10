@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "modely konzistence distribuovaného systému"
+layout: note
 ---
 Modely konzistence jsou **formální dohody (smlouvy)** o tom, **jaká nekonzistence je povolená a jak se smí projevit**.
 
@@ -51,7 +52,7 @@ Snaží se simulovat chování jednoho počítače. Vyžadují synchronizaci (bl
 Obětují konzistenci pro rychlost a dostupnost ([CAP theorem](/notes/cap-theorem.html)). 
 #### Causal Consistency (Kauzální)
 - _Definice:_ Zápisy, které jsou **[kauzálně závislé](/notes/kauzalni-zavislost.html)** (příčina → následek), musí být všemi viděny ve stejném pořadí. Nezávislé (konkurentní) zápisy mohou být viděny různě.
-- _Implementace:_ logický čas#Vektorové hodiny (vector clocks).
+- _Implementace:_ [logický čas > Vektorové hodiny (vector clocks)](/notes/logicky-cas.html#vektorové-hodiny-vector-clocks).
 - _Příklad:_ Chat (Odpověď se nesmí zobrazit před Otázkou).
 #### FIFO (PRAM) Consistency
 - _Definice:_ Vidím zápisy od jednoho procesu ve správném pořadí. Zápisy od různých procesů se mohou míchat.

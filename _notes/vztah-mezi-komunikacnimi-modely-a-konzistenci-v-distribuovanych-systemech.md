@@ -10,12 +10,12 @@ Konzistence je o tom, **jaký pohled na data mají různé části systému**. K
 
 ---
 ## Konkrétní souvislosti
-**Synchronní komunikace → Silnější konzistence**
-- Když klient čeká na potvrzení od všech replik, můžete garantovat linearizabilitu
+**Synchronní komunikace → [Silnější konzistence](/notes/konzistence-distribuovaneho-systemu.html#silná-konzistence-strong-consistency)**
+- Když klient čeká na potvrzení od všech replik, můžete garantovat [linearizabilitu](/notes/modely-konzistence-distribuovaneho-systemu.html#linearizability-linearizovatelnost--atomická)
 - Máte jistotu, že operace jsou aplikovány v konzistentním pořadí
 - Ale platíte za to vyšší latencí a nižší dostupností
 
-**Asynchronní komunikace → Slabší konzistence**
+**[Asynchronní komunikace](/notes/komunikace-v-distribuovanych-systemech.html#asynchronní-komunikace-non-blocking) → [Slabší konzistence](/notes/konzistence-distribuovaneho-systemu.html#slabá-konzistence-weak-consistency)**
 - Zprávy přichází v různém pořadí, mohou se zpozdit nebo ztratit
 - Různé repliky mohou mít dočasně odlišný pohled na data
 - Typicky vedou k eventual consistency nebo kauzální konzistenci

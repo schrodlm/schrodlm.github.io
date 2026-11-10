@@ -15,7 +15,7 @@ Myšlenka je jednoduchá:
 3. Tyto koncovky seřadíte podle abecedy.
 4. Místo abyste ukládali celé texty koncovek, uložíte jen **číslo**, kde v původním slově začínají.
 
-![Suffixové pole slova "annbansbananas" a pole $R$ a $L$](/assets/img/Pasted image 20260109172540.png)
+![Suffixové pole slova "annbansbananas" a pole $R$ a $L$](/assets/img/Pasted%20image%2020260109172540.png)
 
 - $i$ - index
 - $S[i]$ (suffixové pole) - pozice prvního písmene suffixu v původním slově (index)
@@ -31,12 +31,12 @@ Myšlenka je jednoduchá:
 - **$L[i]$ ([LCP array](/notes/lcp-array.html)):** Říká **JAK** (jak moc jsou si sousedé podobní).
 
 **Správná mentální mapa:** 
-1. Postavíme $S$ (k tomu nutně potřebujeme $R$ při algoritmu zdvojování (#Konstrukce (algoritmus zdvojování)). 
+1. Postavíme $S$ (k tomu nutně potřebujeme $R$ při algoritmu zdvojování ([Konstrukce (algoritmus zdvojování)](#konstrukce-algoritmus-zdvojování)). 
 2. Máme hotovo.
 3. Následně, pokud to úloha vyžaduje, postavíme $L$ (využijeme k tomu hotové $S$ a $R$).
 
 > [!note] Konstrukce LCP
-> [LCP array](/notes/lcp-array.html) může být zkonstruováno ze suffixového pole v čase $O(n)$ (LCP array#Konstrukce (Kasaiův algoritmus))
+> [LCP array](/notes/lcp-array.html) může být zkonstruováno ze suffixového pole v čase $O(n)$ ([LCP array > Konstrukce (Kasaiův algoritmus)](/notes/lcp-array.html#konstrukce-kasaiův-algoritmus))
 
 > [!important] Pozor
 > LCP ani rank nejsou formálně součástí datové struktury suffixového pole

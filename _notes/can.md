@@ -34,7 +34,7 @@ Receiving nodes utilize hardware-level filters to determine whether a broadcaste
 - **Job:** This chip sits between themicrocontroller and the actual network wires. It translates digital 1s and 0s into the physical voltage differences on the wires.
 - **Protection:** It acts as a shield, protecting the fragile microcontroller from massive power surges and static electricity.
 - **Fail-safe:** If a node loses power, the transceiver goes completely passive so it doesn't drag down or freeze the rest of the network.
-![Image](/assets/img/Pasted image 20260615101945.png)
+![Image](/assets/img/Pasted%20image%2020260615101945.png)
 
 ---
 
@@ -48,7 +48,7 @@ Because any node can talk at any time, two or more nodes will eventually try to 
 When multiple nodes start talking at the same time, they all start sending their message's ID number, bit-by-bit. As they send their ID, they also "listen" to the wire to see what is actually happening.
 - **The Test:** Every time a node sends a `1`, it checks the wire. If it sees a `0` instead, it realizes: _"Uh oh, someone else is sending a dominant bit right now."_. The node instantly stops talking and switches to listening mode.
 - **The Winner:** The node with the **lowest numerical ID** will naturally have the most zeros (`0`s) at the start of its message. Because zeros always win, that node gets to finish its message without a single microsecond of interruption or data corruption.
-![Image](/assets/img/Pasted image 20260615102456.png)
+![Image](/assets/img/Pasted%20image%2020260615102456.png)
 
 ---
 
@@ -65,7 +65,7 @@ CAN FD fixed this issue by changing two major rules without requiring completely
 - **Bigger Payloads:** It boosts the maximum data size from 8 bytes up to **64 bytes** per message.
 - **The Switch (Dual Bit-Rate):** CAN FD literally changes bit-rate mid-message.
 The diagram below shows exactly how CAN FD changes speed compared to Classical CAN:
-![Image](/assets/img/Pasted image 20260615102736.png)
+![Image](/assets/img/Pasted%20image%2020260615102736.png)
 Notice how CAN FD splits its speed based on what the network is doing:
 
 - **The Slow Zones:** During the **Identifier Field** (where nodes argue over who gets to talk) and the final check-in, the network runs at the standard, safer **Nominal Bit Rate** (1 Mbps).

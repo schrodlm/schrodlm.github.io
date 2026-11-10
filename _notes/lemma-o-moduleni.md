@@ -3,7 +3,7 @@ layout: note
 title: "lemma o modulení"
 ---
 
-**Obecný případ (Lemma M):** Když nevíme nic o velikosti $p$ vs $m$ (jen $p>m$), zhorší se nezávislost faktorem **$4$**. (Typicky se uvádí u lineární kongruence).
+**Obecný případ (Lemma M):** Když nevíme nic o velikosti $p$ vs $m$ (jen $p>m$), zhorší se nezávislost faktorem **$4$**. (Typicky se uvádí u [lineární kongruence](/notes/rodina-linearnich-hashovacich-funkci.html#důkaz-2-nezávislosti)).
 
 **Případ velkého univerza (Lemma K):** Když máme luxus obrovského $p$ ($p≥2km$), zhorší se nezávislost jen faktorem **$2$**. (Typicky u [polynomů](/notes/rodina-polynomialnich-hashovacich-funkci.html), nebo optimalizované lineární kongruence).
 

@@ -36,4 +36,4 @@ Uspořádáme $N$ uzlů do $\sqrt N \times \sqrt N$ matice.
    - Po opuštění CS pošle $P_i$ zprávu RELEASE členům $V_i$
    - $T_i$ uvolní svůj hlas a pošlou VOTE **prvnímu čekajícímu ve frontě**
 
-![Image](/assets/img/Pasted image 20260117134955.png)
+![Image](/assets/img/Pasted%20image%2020260117134955.png)

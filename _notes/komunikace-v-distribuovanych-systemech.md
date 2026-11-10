@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "komunikace v distribuovaných systémech"
+layout: note
 ---
 Jak si uzly mezi sebou předávají data? Protože nemáme sdílenou paměť, je způsob, jakým si předáváme zprávy, důležitý pro korektní chování systému.
 
@@ -12,7 +13,7 @@ K implementaci komunikace v distribuovaném systému používáme abstrakce v po
 Je důležité rozdělit systém ve kterém komunikace probíhá a náturu jakou v tomto systému má komunikace předpoklady. [modely časování (timing models)](/notes/modely-casovani-timing-models.html)
 
 ## Typy komunikací
-Komunikace v distribuovaných systémech se dělí podle synchronnosti, vazby v čase, adresování, záruk doručení a pořadí – a každá volba přímo ovlivňuje konzistenci, stavovost a [spolehlivost distribuovaného systému](/notes/spolehlivost-distribuovaneho-systemu.html).
+Komunikace v distribuovaných systémech se dělí podle synchronnosti, vazby v čase, adresování, záruk doručení a pořadí – a každá volba přímo ovlivňuje [konzistenci](/notes/distributed-system.html), [stavovost](/notes/distributed-system.html) a [spolehlivost distribuovaného systému](/notes/spolehlivost-distribuovaneho-systemu.html).
 
 ## Synchronizace (Časová vazba)
 Tady se rozhodujeme, jak moc jsou odesílatel a příjemce svázáni v čase.

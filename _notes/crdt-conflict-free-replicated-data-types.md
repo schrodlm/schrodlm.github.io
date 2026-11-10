@@ -10,7 +10,7 @@ CRDT jsou speciální datové typy (např. počítadla, množiny, seznamy), kter
 - **Klasický konsenzus:** Vyžaduje, aby se uzly na každé změně dohodly (výměna zpráv, lídr, kvórum). To je pomalé a nefunguje to, když je síť rozdělená (_network partition_).
     
 - **CRDT přístup:** Uzly prostě zapisují lokálně. Když se později spojí, jejich stavy se **slijí (merge)** dohromady. Matematika CRDT zaručuje, že výsledek bude na všech uzlech identický, aniž by musel někdo rozhodovat, kdo měl pravdu.
-![Image](/assets/img/Pasted image 20260119084455.png)
+![Image](/assets/img/Pasted%20image%2020260119084455.png)
 
 ### Jak to funguje? (Matematická magie)
 Aby se stavy mohly bezpečně sloučit, musí operace (nebo merge funkce) splňovat tři základní vlastnosti:

@@ -7,7 +7,7 @@ title: "OpenMP 101"
 
 Foundational notes on OpenMP for the NPRG042 lab exam. Each section grew out of one question I tried to answer for myself — they're written so I can re-read them in a year and the *why* is still clear.
 
-Related: [amdahl law](/notes/amdahl-law.html), [cache-aware model](/notes/cache-aware-model.html).
+Related: amdahl law, cache-aware model.
 
 ---
 

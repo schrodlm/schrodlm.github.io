@@ -3,11 +3,12 @@ tags:
   - distributed_system
 language: czech
 title: "virtuální synchronie"
+layout: note
 ---
 Je to [komunikační model](/notes/komunikacni-model.html) ,implementovaný [synchronizačními algoritmy](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html),zavedený systémem ISIS řeší problém, jak spolehlivě komunikovat ve skupině, kde se dynamicky mění členství (procesy padají a obnovují se).
 
 Řeší otázku **"Co se stane, když uzel ve skupině umře?"**
-- _Odpověď:_ Zajistí atomicitu a konzistenci při změně skupiny.
+- _Odpověď:_ Zajistí atomicitu a [konzistenci](/notes/distributed-system.html) při změně skupiny.
 - _Stará se o:_ Aby se nestalo, že zprávu A dostane jen polovina skupiny, protože odesílatel zrovna spadl.
 ---
 ## Garance
@@ -34,7 +35,7 @@ Definuje bariéru.
 
 - **Bariéra:** Změna pohledu (View Change) funguje jako synchronizační bod. Všechny staré zprávy se musí flushnout předtím, než se inicializuje nový pohled.
 ### 4. Kauzalita a totální uspořádání (volitelné)
-Virtuální synchronie sama o sobě garantuje jen "pořádek vůči pohledům". Uvnitř pohledu ale obvykle poskytuje garance uspořádání podle volby programátora:
+Virtuální synchronie sama o sobě garantuje jen "pořádek vůči pohledům". Uvnitř pohledu ale obvykle poskytuje garance [uspořádání](/notes/skupinova-komunikace-broadcast.html) podle volby programátora:
 
 - **Causal Order:** Respektuje logické hodiny.
 - **Total Order:** Všichni vidí zprávy ve stejném pořadí (nutné pro active replication).
@@ -75,12 +76,12 @@ To nejdůležitější se děje, když odesílatel spadne uprostřed práce.
 3. Uzel B zjistí, že má zprávu od A, kterou C nemá.
 4. **B pošle tuto zprávu uzlu C.** (Přeživší si pomáhají).
 5. Teprve až mají B i C stejné zprávy, systém vyhlásí `View_2 {B, C}`.
-![Image](/assets/img/Pasted image 20260116180029.png)
+![Image](/assets/img/Pasted%20image%2020260116180029.png)
 
 ---
 ## Analogie
 Představ si skupinu lidí v místnosti, kteří si dělají poznámky (replikují data).
-- **[Doručovací algoritmus](/notes/dorucovaci-protokoly-delivery-protocols.html) (Total Order):**
+- **Doručovací algoritmus (Total Order):**
     - Zajistí, že když mluvčí řekne větu, všichni si ji zapíší na řádek 5. Nikdo si ji nezapíše na řádek 6.
         
 - **Virtuální synchronie:**

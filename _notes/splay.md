@@ -20,7 +20,7 @@ Pro následující definici operací zavedu prvky:
 - Vždy se používá pouze u kořene stromu
 
 **Ukázka**
-![Image](/assets/img/Pasted image 20251008201252.png)
+![Image](/assets/img/Pasted%20image%2020251008201252.png)
 **Dopad na výšku stromu**
 - Tato operace sama o sobě výšku stromu příliš nemění, pouze lokálně prohodí dva uzly. Je to jen "dokončovací" krok.
 ---
@@ -35,7 +35,7 @@ Používá se když pro oba prvky $x$ a $p$ platí jedno z těchto tvrzení:
 - jsou oba pravé děti
 
 **Ukázka**
-![Image](/assets/img/Pasted image 20251008202505.png)
+![Image](/assets/img/Pasted%20image%2020251008202505.png)
 
 **Dopad na výšku stromu**
 - Tento krok "narovnává" dlouhé lineární řetězce.
@@ -49,7 +49,7 @@ Používá se, když pro oba prvky $x$ a $p$ platí:
 - jeden je levé dítě a druhý pravé
 
 **Ukázka**
-![Image](/assets/img/Pasted image 20251008202601.png)
+![Image](/assets/img/Pasted%20image%2020251008202601.png)
 
 **Dopad na výšku stromu**
 Podstromy se efektivněji sbalí k sobě. Stejně jako zig-zig pomáhá snižovat celkovou výšku stromu tím, že "vytahuje" hluboké uzly nahoru a rozděluje původní větve.

@@ -6,7 +6,7 @@ title: "volba koordinátora (leader election)"
 Mnoho algoritmů vyžaduje centrálního koordinátora. Pokud koordinátor spadne, musí být zvolen nový. Předpokládá se, že každý proces má unikátní ID.
 
 ---
-![Image](/assets/img/Pasted image 20260118202616.png)
+![Image](/assets/img/Pasted%20image%2020260118202616.png)
 # Algoritmy
 ## Bully Algoritmus
 - Proces $P$ si všimne, že koordinátor neodpovídá. Pošle zprávu ELECTION všem procesům s vyšším ID.

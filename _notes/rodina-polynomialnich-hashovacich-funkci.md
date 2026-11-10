@@ -49,7 +49,7 @@ Z algebry víme, že $k$ bodů v rovině jednoznačně určuje polynom stupně $
 Šance, že se trefíme do tohoto jediného polynomu je tedy přesně $1/p^k$
 - To přesně odpovídá definici ($k,1$)-nezávislosti (pravděpodobnost je součinem pravděpodobností pro $k$ nezávislých jevů: $(1/p)^k$)
 
-### Krok B: Přechod do tabulky (Aplikace Lemmatu K)
+### Krok B: Přechod do tabulky (Aplikace [Lemmatu K](/notes/lemma-o-moduleni.html#lemma-k-k-independent-composition-modulo-m))
 Nyní funkci ohneme do velikosti tabulky $m$:
 $$ h_t(x) = g_t(x) (\mod m) $$
 

@@ -16,18 +16,18 @@ It integrates formal ontology principles into UML to create more semantically pr
 | **Semantic Depth**   | Focuses on structural and behavioral aspects  | Emphasizes ontological distinctions and semantic clarity    |
 | **Type Hierarchies** | Supports generalization/specialization        | Distinguishes between rigid and anti-rigid categories       |
 **Example**
-![Image](/assets/img/Pasted image 20241009113118.png)
+![Image](/assets/img/Pasted%20image%2020241009113118.png)
 
 ## Classes and atributtes
 - Classes in OntoUML are based on the UML concept of classes, which describe the shared properties of certain entities, referred to as class instances.
 - Class instances contain values of variables defined by their class, in accordance with the attribute's characteristics, such as type and multiplicity.
 - Attributes represent (more or less intrinsic) properties shared by the instances of a class.
-![Image](/assets/img/Pasted image 20241009132152.png){:width="500"}
+![Image](/assets/img/Pasted%20image%2020241009132152.png){:width="500"}
 
 ## Instances
 Instances of classes have specific values of attributtes. It is called instance-level modelling
 They are used for validation, simulation and prototyping.
-![Image](/assets/img/Pasted image 20241009132328.png){:width="300"}
+![Image](/assets/img/Pasted%20image%2020241009132328.png){:width="300"}
 
 ## Relation between instances and classes
 

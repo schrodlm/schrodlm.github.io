@@ -49,4 +49,4 @@ x86, ARM, RISC-V, AVR
 
 
 # Taxonomy of ISA
-![Image](/assets/img/Pasted image 20240924212540.png)
+![Image](/assets/img/Pasted%20image%2020240924212540.png)

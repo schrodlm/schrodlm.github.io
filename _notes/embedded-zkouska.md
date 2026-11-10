@@ -7,7 +7,7 @@ title: "EMBEDDED ZKOUŠKA"
 
 **real-time systém**
 systém reagující na vnější změny, podle kterých vykonává funkcí a výsledek doručuje v nějakém čase
-![Image](/assets/img/Pasted image 20260616171401.png)
+![Image](/assets/img/Pasted%20image%2020260616171401.png)
 **korektnost real-time systému**
 system, jehož korektnost zavisí jak na správném výsledku tak i na správném načasování *např. airbag*
 
@@ -23,7 +23,7 @@ RT systému můžou, ale nemusí být safety-critical
 	- jak rychle je zpracuje vstup a odpoví se na něj (delay)
 2. **Jak často**
 	- jak často je potřeba dostávat vstup z okolího světa, abychom o něm měli dostatečný přehled (perioda)
-![Image](/assets/img/Pasted image 20260616171636.png)
+![Image](/assets/img/Pasted%20image%2020260616171636.png)
 
 **real-time != rychlost**
 real-time nemusí být nutně rychlý systém, nejdůležitější je, že je předvidatelný/deterministický 

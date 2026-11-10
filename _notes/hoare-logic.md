@@ -12,7 +12,7 @@ The central feauture of Hoare logic is the Hoare triple. A triple describes how 
 
 It looks like this:
 $$ \{P\}C\{Q\} $$
-where $P$ is a precondition and $Q$ is a postcondition. $C$ is the program relating $P$ to $Q$.
+where $P$ is a [precondition](/notes/logical-contracts.html#preconditions) and $Q$ is a [postcondition](/notes/logical-contracts.html#postconditions). $C$ is the program relating $P$ to $Q$.
 
 It means that when precondition $P$ is met C is executed, it will establish the postcondition.
 
@@ -33,7 +33,7 @@ We can reason in the opposite direction as well, definining the weakest precondi
 
 ## Verifying loops
 
-How to verify partial correctness of loops of the form `while b do S`, we come up with an invariants $I$ such that the following conditions hold:
+How to verify partial correctness of loops of the form `while b do S`, we come up with an [invariants](/notes/logical-contracts.html#loop-invariants) $I$ such that the following conditions hold:
 1. $P\implies I$ - this invariant must initially be true
 2. $\{Inv \land B\} S \{Inv\}$ - each execution of the loop preserver the invariant
 3. $(Inv \land \lnot{B}) \implies Q$ - the invariant and the loop exit condition imply the postcondition

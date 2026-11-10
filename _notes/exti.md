@@ -1,6 +1,7 @@
 ---
 related_course: NSWI028
 title: "EXTI"
+layout: note
 ---
 EXTI (External Interrupt/Event Controller) je periferie v mikrokontroléru, která sedí mezi [GPIO](/notes/gpio.html) piny a [NVIC](/notes/nvic.html). Sleduje změny na pinech a generuje z nich [interrupt](/notes/interrupt.html) nebo event požadavky.
 

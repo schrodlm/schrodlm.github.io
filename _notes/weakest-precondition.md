@@ -6,9 +6,9 @@ title: "weakest precondition"
 source: https://www.cs.cmu.edu/~aldrich/courses/654-sp09/notes/3-hoare-notes.pdf
 
 
-The **weakest precondition** (WP) is a concept in **formal verification** and **program correctness**. It a special type of a precondition
+The **weakest precondition** (WP) is a concept in **formal verification** and **program correctness**. It a special type of a [precondition](/notes/logical-contracts.html#preconditions)
 
-It refers to the least restrictive condition that must hold before the execution of a program (or part of it) to ensure that a specificpostcondition will hold after the program's execution. 
+It refers to the least restrictive condition that must hold before the execution of a program (or part of it) to ensure that a specific[postcondition](/notes/logical-contracts.html#postconditions) will hold after the program's execution. 
 
 In simpler terms, the weakest precondition **is the minimal condition required to guarantee a desired outcome**.
 

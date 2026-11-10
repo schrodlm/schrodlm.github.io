@@ -3,6 +3,7 @@ tags: [distributed_system]
 source: https://www.youtube.com/watch?v=d7nAGI_NZPk
 language: czech
 title: "paxos"
+layout: note
 ---
 Je to základní **rodina protokolů** pro [dosažení konsenzu](/notes/konsenzus-v-distribuovanych-systemech.html) využívající [quorum-based koordinace](/notes/quorum-based-koordinace.html) v asynchronním systému, kde uzly mohou havarovat, ale nejsou zákeřné (nevyskytují se byzantine failures). Leslie Lamport ho navrhl tak, aby byl matematicky neprůstřelný i v nespolehlivých sítích.
 
@@ -67,7 +68,7 @@ Jakmile Proposer získá sliby od většiny (Quora), přejde k samotnému hlasov
 3. **Acceptor** zprávu přijme. Pokud mezi fází 1 a 2 nepřijal jiný návrh s ještě vyšším číslem, zapíše si hodnotu do stabilního úložiště a pošle zprávu **Accepted** všem Proposerům a Learnerům.
 4. **Learner** (a původní Proposer) po obdržení potvrzení od většiny Acceptorů ví, že hodnota byla definitivně zvolena.
 
-![Image](/assets/img/Pasted image 20260118164800.png)
+![Image](/assets/img/Pasted%20image%2020260118164800.png)
 
 ### Shrnutí
 Tyto dvě fáze zajišťují, že i když uzel uprostřed procesu vypadne nebo se síť rozdělí, systém se nikdy neshodne na dvou různých věcech. První fáze **uklízí po starých lídrech** a druhá fáze **potvrzuje novou pravdu**. Klíčem je **zápis do stabilního úložiště** (nesmazatelný inkoust), aby uzly po restartu věděly, co slíbily.

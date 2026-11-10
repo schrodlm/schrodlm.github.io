@@ -5,7 +5,7 @@ title: "type class pattern"
 
 The main point of the type class pattern is to **add new functionality to existing code without modifying that code.**
 
-It's a way to achieve compile-time [polymorphism](/notes/polymorphism.html) that is more flexible and less invasive than inheritance.
+It's a way to achieve compile-time polymorphism that is more flexible and less invasive than inheritance.
 
 It works by decoupling the data (like `class Person`) from the behaviors that act on it (like `toJson`).
 

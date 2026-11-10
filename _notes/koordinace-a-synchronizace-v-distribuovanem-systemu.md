@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "koordinace a synchronizace v distribuovaném systému"
+layout: note
 ---
 # Koordinace a synchronizace v distribuovaných systémech
 
@@ -62,7 +63,7 @@ Dosažení shody mezi procesy i při selháních.
 
 **Algoritmy:** Paxos, Raft
 
-**Limity:** konsenzus v distribuovaných systémech#FLP Impossibility - konsenzus v asynchronním systému 
+**Limity:** [konsenzus v distribuovaných systémech > FLP Impossibility](/notes/konsenzus-v-distribuovanych-systemech.html#flp-impossibility) - konsenzus v asynchronním systému 
 s možností selhání není vždy možný
 
 #### [Transakce](/notes/transakce-v-distribuovanych-systemech.html)

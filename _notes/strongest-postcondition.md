@@ -5,7 +5,7 @@ title: "strongest postcondition"
 
 source: https://www.cs.cmu.edu/~aldrich/courses/654-sp09/notes/3-hoare-notes.pdf
 
-The **strongest postcondition** refers to the most precise and detailed condition that will hold **after** the execution of a program (or statement), given an initial state (precondition).
+The **strongest postcondition** refers to the most precise and detailed condition that will hold **after** the execution of a program (or statement), given an initial state ([precondition](/notes/logical-contracts.html#preconditions)).
 
 It describes exactly what is true after a program's execution, capturing all the effects of the program in its execution path.
 

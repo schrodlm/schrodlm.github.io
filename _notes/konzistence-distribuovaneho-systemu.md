@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "konzistence distribuovaného systému"
+layout: note
 ---
 Konzistence popisuje jak moc mají různé uzly stejný (nebo kompatibilní) pohled na data a stav systému.
 
@@ -26,8 +27,8 @@ Model, který se snaží nekonzistenci zcela eliminovat (nebo ji skrýt před u�
     - **Vysoká latence:** Zápis trvá dlouho, protože musíme čekat, až se data propíší na ostatní uzly (nebo alespoň do kvóra).
     - **Nízká dostupnost ([CAP theorem](/notes/cap-theorem.html)):** Pokud se přeruší spojení mezi uzly, systém se musí **zastavit** (přestat přijímat zápisy), aby nevznikla chyba. Nemůže riskovat rozdílná data.
 - **Typické modely:**
-    - **Linearizovatelnost (linearizability):** Absolutní shoda s reálným časem (nejpřísnější model).
-    - **Sekvenční konzistence (sequential consistency):** Shoda s logickým pořadím operací.
+    - **[Linearizovatelnost](/notes/modely-konzistence-distribuovaneho-systemu.html#linearizability-linearizovatelnost--atomická) (linearizability):** Absolutní shoda s reálným časem (nejpřísnější model).
+    - **[Sekvenční konzistence](/notes/modely-konzistence-distribuovaneho-systemu.html#sequential-consistency-sekvenční) (sequential consistency):** Shoda s logickým pořadím operací.
 ## Slabá konzistence (weak consistency)
 Model, který **akceptuje nekonzistenci** výměnou za rychlost a dostupnost. Systém negarantuje, že čtení vrátí nejnovější hodnotu. Může vrátit starou (stale) hodnotu.
 
@@ -39,8 +40,8 @@ Model, který **akceptuje nekonzistenci** výměnou za rychlost a dostupnost. Sy
     - **Vysoká dostupnost:** I když spadne půlka sítě, můžu stále číst i zapisovat (i když to může vést ke konfliktům).
         
 - **Typické modely:**
-    - **Eventual consistency** "Když se přestane zapisovat, všechny repliky se nakonec shodnou." (Používá DNS, sociální sítě).
-    - **Kauzální konzistence:** Garantuje pořadí jen u souvisejících operací (odpověď vidím až po otázce), zbytek může být "rozházený".
+    - **[Eventual consistency](/notes/modely-konzistence-distribuovaneho-systemu.html#eventual-consistency-případná)** "Když se přestane zapisovat, všechny repliky se nakonec shodnou." (Používá DNS, sociální sítě).
+    - **[Kauzální konzistence](/notes/modely-konzistence-distribuovaneho-systemu.html#causal-consistency-kauzální):** Garantuje pořadí jen u souvisejících operací (odpověď vidím až po otázce), zbytek může být "rozházený".
 
 ## Nekonzistence
 Nekonzistence je **stav**, kdy se data v různých replikách téhož systému liší. Není to nutně chyba, ale přirozená vlastnost distribuovaného systému v čase mezi zápisem a synchronizací.
@@ -68,7 +69,7 @@ Nekonzistence je **stav**, kdy se data v různých replikách téhož systému l
 
 **Stav distribuovaného systému**
 - souhrn stavů všech uzlů + stav komunikace mezi nimi (zprávy „na cestě“).
-#### 2. Asynchronní komunikace
+#### 2. [Asynchronní komunikace](/notes/komunikace-v-distribuovanych-systemech.html#asynchronní-komunikace-non-blocking)
 - Zprávy se:
     - zpožďují
     - mohou dorazit v jiném pořadí
@@ -81,4 +82,4 @@ Nekonzistence je **stav**, kdy se data v různých replikách téhož systému l
 Aby byl distribuovaný systém spolehlivý (když jeden uzel shoří, data nezmizí) a rychlý (data jsou blízko uživatele), musíme data **replikovat** (kopírovat na více uzlů). Tím implicitně vzniká nekonzistence.
 
 ### Závěr
-V distribuovaných systémech se tedy nevyhneme s nekonzistencí stavu systému. Perfektní konzistence je nemožná nebo extrémně drahá. Řešením jsou #Modely konzistence.
+V distribuovaných systémech se tedy nevyhneme s nekonzistencí stavu systému. Perfektní konzistence je nemožná nebo extrémně drahá. Řešením jsou Modely konzistence.

@@ -1,6 +1,7 @@
 ---
 related_course: NSWI028
 title: "Watchdog"
+layout: note
 ---
 Watchdog je typicky HW counter, jehož účel je resetovat systém pokud dosáhne 0. Proto ho systém musí periodicky obnovovat. Tím dá systém najevo, že je zdravý a korektně funguje.
 

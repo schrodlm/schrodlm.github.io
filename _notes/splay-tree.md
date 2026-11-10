@@ -14,7 +14,7 @@ Funguje na principu [splay](/notes/splay.html) operace, které udržuje strom p�
 Všechny klasické operace (`insert`, `find`, `delete`) jsou zkombinované se [splay](/notes/splay.html). Splayování strom restrukturuje a prvek se kterým jsme pracovali se vždy dostane do kořene (a zároveň většinou spraví část stromu)
 
 > [!important] Z toho plyne
-> Nedávno přistupované uzly mají tendenci zůstávat blíž kořenu (#Access lemma (Věta o přístupu))
+> Nedávno přistupované uzly mají tendenci zůstávat blíž kořenu ([Access lemma (Věta o přístupu)](#access-lemma-věta-o-přístupu))
 
 ## Výhody
 Oproti ostatním samovyvažovacím stromovým strukturám, má splay tree dvě hlavní výhody:
@@ -92,7 +92,7 @@ Musím ukázat, že pro každý typ kroku (zig, zig-zig, zig-zag) platí, že je
 
 #### zig-zag
 Jediné prvky, které se mohou změnit ranky jsou $x$, $p$ a $g$.
-![Image](/assets/img/Pasted image 20251008202601.png)
+![Image](/assets/img/Pasted%20image%2020251008202601.png)
 Tedy $\Phi += (r'(x) - r(x)) + (r'(p) - r(p)) + r'(g) - r(g))$. Reálná cena operace je $2$, tedy amortizovaná cena podle vzorce:  
 
 Amortizovaná cena ($A$) =  Skutečná cena + Změna potenciálu($\Delta \Phi$)
@@ -118,7 +118,7 @@ $$
 
 #### zig-zig
 Stejná myšlenka platí i pro zig-zig. Znovu je reálná cena $2$. Ranky se mohou měnit pouze pro $x$, $p$ a $g$.
-![Image](/assets/img/Pasted image 20251008202505.png)
+![Image](/assets/img/Pasted%20image%2020251008202505.png)
 
 Takže amortizovaná cena bude
 $$ A = 2 + r'(x) + r'(p) + r'(g) - r(x) - r(p) - r(g) $$
@@ -154,7 +154,7 @@ $$
 - Potřebuji dokázat, že $A \leq 3(r'(x)-r(x))+1$.
 
 Reálná cena operace je $1$. Ranky se mohou měnit pouze v $x$ a $p$.
-![Image](/assets/img/Pasted image 20251008201252.png)
+![Image](/assets/img/Pasted%20image%2020251008201252.png)
 Amortizovaná cena tedy bude vypadat takto:
 $$ A = 1 + r'(x) + r'(y) - r(x) - r(y) $$
 

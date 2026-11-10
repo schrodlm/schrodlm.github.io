@@ -7,4 +7,4 @@ The **Ullman Triangle** is a model used to explain the relationship between **da
 
 **Conceptual modeling** is positioned at the **model** point of the triangle. It abstracts and simplifies **reality**, focusing on representing only those aspects of the real world that are relevant to the system.
 
-![Image](/assets/img/Pasted image 20240926205406.png)
+![Image](/assets/img/Pasted%20image%2020240926205406.png)

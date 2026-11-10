@@ -14,7 +14,7 @@ Pro efektivní nalezení minima z $k$ prvků se používá heap. Časová složi
 - **Celková časová složitost**
 Celková časové složitost zůstává $O(n \log n)$, stejně jako u klasického mergesortu protože $\frac{\log n}{\log k} \cdot n \log k = n \log n$
 
-## Analýza složitost (cache aware)
+## Analýza složitost ([cache aware](/notes/io-model.html#cache-aware-model))
 V tomto modelu předpokládáme, že známe velikost cache $M$ a velikost bloku $B$.
 
 **Složitost jednoho průchodu**:

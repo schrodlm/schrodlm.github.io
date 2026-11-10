@@ -1,6 +1,7 @@
 ---
 not_listable: true
 title: "MFF"
+layout: note
 ---
 I started attending MFF with System Programming specialization after finishing my degree at [FIT ČVUT](/courses/fit-cvut.html).
 

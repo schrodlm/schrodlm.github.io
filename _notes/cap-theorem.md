@@ -3,12 +3,13 @@ tags:
   - distributed_system
 language: czech
 title: "CAP theorem"
+layout: note
 ---
 V distribuovaném systému, který ukládá data, je **nemožné** dosáhnout současně všech tří následujících vlastností:
 
 1. **C - Consistency (konzistence):**
     - Každé čtení vrátí nejnovější zapsanou hodnotu (nebo chybu).
-    - Odpovídá **silné konzistenci**. Všechny uzly vidí to samé.
+    - Odpovídá **[silné konzistenci](/notes/konzistence-distribuovaneho-systemu.html#silná-konzistence-strong-consistency)**. Všechny uzly vidí to samé.
 
 2. **A - Availability (dostupnost):**
     - Každý požadavek na neselhávající uzel obdrží odpověď (bez chyby), ale bez záruky, že obsahuje nejnovější data.
@@ -30,7 +31,7 @@ Máme jen dvě možnosti: **CP** nebo **AP**.
 
 **Priorita:** Bezpečnost dat.
 - **Scénář:** Síť se rozpadne. Uzel A nemůže mluvit s uzlem B.
-- **Reakce:** Abychom zabránili nekonzistenci (aby si A a B nemysleli různé věci), systém **odmítne odpovídat** na jedné (nebo obou) stranách rozpadu. Vrací chybu nebo timeout.
+- **Reakce:** Abychom zabránili [nekonzistenci](/notes/konzistence-distribuovaneho-systemu.html#nekonzistence) (aby si A a B nemysleli různé věci), systém **odmítne odpovídat** na jedné (nebo obou) stranách rozpadu. Vrací chybu nebo timeout.
 
 - **Oběť:** Obětujeme Dostupnost (A).
 - **Příklad:** Bankovní systémy, Distribuované databáze s transakcemi (HBase, MongoDB se zapnutým `readConcern: majority`, Redis v určité konfg.).
@@ -39,7 +40,7 @@ Máme jen dvě možnosti: **CP** nebo **AP**.
 **Priorita:** Dostupnost služby.
 - **Scénář:** Síť se rozpadne.
 - **Reakce:** Oba uzly (A i B) přijímají zápisy a čtení, i když spolu nemluví. Data se rozcházejí. Až se síť spojí, vzniklý "bordel" (konflikty) se nějak vyřeší (merge).
-- **Oběť:** Obětujeme Konzistenci (C). Máme jen modely konzistence distribuovaného systému#Eventual Consistency (Případná).
+- **Oběť:** Obětujeme Konzistenci (C). Máme jen [modely konzistence distribuovaného systému > Eventual Consistency (Případná)](/notes/modely-konzistence-distribuovaneho-systemu.html#eventual-consistency-případná).
     
 - **Příklad:** Sociální sítě (lajky), DNS, Cassandra, Amazon Dynamo (nákupní košík).
     

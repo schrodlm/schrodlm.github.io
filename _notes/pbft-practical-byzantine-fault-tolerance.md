@@ -3,7 +3,7 @@ layout: note
 title: "PBFT (practical byzantine fault tolerance)"
 ---
 
-Řeší [problém byzantských generálů](/notes/problem-byzantskych-generalu.html) a obecně [byzantine failure](/notes/byzantine-failure.html)
+Řeší problém byzantských generálů a obecně [byzantine failure](/notes/byzantine-failure.html)
 
 
 ### PBFT (Practical Byzantine Fault Tolerance)

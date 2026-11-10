@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "stavovost distribuovaného systému"
+layout: note
 ---
 Stavovost (statefulness) jako vlastnost systémů a popisuje, **zda a jak si systém pamatuje předchozí interakce, události nebo data**, a jak tento „stav“ ovlivňuje jeho další chování.
 

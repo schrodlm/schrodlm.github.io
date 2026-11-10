@@ -4,6 +4,7 @@ tags:
   - coordination_mechanism
 language: czech
 title: "permission-based koordinace"
+layout: note
 ---
 Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech.html)
 
@@ -151,7 +152,7 @@ class Process:
 - Koordinátor se ptá všech účastníků: "Můžeme commitnout?"
 - Všichni musí odpovědět ANO → teprve pak commit
 - Permission-based pattern
-### 3. Total Order Multicast
+### 3. [Total Order Multicast](/notes/usporadani-komunikace-v-distribuovanych-systemech.html#totální-uspořádání-total-ordering)
 **ISIS Algorithm:**
 - Odesílatel broadcastuje zprávu
 - Čeká na **navrhovaná sekvenční čísla** od všech

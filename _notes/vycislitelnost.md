@@ -60,7 +60,7 @@ Proč se využívají rozhodovací problémy pro dokázání vět, ukázání p�
 1. **Neztrácíme obecnost** - každou funkci lze kódovat jako jazyk
 2. **Matematicky jednodušší** - množina slov, známý aparát
 3. **Přirozené pro TM** - dva stavy ACCEPT/REJECT
-4. **Definovaná hierarchie** - [Chomského hierarchie](/notes/chomskeho-hierarchie.html)
+4. **Definovaná hierarchie** - Chomského hierarchie
 5. **Snadné redukce** - pro důkazy nerozhodnutelnosti
 
 Jazyky nejsou omezení, ale praktický a hezký formalismus.

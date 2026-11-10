@@ -4,12 +4,13 @@ tags:
   - consensus
 language: czech
 title: "konsenzus v distribuovaných systémech"
+layout: note
 ---
 **Konsenzus** (agreement, shoda) je fundamentální problém [koordinace](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html): Jak dosáhnout **shody** mezi procesy na **jedné hodnotě**, i když některé uzly selhávají nebo je síť nespolehlivá?
 
 Je to jeden z nejtěžších a nejdůležitějších problémů v distribuovaných systémech.
 
-> [!note] Vztah k uspořádání (komunikace v distribuovaných systémech)#Totální uspořádání (total ordering)
+> [!note] Vztah k [uspořádání (komunikace v distribuovaných systémech) > Totální uspořádání (total ordering)](/notes/usporadani-komunikace-v-distribuovanych-systemech.html#totální-uspořádání-total-ordering)
 > Totální uspořádání a dosažení konsensu je ve své podstatě ten samý problém. V totálním uspořádání se uzly musejí dohodnout jaká je jedna korektní sekvence zpráv. 
 > Algoritmy na tyto dva problémy se dají použít na oba
 
@@ -77,7 +78,7 @@ Algoritmy pro systémy, kde procesy mohou **lhát** nebo se chovat **libovolně 
 
 ### Probabilistický BFT:
 - [proof of work (PoW)](/notes/proof-of-work-pow.html) - Bitcoin, Ethereum (do 2022)
-- [proof of stake (PoS)](/notes/proof-of-stake-pos.html) - Ethereum 2.0, Cardano
+- proof of stake (PoS) - Ethereum 2.0, Cardano
 - Škáluje na tisíce uzlů
 
 ## Podle centralizace

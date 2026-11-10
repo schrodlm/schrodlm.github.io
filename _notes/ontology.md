@@ -12,12 +12,12 @@ For example, in a medical domain:
 
 
 **Upper Ontology (also Foundational Ontology)**: Universal, general abstract ontologies that define domain- and application-independent concepts and relationships (e.g., Unified Foundational Ontology — UFO), which can be used to precisely capture and communicate about specific domains.
-![Image](/assets/img/Pasted image 20240926210052.png)
+![Image](/assets/img/Pasted%20image%2020240926210052.png)
 
 **Domain Ontologies**: Ontologies that describe a particular, specific domain (area) (e.g., oil extraction).
 
 - Domain ontologies that have a key (general) significance for a particular industry are usually referred to as **Core Ontologies** or **Reference Ontologies** (e.g., Legal Core Ontology).
-![Image](/assets/img/Pasted image 20240926210100.png)
+![Image](/assets/img/Pasted%20image%2020240926210100.png)
 
 You can use upper ontology to create domain specific ontologies
-![Image](/assets/img/Pasted image 20240926210221.png)
+![Image](/assets/img/Pasted%20image%2020240926210221.png)

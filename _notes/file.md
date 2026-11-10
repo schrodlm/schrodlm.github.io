@@ -11,7 +11,7 @@ file is a concept used as an abstraction in the virtualization of storage
 - files are contained in [directories](/notes/directory.html) (which are just files as well)
 - directories and files together create what is called a [file system](/notes/file-system.html)
 - processes refer to files using [file descriptors](/notes/file-descriptor.html) instead of its inode
-- Unix system also use concept of [pseudofiles](/notes/pseudofile.html)
+- Unix system also use concept of pseudofiles
 
 ## Acessing a file
 To work with file abstraction concept introduced by [file system](/notes/file-system.html). The underlying operating system provides an API ([file system interface](/notes/file-system-interface.html))

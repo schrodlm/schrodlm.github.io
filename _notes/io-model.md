@@ -30,10 +30,10 @@ Může být použit i např. jako
 
 Velký rozdíl je, že u analýzy cache modelů jsou blokové přesuny řízeny cache driverem a ne programem samotným. V naší analýze pracujeme s předpokladem, že tento cache controller pracuje v naprosto optimálně - tedy rozhoduje se tak, že I/O bude minimální. To by ale v reálném světě musel znát budoucnost.
 
-Je ale možné si ukázat, že se můžeme k optimální strategii přiblížit a být jen konstantně pomalejší. (#Věta o kompetetivnosti LRU)
+Je ale možné si ukázat, že se můžeme k optimální strategii přiblížit a být jen konstantně pomalejší. ([Věta o kompetetivnosti LRU](#věta-o-kompetetivnosti-lru))
 
 Pracujeme se dvěma cache modely:
-- **[cache-aware model](/notes/cache-aware-model.html)**
+- **cache-aware model**
 - **cache-oblivious model**
 
 ### Cache-aware model

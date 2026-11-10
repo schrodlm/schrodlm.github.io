@@ -2,6 +2,7 @@
 tags: [distributed_system]
 source: https://www.youtube.com/watch?v=mBUCF1WGI_I
 title: "replikace"
+layout: note
 ---
 Replikace je proces udržování identických kopií dat nebo služeb na více uzlech současně. V distribuovaném systému se jedná o formu **fyzické redundance**.
 
@@ -88,7 +89,7 @@ Master: INSERT INTO users VALUES (1, 'Alice')
        → pošli SQL statement na slaves
 ```
 ❌ Problém: Non-deterministické funkce (`NOW()`, `RAND()`)
-![Image](/assets/img/Pasted image 20260118184423.png)
+![Image](/assets/img/Pasted%20image%2020260118184423.png)
 
 ### 2. [Gossip-based](/notes/epidemicke-protokoly.html) (Epidemic)
 - Každý uzel náhodně šíří změny sousedům

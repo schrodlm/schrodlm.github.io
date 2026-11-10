@@ -4,6 +4,7 @@ tags:
   - coordination_mechanism
 language: czech
 title: "quorum-based koordinace"
+layout: note
 ---
 Jeden z [mechanismů koordinace v distrbuovaných systémech](/notes/mechanismy-koordinace-v-distribuovanych-systemech.html)
 

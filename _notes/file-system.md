@@ -35,4 +35,4 @@ There are several ways to structure a disk as a file system:
 - A disk can be used in its entirety for a file system
 - A disk can be broken up into multiple partitions, each of which become a virtual disk and can have its own file system
 - A multiple physical disks can be combined into one _**volume**_
-![Image](/assets/img/Pasted image 20251228111924.png)
+![Image](/assets/img/Pasted%20image%2020251228111924.png)

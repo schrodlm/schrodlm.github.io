@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "skupinová komunikace (broadcast)"
+layout: note
 ---
 Velice důležité téma v [komunikaci v distribuovaných systémech](/notes/komunikace-v-distribuovanych-systemech.html). Posíláš zprávu na jednu adresu skupiny a middleware se postará, aby ji dostali všichni _aktuální_ členové skupiny podle zvolených doručovacích garancí.
 
@@ -10,7 +11,7 @@ Zde narážíme [komunikační modely](/notes/komunikacni-model.html), které sk
 >[!note] 
 >[skupinová komunikace (broadcast)](/notes/skupinova-komunikace-broadcast.html) jako koncept negarantuje žádné uspořádání zpráv. Je garantována až samotným [komunikačním modelem](/notes/komunikacni-model.html).
 
-![Image](/assets/img/Pasted image 20260118192657.png)
+![Image](/assets/img/Pasted%20image%2020260118192657.png)
 
 ---
 ## Typy skupin

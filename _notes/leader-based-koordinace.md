@@ -6,7 +6,7 @@ title: "leader-based koordinace"
 Tento mechanismus je jedním ze základních návrhových vzorů koordinace. Jeho podstata spočívá v tom, že jeden uzel v rámci skupiny procesů přijímá roli **vůdce (leadera)** a stává se jediným rozhodovacím bodem pro zbytek systému.
 
 >[!note] Kdy se používá
->Leader-based koordinace se volí tam, kde je prioritou **silná konzistence** a jednoduchost řízení stavu. Je to přímý protiklad k plně decentralizovaným (P2P) schématům.
+>Leader-based koordinace se volí tam, kde je prioritou **[silná konzistence](/notes/konzistence-distribuovaneho-systemu.html#silná-konzistence-strong-consistency)** a jednoduchost řízení stavu. Je to přímý protiklad k plně decentralizovaným (P2P) schématům.
 ### Klíčové role
 - **Leader (Vůdce / Coordinator / Primary):** Jediný uzel, který rozhoduje o globálním stavu a pořadí operací
 - **Followers (Následníci / Replicas / Backups):** Uzly, které přijímají rozhodnutí od leadera a replikují jeho stav.

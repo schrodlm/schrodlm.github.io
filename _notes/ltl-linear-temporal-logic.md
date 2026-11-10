@@ -18,7 +18,7 @@ In this logic, you can use **temporal operators** such as:
 
 The worlds (or states) form a total order, which means each world has exactly one "next" world, creating a linear structure. In this way, LTL describes a single-threaded, sequential progression of time.
 
-You would use **LTL** when you're interested in the temporal properties of a system's execution (i.e., how things evolve over time in a linear fashion) and don't need to focus on the precise interleaving of concurrent actions. On the other hand, **interleaving models** are more suitable when you need to model and reason about the detailed interaction between multiple concurrent processes.
+You would use **LTL** when you're interested in the temporal properties of a system's execution (i.e., how things evolve over time in a linear fashion) and don't need to focus on the precise interleaving of concurrent actions. On the other hand, **[interleaving models](/notes/model-checking.html#repesenting-finite-state-systems)** are more suitable when you need to model and reason about the detailed interaction between multiple concurrent processes.
 
 ### Scenario: System with a Request-Response Behavior
 

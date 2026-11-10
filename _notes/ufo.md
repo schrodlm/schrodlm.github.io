@@ -70,4 +70,4 @@ Here's a simplified example of how UFO (Unified Foundational Ontology) can be ap
 
 This simple example shows how UFO helps structure knowledge by categorizing real-world entities, processes, and social relationships in a consistent way, making it easier to create accurate conceptual models.
 
-![Image](/assets/img/Pasted image 20240926211239.png)
+![Image](/assets/img/Pasted%20image%2020240926211239.png)

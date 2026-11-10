@@ -3,8 +3,9 @@ tags:
   - distributed_system
 language: czech
 title: "Lamportův algoritmus"
+layout: note
 ---
-Lamportův algoritmus je permission-based [synchronizační algoritmus](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html) pro [distribuované vzájemné vyloučení](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html), který využívá [logické hodiny](/notes/logicky-cas.html) k vytvoření totálního uspořádání žádostí. Vedlejší efekt totálního uspořádání je totiž vzájemné vyloučení.
+Lamportův algoritmus je permission-based [synchronizační algoritmus](/notes/koordinace-a-synchronizace-v-distribuovanem-systemu.html) pro [distribuované vzájemné vyloučení](/notes/vzajemne-vylouceni-v-distribuovanych-systemech.html), který využívá [logické hodiny](/notes/logicky-cas.html) k vytvoření [totálního uspořádání](/notes/usporadani-komunikace-v-distribuovanych-systemech.html#totální-uspořádání-total-ordering) žádostí. Vedlejší efekt totálního uspořádání je totiž vzájemné vyloučení.
 
 ---
 Je to předchůdce Ricart-Agrawaly. Je to **první algoritmus**, který ukázal, jak využít [logické hodiny](/notes/logicky-cas.html) pro úplnou synchronizaci.

@@ -9,7 +9,7 @@ Problems:
 
 # Characteristics
 ## Unequal cost/metric load balancing 
-![Image](/assets/img/Pasted image 20240930100514.png)
+![Image](/assets/img/Pasted%20image%2020240930100514.png)
 Really qucik reaction to 
 fastest routing protocol  
 
@@ -20,6 +20,6 @@ fastest routing protocol
 EIGRP is the fastest routing protocol when converging (reacting to a change) 
 How does it work?
 	EIGRP a distance-vector protocol (no designated router to maintain topological table) - every router maintains it's own topological table
-![Image](/assets/img/Pasted image 20240930102116.png)
+![Image](/assets/img/Pasted%20image%2020240930102116.png)
 ### What if there is not feasible sucessor?
 

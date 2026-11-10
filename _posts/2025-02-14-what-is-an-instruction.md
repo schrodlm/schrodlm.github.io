@@ -1,12 +1,8 @@
 ---
 layout: post
-
 title: "Instruction 101"
-
 date: 2025-02-14
-
 categories: jekyll update
-
 ---
 ## What is an instruction?
   

@@ -17,7 +17,7 @@ a chceme efektivně odpovídat na rozsahové dotazy (range queries) typu:
 ## Definice (pro 2D případ)
 Range tree ve 2D je vyvážený binární vyhledávací strom podle jedné souřadnice (typicky $x$), kde každý vrchol obsahuje asociovanou strukturu pro druhou souřadnici ($y$).
 
-![Image](/assets/img/Pasted image 20260113144123.png)
+![Image](/assets/img/Pasted%20image%2020260113144123.png)
 
 **Formálně**
 - Primární strom $T_x$:
@@ -69,7 +69,7 @@ Cílem této fáze je najít množinu podstromů, které obsahují **přesně** 
         
 **Výsledek fáze 1:** Našli jsme $O(\log n)$ podstromů (**kanonických uzlů**). Pro všechny body v těchto podstromech platí: *"Máme jistotu, že vaše x je správně."*
 
-![Image](/assets/img/Pasted image 20260113145058.png)
+![Image](/assets/img/Pasted%20image%2020260113145058.png)
 
 ### 2. Přepnutí do sekundárních Y-stromů
 
@@ -148,7 +148,7 @@ $O(\log^d n)$ na $O(\log^{d-1} n)$
 ## Dynamizace
 Problémem těchto stromů je, že rotace (typický princip balancování) by vynutily kompletní přestavbu sekundárních stromu ($y$-stromů), což je příliš drahé.
 
-Využívají se proto líné váhově vyvážené stromy
+Využívají se proto [líné váhově vyvážené stromy](/notes/bbalpha-tree-weight-balanced-tree.html)
 
 ### `insert`
 **Princip vkládání**
@@ -176,7 +176,7 @@ Abychom udrželi strom vyvážený, používáme strategii váhového vyvažová
 $$O(m \log m)$$ 
 - $\log m$ $y$-stromů s lineárním časem konstrukce ($m$)
 
-Díky vlastnostem [váhově vyvážených stromů](/notes/bbalpha-tree-weight-balanced-tree.html) se to však děje zřídka (po $\Omega(n)$ vloženích). [Amortizovaná cena](/notes/amortized-analysis.html) tohoto kroku je také $O(\log^2 n)$.
+Díky vlastnostem [váhově vyvážených stromů](/notes/bbalpha-tree-weight-balanced-tree.html) se to však děje zřídka (po $\Omega(n)$ vloženích). Amortizovaná cena tohoto kroku je také $O(\log^2 n)$.
 
 > [!note] Intuice
 > - přestavba jedné hladiny znamená $n$ práce (všechny prvky musíme dát do nějakého $y$ stromu) a hladin je $\log n$

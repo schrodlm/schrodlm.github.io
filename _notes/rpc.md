@@ -3,8 +3,9 @@ tags:
   - distributed_system
 language: czech
 title: "RPC"
+layout: note
 ---
-RPC je [komunikační model](/notes/komunikacni-model.html) a poskytuje koncept volání distribuovaných metod, který je možný využít v jakékoliv DS architektuře. 
+RPC je [komunikační model](/notes/komunikacni-model.html) a poskytuje koncept volání distribuovaných metod, který je možný využít v jakékoliv [DS architektuře](/notes/distributed-system.html#architektury). 
 
 Je klíčovou abstrakcí, která se snaží, aby volání funkce na vzdáleném stroji vypadalo syntakticky stejně jako volání lokální funkce. Zásadní rozdíl je však v sémantice selhání. Zatímco lokální volání buď proběhne, nebo celá aplikace spadne, RPC může selhat částečně – zpráva se ztratí, server spadne po vykonání instrukce, nebo se ztratí odpověď.
 
@@ -41,7 +42,7 @@ Důležité je také mít na pamětí důležitost [idempotence v RPC](/notes/id
 13. **Return to App:** Client Stub vrátí hodnotu 15 klientské aplikaci.
 
 **Výsledek:** Klient má v proměnné `result` číslo 15 a nemá tušení, že to proběhlo na jiném kontinentu.
-![Image](/assets/img/Pasted image 20260116132458.png)
+![Image](/assets/img/Pasted%20image%2020260116132458.png)
 
 >[!note] Architektura
 >Zajímavé je, že z mechanismu volání samotný princip RPC **vždy vytváří dočasný vztah klient-server** pro dané konkrétní volání, bez ohledu na celkovou architekturu systému.
@@ -57,7 +58,7 @@ Důležité je také mít na pamětí důležitost [idempotence v RPC](/notes/id
 Různé implementace RPC můžou garantovat různé typy delivery semantics
 
 ### Uspořádání
-I když je RPC 1:1 komunikace (unicast), má uspořádání. Většinou se bavíme o totální uspořádání (per connection)
+I když je RPC 1:1 komunikace (unicast), má uspořádání. Většinou se bavíme o [totální uspořádání](/notes/usporadani-komunikace-v-distribuovanych-systemech.html#totální-uspořádání-total-ordering) (per connection)
 
 ---
 

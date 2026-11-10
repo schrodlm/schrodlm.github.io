@@ -22,4 +22,4 @@ Spolehlivost je jedna z garancí definovaných [komunikační model](/notes/komu
 - ani se neprovede vícekrát
 
 Klient i server se shodnou, že operace proběhla **jednoznačně a přesně jednou**.
-![Image](/assets/img/Pasted image 20260116123459.png)
+![Image](/assets/img/Pasted%20image%2020260116123459.png)

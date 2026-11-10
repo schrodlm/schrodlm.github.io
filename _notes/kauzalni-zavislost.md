@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "kauzální závislost"
+layout: note
 ---
 **Kauzální závislost** je fundamentální princip, který dává událostem v distribuovaném systému logický řád.
 - **[Logické hodiny](/notes/logicky-cas.html)** jsou nástrojem k jejímu **měření**.

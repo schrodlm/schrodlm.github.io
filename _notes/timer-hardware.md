@@ -44,7 +44,7 @@ To znamená, že jedna celá perioda (např. [PWM](/notes/pwm.html) cyklus) trv�
 V [PWM](/notes/pwm.html) módu timer **negeneruje interrupt** (pokud ho explicitně nepovolíš). Hardware sám přepíná pin HIGH/LOW podle CCR registru — CPU se o to nestará. To je celý smysl offloadingu na timer.
 
 # Mapování na piny
-Výstupy timeru jsou propojené s konkrétními [GPIO](/notes/gpio.html) piny přes alternate function. Toto mapování je nadrátované v křemíku a najdeš ho v datasheetu čipu.
+Výstupy timeru jsou propojené s konkrétními [GPIO](/notes/gpio.html) piny přes [alternate function](/notes/gpio.html#režimy-pinu). Toto mapování je nadrátované v křemíku a najdeš ho v datasheetu čipu.
 
 # Přerušení timeru
 

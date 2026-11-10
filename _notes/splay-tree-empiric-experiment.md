@@ -1,15 +1,16 @@
 ---
 date: October 19, 2025
 title: "splay tree empiric experiment"
+layout: note
 ---
 ## 1 Introdukce
 
 Tento dokument představuje praktické porovnání dvou implementací [splay tree](/notes/splay-tree.html) stromu:
 
-- **Naivní implementace**, která používá jednoduché rotace pro operaci [splay](/notes/splay-operation.html)
+- **Naivní implementace**, která používá jednoduché rotace pro operaci splay
 - **Optimalizovaná implementace**, která využívá dvojité rotace
 
-Jako abstraktní jednotku času používáme průměrný počet rotací provedených během [operace splay](/notes/splay-operation.html).
+Jako abstraktní jednotku času používáme průměrný počet rotací provedených během operace splay.
 
 **Důležitá poznámka:** průměrný počet rotací se počítá jen v metodě `find`. Při sestavení stromu pomocí metody `insert` jsou rotace ignorovány.
 
@@ -37,7 +38,7 @@ Jednoduché rotace tuto vlastnost nemají a ovlivňují jen hledaný prvek. Tedy
 
 ### 2.2 Empirická data
 
-![Figure 1: Porovnání výkonu implementací při sekvenčním vyhledávání](subset_performance_subset10.png)
+![Figure 1: Porovnání výkonu implementací při sekvenčním vyhledávání](/assets/img/subset_performance_subset10.png)
 
 Z grafu 1 je vidět, že experimentální výsledky odpovídají předpokládanému chování obou implementací a potvrzují moji hypotézu.
 
@@ -53,19 +54,19 @@ Test spočívá v tom, že na strom o velikosti n, který je vytvořen vložení
 
 Tento test reprezentuje běžné praktické využití stromu, ve kterém není přítomen žádný specifický vzor vkládání ani dotazování na prvky. U [splay tree](/notes/splay-tree.html) využívajícího dvojité rotace lze očekávat [amortizovanou složitost](/notes/amortized-complexity.html) přístupu O(log n), jak uvádí teorie.
 
-V případě implementace [splay tree](/notes/splay-tree.html) pomocí pouze jednoduchých rotací (tzv. naivní implementace) není taková [amortizační záruka](/notes/amortized-analysis.html) známa. Přesto však můžeme empiricky pozorovat očekávanou složitost O(log n). Důvodem je skutečnost, že tato implementace se v podstatě chová jako náhodně vytvořený binární vyhledávací strom (Random BST), jelikož nijak výrazně nemanipuluje se strukturou stromu — kromě přesunutí hledaného (nebo nově vloženého) prvku ke kořeni pomocí jednoduchých rotací.
+V případě implementace [splay tree](/notes/splay-tree.html) pomocí pouze jednoduchých rotací (tzv. naivní implementace) není taková amortizační záruka známa. Přesto však můžeme empiricky pozorovat očekávanou složitost O(log n). Důvodem je skutečnost, že tato implementace se v podstatě chová jako náhodně vytvořený binární vyhledávací strom (Random BST), jelikož nijak výrazně nemanipuluje se strukturou stromu — kromě přesunutí hledaného (nebo nově vloženého) prvku ke kořeni pomocí jednoduchých rotací.
 
 Je známo, že průměrná hloubka uzlu v náhodně vytvořeném BST s n uzly je O(log n), což bylo dokázáno například v materiálech kurzu CS161 na Stanfordu [Uni23].
 
 S tímto předpokladem tedy mohu říct, že v prostředí s náhodným přístupem budou obě implementace vykazovat logaritmickou složitost vyhledávání O(log n).
 
-Z hlediska počtu rotací na operaci však může být tato single-rotation implementace lepší o konstantu, jelikož při [splay operaci](/notes/splay-operation.html) manipuluje pouze s vyhledávaným uzlem a jeho předky pomocí jednoduchých rotací. Naproti tomu plná implementace s dvojitými rotacemi provádí při každé operaci více zásahů do struktury stromu (např. rotace nad prarodiči), což vede k vyššímu počtu rotací.
+Z hlediska počtu rotací na operaci však může být tato single-rotation implementace lepší o konstantu, jelikož při splay operaci manipuluje pouze s vyhledávaným uzlem a jeho předky pomocí jednoduchých rotací. Naproti tomu plná implementace s dvojitými rotacemi provádí při každé operaci více zásahů do struktury stromu (např. rotace nad prarodiči), což vede k vyššímu počtu rotací.
 
 ### 3.2 Empirická data
 
-Následující graf zobrazuje průměrný počet rotací na [splay operaci](/notes/splay-operation.html) v závislosti na počtu prvků a velikosti subsetu. Osa x je logaritmicky škálována.
+Následující graf zobrazuje průměrný počet rotací na splay operaci v závislosti na počtu prvků a velikosti subsetu. Osa x je logaritmicky škálována.
 
-![Figure 2: Porovnání výkonu implementací při náhodném vyhledávání](random_graph.png)
+![Figure 2: Porovnání výkonu implementací při náhodném vyhledávání](/assets/img/random_graph.png)
 
 Z grafu 2 je vidět, že experimentální výsledky odpovídají předpokládanému chování obou implementací a potvrzují moji hypotézu.
 
@@ -117,7 +118,7 @@ Tato struktura umožňuje zkoumat chování stromu při opakovaném přístupu p
 
 Nyní, když jsme si definovali jakým způsobem se vytváří a jak vypadá, můžeme si nadefinovat jak se na ní budeme dotazovat. Z této sekvence tedy vytvoříme strom pomocí operací `insert`.
 
-Pro každý vytvořený strom, který je definován dvojicí n a **seq** a implementací [operace splay](/notes/splay-operation.html) se provedou testy pro různé velikosti subsetů.
+Pro každý vytvořený strom, který je definován dvojicí n a **seq** a implementací operace splay se provedou testy pro různé velikosti subsetů.
 
 Pro každý tento test se pokusíme 10000x vyhledat v náhodném pořadí pouze prvních **subset** prvků **seq**.
 
@@ -134,7 +135,7 @@ Uvažujme [splay tree](/notes/splay-tree.html) obsahující n prvků. Testovací
 
 #### 4.2.2 Hypotéza 1: Malé subsety (sub ∈ [1, 1000])
 
-**Tvrzení:** Obě implementace se chovají podobně s velmi nízkým počtem rotací na [splay operaci](/notes/splay-operation.html).
+**Tvrzení:** Obě implementace se chovají podobně s velmi nízkým počtem rotací na splay operaci.
 
 **Zdůvodnění:**
 
@@ -170,7 +171,7 @@ Pro typickou progresi délky n/20 ≈ 5% prvků a sub = 1000 máme přibližně 
 
 **Zdůvodnění:**
 
-**[Amortizovaná analýza](/notes/amortized-analysis.html) se projevuje:** Sleator-Tarjan důkaz [amortizované složitosti](/notes/amortized-complexity.html) O(log n) platí pouze pro zig-zig rotation a zig-zag rotation rotace použité v double-rotation implementaci. Pro single rotation tento důkaz neplatí a worst-case complexity je Ω(n). Při velkém hot set se pravděpodobnost výskytu worst-case sekvencí zvyšuje. Navíc, díky vkládání aritmetických posloupností se strom implementovaný pomocí single-rotací více degeneruje a jelikož se nyní hot set častěji nachází v hlubších částech stromu, hraje tato vlastnost single-rotací větší roli.
+**Amortizovaná analýza se projevuje:** Sleator-Tarjan důkaz [amortizované složitosti](/notes/amortized-complexity.html) O(log n) platí pouze pro zig-zig rotation a zig-zag rotation rotace použité v double-rotation implementaci. Pro single rotation tento důkaz neplatí a worst-case complexity je Ω(n). Při velkém hot set se pravděpodobnost výskytu worst-case sekvencí zvyšuje. Navíc, díky vkládání aritmetických posloupností se strom implementovaný pomocí single-rotací více degeneruje a jelikož se nyní hot set častěji nachází v hlubších částech stromu, hraje tato vlastnost single-rotací větší roli.
 
 **Strukturální výhoda škáluje:** Pro velký subset máme vysokou pravděpodobnost přístupu k prvkům z aritmetických sekvencí. Například pro sub = 10000 a n ≈ 65536 (exp = 48):
 
@@ -207,23 +208,23 @@ Crossover bod okolo sub = 1500 odpovídá momentu, kdy hot set je dostatečně v
 
 ### 4.3 Empirická data
 
-Následující grafy zobrazují průměrný počet rotací na [splay operaci](/notes/splay-operation.html) v závislosti na počtu prvků a velikosti subsetu. Osa x je logaritmicky škálována.
+Následující grafy zobrazují průměrný počet rotací na splay operaci v závislosti na počtu prvků a velikosti subsetu. Osa x je logaritmicky škálována.
 
-![Figure 3: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 10 v seq](subset_performance_subset10.png)
+![Figure 3: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 10 v seq](/assets/img/subset_performance_subset10.png)
 
-![Figure 4: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 100 v seq](subset_performance_subset100.png)
+![Figure 4: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 100 v seq](/assets/img/subset_performance_subset100.png)
 
-![Figure 5: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 1000 v seq](subset_performance_subset1000.png)
+![Figure 5: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 1000 v seq](/assets/img/subset_performance_subset1000.png)
 
-![Figure 6: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 1500 v seq](subset_performance_subset1500.png)
+![Figure 6: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 1500 v seq](/assets/img/subset_performance_subset1500.png)
 
-![Figure 7: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 2000 v seq](subset_performance_subset2000.png)
+![Figure 7: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 2000 v seq](/assets/img/subset_performance_subset2000.png)
 
-![Figure 8: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 4000 v seq](subset_performance_subset4000.png)
+![Figure 8: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 4000 v seq](/assets/img/subset_performance_subset4000.png)
 
-![Figure 9: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 5000 v seq](subset_performance_subset5000.png)
+![Figure 9: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 5000 v seq](/assets/img/subset_performance_subset5000.png)
 
-![Figure 10: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 10000 v seq](subset_performance_subset10000.png)
+![Figure 10: Porovnání výkonu implementací při hledání náhodného prvku v subset o velikosti 10000 v seq](/assets/img/subset_performance_subset10000.png)
 
 ---
 
@@ -237,8 +238,8 @@ Následující grafy zobrazují průměrný počet rotací na [splay operaci](/n
 
 - [splay tree](/notes/splay-tree.html)
 - rotation
-- [splay operation](/notes/splay-operation.html)
-- [amortized analysis](/notes/amortized-analysis.html)
+- splay operation
+- amortized analysis
 - [amortized complexity](/notes/amortized-complexity.html)
 - time complexity
 - logarithmic complexity
@@ -247,8 +248,8 @@ Následující grafy zobrazují průměrný počet rotací na [splay operaci](/n
 - tree balancing
 - hot set
 - arithmetic progression
-- splay tree#zig-zag
-- splay tree#zig-zig 
+- [splay tree > zig-zag](/notes/splay-tree.html#zig-zag)
+- [splay tree > zig-zig](/notes/splay-tree.html#zig-zig) 
 - [věta o kompetetivnosti LRU](/notes/veta-o-kompetetivnosti-lru.html)
 - worst-case complexity
 - spatial locality

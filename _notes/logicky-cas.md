@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "logický čas"
+layout: note
 ---
 Logický čas není fyzikální veličina (netiká v sekundách), ale **diskretní číselný systém**, který slouží k zachycení [kauzálních závislostí](/notes/kauzalni-zavislost.html) (příčina → následek) mezi událostmi v [distribuovaném systému](/notes/distributed-system.html).
 
@@ -45,4 +46,4 @@ Síla vektorových hodin: Umožňují přesně určit vztah dvou událostí.
 - $a \to b \iff V(a) < V(b)$ (každá složka $V(a)$ je menší nebo rovna složce $V(b)$ a alespoň jedna je ostře menší).    
 - Pokud neplatí $V(a) \le V(b)$ ani $V(b) \le V(a)$, události jsou konkurentní ($a || b$). Toto je nezbytné například pro řešení konfliktů při verzování dokumentů (git merge) nebo v databázích jako Amazon Dynamo.
 
-![Image](/assets/img/Pasted image 20260118184912.png)
+![Image](/assets/img/Pasted%20image%2020260118184912.png)

@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "distributed system"
+layout: note
 ---
 > "Distribuovaný systém je soubor nezávislých počítačů (**uzlů**), které se uživatelům jeví jako jeden jediný systém."
 > - Tanenbaum
@@ -36,7 +37,7 @@ Proč implementovat distribuovaný systém.
 > - Leslie Lamport
 
 - **Síť je nespolehlivá:** zprávy se mohou ztratit, zpozdit nebo přijít ve špatném pořadí.
-- **Neexistují "globální hodiny":** Každý počítač má svůj čas. Je hrozně těžké říct, co se stalo dřív (událost A na serveru v Praze nebo událost B na serveru v New Yorku?). (více v Synchronizace a koordinace)
+- **Neexistují "globální hodiny":** Každý počítač má svůj čas. Je hrozně těžké říct, co se stalo dřív (událost A na serveru v Praze nebo událost B na serveru v New Yorku?). (více v [Synchronizace a koordinace](#synchronizace-a-koordinace))
 - **Bezpečnost:** Data létají po síti, je snazší je odposlouchávat.
 - **Složitost softwaru:** Naprogramovat uzly tak, aby se to "jevily jako jeden systém", je složité.
 - **Nekonzistentnost stavu**

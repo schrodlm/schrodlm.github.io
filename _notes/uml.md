@@ -11,7 +11,7 @@ UML provides a standard notation for many types of diagrams which can be roughly
 2. structure diagrams
 
 ## Hierarchy of UML diagrams
-![Image](/assets/img/Pasted image 20241009111407.png)
+![Image](/assets/img/Pasted%20image%2020241009111407.png)
 
 
 ## Structure diagrams

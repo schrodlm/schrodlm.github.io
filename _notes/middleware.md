@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "middleware"
+layout: note
 ---
 ###  Transparentnost
 DS dokáže skrýt před uživatelem složitost uvnitř. Tomu se říká _transparentnost_. Transparentnost poskytuje [middleware](/notes/middleware.html).

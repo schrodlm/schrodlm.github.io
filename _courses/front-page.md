@@ -2,6 +2,7 @@
 landing_page: true
 not_listable: true
 title: "front_page"
+layout: note
 ---
 I studied software engineering at Czech Technical University FIT for 4 years. After successfully finishing my bachelor's degree I decided to change universities for my master's degree and started attending Charles' University (Mathematical and Physical faculty - MFF).
 

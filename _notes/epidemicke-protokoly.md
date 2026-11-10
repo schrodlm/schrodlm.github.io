@@ -3,7 +3,7 @@ layout: note
 title: "epidemické protokoly"
 ---
 
-Inspirovány šířením virů. Slouží k dosažení eventual consistency v masivních systémech (např. Cassandra).
+Inspirovány šířením virů. Slouží k dosažení [eventual consistency](/notes/modely-konzistence-distribuovaneho-systemu.html#eventual-consistency-případná) v masivních systémech (např. Cassandra).
 
 **Anti-Entropy**
 - Uzly si náhodně vybírají partnery a synchronizují kompletní stav. Zaručuje konvergenci, ale je náročné na data.

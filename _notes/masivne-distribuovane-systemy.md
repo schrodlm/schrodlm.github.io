@@ -3,6 +3,7 @@ tags:
   - distributed_system
 language: czech
 title: "masivně distribuované systémy"
+layout: note
 ---
 **Definice:** Distribuované systémy s **tisíci až miliony uzlů**, často s **nedůvěryhodnými účastníky** a **otevřeným členstvím**.
 
@@ -24,7 +25,7 @@ title: "masivně distribuované systémy"
 
 ## Fundamentální výzvy
 
-### 1. [Byzantine Generals Problem](/notes/problem-byzantskych-generalu.html)
+### 1. Byzantine Generals Problem
 **Problém:** Jak dosáhnout konsenzu, když někteří účastníci jsou zlomyslní?
 
 **Tradiční řešení:** PBFT - Neškáluje nad ~100 uzlů ($O(n²)$ komunikace)
@@ -35,7 +36,7 @@ title: "masivně distribuované systémy"
 
 **Obrany:**
 - **[proof of work (PoW)](/notes/proof-of-work-pow.html)** - útok je drahý (hardware + elektřina)
-- [proof of stake (PoS)](/notes/proof-of-stake-pos.html) - útok vyžaduje velké držení aktiv
+- proof of stake (PoS) - útok vyžaduje velké držení aktiv
 - **Permissioned networks** - kontrola identit
 
 ### 3. Škálovatelnost
@@ -67,7 +68,7 @@ title: "masivně distribuované systémy"
 
 **Použití:** Bitcoin, Ethereum (do 2022)
 
-### [Proof of Stake](/notes/proof-of-stake-pos.html) (PoS)
+### Proof of Stake (PoS)
 **Princip:** Validátoři "stakují" tokeny a jsou vybíráni k vytvoření bloků.
 
 **Jak funguje:**

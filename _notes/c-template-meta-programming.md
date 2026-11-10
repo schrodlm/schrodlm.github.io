@@ -63,7 +63,7 @@ struct TypeListConcatImpl<TypeList<T1...>, TypeList<T2...>, Rest...> {
 	using R = TypeListConcatImpl<TypeList<T1..., T2...>, Rest...>::R;
 };
 ```
-This uses a concept called [c++ template specialization](/notes/c-template-specialization.html) and an idea of recursion. It basically tries to pattern match (partial specialization) the arguments to either the recursive case or the base case. If we pattern match to the recursive case, we glue together the first two arguments and recurse again, until we reach the base case where the list is completely concatenated.
+This uses a concept called [c++ template specialization](/notes/c-template-specialization.html) and an idea of recursion. It basically tries to pattern match ([partial specialization](/notes/c-template-specialization.html#1-partial-specialization-pattern-matching)) the arguments to either the recursive case or the base case. If we pattern match to the recursive case, we glue together the first two arguments and recurse again, until we reach the base case where the list is completely concatenated.
 
 ### Pattern Matching Details
 

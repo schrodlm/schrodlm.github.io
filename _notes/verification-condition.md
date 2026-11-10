@@ -5,7 +5,7 @@ title: "verification condition"
 
 A verification condition is a logical formula that expresses some aspect of the correctness of a system.
 
-VC represents a neccesary properties of the program (such as assertions, preconditions, postconditions, or invariants) that if proven true, guarantee the correctness of the program with respect to specified behaviour.
+VC represents a neccesary properties of the program (such as assertions, [preconditions](/notes/logical-contracts.html#preconditions), [postconditions](/notes/logical-contracts.html#postconditions), or [invariants](/notes/logical-contracts.html#loop-invariants)) that if proven true, guarantee the correctness of the program with respect to specified behaviour.
 
 ### How it Works:
 

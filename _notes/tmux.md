@@ -80,7 +80,7 @@ Attaching involves re-binding the terminal's I/O file descriptors to the session
 - Example: You might use a tiled layout when you want all panes to be visible in equal portions
 
 #### Command mode
-- In command mode you can type more complex tmux commands. Enter command mode by presing the tmux#Prefix key followed by `:`. Then you can type a command like `new-session` or `split-window`
+- In command mode you can type more complex tmux commands. Enter command mode by presing the [tmux > Prefix key](/notes/tmux.html#prefix-key) followed by `:`. Then you can type a command like `new-session` or `split-window`
 
 ## tmux.conf
 This is a file where you can customize tmuix's behavior by setting keybindings, cahnging options and defining aliases for commands. File is typically located in your home dir (`~/.tmux.conf`)
@@ -92,7 +92,7 @@ tmux uses buffers to store text that you have copied within a session. This is s
 
 ## Scrollback
 Scrollback buffer refers to a history of output in a pane that you can scroll through. It allows you to view past command and output that have scrolled off the screen.
-- you can enter scrollback mode using tmux#Prefix key + `[` and navigate through the pane's output
+- you can enter scrollback mode using [tmux > Prefix key](/notes/tmux.html#prefix-key) + `[` and navigate through the pane's output
 
 ## Plugins
 There is a lot of community pluging you can find. All use a tool named TPM (Tmux Plugin Manager).

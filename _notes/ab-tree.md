@@ -7,7 +7,7 @@ title: "(a,b) tree"
 
 Od ostatních samo-vyvažovacích stromových struktur se liší tím, že v jednom uzlu může být až $b-1$ klíčů a může mít až $b$ dětí.
 
-![Image](/assets/img/Pasted image 20260105114241.png)
+![Image](/assets/img/Pasted%20image%2020260105114241.png)
 
 ## Invarianty
 > [!note] Počet potomků vrcholu

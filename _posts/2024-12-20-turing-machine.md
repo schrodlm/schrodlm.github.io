@@ -1,14 +1,9 @@
 ---
 layout: post
-
 title: "Turing machines and whatnot"
-
 date: 2024-12-20
-
 categories: jekyll update
-
 project: proj_2
-
 ---
 # Turing Machine
 Abstract computational models were first described as *a-machines* by Alan Turing in his paper "On Computable Numbers, With An Application To The Entscheidungsproblem" in 1936. They are considered one of the foundational models of computability.

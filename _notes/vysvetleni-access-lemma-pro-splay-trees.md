@@ -26,7 +26,7 @@ $$c'_i = c_i + \Delta \phi = c_i +\Phi(T_{\text{po}}) - \Phi(T_{\text{před}})$$
 
 Vysoký potenciál $\Phi$ degenerovaného stromu představuje předplacenou práci. Drahé operace (s vysokým $c_i$​) nutně vedou k redukci tohoto potenciálu ($\Delta \Phi ≪ 0$), čímž se skutečná cena operace kompenzuje a amortizovaná cena $c'_i$​ zůstává nízká."
 
-![Image](/assets/img/Pasted image 20260104154509.png)
+![Image](/assets/img/Pasted%20image%2020260104154509.png)
 
 Pokud je skutečná cena velmi drahá, aby amortizovaná složitost stále platila, bude muset být velká i změna potenciálu, aby se cena vyvážila
 

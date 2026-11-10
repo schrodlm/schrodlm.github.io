@@ -1,6 +1,7 @@
 ---
 related_course: NSWI028
 title: "NVIC"
+layout: note
 ---
 NVIC (Nested Vectored Interrupt Controller) je hardwarový obvod, který je součástí jádra procesoru (např. ARM Cortex-M). Řídí celý systém [přerušení](/notes/interrupt.html).
 

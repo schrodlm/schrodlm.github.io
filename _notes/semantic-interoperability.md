@@ -10,4 +10,4 @@ In this sense, it's about solving the **issue of shared meaning**—ensuring tha
 
 In healthcare, if one system records a diagnosis as "Myocardial Infarction" and another system understands it as "Heart Attack," semantic interoperability ensures that both systems recognize these terms as referring to the same condition, even though they use different terms.
 
-![Image](/assets/img/Pasted image 20240926211724.png)
+![Image](/assets/img/Pasted%20image%2020240926211724.png)

@@ -9,7 +9,7 @@ Samotné pole S stačí na jednoduché věci (např. vyhledání výskytu vzorku
 ## Konstrukce (Kasaiův algoritmus)
 >[!note] **Předpoklad**
 > - K sestrojení LCP pole efektivně potřebujeme mít hotové [suffixové pole](/notes/suffix-array.html) $S$.
-> - Předpokládáme tedy sestavené suffixové pole (např. podle suffix array#Konstrukce (algoritmus zdvojování))
+> - Předpokládáme tedy sestavené suffixové pole (např. podle [suffix array > Konstrukce (algoritmus zdvojování)](/notes/suffix-array.html#konstrukce-algoritmus-zdvojování))
 
 > Naivní konstrukce by trvala $O(n^2)$. Každý suffix (celkem $n$) lineárně porovnat s $i+1$-tým suffixem.
 
@@ -23,7 +23,7 @@ Samotné pole S stačí na jednoduché věci (např. vyhledání výskytu vzorku
 ### Analýza složitosti
 > [!note] Amortizovaná analýza
 >  Jde vidět, že v implementaci budou dva `for` loopy, což typicky znamená $O(n^2)$ časovou složitost
->  Pro dokázání, že algoritmus opradu běží v čase $O(n)$, musíme využít [amortizovanou analýzu](/notes/amortized-analysis.html)
+>  Pro dokázání, že algoritmus opradu běží v čase $O(n)$, musíme využít amortizovanou analýzu
  
 Proměnná $k$ se může zvýšit (operace uvnitř `while`) celkem maximálně $2n$-krát za běh celého programu. Protože operací "mimo `while`" je $n$ a operací "uvnitř `while`" je maximálně $2n$, celková složitost je $O(3n)$, což je $O(n)$.
 

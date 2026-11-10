@@ -20,7 +20,7 @@ for (int i = 0; i < N; i++) {
 Problém je takový, že přístupy k `B[j][i]` vždy způsobí cache miss (pokud je matice dost velká).
 **I/O Složitost**: $O(N^2)$ - každý prvek jeden cache miss
 
-### Cache-aware přístup
+### [Cache-aware](/notes/io-model.html#cache-aware-model) přístup
 #### Myšlenka
 Myšlenka cache-aware transpozice matice spočívá v tom, že matici rozdělíme na dostatečně malé podmatice tak, aby vešly do cache.
 
@@ -38,10 +38,10 @@ Uvažujme, že $N$ je násobkem velikosti $B$. Pokud nastavíme $d = B$, každý
 Aby tento algoritmus fungoval, musí být cache schopna držet dvě podmatice naráz. Každá podmatice obsahuje $d^2 = B^2$ prvků, znamená to, že pro cache musí platit: $M \geq 2B^2$. Tomu se říká tall-cache property
 
 
-### Cache-oblivious přístup
+### [Cache-oblivious](/notes/io-model.html#cache-oblivious-model) přístup
 
 #### Myšlenka
-Nevíme žádné hodnoty o cache. Rozdělíme celou matici na 4 bloky. ![Image](/assets/img/Pasted image 20260106111935.png)
+Nevíme žádné hodnoty o cache. Rozdělíme celou matici na 4 bloky. ![Image](/assets/img/Pasted%20image%2020260106111935.png)
 Ty rekurzivně transponujeme a swapujeme (nediagonálové). Dostaneme se tedy až na podmatice velikosti 1, kde je transpose triviální (pouze swap dvou čísel).
 
 #### Formálně
@@ -57,7 +57,7 @@ Musíme si dát pozor na to, abychom prvně netransponovali a pak swapovali.
 > - Ve výsledku každé číslo "přehazujeme" tolikrát, jak hluboká je rekurze (logaritmus)
 
 Místo toho to chceme dělat in-place.
-![Image](/assets/img/Pasted image 20260106113231.png)
+![Image](/assets/img/Pasted%20image%2020260106113231.png)
 Na každé číslo v matici sáhneme **právě jednou** (až v momentě, kdy se dostaneme na dno rekurze, $1\times1$ matice).
 #### implementace: [matrix_transpose()](/notes/matrix-transpose.html)
 

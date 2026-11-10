@@ -7,7 +7,7 @@ source: https://www.cs.cmu.edu/~15414/s23/s22/lectures/04-ghosts.pdf
 
 How do we specify and verify simple loops that operate on arrays? 
 
-The key construct that we have (loop invariants and variant) are sufficient but become more complex (than with immutable data structures) because they have to express not only of what we **change** in array but also what does **not change**.
+The key construct that we have ([loop invariants](/notes/logical-contracts.html#loop-invariants) and [variant](/notes/logical-contracts.html#variant)) are sufficient but become more complex (than with immutable data structures) because they have to express not only of what we **change** in array but also what does **not change**.
 
 This additional requirement makes reasoning about mutable data structures in many cases more difficult than reasoning about [mutable data structures](/notes/verifying-mutable-data-structures.html).
 
@@ -15,7 +15,7 @@ This additional requirement makes reasoning about mutable data structures in man
 This is a very important technique. 
 
 **Example**
-We have a red/black tree implementation of a map. It is very complex and has a lot of internal data structure invariants. 
+We have a red/black tree implementation of a map. It is very complex and has a lot of internal [data structure invariants](/notes/verifying-immutable-data-structures.html#invariant). 
 ### Internal invariants
 These invariants are called internal invariants.
 In red/black tree this would include:

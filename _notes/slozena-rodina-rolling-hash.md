@@ -30,7 +30,7 @@ Představte si, že chcete zahashovat slovo **"AHOJ"** do tabulky velikosti $m$.
 ---
 
 ## Konstrukce 2-nezávislého systému
-Abychom získali systém, který je 2-nezávislý a zároveň má vlastnost rodina rolling hash#Princip rolling window, musíme sestrojit složenou rodinu hashovacích funkcí $\mathcal{H} = \mathcal{R} \circ \ \mathcal{L}$
+Abychom získali systém, který je 2-nezávislý a zároveň má vlastnost [rodina rolling hash > Princip rolling window](/notes/rodina-rolling-hash.html#princip-rolling-window), musíme sestrojit složenou rodinu hashovacích funkcí $\mathcal{H} = \mathcal{R} \circ \ \mathcal{L}$
 
 Tato rodina vzniká složením [rolling hash rodiny](/notes/rodina-rolling-hash.html) ($\mathcal{R}$) a [lineární rodiny](/notes/rodina-linearnich-hashovacich-funkci.html) ($\mathcal{L}$)
 
@@ -62,4 +62,4 @@ Samotná polynomiální funkce $h_t​(x)$ (krok 1) je pouze **$L$-univerzální
 
 ---
 ## Výhody
-Umožňuje přepočítat hash při posunu "okna" v textu v čase $O(1)$, což je klíčové pro algoritmy jako [Rabin-Karp algoritmus](/notes/rabin-karp-algoritmus.html) .
+Umožňuje přepočítat hash při posunu "okna" v textu v čase $O(1)$, což je klíčové pro algoritmy jako Rabin-Karp algoritmus .

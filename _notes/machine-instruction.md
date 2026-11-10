@@ -66,5 +66,5 @@ Control unit of the CPU will then send a signal to specific functional units tha
 Also, in most processors, there can be interruptions. When an interrupt happens, the CPU jumps to an interrupt service routine, does what needs to be done, and then goes back to the main program.
 
 # Coding of instructions
-![Image](/assets/img/Pasted image 20240924210159.png)![Image](/assets/img/Pasted image 20240924210229.png)
-![Image](/assets/img/Pasted image 20240924210252.png)
+![Image](/assets/img/Pasted%20image%2020240924210159.png)![Image](/assets/img/Pasted%20image%2020240924210229.png)
+![Image](/assets/img/Pasted%20image%2020240924210252.png)

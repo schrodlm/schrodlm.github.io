@@ -1,5 +1,0 @@
----
-layout: note
-title: "QEMU"
----
-

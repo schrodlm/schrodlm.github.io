@@ -15,7 +15,7 @@ OS returns a file descriptor - which is just a small integer (conventionally pro
 
 
 FD acts as an index into a table (each process has one) which contains pointers to specific files (remembering the current offset)
-![Image](/assets/img/Pasted image 20251228104951.png)
+![Image](/assets/img/Pasted%20image%2020251228104951.png)
 
 ## Added security
 Working with file paths (strings) is susceptible to [TOCTTOU](/notes/tocttou.html) attacks. The link between name and the [inode](/notes/inode.html) can be changed anytime.
@@ -28,4 +28,4 @@ Sharing open file table entries across parent and child is occasionally
 useful. For example, if you create a number of processes that are cooper-
 atively working on a task, they can write to the same output file without
 any extra coordination.
-![Image](/assets/img/Pasted image 20251228121247.png)
+![Image](/assets/img/Pasted%20image%2020251228121247.png)

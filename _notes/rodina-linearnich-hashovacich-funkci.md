@@ -4,7 +4,7 @@ title: "rodina lineárních hashovacích funkcí"
 ---
 
 ### Lineární hashování $\mathcal{L}$ (linear hashing)
-Toto je základní metoda využívající modulární aritmetiku (založená na [lineární kongruenci](/notes/linearni-kongruence.html))
+Toto je základní metoda využívající modulární aritmetiku (založená na lineární kongruenci)
 
 **Parametry**
 Zvolíme prvočíslo $p$ a počet přihrádek $m$, kde $m \leq p$.
