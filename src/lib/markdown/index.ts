@@ -1,3 +1,4 @@
+import { satteriHeadingIdsPlugin } from '@astrojs/markdown-satteri';
 import type { HastPluginList } from 'satteri';
 import { basePathPlugin } from '../base-path';
 import { calloutPlugin } from './callouts';
@@ -9,6 +10,10 @@ import { mathPlugin } from './math';
 
 export function houseStyle({ base }: { base: string }): HastPluginList {
   return [
+    // First, Astro's own plugin gives headings their GitHub-style ids, from their text as the
+    // markdown wrote it, before math is typeset. Astro runs it again after these plugins, and
+    // keeps the ids it finds.
+    satteriHeadingIdsPlugin(),
     calloutPlugin,
     mathPlugin,
     // Last, so the plugins before it see the links as the markdown wrote them.
