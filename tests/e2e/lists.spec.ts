@@ -10,9 +10,18 @@ test('the notes list every note from A to Z under their intro, each with its mar
   await expect(page.getByRole('link', { name: '[>notes]' })).toHaveAttribute('aria-current', 'page');
   await expect(page.getByText('An invented intro for the notes section')).toBeVisible();
   const links = page.locator('main li a');
-  await expect(links).toHaveText(['A seedling', 'Every construct', 'Sample note', 'Ukázková poznámka', 'Vzorová replikace']);
+  await expect(links).toHaveText([
+    'A seedling',
+    'Every construct',
+    'Sample clock',
+    'Sample consensus',
+    'Sample note',
+    'Sample quorum',
+    'Ukázková poznámka',
+    'Vzorová replikace',
+  ]);
   await expect(links.last()).toHaveAttribute('href', '/notes/invented-systems/vzorova-replikace/');
-  await expect(page.locator('main li .mark')).toHaveCount(5);
+  await expect(page.locator('main li .mark')).toHaveCount(8);
   await expect(page).toHaveScreenshot('notes.png', { fullPage: true });
 });
 
