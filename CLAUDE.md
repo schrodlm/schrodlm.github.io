@@ -16,6 +16,10 @@ My personal Jekyll site, the last stage of a pipeline: my private Obsidian vault
 
 Issues live in this repo's GitHub Issues, driven via the `gh` CLI, ordered by milestones. See `docs/agents/issue-tracker.md`.
 
+### Building the Astro site
+
+The Astro site is being built on the `astro` branch, one `build` issue at a time, tracked in #47. See `docs/agents/build.md`.
+
 ### Domain docs
 
 Single-context: one `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
