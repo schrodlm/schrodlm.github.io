@@ -1,27 +1,118 @@
 ---
-// A stand-in home inside the page shell, until the garden is planted here.
-import { getCollection } from 'astro:content';
+// The home page: the garden across the top, every post a flower in it; then my intro, the most
+// recent posts with their marks, and the projects I am working on.
+import { getCollection, render } from 'astro:content';
 import Page from '../layouts/Page.astro';
+import Garden from '../components/Garden.astro';
+import PageList from '../components/PageList.astro';
+import ProjectStatus from '../components/ProjectStatus.astro';
+import Prose from '../components/Prose.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import { withBase } from '../lib/base-path';
+import { newestFirst, pagePath } from '../lib/pages';
+import { latest, listOrder } from '../lib/projects';
 
-const notes = await getCollection('notes');
+// How many of the newest posts the home page lists; the rest are a click away, on /posts/.
+const RECENT = 5;
+
+const posts = newestFirst(await getCollection('posts'));
+// Looked for among the intros rather than asked for by name, which warns when there is none.
+const intro = (await getCollection('intros')).find(({ id }) => id === 'home');
+const Intro = intro && (await render(intro)).Content;
+// The projects in progress, the most recently worked on first, as the projects list has them.
+const devlogs = await getCollection('devlogs');
+const projects = listOrder(
+  (await getCollection('projects')).map((project) => ({
+    ...project,
+    latest: latest(devlogs.filter((devlog) => devlog.data.project.id === project.id)),
+  })),
+).filter((project) => project.data.status === 'in progress');
 ---
 
 <Page>
+  <Garden slot="band" posts={[...posts].reverse()} />
   <h1 class="visually-hidden">Matěj Schrödl</h1>
-  <p class="intro">
-    This is a place to share interesting knowledge from computer-science I managed to gather and also
-    a place to log my thought processes from my past and ongoing projects.
-  </p>
-  <SectionHeading title="Notes" />
-  <p>{notes.length} {notes.length === 1 ? 'note' : 'notes'} so far. The garden that shows them is still being planted.</p>
+  {
+    Intro && (
+      <div class="intro" lang={intro.data.lang}>
+        <Prose>
+          <Intro />
+        </Prose>
+      </div>
+    )
+  }
+  {
+    posts.length > 0 && (
+      <>
+        <SectionHeading title="Recent posts" />
+        <PageList pages={posts.slice(0, RECENT)} />
+        {posts.length > RECENT && (
+          <p class="more">
+            <a href={withBase('/posts/', import.meta.env.BASE_URL)}>all {posts.length} posts</a>
+          </p>
+        )}
+      </>
+    )
+  }
+  {
+    projects.length > 0 && (
+      <>
+        <SectionHeading title="Projects" />
+        <div class="projects">
+          {projects.map((project) => (
+            <div class="project">
+              <a href={withBase(pagePath('projects', project.id), import.meta.env.BASE_URL)}>{project.data.title}</a>
+              <div class="facts">
+                {project.data.languages.join(', ')} · <ProjectStatus status={project.data.status} />
+              </div>
+              <p>{project.data.description}</p>
+            </div>
+          ))}
+        </div>
+      </>
+    )
+  }
 </Page>
 
 <style>
   .intro {
-    max-width: 30em;
+    max-width: 34em;
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  .more {
+    margin: 20px 0 0;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 40px;
+  }
+
+  .project {
+    flex: 1 1 300px;
+    min-width: 0;
+  }
+
+  .project > a {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .facts {
+    margin: 2px 0 6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .project p {
     margin: 0;
-    font-size: 24px;
-    line-height: 1.4;
+    font-size: 16px;
   }
 </style>
