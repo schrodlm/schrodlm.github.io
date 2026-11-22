@@ -1,0 +1,251 @@
+---
+// A note's neighbourhood, at the end of its page: the plate (lib/neighbourhood.ts) with every
+// neighbour's caption laid over it as a link beside its head. Hovering or focusing a caption brings
+// its vine up in its note's colour, with CSS alone. The plate scales down with the column; on a
+// phone its captions give way to numbers, and the list beneath it names them. A note with no
+// neighbours shows nothing.
+import type { CollectionEntry } from 'astro:content';
+import Braille from './Braille.astro';
+import { withBase } from '../lib/base-path';
+import type { LinkGraph } from '../lib/graph';
+import { besideHead, drawNeighbourhood, layNeighbourhood, PLATE_WIDTH, type Role } from '../lib/neighbourhood';
+import { pagePath } from '../lib/pages';
+import { drawPageFlower } from '../lib/seedling';
+import { isStub } from '../lib/markdown/stubs';
+
+interface Props {
+  slug: string;
+  graph: LinkGraph;
+  /** Every note, by slug. */
+  notes: ReadonlyMap<string, CollectionEntry<'notes'>>;
+}
+
+const { slug, graph, notes } = Astro.props;
+const note = (other: string) => notes.get(other)!;
+const hood = layNeighbourhood(graph, slug, (other) => note(other).data.title);
+// A cell is 8 px while the column is wide enough for the plate, and shrinks with it below that.
+const cell = `min(8px, calc(100cqi / ${PLATE_WIDTH}))`;
+const HOW: Record<Role, string> = { out: 'links to', in: 'linked from', both: 'both ways' };
+const place = ({ edge, inset, top }: ReturnType<typeof besideHead>) => `${edge}: ${inset}%; top: ${top}%`;
+// The legend names only the kinds of vine the plate draws.
+const KEY: Record<Role, string> = {
+  out: 'solid vines end in a leaf at the notes this one links to',
+  in: 'dotted vines come from the notes that link here',
+  both: 'a leaf at both ends marks a link both ways',
+};
+
+const drawing = hood && drawNeighbourhood(hood, (other, size) => drawPageFlower('notes', other, note(other).body ?? '', 'head', size));
+const neighbours = (hood?.near ?? []).map((n, i) => {
+  const entry = note(n.slug);
+  const caption = besideHead(hood!, n, 1);
+  return {
+    no: i + 1,
+    side: n.side,
+    title: entry.data.title,
+    lang: entry.data.lang,
+    how: HOW[n.role],
+    stub: isStub(entry.body ?? ''),
+    href: withBase(pagePath('notes', n.slug), import.meta.env.BASE_URL),
+    vine: drawing!.vines[i]!,
+    caption: `${place(caption)}; max-width: ${caption.room}%`,
+    number: place(besideHead(hood!, n, 0.4)),
+  };
+});
+const legend = (['out', 'in', 'both'] as const)
+  .filter((role) => neighbours.some((n) => n.how === HOW[role]))
+  .map((role) => KEY[role])
+  .join('; ');
+---
+
+{
+  hood && drawing && (
+    <section class="neighbourhood" aria-label="Neighbourhood">
+      <div class="room">
+        <div class="plate">
+          <Braille rows={drawing.plate} cell={cell} />
+          <div class="far">
+            <Braille rows={drawing.far} cell={cell} />
+          </div>
+          {neighbours.some((n) => n.side < 0) && <span class="side left" aria-hidden="true">{HOW.in}</span>}
+          {neighbours.some((n) => n.side > 0) && <span class="side right" aria-hidden="true">{HOW.out}</span>}
+          {neighbours.map((n) => (
+            <>
+              <a
+                class:list={['caption', { leftward: n.side < 0, stub: n.stub }]}
+                href={n.href}
+                lang={n.lang}
+                style={n.caption}
+                title={n.stub ? 'Not written yet' : undefined}
+              >
+                {n.title}
+                {n.stub && <span class="sprout" aria-hidden="true">,</span>}
+                <span class="visually-hidden" lang="en"> · {n.how}{n.stub && ', not written yet'}</span>
+              </a>
+              <div class="vine" style={`--hot: ${n.vine.colour}`}>
+                <Braille rows={n.vine.rows} cell={cell} />
+              </div>
+              <span class="number" aria-hidden="true" style={n.number}>{n.no}</span>
+            </>
+          ))}
+        </div>
+      </div>
+      <ol class="key">
+        {neighbours.map((n) => (
+          <li>
+            <span class="no" aria-hidden="true">{n.no}</span>
+            <span>
+              <a href={n.href} lang={n.lang} class:list={{ stub: n.stub }} title={n.stub ? 'Not written yet' : undefined}>
+                {n.title}
+                {n.stub && <span class="sprout" aria-hidden="true">,</span>}
+                {n.stub && <span class="visually-hidden"> (not written yet)</span>}
+              </a>{' '}
+              <span class="how">· {n.how}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+      <p class="legend">
+        {legend.replace(/^./, (first) => first.toUpperCase())}.
+        {hood.far.length > 0 && ' The faint heads above and below are two steps away.'}
+        {hood.unshown > 0 && ` ${hood.unshown} more ${hood.unshown === 1 ? 'neighbour is' : 'neighbours are'} not drawn.`}
+      </p>
+    </section>
+  )
+}
+
+<style>
+  .neighbourhood {
+    margin-top: 64px;
+  }
+
+  /* The plate scales with the column: its cells are sized from this box's width. */
+  .room {
+    container-type: inline-size;
+  }
+
+  .plate {
+    position: relative;
+    width: fit-content;
+  }
+
+  .far,
+  .vine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .far {
+    opacity: 0.45;
+  }
+
+  /* At rest a vine is the quiet tone of the art, so it comes up in colour, whatever its head. */
+  .vine {
+    color: var(--pebble);
+  }
+
+  /* A caption's vine follows it, so hovering or focusing the caption brings the vine up. */
+  .caption:is(:hover, :focus) + .vine {
+    color: var(--hot);
+  }
+
+  .caption,
+  .side,
+  .number {
+    position: absolute;
+    transform: translateY(-50%);
+    font-family: var(--mono);
+  }
+
+  .caption {
+    padding: 1px 3px;
+    background: var(--sand);
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration-line: none;
+  }
+
+  .leftward {
+    text-align: right;
+  }
+
+  /* Only the line, so a link to a stub keeps the seedling's dotted underline (prose.css). */
+  .caption:is(:hover, :focus-visible) {
+    text-decoration-line: underline;
+  }
+
+  .side {
+    top: 9%;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .left {
+    left: 3%;
+  }
+
+  .right {
+    right: 3%;
+  }
+
+  .number,
+  .key {
+    display: none;
+  }
+
+  .number,
+  .no,
+  .how,
+  .legend {
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  .number {
+    font-size: 11px;
+  }
+
+  .key {
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .key li {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .no {
+    flex: 0 0 16px;
+    font-size: 12px;
+  }
+
+  .how {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .legend {
+    margin: 10px 0 0;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  /* On a phone the plate is too small to caption: its heads are numbered, and listed below it. */
+  @media (max-width: 600px) {
+    .caption,
+    .side {
+      display: none;
+    }
+
+    .number,
+    .key {
+      display: block;
+    }
+  }
+</style>

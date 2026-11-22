@@ -1,20 +1,29 @@
 ---
 // A note, at /notes/<slug>/. A note in a folder keeps the folder in its address and names it in
-// the breadcrumb: /notes/distributed-systems/raft/ reads "notes / distributed systems".
+// the breadcrumb: /notes/distributed-systems/raft/ reads "notes / distributed systems". It closes
+// on its neighbourhood, from the link graph worked out once for every note.
 import { getCollection, render } from 'astro:content';
+import Neighbourhood from '../../components/Neighbourhood.astro';
 import NoteOrPost from '../../layouts/NoteOrPost.astro';
+import { linkGraph } from '../../lib/graph';
 import { folders } from '../../lib/pages';
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes');
-  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+  const graph = linkGraph(
+    notes.map((note) => ({ slug: note.id, html: note.rendered?.html ?? '' })),
+    import.meta.env.BASE_URL,
+  );
+  const bySlug = new Map(notes.map((note) => [note.id, note]));
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note, graph, notes: bySlug } }));
 }
 
-const { note } = Astro.props;
+const { note, graph, notes } = Astro.props;
 const { Content } = await render(note);
 ---
 
 <NoteOrPost entry={note}>
   <Fragment slot="crumbs">{folders(note.id).map((folder) => ` / ${folder}`)}</Fragment>
   <Content />
+  <Neighbourhood slot="neighbourhood" slug={note.id} {graph} {notes} />
 </NoteOrPost>
