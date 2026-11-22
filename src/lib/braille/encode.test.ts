@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createCanvas } from './canvas';
-import { encode, markup } from './encode';
+import { encode, markup, stamp } from './encode';
 
 const code = (ch: string) => ch.charCodeAt(0) - 0x2800;
 
@@ -109,5 +109,45 @@ describe('markup', () => {
         { t: '⠁⠂', c: 'var(--fern)' },
       ]),
     ).toBe('⠀⠀<span style="color: var(--fern)">⠁⠂</span>');
+  });
+});
+
+describe('stamp', () => {
+  const drawing = () => {
+    const canvas = createCanvas(3, 2);
+    canvas.put(0, 0, 'red');
+    canvas.put(3, 5, 'blue');
+    canvas.put(5, 7, 'red');
+    return encode(canvas);
+  };
+
+  it('lays a drawing on a whole cell so it encodes again as it was', () => {
+    const canvas = createCanvas(3, 2);
+    stamp(canvas, drawing(), 0, 0);
+    expect(encode(canvas)).toEqual(drawing());
+  });
+
+  it('lays it at a cell offset, each dot in its run’s colour', () => {
+    const canvas = createCanvas(6, 4);
+    stamp(canvas, drawing(), 2, 1);
+    expect(canvas.dot(4, 4)).toEqual({ colour: 'red', weight: 1 });
+    expect(canvas.dot(7, 9)).toEqual({ colour: 'blue', weight: 1 });
+    expect(canvas.dot(9, 11)).toEqual({ colour: 'red', weight: 1 });
+    expect(canvas.dot(0, 0)).toBeNull();
+  });
+
+  it('lays its dots with a weight, and lays none for empty cells', () => {
+    const canvas = createCanvas(3, 2);
+    canvas.put(1, 1, 'green', 5);
+    stamp(canvas, [[{ t: '⣿', c: 'red' }, { t: '⠀⠀', c: 'transparent' }]], 0, 0, 2);
+    expect(canvas.dot(0, 0)).toEqual({ colour: 'red', weight: 2 });
+    expect(canvas.dot(1, 1)).toEqual({ colour: 'green', weight: 5 });
+    expect(canvas.dot(2, 0)).toBeNull();
+  });
+
+  it('drops what falls outside the canvas', () => {
+    const canvas = createCanvas(1, 2);
+    stamp(canvas, drawing(), -1, 0);
+    expect(encode(canvas)).toEqual([[{ t: '⠀', c: 'transparent' }], [{ t: '⠐', c: 'blue' }]]);
   });
 });
