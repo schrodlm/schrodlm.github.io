@@ -1,6 +1,7 @@
 ---
 // An internal sheet of every woodcut plate, for the screenshot test and for looking at a redrawn
 // plate. Not linked from anywhere, and kept out of search.
+import '../../styles/garden.css';
 import Plate from '../../components/Plate.astro';
 import { projectPlate, projectsWithPlates, universityPlate, universitiesWithPlates } from '../../lib/plates';
 
@@ -51,12 +52,11 @@ const projects = [...projectsWithPlates, 'a-project-without-a-plate'];
 </html>
 
 <style>
-  /* The garden's sand, until the page shell gives every page its ground. */
   body {
     margin: 0 auto;
     padding: 16px;
     max-width: 1100px;
-    background: #f1ecdf;
+    background: var(--sand);
     font-family: monospace;
   }
   .row {
