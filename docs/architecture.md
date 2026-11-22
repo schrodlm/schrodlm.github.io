@@ -128,6 +128,8 @@ site serves at `/assets/img/`.
 | `src/lib/session-trail.ts` | Lays out and draws a devlog's **session trail**. |
 | `src/pages/cv/` | The **CV** at `/cv/`, rendered from the one note in `cv/`; `src/styles/cv.css` holds its screen and print styles. |
 | `src/lib/lamplit-desk.ts` | Draws the CV's plate, frame by frame, for its animation and for its still. |
+| `src/pages/clascii/`, `src/scripts/clascii.ts` | My ASCII art library, clascii, running at `/clascii/` in its **pond**, with every control of its demo. The library's build is vendored in `public/vendor/clascii/` and loaded only there. |
+| `src/lib/clascii/` | What that page works out without a browser: the settings from its controls, the ring the new art spreads in, and the jungle at night around it. |
 | `scripts/print-cv-pdf.mjs` | Prints `/cv/` from the built site to `cv/cv.pdf`, beside the page. |
 | `scripts/preview.sh` | Builds the preview from the vault and publishes it. |
 | `.github/workflows/deploy.yml` | The deploy that takes over from `pages.yml` at the switch-over. |
