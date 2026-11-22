@@ -45,6 +45,11 @@ describe('Page', () => {
     expect(html).toMatch(/<div class="footer-art" aria-hidden="true"[^>]*>\s*<pre>soil<\/pre>/);
   });
 
+  it('stands every page on the soil, unless the page brings its own footer art', async () => {
+    expect(await render()).toMatch(/<div class="footer-art" aria-hidden="true"[^>]*>\s*<div data-life="soil"/);
+    expect(await render({}, { 'footer-art': '<pre>other</pre>' })).not.toContain('data-life="soil"');
+  });
+
   it('gives a page its canonical address, and the 404 none', async () => {
     expect(await render({}, {}, '/notes/')).toContain('<link rel="canonical" href="https://schrodlm.github.io/notes/">');
     const missing = await render({ canonical: false });
