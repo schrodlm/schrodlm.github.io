@@ -1,0 +1,17 @@
+---
+// An internal page for the screenshot tests: the sample note of every construct, rendered in the
+// house style. astro.config.mjs adds it at /_kit/prose/ only when the site is built from the
+// sample content, so it never reaches the real site.
+import { getEntry, render } from 'astro:content';
+import Prose from '../../src/components/Prose.astro';
+import Page from '../../src/layouts/Page.astro';
+
+const note = await getEntry('notes', 'every-construct');
+if (!note) throw new Error('the sample content has no notes/every-construct.md');
+const { Content } = await render(note);
+---
+
+<Page title={note.data.title} section="notes" canonical={false}>
+  <h1>{note.data.title}</h1>
+  <Prose><Content /></Prose>
+</Page>
