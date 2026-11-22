@@ -1,0 +1,277 @@
+---
+// The garden map (lib/graph-view.ts): the plate at rest, every note's head laid over it as a link
+// to the note, and every vine as a layer of its own that comes up on hover. Its captions are real
+// text: the hubs' at rest, any other note's while it or a neighbour is hovered or focused. All of it
+// is CSS: one generated rule for each note lights its neighbours and vines, and the rest of the
+// plate fades. The plate keeps its size and scrolls inside its frame on a narrow screen; the list
+// beneath it says the same in words.
+import Braille from './Braille.astro';
+import type { LinkGraph } from '../lib/graph';
+import { CELL, drawGarden, layGarden, placeCaptions, ROW } from '../lib/graph-view';
+import { compareTitles, seedName } from '../lib/pages';
+import { drawFlower } from '../lib/seedling';
+
+/** A note as the map shows it. */
+interface MapNote {
+  slug: string;
+  title: string;
+  lang?: string | undefined;
+  href: string;
+  /** Not written yet: its head is a seedling. */
+  stub: boolean;
+}
+
+interface Props {
+  graph: LinkGraph;
+  notes: readonly MapNote[];
+}
+
+const { graph, notes } = Astro.props;
+const bySlug = new Map(notes.map((n) => [n.slug, n]));
+const note = (slug: string) => bySlug.get(slug)!;
+const aToZ = (a: string, b: string) => compareTitles(note(a).title, note(b).title) || (a < b ? -1 : 1);
+
+const layout = layGarden(graph);
+const captions = placeCaptions(layout, (slug) => note(slug).title);
+const drawing = drawGarden(layout);
+const index = new Map(layout.flowers.map((f, i) => [f.slug, i]));
+const names = (slugs: readonly string[]) => [...slugs].sort(aToZ).map((slug) => note(slug).title);
+
+// The flowers in title order, so the keyboard reaches them A to Z, as the list below has them.
+const flowers = layout.flowers
+  .map((f, i) => {
+    const caption = captions.get(f.slug)!;
+    const [x, y] = [f.cell[0] * CELL, f.cell[1] * ROW];
+    const links = f.degree === 1 ? '1 link' : `${f.degree} links`;
+    return {
+      ...note(f.slug),
+      head: drawFlower(seedName('notes', f.slug), note(f.slug).stub, 'head', 0, f.size),
+      classes: [`note n${i}`, ...graph.neighbours(f.slug).map((other) => `k${index.get(other)}`), { named: caption.atRest }],
+      box: `left: ${x}px; top: ${y}px; width: ${f.size * 2 * CELL}px; height: ${f.size * ROW}px`,
+      caption: `left: ${caption.x - x}px; top: ${caption.y - y}px; max-width: ${caption.w}px`,
+      about: [f.wild ? 'a wildflower' : links, ...(note(f.slug).stub ? ['not written yet'] : [])].join(', '),
+      out: names(graph.linksOut(f.slug)),
+      in: names(graph.linksIn(f.slug)),
+      wild: f.wild,
+    };
+  })
+  .sort((a, b) => aToZ(a.slug, b.slug));
+
+const vines = layout.vines
+  .map((v, i) => ({ ...drawing.vines[i]!, classes: `vine ${v.ends.map((end) => `e${index.get(end)}`).join(' ')}` }))
+  .filter((v) => v.rows.length > 0);
+
+// Hovering or focusing a note lights it, its neighbours and its vines.
+const lit = layout.flowers
+  .map((f, i) => (f.degree ? `.garden-map:has(.n${i}:is(:hover,:focus-visible)) :is(.k${i},.e${i}){--lit:1}` : ''))
+  .join('');
+
+const wild = layout.flowers.filter((f) => f.wild).length;
+const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+const tally = `${count(notes.length - wild, 'flower', 'flowers')} on ${count(layout.vines.length, 'vine', 'vines')}${
+  wild ? `, and ${count(wild, 'wildflower', 'wildflowers')}` : ''
+}`;
+---
+
+<section class="garden-map" aria-label="The garden map">
+  <div class="frame">
+    <div class="plate" style={`width: ${layout.width * CELL}px; height: ${layout.height * ROW}px`}>
+      <div class="ground">
+        <Braille rows={drawing.plate} />
+      </div>
+      {
+        vines.map((v) => (
+          <div class={v.classes} style={`left: ${v.cell[0] * CELL}px; top: ${v.cell[1] * ROW}px`}>
+            <Braille rows={v.rows} />
+          </div>
+        ))
+      }
+      {layout.bed !== undefined && <span class="bed" aria-hidden="true" style={`top: ${layout.bed * ROW}px`}>wildflowers</span>}
+      {
+        flowers.map((f) => (
+          <a class:list={f.classes} href={f.href} style={f.box}>
+            <Braille rows={f.head} />
+            <span class:list={['caption', { wildflower: f.wild }]} lang={f.lang} style={f.caption}>
+              {f.title}<span class="visually-hidden" lang="en"> ({f.about})</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <p class="legend">
+    {tally}. Every note is a flower, the better linked the bigger; the strongest links are drawn as vines. Hover over a note, or
+    focus it, to bring up all its vines and its neighbours’ names; follow it to read it.{
+      wild > 0 && ' The wildflowers in their own bed at the foot link nowhere, and nothing links to them yet.'
+    }
+  </p>
+  <details class="every">
+    <summary>Every note, and what it links</summary>
+    <ul>
+      {
+        flowers.map((f) => (
+          <li>
+            <a href={f.href} lang={f.lang}>
+              {f.title}
+            </a>
+            <span class="how">
+              {f.wild && ' · a wildflower, linked with nothing yet'}
+              {f.out.length > 0 && ` · links to ${f.out.join(', ')}`}
+              {f.in.length > 0 && ` · linked from ${f.in.join(', ')}`}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+  <style is:inline set:html={lit} />
+</section>
+
+<style>
+  /* The map takes the page's wide frame, wider than the reading column it stands in, and scrolls
+     across inside it when the window is narrower than the plate. */
+  .frame {
+    --wide: min(var(--frame), 100vw - 2 * var(--gutter));
+    width: var(--wide);
+    margin-left: calc(50% - var(--wide) / 2);
+    overflow-x: auto;
+  }
+
+  .plate {
+    position: relative;
+    margin-inline: auto;
+  }
+
+  .ground,
+  .vine,
+  .bed,
+  .note {
+    position: absolute;
+  }
+
+  .ground {
+    inset: 0;
+  }
+
+  /* A vine is hidden until one of its notes is hovered or focused, and then comes up in green. */
+  .vine {
+    color: var(--fern);
+    opacity: var(--lit, 0);
+    pointer-events: none;
+  }
+
+  .bed {
+    left: 24px;
+    padding: 0 4px;
+    background: var(--sand);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .note {
+    text-decoration: none;
+  }
+
+  .note:is(:hover, :focus-visible) {
+    --lit: 1;
+  }
+
+  .note:focus-visible {
+    outline: 2px solid var(--river);
+    outline-offset: 3px;
+  }
+
+  /* A caption is the note's name, there for screen readers always, drawn at rest only for a hub
+     whose caption fits cleanly.
+     Its size and padding are the ones lib/graph-view.ts places it by. */
+  .caption {
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 3px;
+    background: var(--sand);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .named .caption {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .wildflower {
+    font-style: italic;
+  }
+
+  /* While a note is hovered or focused, it, its neighbours and its vines are lit, and the rest
+     fades. */
+  .garden-map:has(.note:is(:hover, :focus-visible)) .ground {
+    opacity: 0.45;
+  }
+
+  .garden-map:has(.note:is(:hover, :focus-visible)) .note {
+    opacity: calc(0.3 + 0.7 * var(--lit, 0));
+  }
+
+  .garden-map:has(.note:is(:hover, :focus-visible)) .caption {
+    opacity: var(--lit, 0);
+  }
+
+  /* A resting caption faded out of sight is out of the pointer's way too. */
+  .garden-map:has(.note:is(:hover, :focus-visible)) .note:not(:hover, :focus-visible) .caption {
+    pointer-events: none;
+  }
+
+  .note:is(:hover, :focus-visible) .caption {
+    z-index: 2;
+    color: var(--canopy);
+    font-weight: 600;
+  }
+
+  .legend,
+  .every summary,
+  .how {
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  .legend {
+    margin: 14px 0 0;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .every {
+    margin-top: 24px;
+  }
+
+  .every summary {
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .every ul {
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .every li {
+    margin-bottom: 6px;
+  }
+
+  .how {
+    font-size: 12px;
+  }
+</style>
