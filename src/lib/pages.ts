@@ -62,9 +62,10 @@ export function newestFirst<T extends Dated>(posts: readonly T[]): T[] {
   return [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime() || a.id.localeCompare(b.id));
 }
 
-const collator = new Intl.Collator('en', { sensitivity: 'base', numeric: true });
+/** Two titles in A to Z order, whatever their case or accents, with numbers in counting order. */
+export const compareTitles = new Intl.Collator('en', { sensitivity: 'base', numeric: true }).compare;
 
 /** Notes from A to Z by title, whatever their case, accents or folder. */
 export function byTitle<T extends Titled>(notes: readonly T[]): T[] {
-  return [...notes].sort((a, b) => collator.compare(a.data.title, b.data.title) || a.id.localeCompare(b.id));
+  return [...notes].sort((a, b) => compareTitles(a.data.title, b.data.title) || a.id.localeCompare(b.id));
 }
