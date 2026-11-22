@@ -1,0 +1,88 @@
+---
+// An internal page for the screenshot tests: the braille kit and the herbarium's three forms on
+// one page. astro.config.mjs adds it at /_kit/ only when the site is built from the sample content,
+// so it never reaches the real site.
+import Braille from '../../src/components/Braille.astro';
+import { blade, createCanvas, curve, disc, encode, line, oval, ring } from '../../src/lib/braille';
+import { draw, grow, label } from '../../src/lib/herbarium';
+
+const specimen = grow('notes/sample-note');
+
+const field = createCanvas(12, 2);
+for (let y = 0; y < field.dotHeight; y++) for (let x = 0; x < field.dotWidth; x++) field.put(x, y, '#1F2B23');
+
+const shapes = createCanvas(40, 4);
+line(shapes, [2, 13], [12, 2], { colour: '#2B7349' });
+curve(shapes, [16, 14], [20, -4], [26, 14], { colour: '#3F8A52' });
+disc(shapes, [34, 8], 5, { colour: '#C24E39' });
+ring(shapes, [46, 8], 6, { colour: '#2A7099' });
+oval(shapes, [58, 8], 6, 2.5, -0.6, { colour: '#8A4F98' });
+blade(shapes, [66, 14], [72, 12], [78, 1], 3, { colour: '#5E8E4A' });
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <title>Braille kit</title>
+    <style>
+      body {
+        margin: 24px;
+        background: #f1ecdf;
+        color: #1f2b23;
+        font-family: ui-monospace, monospace;
+        font-size: 13px;
+      }
+      section {
+        margin-bottom: 24px;
+      }
+      h2 {
+        margin: 0 0 8px;
+        font-size: 13px;
+      }
+      .forms {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: end;
+      }
+      .mark {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .plate {
+        width: 300px;
+        container-type: inline-size;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>A field of full cells: one even grid of dots</h2>
+      <Braille rows={encode(field)} />
+    </section>
+    <section>
+      <h2>Primitives: line, curve, disc, ring, oval, blade</h2>
+      <Braille rows={encode(shapes)} />
+    </section>
+    <section>
+      <h2>Herbarium stub: plant, head (sizes 4 and 2), mark</h2>
+      <div class="forms">
+        <Braille rows={draw(specimen, { wind: 0, form: 'plant' })} class="plant" />
+        <Braille rows={draw(specimen, { wind: 0, form: 'head', size: 4 })} class="head" />
+        <Braille rows={draw(specimen, { wind: 0, form: 'head', size: 2 })} />
+        <div class="mark"><Braille rows={draw(specimen, { wind: 0, form: 'mark' })} class="mark-art" /> A sample note</div>
+      </div>
+    </section>
+    <section>
+      <h2>Scaled with its container: a plant 300 px wide</h2>
+      <div class="plate"><Braille rows={draw(specimen, { wind: 0, form: 'plant' })} cell="calc(100cqi / 15)" class="scaled" /></div>
+    </section>
+    <section>
+      <h2>{specimen.latin}, no. {specimen.seed}</h2>
+      <dl>{label(specimen).map((t) => <><dt>{t.name}</dt><dd>{t.value}</dd></>)}</dl>
+    </section>
+  </body>
+</html>
