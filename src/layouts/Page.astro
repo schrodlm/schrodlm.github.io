@@ -2,9 +2,10 @@
 // The frame every page shares: the header with my name and the nav, the reading column, the side
 // decoration beside it, and the footer with its art above the bar.
 //
-// Slots: the default one is the column; "side" hangs beside the column on wide screens (the vine);
-// "footer-art" sits above the footer bar, the soil unless a page brings its own. Both are drawings,
-// so they are hidden from screen readers here.
+// Slots: the default one is the column; "band" spans the window above the header (the home page's
+// garden); "side" hangs beside the column on wide screens (the vine); "footer-art" sits above the
+// footer bar, the soil unless a page brings its own. The side and the footer art are drawings, so
+// they are hidden from screen readers here; the band hides its own drawing, as it holds links.
 import '../styles/garden.css';
 import Head from '../components/Head.astro';
 import Soil from '../components/Soil.astro';
@@ -43,6 +44,7 @@ const nav = navFor(section, Astro.url.pathname, import.meta.env.BASE_URL);
     <a class="skip" href="#text">Skip to the text</a>
     <div class="page">
       <div class="upper">
+        <slot name="band" />
         <div class="side" aria-hidden="true">
           <slot name="side" />
         </div>
