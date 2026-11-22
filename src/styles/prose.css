@@ -190,3 +190,30 @@ details.callout[open] > summary > .callout-title::after {
   line-height: 1.5;
   text-align: center;
 }
+
+/* Tables: Plex headers over a thin rule, scrolling sideways when wider than the column. */
+.table-scroll {
+  margin: 24px 0;
+  overflow-x: auto;
+}
+
+.prose table {
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.prose th {
+  padding: 4px 16px 6px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.prose td {
+  padding: 6px 16px 6px 0;
+  vertical-align: top;
+}
