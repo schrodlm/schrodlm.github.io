@@ -190,29 +190,30 @@ export function drawNeighbourhood(hood: Neighbourhood, head: DrawHead): Neighbou
   return { plate: encode(plate), far: encode(far), vines };
 }
 
-interface Box {
+/** A head's square on a plate, in dots. */
+export interface Box {
   centre: Point;
   /** Half its side, in dots. */
   half: number;
 }
 
-// A head's square, in dots.
-const box = ([x, y]: Point, size: number): Box => ({ centre: [x * 2 + size * 2, y * 4 + size * 2], half: size * 2 });
+/** The square of a head of `size` rows whose top-left cell is `cell`, in dots. */
+export const box = ([x, y]: Point, size: number): Box => ({ centre: [x * 2 + size * 2, y * 4 + size * 2], half: size * 2 });
 
 const inside = ([x, y]: Point, { centre, half }: Box) =>
   Math.abs(x - centre[0]) <= half + CLEAR && Math.abs(y - centre[1]) <= half + CLEAR;
 
-// A vine from the note to a neighbour, bowing gently away from the plate's middle row, stopping
-// short of both heads: dotted from a note that only links here; solid, with a leaf-tip at the
-// neighbour, to a note this one links to; and for a link both ways, a leaf-tip at either end.
-function vine(canvas: DotCanvas, from: Box, to: Box, n: Neighbour): void {
+/**
+ * The dots of a vine from one head to another, each once, in order: a gentle curve bowing to its
+ * left (going from `from` to `to`) by `bow` of its length, or to its right for a negative `bow`,
+ * and stopping short of both heads.
+ */
+export function vineDots(from: Box, to: Box, bow: number): Point[] {
   const [x0, y0] = from.centre;
   const [x1, y1] = to.centre;
-  const length = Math.hypot(x1 - x0, y1 - y0);
-  const bow = (y1 < y0 ? -1 : 1) * n.side * 0.12 * length;
-  const control: Point = [(x0 + x1) / 2 - ((y1 - y0) / length) * bow, (y0 + y1) / 2 + ((x1 - x0) / length) * bow];
-
-  // The dots along the curve, each once, outside both heads.
+  const length = Math.hypot(x1 - x0, y1 - y0) || 1;
+  const pull = bow * length;
+  const control: Point = [(x0 + x1) / 2 - ((y1 - y0) / length) * pull, (y0 + y1) / 2 + ((x1 - x0) / length) * pull];
   const dots: Point[] = [];
   const seen = new Set<string>();
   const steps = Math.ceil(length * 4);
@@ -224,6 +225,14 @@ function vine(canvas: DotCanvas, from: Box, to: Box, n: Neighbour): void {
     seen.add(key);
     dots.push(dot);
   }
+  return dots;
+}
+
+// A vine from the note to a neighbour, bowing gently away from the plate's middle row, stopping
+// short of both heads: dotted from a note that only links here; solid, with a leaf-tip at the
+// neighbour, to a note this one links to; and for a link both ways, a leaf-tip at either end.
+function vine(canvas: DotCanvas, from: Box, to: Box, n: Neighbour): void {
+  const dots = vineDots(from, to, (to.centre[1] < from.centre[1] ? -1 : 1) * n.side * 0.12);
   if (dots.length < 2) return;
 
   dots.forEach(([x, y], i) => {
@@ -243,8 +252,8 @@ function leaf(canvas: DotCanvas, run: Point[]): void {
   blade(canvas, base, swell, tip, 1.5, VINE);
 }
 
-// The plate's frame: one ruled line round its edge.
-function frame(canvas: DotCanvas): void {
+/** A plate's frame: one ruled line round its edge. */
+export function frame(canvas: DotCanvas): void {
   const right = canvas.dotWidth - 2;
   const bottom = canvas.dotHeight - 2;
   line(canvas, [1, 1], [right, 1], RULE);
