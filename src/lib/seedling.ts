@@ -2,17 +2,16 @@
 // is a sprout and not a flower, the same for every stub, at the footprint of the form it stands in
 // for, so a stub's page and its line in a list are laid out as a flower's would be.
 import { blade, createCanvas, encode, line, type Row } from './braille';
-import { draw, grow } from './herbarium';
+import { draw, grow, type Form } from './herbarium';
 import { isStub } from './markdown/stubs';
 import { seedName, type Kind } from './pages';
-
-type Form = 'plant' | 'mark';
 
 const STEM = { colour: 'var(--fern)' };
 const LEAF = { colour: 'var(--moss)' };
 
-/** The seedling at the footprint of a flower's whole plant or its mark. */
-export function drawSeedling(form: Form): Row[] {
+/** The seedling at the footprint of a flower's whole plant, its mark, or its head of `size` rows. */
+export function drawSeedling(form: Form, size?: number): Row[] {
+  if (form === 'head') return sproutHead(size);
   if (form === 'mark') {
     const canvas = createCanvas(3, 1);
     line(canvas, [3, 3], [3, 1], STEM);
@@ -29,7 +28,29 @@ export function drawSeedling(form: Form): Row[] {
   return encode(canvas);
 }
 
-/** A note's or post's flower in one form, at rest, or the seedling while the page is a stub. */
-export function drawPageFlower(kind: Kind, slug: string, markdown: string, form: Form): Row[] {
-  return isStub(markdown) ? drawSeedling(form) : draw(grow(seedName(kind, slug)), { wind: 0, form });
+/**
+ * A note's or post's flower in one form, at rest, or the seedling while the page is a stub. A head
+ * takes its `size` in rows.
+ */
+export function drawPageFlower(kind: Kind, slug: string, markdown: string, form: Form, size?: number): Row[] {
+  return isStub(markdown) ? drawSeedling(form, size) : draw(grow(seedName(kind, slug)), { wind: 0, form, ...(size === undefined ? {} : { size }) });
+}
+
+// A sprout standing in a head's square footprint: a stem from the middle of its foot, and a leaf
+// either side near its top.
+function sproutHead(size: number | undefined): Row[] {
+  if (size === undefined || !Number.isInteger(size) || size < 1) {
+    throw new RangeError(`A head's size is a whole number of rows, not ${size}`);
+  }
+  const canvas = createCanvas(size * 2, size);
+  const side = canvas.dotHeight;
+  const foot = side - 1;
+  const middle = side / 2;
+  const top = foot - side * 0.5;
+  const reach = side * 0.3;
+  const width = Math.max(1, side / 6);
+  line(canvas, [middle, foot], [middle, top], STEM);
+  blade(canvas, [middle, top + reach * 0.4], [middle - reach * 0.6, top - reach * 0.2], [middle - reach, top], width, LEAF);
+  blade(canvas, [middle, top], [middle + reach * 0.6, top - reach * 0.6], [middle + reach, top - reach * 0.4], width, LEAF);
+  return encode(canvas);
 }
