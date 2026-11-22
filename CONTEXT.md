@@ -122,10 +122,20 @@ to 5 in half steps. A course has all three with its worth-it verdict, or none
 and is *not rated yet*.
 _Avoid_: grade, mark (a mark is a flower's glimpse), stars
 
+**Verdict**:
+Whether a course was worth taking, `[+] worth it` or `[-] not worth it`,
+given with its three ratings.
+_Avoid_: recommendation, score
+
 **University page**:
 A page introducing one university, its own collection, listing its courses
 by academic year and semester. It is not itself a course.
 _Avoid_: hub, landing page
+
+**Courses home**:
+The courses section's own page: its intro, a card for each university with a
+crop of its building, and an index of every course.
+_Avoid_: courses index, landing page
 
 **Intro**:
 The text above a section's list, such as the courses home's or the home
@@ -174,6 +184,11 @@ at every deploy.
 _Avoid_: resume
 
 ### How the site looks
+
+**Meter**:
+How a rating is drawn on a course's page: five cells of blocks, a whole point
+filling a cell and a half point half of one, with the number beside it.
+_Avoid_: bar, stars, progress bar
 
 **Garden**:
 The band of ASCII plants across the top of the home page, swaying in one

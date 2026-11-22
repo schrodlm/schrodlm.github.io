@@ -115,6 +115,9 @@ site serves at `/assets/img/`.
 | `src/lib/markdown/` | Renders normalized markdown in the house style: callouts, math, figures, tables, task lists and links to **stubs**, as Sätteri plugins. |
 | `src/components/Prose.astro` | Wraps a page's rendered markdown in the prose styles, `src/styles/prose.css`. |
 | `src/lib/content-images.ts` | Serves the content's images at `/assets/img/`, from the dev server and in the build. |
+| `src/pages/courses/` | The **courses home** at `/courses/` and each reviewed course at `/courses/<slug>/`. |
+| `src/pages/universities/` | Each **university page** at `/universities/<slug>/`, under its building's plate. |
+| `src/lib/courses.ts` | What the course pages work out from the front matter: a course's name without its code, its **meters**, and the order of the lists. |
 | `src/pages/cv/` | The **CV** at `/cv/`, rendered from the one note in `cv/`; `src/styles/cv.css` holds its screen and print styles. |
 | `src/lib/lamplit-desk.ts` | Draws the CV's plate, frame by frame, for its animation and for its still. |
 | `scripts/print-cv-pdf.mjs` | Prints `/cv/` from the built site to `cv/cv.pdf`, beside the page. |

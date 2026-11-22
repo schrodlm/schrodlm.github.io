@@ -30,6 +30,10 @@ together.
   Positions in a list count from 0: `experience.1.end` is the second job's
   `end`. Astro stops at the first page that fails, so a run shows one page's
   problems at a time.
+- **Addresses.** A course with a review is served at `/courses/<slug>/` and a
+  university at `/universities/<slug>/`, subfolders and all: the address the
+  converter writes into links with `links: urls`. `courses/mff/nswi035.md` is
+  `/courses/mff/nswi035/`.
 - **Pages that point at pages** name them by slug, and the page must exist: a
   post's `project: rentczecher` needs `projects/rentczecher.md`. A local build
   re-checks only the pages that changed since the last one, so a deleted
@@ -154,7 +158,10 @@ tags: [sqlite]
 ## Courses
 
 A course may have no review yet: then it has no `ratings`, no `written`, and
-the body may be empty.
+the body may be empty. A course with a body has a page at
+`/courses/<slug>/`; one without is listed on its university's page and the
+courses home without a link. The title may start with the code, as in
+`NSWI035 - Principy…`: the pages show the code apart, and the name without it.
 
 | Field | Form | Required | Notes |
 |---|---|---|---|
@@ -197,7 +204,9 @@ tags: [distributed-systems]
 ## Universities
 
 The body is my text about the place. Its courses are grouped by their own
-`year` and `semester`, so the university needs nothing more.
+`year` and `semester`, so the university needs nothing more. Its page is at
+`/universities/<slug>/`, under the plate of its building when the site has one
+for that slug (`src/lib/plates.ts`), and a neutral plate otherwise.
 
 | Field | Form | Required | Notes |
 |---|---|---|---|
