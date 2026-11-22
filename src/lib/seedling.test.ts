@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Row } from './braille';
 import { draw, grow } from './herbarium';
-import { drawPageFlower, drawSeedling } from './seedling';
+import { drawFlower, drawPageFlower, drawSeedling } from './seedling';
 
 const footprint = (rows: Row[]) => ({ width: rows[0]!.map((run) => run.t).join('').length, height: rows.length });
 const empty = (row: Row) => row.every((run) => /^⠀+$/.test(run.t));
@@ -32,6 +32,18 @@ describe('drawSeedling', () => {
     const plant = drawSeedling('plant');
     expect(empty(plant.at(-1)!)).toBe(false);
     expect(empty(plant[0]!)).toBe(true);
+  });
+});
+
+describe('drawFlower', () => {
+  it('draws the flower a seed grows, at the wind given', () => {
+    expect(drawFlower('posts/a-post', false, 'plant', 0.5)).toEqual(
+      draw(grow('posts/a-post'), { wind: 0.5, form: 'plant' }),
+    );
+  });
+
+  it('draws the seedling for a stub, whatever the wind', () => {
+    expect(drawFlower('posts/a-stub', true, 'plant', -0.7)).toEqual(drawSeedling('plant'));
   });
 });
 
