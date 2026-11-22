@@ -13,6 +13,21 @@ describe('drawSeedling', () => {
     }
   });
 
+  it('stands in a head’s square footprint, at every size', () => {
+    for (const size of [1, 2, 3, 5]) {
+      expect(footprint(drawSeedling('head', size))).toEqual(footprint(draw(grow('notes/any'), { wind: 0, form: 'head', size })));
+    }
+  });
+
+  it('takes a head’s size only as a whole number of rows', () => {
+    for (const size of [undefined, 0, 1.5]) expect(() => drawSeedling('head', size)).toThrow(RangeError);
+  });
+
+  it('sprouts a head from the middle of its foot, and from nowhere else on it', () => {
+    const foot = drawSeedling('head', 3).at(-1)!.map((run) => run.t).join('');
+    expect([...foot].map((ch) => ch !== '⠀')).toEqual([false, false, false, true, false, false]);
+  });
+
   it('stands on the ground, and leaves the top of the footprint empty', () => {
     const plant = drawSeedling('plant');
     expect(empty(plant.at(-1)!)).toBe(false);
@@ -25,6 +40,13 @@ describe('drawPageFlower', () => {
     expect(drawPageFlower('posts', 'a-post', 'Some text.', 'mark')).toEqual(
       draw(grow('posts/a-post'), { wind: 0, form: 'mark' }),
     );
+  });
+
+  it('draws a written page’s head at the size asked', () => {
+    expect(drawPageFlower('notes', 'a-note', 'Some text.', 'head', 2)).toEqual(
+      draw(grow('notes/a-note'), { wind: 0, form: 'head', size: 2 }),
+    );
+    expect(drawPageFlower('notes', 'a-stub', '', 'head', 2)).toEqual(drawSeedling('head', 2));
   });
 
   it('draws the seedling for a stub', () => {
