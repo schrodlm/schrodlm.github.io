@@ -90,6 +90,17 @@ describe('the schemas', () => {
     expect(result.data).toMatchObject({ date: day('2024-03-14') });
   });
 
+  test('accept a note with its date, sources and course', async () => {
+    const note = {
+      ...valid.notes,
+      date: '2025-10-19',
+      source: 'https://example.com/lecture',
+      references: ['https://example.com/paper'],
+      related_course: 'FEX101',
+    };
+    expect(await issues('notes', note)).toEqual([]);
+  });
+
   test('accept a course that is not rated yet', async () => {
     const { written: _, ratings: __, course_page: ___, ...unrated } = valid.courses;
     expect(await issues('courses', unrated)).toEqual([]);
