@@ -22,7 +22,8 @@ export function line(canvas: DotCanvas, from: Point, to: Point, ink: Ink): void 
   for (let i = 0; i <= n; i++) put(canvas, x0 + ((x1 - x0) * i) / n, y0 + ((y1 - y0) * i) / n, ink);
 }
 
-const bezier = (from: Point, control: Point, to: Point, s: number): Point => {
+/** The point a share `s` (0 to 1) of the way along a quadratic Bézier curve. */
+export const bezier = (from: Point, control: Point, to: Point, s: number): Point => {
   const a = (1 - s) * (1 - s);
   const b = 2 * (1 - s) * s;
   const e = s * s;
