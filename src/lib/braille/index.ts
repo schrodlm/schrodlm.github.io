@@ -2,4 +2,4 @@
 // for the Braille component to render; a drawing can be stamped back into a larger canvas.
 export { createCanvas, type DotCanvas } from './canvas';
 export { encode, markup, stamp, TRANSPARENT, type Row, type Run } from './encode';
-export { blade, curve, disc, line, oval, ring, type Ink, type Point } from './draw';
+export { bezier, blade, curve, disc, line, oval, ring, type Ink, type Point } from './draw';
