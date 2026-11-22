@@ -112,6 +112,8 @@ site serves at `/assets/img/`.
 |---|---|
 | `astro.config.mjs` | The site's configuration, with the base path from `SITE_BASE` and the markdown pipeline. |
 | `src/lib/base-path.ts` | Puts the base path in front of the content's site-absolute links, when there is one. |
+| `src/lib/markdown/` | Renders normalized markdown in the house style: callouts, math, figures, tables, task lists and links to **stubs**, as Sätteri plugins. |
+| `src/components/Prose.astro` | Wraps a page's rendered markdown in the prose styles, `src/styles/prose.css`. |
 | `src/lib/content-images.ts` | Serves the content's images at `/assets/img/`, from the dev server and in the build. |
 | `src/pages/cv/` | The **CV** at `/cv/`, rendered from the one note in `cv/`; `src/styles/cv.css` holds its screen and print styles. |
 | `src/lib/lamplit-desk.ts` | Draws the CV's plate, frame by frame, for its animation and for its still. |
