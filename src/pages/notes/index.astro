@@ -1,10 +1,21 @@
 ---
-// Every note, from A to Z by title.
+// Every note, from A to Z by title, with a way to the graph view of them all.
 import { getCollection } from 'astro:content';
 import SectionList from '../../layouts/SectionList.astro';
+import { withBase } from '../../lib/base-path';
 import { byTitle } from '../../lib/pages';
 
 const notes = byTitle(await getCollection('notes'));
 ---
 
-<SectionList kind="notes" title="Notes" pages={notes} />
+<SectionList kind="notes" title="Notes" pages={notes}>
+  <p class="whole"><a href={withBase('/graph/', import.meta.env.BASE_URL)}>see the whole garden</a></p>
+</SectionList>
+
+<style>
+  .whole {
+    margin: 16px 0 0;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+</style>
