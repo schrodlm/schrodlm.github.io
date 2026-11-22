@@ -118,6 +118,9 @@ site serves at `/assets/img/`.
 | `src/pages/courses/` | The **courses home** at `/courses/` and each reviewed course at `/courses/<slug>/`. |
 | `src/pages/universities/` | Each **university page** at `/universities/<slug>/`, under its building's plate. |
 | `src/lib/courses.ts` | What the course pages work out from the front matter: a course's name without its code, its **meters**, and the order of the lists. |
+| `src/pages/projects/`, `src/pages/devlogs/` | The projects list at `/projects/`, each project's page at `/projects/<slug>/`, and each devlog at `/devlogs/<slug>/`. |
+| `src/lib/projects.ts`, `src/lib/devlog.ts` | A project's milestone stages, sessions and **field journal**; a devlog's rendered HTML cut into its sections. |
+| `src/lib/session-trail.ts` | Lays out and draws a devlog's **session trail**. |
 | `src/pages/cv/` | The **CV** at `/cv/`, rendered from the one note in `cv/`; `src/styles/cv.css` holds its screen and print styles. |
 | `src/lib/lamplit-desk.ts` | Draws the CV's plate, frame by frame, for its animation and for its still. |
 | `scripts/print-cv-pdf.mjs` | Prints `/cv/` from the built site to `cv/cv.pdf`, beside the page. |
