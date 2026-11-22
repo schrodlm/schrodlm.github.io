@@ -30,10 +30,12 @@ together.
   Positions in a list count from 0: `experience.1.end` is the second job's
   `end`. Astro stops at the first page that fails, so a run shows one page's
   problems at a time.
-- **Addresses.** A course with a review is served at `/courses/<slug>/` and a
-  university at `/universities/<slug>/`, subfolders and all: the address the
+- **Addresses.** A course with a review is served at `/courses/<slug>/`, a
+  university at `/universities/<slug>/`, a project at `/projects/<slug>/` and
+  a devlog at `/devlogs/<slug>/`, subfolders and all: the address the
   converter writes into links with `links: urls`. `courses/mff/nswi035.md` is
-  `/courses/mff/nswi035/`.
+  `/courses/mff/nswi035/`, and `devlogs/rentczecher/session-3.md` is
+  `/devlogs/rentczecher/session-3/`.
 - **Pages that point at pages** name them by slug, and the page must exist: a
   post's `project: rentczecher` needs `projects/rentczecher.md`. A local build
   re-checks only the pages that changed since the last one, so a deleted
@@ -134,7 +136,11 @@ milestones:
 
 A devlog records one working session of one project. Its sections (Summary,
 Goal, Done, Decisions, Problems and surprises, Learned, Next, References) are
-headings in the body, not fields.
+`##` headings in the body, not fields. The page knows each by its heading, as
+written here: the first sentence of the Summary is the devlog's line in the
+field journal, and the list items of Done, Decisions, Problems and surprises,
+Learned and Next are counted and marked. Any other `##` heading is shown as
+written.
 
 | Field | Form | Required | Notes |
 |---|---|---|---|
