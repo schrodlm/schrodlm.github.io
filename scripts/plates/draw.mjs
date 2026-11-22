@@ -18,7 +18,8 @@
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { plate, png } from './woodcut.mjs';
+import { png } from '../../src/lib/png.ts';
+import { plate } from './woodcut.mjs';
 import { project, projectSlugs } from './projects.mjs';
 import { university, universitySlugs } from './universities.mjs';
 
