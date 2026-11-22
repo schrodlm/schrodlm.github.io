@@ -115,6 +115,8 @@ site serves at `/assets/img/`.
 | `src/lib/markdown/` | Renders normalized markdown in the house style: section headings with their trailing vines, callouts, math, figures, tables, task lists and links to **stubs**, as Sätteri plugins. |
 | `src/components/Prose.astro` | Wraps a page's rendered markdown in the prose styles, `src/styles/prose.css`. |
 | `src/pages/notes/`, `src/pages/posts/` | Each **note** at `/notes/<slug>/` and each **post** at `/posts/<slug>/`, laid out by `src/layouts/NoteOrPost.astro` with the page's **flower** and **specimen card**, and the lists at `/notes/` and `/posts/`. A note in a folder keeps the folder in its address, `/notes/<folder>/<slug>/`. |
+| `src/pages/index.astro` | The home page: the **garden** of the posts, drawn by `src/components/Garden.astro` and laid out by `src/lib/life/garden.ts`, then my **intro**, the recent posts and the projects in progress. |
+| `src/pages/herbarium/` | The **herbarium** at `/herbarium/`: the specimen card of every post and note that has its flower, in the order of their Latin names. |
 | `src/lib/pages.ts` | Where a note or post lives, what its page says of it, and the order of each list. |
 | `src/lib/graph.ts` | The link graph of the notes, worked out from their rendered HTML at build time: each note's links out, links in and the notes two steps away. |
 | `src/lib/neighbourhood.ts`, `src/components/Neighbourhood.astro` | Lay out and draw a note's **neighbourhood** in braille, at the end of its page, with its captions as links. |
