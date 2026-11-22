@@ -2,17 +2,17 @@
 
 The site is the last stage of a pipeline that spans three repositories. Content
 is written in my private Obsidian vault, translated by a converter, and pushed
-here, where every push builds and deploys the site. The words used here are
-defined in the [glossary](../CONTEXT.md), and the decisions behind the design
-are the [ADRs](adr/).
+here, where every push to `main` builds and deploys the site. The words used
+here are defined in the [glossary](../CONTEXT.md), and the decisions behind the
+design are the [ADRs](adr/).
 
 ## The three repositories
 
 | Repository | Visibility | Job |
 |---|---|---|
 | The vault | private | Everything is written here. Every push to it runs a **sync**. |
-| [`schrodlm/obsidian-md-converter`](https://github.com/schrodlm/obsidian-md-converter) | public | The **converter**, a Python CLI that turns Obsidian markdown into Jekyll markdown. |
-| `schrodlm/schrodlm.github.io` (this one) | public | The Jekyll site. Every push to `main` **deploys** it to [schrodlm.github.io](https://schrodlm.github.io). |
+| [`schrodlm/obsidian-md-converter`](https://github.com/schrodlm/obsidian-md-converter) | public | The **converter**, a Python CLI that turns Obsidian markdown into **normalized markdown**. |
+| `schrodlm/schrodlm.github.io` (this one) | public | The Astro site. Every push to `main` **deploys** it to [schrodlm.github.io](https://schrodlm.github.io). |
 
 ```mermaid
 flowchart LR
@@ -26,9 +26,9 @@ flowchart LR
     converter["<b>obsidian-md-converter</b>"]
 
     subgraph siterepo ["schrodlm.github.io · public"]
-        content["<b>Collections</b><br>_notes · _courses<br>_posts · _projects<br>assets/img"]
-        theme["<b>Theme</b><br>_layouts · _includes<br>assets · pages · cv.html"]
-        pageswf["<b>Deploy</b><br>Jekyll build + CV PDF"]
+        content["<b>Collections</b><br>src/content/"]
+        site["<b>The site</b><br>src/ · public/ · scripts/"]
+        deploywf["<b>Deploy</b><br>Astro build + CV PDF"]
     end
 
     pages["schrodlm.github.io<br><i>GitHub Pages</i>"]
@@ -37,76 +37,40 @@ flowchart LR
     vault --> syncwf
     syncwf -- "runs" --> converter
     syncwf -- "wipe and rewrite,<br>push as Obsidian Sync Bot" --> content
-    content --> pageswf
-    theme --> pageswf
-    pageswf --> pages
+    content --> deploywf
+    site --> deploywf
+    deploywf --> pages
 ```
 
 ## The sync
 
 A workflow in the vault runs the converter over the vault's published folders,
-with this repo checked out as its output, and pushes the result to `main` as
+writes the result into `src/content/` of this repo, and pushes it to `main` as
 *Obsidian Sync Bot*. It pushes with an access token rather than
 `GITHUB_TOKEN`, so the push triggers this repo's deploy.
 
 Three consequences shape all work here:
 
-- **The collections belong to the vault.** Each sync empties `_notes/`,
-  `_posts/`, `_projects/` and `_courses/` and writes them again, so an edit
-  made to them in this repo lasts only until the next sync. Fix content in the
-  vault, or fix how the converter writes it.
-- **Images only accumulate.** The converter copies the images a note embeds
-  into `assets/img/` and never deletes one.
-- **One bad note blocks the whole sync.** A missing image stops the converter,
-  and nothing is pushed.
-
-### What the converter translates
-
-| Obsidian | On the site |
-|---|---|
-| `[[Note]]`, `[[Note\|text]]` | A link to `/<collection>/<slug>.html`. When the target is not published, just the text. |
-| `[[Note#Heading]]` | Left as plain text, heading included. Heading links are not resolved. |
-| `[[Note\|text]]` inside a table, written `\|` | The link is lost. |
-| `![[image.png\|alt\|200x100]]` | `![alt](/assets/img/image.png){:width=…}`, and the image is copied. |
-| `![alt](image.png)` | The image is copied but the path stays relative, so it breaks under `/notes/`. |
-| `$…$`, `$$…$$` | Passed through and rendered by KaTeX, on note pages only. |
-| `> [!note] Title` callouts | Passed through as plain quotes, with the `[!note]` marker visible. |
-| Dataview blocks | Passed through as code blocks. |
-| Wikilinks inside code blocks | Rewritten, because code is not protected. |
+- **The collections belong to the vault.** Each sync rewrites `src/content/`
+  whole, so an edit made to it in this repo lasts only until the next sync.
+  Fix content in the vault ([ADR 1](adr/0001-content-is-written-in-the-vault.md)).
+- **The site asks nothing of the converter.** It accepts only normalized
+  markdown, as the converter's published specification defines it
+  ([ADR 4](adr/0004-the-site-accepts-only-normalized-markdown.md)), and
+  decides only how to render it. How the vault's Obsidian markdown becomes
+  normalized markdown is the converter's business.
+- **A page the site can't accept fails the deploy.** Every collection has a
+  strict schema ([front-matter.md](front-matter.md)); a field in the wrong
+  form fails the build and names the file, and the site that is live stays
+  as it was.
 
 ## The site
 
-The site is Jekyll on the [minima](https://github.com/jekyll/minima) theme,
-with these parts overridden or added:
-
-| Part | What it does |
-|---|---|
-| `_config.yml` | Declares the `notes`, `courses` and `projects` collections, and the navigation in `header_pages`. |
-| `_layouts/note.html` | A note: its tags, the **connected notes** list (`assets/js/note-graph.js`), and KaTeX math, which no other layout loads. |
-| `_layouts/post.html` | minima's post layout, plus the project the post belongs to. |
-| `_layouts/project.html` | A project, plus its posts. |
-| `_layouts/course.html` | A course with its ratings. |
-| `_includes/header.html` | minima's header with an active-page marker and a GitHub icon. |
-| `notes.html`, `courses.html`, `projects.html` | The section pages that list each collection, each with its **intro** if it has one. |
-| `about.html`, `index.markdown`, `404.html` | The About page, the home page (minima's post list), and the 404 page. |
-| `cv.html` | The **CV**, written as semantic HTML. `assets/main.scss` holds both its screen and its print styles. |
-| `scripts/render-cv-pdf.mjs` | Prints `/cv.html` from the built site to a PDF with Playwright. |
-
-## The deploy
-
-`.github/workflows/pages.yml` runs on every push to `main` and on manual
-dispatch. It builds the site with Jekyll, renders the CV PDF into the built
-site with Playwright, and deploys the result to GitHub Pages. The PDF exists
-only in the deployed site, never in the repo or in a plain local build.
-
-## The Astro site
-
-The Astro site that replaces the Jekyll one is built on the `astro` branch
+The site is built with Astro
 ([ADR 2](adr/0002-the-site-is-built-with-astro.md)). It reads normalized
-markdown ([ADR 4](adr/0004-the-site-accepts-only-normalized-markdown.md)) from
-one content folder, `src/content/`, where the sync will write it: a folder per
-collection, and the images the content embeds in `assets/img/`, which the
-site serves at `/assets/img/`.
+markdown from one content folder, `src/content/`: a folder per collection,
+and the images the content embeds in `assets/img/`, which the site serves at
+`/assets/img/`.
 
 | Part | What it does |
 |---|---|
@@ -135,8 +99,22 @@ site serves at `/assets/img/`.
 | `src/lib/clascii/` | What that page works out without a browser: the settings from its controls, the ring the new art spreads in, and the jungle at night around it. |
 | `scripts/print-cv-pdf.mjs` | Prints `/cv/` from the built site to `cv/cv.pdf`, beside the page. |
 | `scripts/preview.sh` | Builds the preview from the vault and publishes it. |
-| `.github/workflows/deploy.yml` | The deploy that takes over from `pages.yml` at the switch-over. |
+| `.github/workflows/deploy.yml` | The deploy. |
+| `.github/workflows/astro-ci.yml` | The checks. |
 
-The **preview** shows the site in progress with real content at
-`/site-preview/`. It is published by hand from its own repository,
-`schrodlm/site-preview`, so the live site is untouched until the switch-over.
+## The deploy
+
+`.github/workflows/deploy.yml` runs on every push to `main`, the sync's
+included, and on manual dispatch. It builds the site from `src/content/`,
+prints the CV PDF beside the CV page with Playwright, and deploys the result
+to GitHub Pages. The PDF exists only in the deployed site, never in the repo.
+
+`.github/workflows/astro-ci.yml` runs the type check, the unit tests and the
+screenshot tests, all over the invented sample content, on every pull request
+into `main` and every push to it.
+
+## The preview
+
+The **preview** shows a branch's site with real content at `/site-preview/`.
+It is published by hand from its own repository, `schrodlm/site-preview`, so
+the live site is untouched until the branch is merged.
