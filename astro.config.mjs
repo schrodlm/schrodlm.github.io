@@ -10,13 +10,16 @@ const base = process.env.SITE_BASE ?? '/';
 // The sync writes the content into src/content/; CONTENT_DIR points elsewhere (see src/content.config.ts).
 const contentDir = process.env.CONTENT_DIR ?? 'src/content';
 
-// The braille kit's internal page, for the screenshot tests: added only when the site is built
-// from the sample content, so it never reaches the real site.
+// The kit's internal pages, for the screenshot tests: the braille kit, and the vine in the page
+// shell. Added only when the site is built from the sample content, so they never reach the real
+// site.
 const kit = {
   name: 'braille-kit',
   hooks: {
-    'astro:config:setup': ({ injectRoute }) =>
-      injectRoute({ pattern: '/_kit', entrypoint: './tests/kit/index.astro' }),
+    'astro:config:setup': ({ injectRoute }) => {
+      injectRoute({ pattern: '/_kit', entrypoint: './tests/kit/index.astro' });
+      injectRoute({ pattern: '/_kit/vine', entrypoint: './tests/kit/vine.astro' });
+    },
   },
 };
 
