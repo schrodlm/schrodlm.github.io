@@ -17,6 +17,12 @@ describe('project plates', () => {
     expect(projectPlate('rentczecher', 'card').alt).toMatch(/^A woodcut of a row of Prague houses/);
   });
 
+  test('clascii keeps its plate under its old name, ascii-art-generator', () => {
+    for (const size of ['card', 'wide', 'narrow'] as const)
+      expect(projectPlate('ascii-art-generator', size)).toEqual(projectPlate('clascii', size));
+    expect(projectPlate('clascii', 'card').alt).not.toEqual(projectPlate('neutral', 'card').alt);
+  });
+
   test('a project without a plate of its own gets the neutral plate', () => {
     expect(projectPlate('a-project-without-a-plate', 'wide')).toEqual(projectPlate('neutral', 'wide'));
   });
