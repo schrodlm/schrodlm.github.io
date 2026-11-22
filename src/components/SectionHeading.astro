@@ -1,0 +1,50 @@
+---
+// A section heading and the short vine it trails across the rest of the column. Subheadings are
+// plain <h3>s and trail nothing.
+import { trail } from '../lib/trail';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="section-heading">
+  <h2>{title}</h2>
+  <span class="trail" aria-hidden="true">{trail(title).map((run) => <span class={run.part}>{run.text}</span>)}</span>
+</div>
+
+<style>
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 56px 0 16px;
+  }
+
+  h2 {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .trail {
+    flex: 1 0 4ch;
+    overflow: hidden;
+    white-space: pre;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+
+  .stem {
+    color: var(--fern);
+  }
+
+  .leaf {
+    color: var(--canopy);
+  }
+
+  .bloom {
+    color: var(--hibiscus);
+  }
+</style>
