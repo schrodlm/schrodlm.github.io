@@ -1,0 +1,43 @@
+---
+// The trail above a course or university page, `courses / MFF / NSWI035`: each step a link back up,
+// the last one the page itself.
+import { withBase } from '../lib/base-path';
+
+interface Props {
+  steps: { text: string; href?: string }[];
+}
+
+const { steps } = Astro.props;
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    {
+      steps.map(({ text, href }, i) => (
+        <li>
+          {i > 0 && <span aria-hidden="true"> / </span>}
+          {href ? <a href={withBase(href, import.meta.env.BASE_URL)}>{text}</a> : <span aria-current="page">{text}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    white-space: pre;
+  }
+
+  a,
+  a:hover {
+    color: var(--muted);
+  }
+</style>
