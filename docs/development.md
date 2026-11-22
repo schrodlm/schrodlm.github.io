@@ -46,11 +46,14 @@ npm run build
 npm run pdf
 ```
 
-The page brings its own fonts, so the PDF looks the same on every machine and
-needs no system fonts. A build without a `/cv/` page fails the step, and so
-does a page that fails to load a stylesheet, font or image, rather than
-printing a PDF that looks wrong. Run it with the same `SITE_BASE` as the
-build.
+The page brings its own fonts, Latin Modern Roman for print (its licence is in
+`src/assets/fonts/latin-modern/`, and `scripts/fonts/latin-modern.sh` makes
+them), so the PDF looks the same on every machine and needs no system fonts.
+A build without a `/cv/` page fails the step, and so does a page that fails
+to load a stylesheet, font or image, rather than printing a PDF that looks
+wrong. Run it with the same `SITE_BASE` as the build. The end-to-end tests
+print it from the sample CV and check it fits on one or two A4 pages; to
+check the real CV still fits on two, build the preview and look at its PDF.
 
 ### Previewing with real content
 
@@ -99,7 +102,9 @@ drawing: refresh the screenshots and commit both with the drawing.
 
 The desk on the About page is the exception: the build draws its resting
 frame from the model in `src/lib/desk/`, the same one the page turns, so it
-has no PNG to redraw. Change the model and build.
+has no PNG to redraw. Change the model and build. So is the CV's lamplit
+desk: the build draws its still from `src/lib/lamplit-desk.ts`, the same
+drawing the page animates.
 
 ## Running the site
 
