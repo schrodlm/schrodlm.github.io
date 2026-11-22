@@ -4,6 +4,7 @@ import { basePathPlugin } from '../base-path';
 import { calloutPlugin } from './callouts';
 import { figurePlugin } from './figures';
 import { mathPlugin } from './math';
+import { tablePlugin } from './tables';
 
 // How normalized markdown is rendered in the house style: the plugins Sätteri runs over every
 // page's HTML, in order, after Astro has highlighted the code. The prose styles
@@ -18,6 +19,7 @@ export function houseStyle({ base }: { base: string }): HastPluginList {
     calloutPlugin,
     mathPlugin,
     figurePlugin,
+    tablePlugin,
     // Last, so the plugins before it see the links as the markdown wrote them.
     basePathPlugin(base),
   ];
