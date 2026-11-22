@@ -1,8 +1,8 @@
-name: Deploy the Astro site
+name: Deploy the site
 
-# Inert until the switch-over: it runs only when started by hand, and only once it is on main.
-# #46 moves it to `push: branches: [main]` and deletes pages.yml, the Jekyll deploy.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       # Only the headless shell, without --with-deps: the runner has its libraries, and the CV page
-      # brings its own fonts. Installing system packages made the Jekyll deploys slow (#10).
+      # brings its own fonts. Installing system packages made deploys slow (#10).
       - run: npx playwright install --only-shell chromium
       - run: npm run pdf
       - uses: actions/upload-pages-artifact@v5
