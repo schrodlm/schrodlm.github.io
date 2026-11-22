@@ -1,0 +1,38 @@
+---
+// Whether a course was worth taking: `[+] worth it` or `[-] not worth it`. It takes the size of the
+// text around it; the bracket is a drawing, so screen readers hear only the words.
+interface Props {
+  worth: boolean;
+}
+
+const { worth } = Astro.props;
+---
+
+<span class:list={['verdict', worth ? 'worth' : 'not-worth']}>
+  <span class="mark" aria-hidden="true">{worth ? '[+]' : '[-]'}</span>{' '}
+  {worth ? 'worth it' : 'not worth it'}
+</span>
+
+<style>
+  .verdict {
+    font-family: var(--mono);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .worth {
+    color: var(--canopy);
+  }
+
+  .worth .mark {
+    color: var(--fern);
+  }
+
+  .not-worth {
+    color: var(--ink);
+  }
+
+  .not-worth .mark {
+    color: var(--hibiscus);
+  }
+</style>

@@ -1,0 +1,221 @@
+---
+// A course's review at /courses/<its path>/: the breadcrumb, its name, when and where I took it, its
+// ratings as meters beside the verdict, then the review as I wrote it. Only a course with a review
+// has a page; its university's page lists the others without a link. The site's own words are in
+// English, and the name and the review carry the course's language.
+import { getCollection, getEntry, render } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Prose from '../../components/Prose.astro';
+import Verdict from '../../components/Verdict.astro';
+import { courseName, formatRating, hasReview, meter, RATED, universityHref } from '../../lib/courses';
+
+export async function getStaticPaths() {
+  const courses = await getCollection('courses', hasReview);
+  return courses.map((course) => ({ params: { course: course.id }, props: { course } }));
+}
+
+const { course } = Astro.props;
+const { title, lang, code, year, semester, written, ratings, course_page, tags } = course.data;
+const university = await getEntry(course.data.university);
+// The schema has already checked that the university exists; this only tells TypeScript.
+if (!university) throw new Error(`courses/${course.id}: its university ${course.data.university.id} is missing`);
+const { short_name } = university.data;
+const { Content } = await render(course);
+const name = courseName(title, code);
+// The course's own page, shown without its scheme or a trailing slash.
+const pageText = course_page?.replace(/^https?:\/\//, '').replace(/\/$/, '');
+---
+
+<Page title={title} description={`My review of ${code}, ${short_name}.`} section="courses">
+  <Breadcrumb steps={[{ text: 'courses', href: '/courses/' }, { text: short_name, href: universityHref(university.id) }, { text: code }]} />
+  <h1 lang={lang}>{name}</h1>
+  <p class="facts">{code} · {short_name} · {semester} semester {year}</p>
+
+  <section class="ratings" aria-label="Ratings">
+    <div class="scores">
+      {
+        ratings ? (
+          <dl class="meters">
+            {RATED.map((rated) => (
+              <div class="meter">
+                <dt>{rated}</dt>
+                <dd>
+                  <span class="cells" aria-hidden="true">
+                    {meter(ratings[rated]).map((run) => (
+                      <span class={run.part}>{run.text}</span>
+                    ))}
+                  </span>
+                  <span class="number">
+                    {formatRating(ratings[rated])}
+                    <span class="visually-hidden"> out of 5</span>
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        ) : (
+          <p class="unrated">not rated yet</p>
+        )
+      }
+      {
+        (course_page || written) && (
+          <p class="details">
+            {course_page && <a href={course_page}>{pageText}</a>}{' '}
+            {written && <span>reviewed {written.toISOString().slice(0, 10)}</span>}
+          </p>
+        )
+      }
+      {
+        tags.length > 0 && (
+          <ul class="tags" aria-label="Tags">
+            {tags.map((tag) => (
+              <li>#{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+    {
+      ratings && (
+        <p class="verdict-box">
+          <span class="label">verdict</span>
+          <Verdict worth={ratings.worth_it} />
+        </p>
+      )
+    }
+  </section>
+
+  <article class="review" lang={lang}>
+    <Prose><Content /></Prose>
+  </article>
+</Page>
+
+<style>
+  .facts {
+    margin: 0 0 32px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .ratings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px 40px;
+    padding: 20px 0;
+    border-block: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .scores {
+    display: flex;
+    flex: 1 1 300px;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .meters {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+  }
+
+  .meter {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  dt {
+    flex: none;
+    width: 11ch;
+    color: var(--muted);
+  }
+
+  dd {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0;
+  }
+
+  .cells {
+    white-space: pre;
+  }
+
+  .on {
+    color: var(--canopy);
+  }
+
+  .off {
+    color: var(--pebble);
+  }
+
+  .number {
+    font-weight: 600;
+  }
+
+  .unrated {
+    margin: 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .details,
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 14px;
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .details {
+    margin-top: 12px;
+  }
+
+  .tags {
+    padding: 0;
+    list-style: none;
+  }
+
+  .details a {
+    overflow-wrap: anywhere;
+  }
+
+  .verdict-box {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 22px;
+  }
+
+  .label {
+    margin-bottom: 4px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .review {
+    margin-top: 40px;
+  }
+
+  @media (max-width: 560px) {
+    h1 {
+      font-size: 28px;
+    }
+
+    .verdict-box {
+      order: -1;
+    }
+  }
+</style>
