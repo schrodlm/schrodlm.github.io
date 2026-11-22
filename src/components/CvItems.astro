@@ -1,0 +1,31 @@
+---
+// A CV entry's bullets: each a line, or a line with bullets of its own beneath it.
+import CvLine from './CvLine.astro';
+
+interface Props {
+  items: (string | { text: string; items: string[] })[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <ul class="cv-items">
+      {items.map((item) => (
+        <li>
+          <CvLine text={typeof item === 'string' ? item : item.text} />
+          {typeof item !== 'string' && (
+            <ul>
+              {item.items.map((line) => (
+                <li>
+                  <CvLine text={line} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}

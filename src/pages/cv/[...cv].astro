@@ -1,0 +1,156 @@
+---
+// The CV, at /cv/, rendered from the one note in the cv collection: its front matter is the
+// timeline, its body the summary. Without that note there is no page, and so no PDF to print.
+// scripts/print-cv-pdf.mjs prints this page to cv.pdf beside it; the print styles are in cv.css.
+import { getCollection, render } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import CvItems from '../../components/CvItems.astro';
+import CvLine from '../../components/CvLine.astro';
+import LamplitDesk from '../../components/LamplitDesk.astro';
+import { contactList, period } from '../../lib/cv';
+import { withBase } from '../../lib/base-path';
+import '../../styles/cv.css';
+
+export async function getStaticPaths() {
+  const [cv] = await getCollection('cv');
+  return cv ? [{ params: { cv: undefined }, props: { cv } }] : [];
+}
+
+const { cv } = Astro.props;
+const { title, lang, name, headline, location, contacts, experience, education, projects, skills, languages } = cv.data;
+const { Content } = await render(cv);
+const spoken = Object.entries(languages).map(([language, level]) => `${language} (${level})`).join(', ');
+// A project's name runs into its text after a full stop, unless it ends in punctuation already.
+const stop = (projectName: string) => (/[.:!?]$/.test(projectName) ? '' : '.');
+---
+
+<Page title={title} lang={lang} section="cv">
+  <article class="cv">
+    <header class="cv-header">
+      <h1 class="cv-name"><CvLine text={name} /></h1>
+      <p class="cv-headline"><CvLine text={headline} /></p>
+      <p class="cv-location"><CvLine text={location} /></p>
+      <ul class="cv-contacts">
+        {
+          contactList(contacts).map((contact) => (
+            <li data-label={contact.label}>
+              <a href={contact.href}>{contact.text}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </header>
+    <div class="cv-summary"><Content /></div>
+    <p class="cv-download"><a href={withBase('/cv/cv.pdf', import.meta.env.BASE_URL)}>Download PDF ↓</a></p>
+    <LamplitDesk />
+
+    {
+      experience.length > 0 && (
+        <section class="cv-section">
+          <h2>Experience</h2>
+          {experience.map((job) => (
+            <article class="cv-entry cv-job">
+              <h3 class="cv-title">
+                <span class="cv-role">
+                  <CvLine text={job.role} />
+                </span>{' '}
+                · <CvLine text={job.organisation} />
+              </h3>
+              <p class="cv-period">{period(job.start, job.end)}</p>
+              {job.place && (
+                <p class="cv-place">
+                  <CvLine text={job.place} />
+                </p>
+              )}
+              <CvItems items={job.items} />
+            </article>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      education.length > 0 && (
+        <section class="cv-section">
+          <h2>Education</h2>
+          {education.map((school) => (
+            <article class="cv-entry cv-school">
+              <h3 class="cv-title">
+                <CvLine text={school.school} />
+              </h3>
+              <p class="cv-period">{period(school.start, school.end)}</p>
+              {school.place && (
+                <p class="cv-place">
+                  <CvLine text={school.place} />
+                </p>
+              )}
+              <p class="cv-degree">
+                <CvLine text={school.degree} />
+              </p>
+              <CvItems items={school.items} />
+            </article>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      projects.length > 0 && (
+        <section class="cv-section">
+          <h2>Projects and open source</h2>
+          {projects.map((project) => (
+            <article class="cv-entry cv-project">
+              <p>
+                <strong>
+                  {project.url ? (
+                    <a href={project.url}>
+                      <CvLine text={project.name} />
+                    </a>
+                  ) : (
+                    <CvLine text={project.name} />
+                  )}
+                  {project.text && stop(project.name)}
+                </strong>
+                {project.text && (
+                  <>
+                    {' '}
+                    <CvLine text={project.text} />
+                  </>
+                )}
+              </p>
+              <CvItems items={project.items} />
+            </article>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      (Object.keys(skills).length > 0 || spoken) && (
+        <section class="cv-section">
+          <h2>Skills</h2>
+          <dl class="cv-skills">
+            {Object.entries(skills).map(([group, line]) => (
+              <>
+                <dt>
+                  <CvLine text={group} />
+                </dt>
+                <dd>
+                  <CvLine text={line} />
+                </dd>
+              </>
+            ))}
+            {spoken && (
+              <>
+                <dt>Languages</dt>
+                <dd>
+                  <CvLine text={spoken} />
+                </dd>
+              </>
+            )}
+          </dl>
+        </section>
+      )
+    }
+  </article>
+</Page>
