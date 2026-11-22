@@ -1,0 +1,20 @@
+---
+// A note, at /notes/<slug>/. A note in a folder keeps the folder in its address and names it in
+// the breadcrumb: /notes/distributed-systems/raft/ reads "notes / distributed systems".
+import { getCollection, render } from 'astro:content';
+import NoteOrPost from '../../layouts/NoteOrPost.astro';
+import { folders } from '../../lib/pages';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+---
+
+<NoteOrPost entry={note}>
+  <Fragment slot="crumbs">{folders(note.id).map((folder) => ` / ${folder}`)}</Fragment>
+  <Content />
+</NoteOrPost>
