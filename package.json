@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run --passWithNoTests",
-    "build:fixtures": "CONTENT_DIR=tests/fixtures/content astro build"
+    "build:fixtures": "CONTENT_DIR=tests/fixtures/content astro build",
+    "test:e2e": "scripts/e2e.sh"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
