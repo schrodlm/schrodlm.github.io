@@ -1,0 +1,112 @@
+---
+// A project on the projects list: its plate, its name, its one-liner, its languages and status, and
+// when I last worked on it. The plate links to the project too, but only the name is announced.
+import type { CollectionEntry } from 'astro:content';
+import Plate from './Plate.astro';
+import ProjectStatus from './ProjectStatus.astro';
+import { withBase } from '../lib/base-path';
+import { projectPlate } from '../lib/plates';
+import { day, type Latest } from '../lib/projects';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  latest: Latest | undefined;
+}
+
+const { project, latest } = Astro.props;
+const { id } = project;
+const { title, description, languages, status } = project.data;
+const href = withBase(`/projects/${id}/`, import.meta.env.BASE_URL);
+---
+
+<article class="card">
+  <a class="plate-link" href={href} aria-hidden="true" tabindex="-1">
+    <Plate plate={projectPlate(id, 'card')} decorative />
+  </a>
+  <div class="head">
+    <h2><a href={href}>{title}</a></h2>
+    <span class="status"><ProjectStatus status={status} /></span>
+  </div>
+  <p class="description">{description}</p>
+  <div class="facts">
+    <div class="languages">{languages.join(', ')}</div>
+    <div>
+      {
+        latest ? (
+          <>
+            last devlog <span class="date">{day(latest.date)}</span> · {latest.count}{' '}
+            {latest.count === 1 ? 'session' : 'sessions'}
+          </>
+        ) : (
+          'no devlogs yet'
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    min-width: 0;
+  }
+
+  .plate-link {
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .plate-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2px 14px;
+    padding: 14px 2px 0;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  h2 a {
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    text-decoration: underline;
+  }
+
+  .status {
+    font-size: 12px;
+  }
+
+  .description {
+    margin: 6px 2px 8px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .facts {
+    padding: 0 2px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .languages,
+  .date {
+    color: var(--ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plate-link:hover {
+      transform: none;
+    }
+  }
+</style>
