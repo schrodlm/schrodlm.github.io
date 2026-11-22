@@ -105,7 +105,8 @@ _Avoid_: note graph, knowledge map
 
 **Plate**:
 A picture drawn in pixels rather than characters, engraved like a woodcut in
-the garden's tones, with its text laid over it. Only the graph view is drawn
+the garden's tones, with its text laid over it. The graph view, the desks on
+About and the CV, each project's picture and each faculty's building are drawn
 as plates.
 _Avoid_: canvas, image, illustration
 
