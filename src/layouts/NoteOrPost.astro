@@ -1,0 +1,108 @@
+---
+// The page of a note or a post, in the page shell with the vine beside it: the breadcrumb, the
+// page's flower standing in the margin beside its title, the metadata line, the text, and the
+// specimen card closing it. A stub, with no text yet, shows a seedling where its flower would be,
+// and has no specimen card until its flower grows.
+//
+// Slots: the default one is the rendered text; "crumbs" follows the section's link in the
+// breadcrumb.
+import type { CollectionEntry } from 'astro:content';
+import Page from './Page.astro';
+import Braille from '../components/Braille.astro';
+import Prose from '../components/Prose.astro';
+import SpecimenCard from '../components/SpecimenCard.astro';
+import Vine from '../components/Vine.astro';
+import { withBase } from '../lib/base-path';
+import { grow } from '../lib/herbarium';
+import { isStub } from '../lib/markdown/stubs';
+import { languageName, readingMinutes, seedName } from '../lib/pages';
+import { drawPageFlower } from '../lib/seedling';
+
+interface Props {
+  entry: CollectionEntry<'notes'> | CollectionEntry<'posts'>;
+}
+
+const { entry } = Astro.props;
+const kind = entry.collection;
+const { title, lang, tags } = entry.data;
+const body = entry.body ?? '';
+const stub = isStub(body);
+const specimen = grow(seedName(kind, entry.id));
+const meta = [languageName(lang), ...(stub ? [] : [`${readingMinutes(body)} min`]), ...tags.map((tag) => `#${tag}`)];
+---
+
+<Page title={title} lang={lang} section={kind}>
+  <Vine slot="side" />
+  <p class="crumbs">
+    <a href={withBase(`/${kind}/`, import.meta.env.BASE_URL)}>{kind}</a><slot name="crumbs" />
+  </p>
+  <div class="heading">
+    <div class="flower">
+      <Braille rows={drawPageFlower(kind, entry.id, body, 'plant')} />
+    </div>
+    <h1>{title}</h1>
+  </div>
+  <p class="meta">
+    {meta.join(' · ')}
+    {!stub && <> · <i lang="la">{specimen.latin}</i></>}
+  </p>
+  {stub ? <p class="unwritten">Not written yet.</p> : <Prose><slot /></Prose>}
+  {/* A note's neighbourhood, once it is drawn, stands here, between the text and the card. */}
+  {!stub && <SpecimenCard specimen={specimen} planted={'date' in entry.data ? entry.data.date : undefined} />}
+</Page>
+
+<style>
+  .crumbs,
+  .meta {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .crumbs :global(a),
+  .crumbs :global(a:hover) {
+    color: var(--muted);
+  }
+
+  .meta {
+    margin-bottom: 32px;
+  }
+
+  .meta i {
+    font-family: var(--serif);
+  }
+
+  /* The flower stands in the left margin, beside the title. */
+  .heading {
+    position: relative;
+  }
+
+  .flower {
+    position: absolute;
+    top: -24px;
+    left: -170px;
+  }
+
+  .unwritten {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* Where the margin is too narrow, the flower stands above the title. The margin is measured
+     without the scrollbar, the window with it, hence a little more than the 1100 px where the vine
+     hides. */
+  @media (max-width: 1120px) {
+    .flower {
+      position: static;
+      margin: 4px 0 6px;
+    }
+  }
+
+  /* A printed page has no margin to stand in. */
+  @media print {
+    .flower {
+      display: none;
+    }
+  }
+</style>
