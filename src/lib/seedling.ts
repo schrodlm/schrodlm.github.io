@@ -29,11 +29,19 @@ export function drawSeedling(form: Form, size?: number): Row[] {
 }
 
 /**
+ * The flower grown from a seed, in one form at a moment of wind, or the seedling for a stub. A head
+ * takes its `size` in rows.
+ */
+export function drawFlower(seed: string, stub: boolean, form: Form, wind = 0, size?: number): Row[] {
+  return stub ? drawSeedling(form, size) : draw(grow(seed), { wind, form, ...(size === undefined ? {} : { size }) });
+}
+
+/**
  * A note's or post's flower in one form, at rest, or the seedling while the page is a stub. A head
  * takes its `size` in rows.
  */
 export function drawPageFlower(kind: Kind, slug: string, markdown: string, form: Form, size?: number): Row[] {
-  return isStub(markdown) ? drawSeedling(form, size) : draw(grow(seedName(kind, slug)), { wind: 0, form, ...(size === undefined ? {} : { size }) });
+  return drawFlower(seedName(kind, slug), isStub(markdown), form, 0, size);
 }
 
 // A sprout standing in a head's square footprint: a stem from the middle of its foot, and a leaf
