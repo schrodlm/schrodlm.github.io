@@ -9,7 +9,7 @@ test('the herbarium hangs the card of every written post and note, each linking 
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Herbarium schrodlmensis');
   const cards = page.locator('main .card');
   // Every sample post and note but the stub, which has no flower yet.
-  await expect(cards).toHaveCount(11);
+  await expect(cards).toHaveCount(12);
   await expect(cards.filter({ hasText: 'A seedling' })).toHaveCount(0);
   const note = cards.filter({ hasText: 'Vzorová replikace' });
   await expect(note.getByRole('link', { name: 'Vzorová replikace' })).toHaveAttribute(
