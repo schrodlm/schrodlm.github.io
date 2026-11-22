@@ -1,0 +1,802 @@
+---
+// clascii, my ASCII art library, running at /clascii/: a pond in a jungle at night, where a picture
+// (generated plasma, an image, a video or the camera) is drawn in characters, with every control of
+// clascii's own demo beside it. The library and the drawing run in the browser
+// (src/scripts/clascii.ts), so nothing leaves it. The build draws the jungle's resting frame and the
+// page around the pond; without JavaScript the pond says what it would do and where the library is.
+import '../../styles/garden.css';
+import Head from '../../components/Head.astro';
+import { withBase } from '../../lib/base-path';
+import { shown, track } from '../../lib/clascii/controls';
+import { drawBand, drawMargins, drawSoil, html, WIDTH } from '../../lib/clascii/jungle';
+import { nav as navFor } from '../../lib/site';
+import { trail } from '../../lib/trail';
+
+const REPO = 'https://github.com/schrodlm/clascii';
+const link = (path: string) => withBase(path, import.meta.env.BASE_URL);
+const nav = navFor('projects', Astro.url.pathname, import.meta.env.BASE_URL);
+
+// The margins are drawn here for a 1280-pixel window, and the page redraws them for its own.
+const band = html(drawBand(WIDTH, 0));
+const soil = html(drawSoil(WIDTH));
+const margins = html(drawMargins({ cols: 152, rows: 58, x0: 8, x1: 143 }, 0));
+// The pond's frame: dashes along the top and bottom, dots down the sides, cut to its size.
+const DASHES = ' -'.repeat(WIDTH / 2);
+const DOTS = ':\n.\n'.repeat(60);
+
+const size = [
+  { id: 'font-size', label: 'font size', min: 4, max: 24, step: 1, value: 10 },
+  { id: 'shrink', label: 'px / column', min: 1, max: 16, step: 1, value: 4 },
+];
+const greys = [
+  { id: 'brightness', label: 'brightness', min: -128, max: 128, step: 1, value: 0 },
+  { id: 'contrast', label: 'contrast', min: 0, max: 3, step: 0.05, value: 1 },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <Head
+    title="clascii"
+    description="clascii, my ASCII art library, running in your browser: generated plasma, an image, a video or your camera, drawn in characters."
+    colorScheme="dark"
+  />
+  <body>
+    <a class="skip" href="#text">Skip to the generator</a>
+    <div class="page">
+      <pre class="jungle band" aria-hidden="true" data-band set:html={band} />
+      <div class="margins" aria-hidden="true">
+        <pre class="jungle" data-margins set:html={margins} />
+      </div>
+
+      <div class="app">
+        <header class="head">
+          <div class="title">
+            <h1>clascii</h1>
+            <span class="trail" aria-hidden="true">{trail('clascii').map((run) => <span class={run.part}>{run.text}</span>)}</span>
+            <p class="byline"><a href={link('/')}>matěj schrödl</a> / <a href={link('/projects/')}>projects</a></p>
+          </div>
+          <p class="lede">ascii art generator · a drop of light, broken into characters</p>
+        </header>
+
+        <main id="text" class="work">
+          <section class="pond-side" aria-label="The art">
+            <div class="pond">
+              <pre class="toucan jungle" aria-hidden="true"><span class="bark"> .--.</span>
+<span class="bark">(</span>o<span class="bark"> &gt;</span><span class="mango">===</span>
+<span class="bark"> \_/</span></pre>
+              <div class="edge top" aria-hidden="true"><span>+</span><span class="dashes">{DASHES}</span><span>+</span></div>
+              <div class="edge side left" aria-hidden="true">{DOTS}</div>
+              <div class="water" data-water>
+                <pre class="art" role="img" aria-label="The art, drawn when clascii has loaded" data-art></pre>
+                <canvas class="colours" aria-hidden="true" hidden data-colours></canvas>
+                <div class="dropping" aria-hidden="true">drop an image or a video</div>
+                <noscript>
+                  <div class="without">
+                    <p>clascii turns pictures into characters, here in your browser. It needs JavaScript to run, so without it this pond stays empty.</p>
+                    <p>The library and its source are at <a href={REPO}>{REPO.replace('https://', '')}</a>.</p>
+                  </div>
+                  <style is:inline>
+                    .controls, .stats, .hint, .status { display: none !important; }
+                  </style>
+                </noscript>
+              </div>
+              <div class="edge side right" aria-hidden="true">{DOTS}</div>
+              <p class="hint">
+                <span class="pad" aria-hidden="true">(__)</span>
+                <span>drop an image · paste · <button type="button" class="act" data-choose>choose file</button></span>
+                <span class="pad" aria-hidden="true">(__)</span>
+              </p>
+              <div class="edge bottom" aria-hidden="true"><span>+</span><span class="dashes">{DASHES}</span><span>+</span></div>
+            </div>
+            <p class="status" data-status>loading clascii…</p>
+            <p class="visually-hidden" aria-live="polite" data-alert></p>
+
+          </section>
+
+          <form class="controls" aria-label="Settings" data-controls>
+            <fieldset>
+              <legend>source</legend>
+              <div class="choices sources">
+                <button type="button" class="act" data-source="plasma" aria-pressed="true">plasma</button>
+                <button type="button" class="act" data-source="image" aria-pressed="false">image</button>
+                <button type="button" class="act" data-source="video" aria-pressed="false">video</button>
+                <button type="button" class="act" data-source="camera" aria-pressed="false">camera</button>
+              </div>
+              <div class="seed" data-seed-row>
+                <label for="seed">seed</label>
+                <input type="number" id="seed" value="7" step="1" />
+                <button type="button" class="act" data-new-seed>new</button>
+              </div>
+              <input type="file" accept="image/*" hidden data-image-file />
+              <input type="file" accept="video/*" hidden data-video-file />
+            </fieldset>
+
+            <fieldset>
+              <legend>size</legend>
+              {
+                size.map((s) => (
+                  <div class="slider">
+                    <label for={s.id}>{s.label}</label>
+                    <output for={s.id} data-shown={s.id}>{shown(s.id, s.value)}</output>
+                    <span class="track" aria-hidden="true" data-track={s.id}>{track(s.value, s.min, s.max)}</span>
+                    <input type="range" id={s.id} min={s.min} max={s.max} step={s.step} value={s.value} />
+                  </div>
+                ))
+              }
+              <p class="note">each frame is shrunk to this many pixels per column first, which keeps video fast</p>
+            </fieldset>
+
+            <fieldset>
+              <legend>characters</legend>
+              <div class="choices" data-tables></div>
+              <div class="choices"><span class="label">braille</span><span class="choices" data-dithers></span></div>
+              <div class="own" data-own-row hidden>
+                <label for="own">darkest first</label>
+                <input type="text" id="own" value="@%#*+=-:. " spellcheck="false" autocomplete="off" />
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>picture</legend>
+              <div class="choices" role="radiogroup" aria-label="rotate">
+                <span class="label" aria-hidden="true">rotate</span>
+                {
+                  [0, 90, 180, 270].map((degrees) => (
+                    <label class="choice">
+                      <input type="radio" name="rotate" value={degrees} checked={degrees === 0} />
+                      <span>{degrees}</span>
+                    </label>
+                  ))
+                }
+              </div>
+              <div class="choices">
+                <label class="toggle"><input type="checkbox" id="flip-vertical" /><span>flip ↕</span></label>
+                <label class="toggle"><input type="checkbox" id="flip-horizontal" /><span>flip ↔</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>greys</legend>
+              {
+                greys.map((s) => (
+                  <div class="slider">
+                    <label for={s.id}>{s.label}</label>
+                    <output for={s.id} data-shown={s.id}>{shown(s.id, s.value)}</output>
+                    <span class="track" aria-hidden="true" data-track={s.id}>{track(s.value, s.min, s.max)}</span>
+                    <input type="range" id={s.id} min={s.min} max={s.max} step={s.step} value={s.value} />
+                  </div>
+                ))
+              }
+              <label class="toggle"><input type="checkbox" id="invert" checked /><span>invert</span></label>
+              <p class="note">on a dark page light ink is bright, so invert is on</p>
+            </fieldset>
+
+            <fieldset>
+              <legend>colour</legend>
+              <label class="toggle"><input type="checkbox" id="colours" /><span>colours</span></label>
+              <p class="note">each character in the average colour of its pixels</p>
+            </fieldset>
+
+            <fieldset>
+              <legend>output</legend>
+              <div class="choices">
+                <button type="button" class="act" data-copy>copy</button>
+                <button type="button" class="act" data-save>.txt</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <section class="stats" aria-labelledby="stats-name">
+            <h2 id="stats-name" class="label">stats</h2>
+            <dl data-stats></dl>
+            <canvas class="graph" aria-hidden="true" data-graph></canvas>
+            <p class="key" aria-hidden="true">
+              <span><i class="grab"></i>grab</span><span><i class="render"></i>render</span><span><i class="show"></i>show</span><span>┄ 60 fps</span>
+            </p>
+          </section>
+        </main>
+
+        <footer class="foot">
+          <nav aria-label="Main">
+            <ul>
+              <li><a href={link('/')}>[home]</a></li>
+              {
+                nav.map((item) => (
+                  <li>
+                    <a href={item.href} aria-current={item.current}>
+                      {item.current ? `[>${item.name}]` : `[${item.name}]`}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+          <p class="private">nothing leaves your browser</p>
+        </footer>
+      </div>
+
+      <pre class="jungle soil" aria-hidden="true" set:html={soil} />
+    </div>
+    <script>
+      import '../../scripts/clascii';
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: 'Garden Braille';
+    src: url('../../assets/fonts/garden-braille.woff2') format('woff2');
+    font-display: block;
+  }
+
+  /* The jungle's tones, for the drawings' spans. */
+  .jungle .leaf { color: var(--night-leaf); }
+  .jungle .fern { color: var(--night-fern); }
+  .jungle .moss { color: var(--night-moss); }
+  .jungle .bark { color: var(--night-bark); }
+  .jungle .far { color: var(--night-far); }
+  .jungle .mango { color: var(--night-mango); }
+  .jungle .hibiscus { color: var(--night-hibiscus); }
+
+  /* The page's buttons, choices and toggles, bracketed like the site's nav. Global, as the
+     characters choices are made in the browser, and this stylesheet is only on this page. */
+  .app .act {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .app .act::before,
+  .app .choice > span::before {
+    content: '[';
+  }
+
+  .app .act::after,
+  .app .choice > span::after {
+    content: ']';
+  }
+
+  .app .act[aria-pressed='true'],
+  .app .choice input:checked + span {
+    color: var(--night-accent);
+  }
+
+  .app .act[aria-pressed='true']::before,
+  .app .choice input:checked + span::before {
+    content: '[>';
+  }
+
+  .app .act:hover,
+  .app .choice:hover > span,
+  .app .toggle:hover span {
+    background: var(--night-ink);
+    color: var(--night);
+  }
+
+  .app .act:focus-visible,
+  .app .choice input:focus-visible + span,
+  .app .toggle input:focus-visible + span,
+  .app .slider:has(input:focus-visible) .track,
+  .app input[type='number']:focus-visible,
+  .app input[type='text']:focus-visible {
+    outline: 2px solid var(--night-water);
+    outline-offset: 2px;
+  }
+
+  .app .choice,
+  .app .toggle {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .app .choice input,
+  .app .toggle input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .app .toggle span::before {
+    content: '[ ] ';
+  }
+
+  .app .toggle input:checked + span::before {
+    content: '[x] ';
+  }
+
+  /* A row the controls hide, such as the seed when the picture is not plasma. */
+  .app [hidden] {
+    display: none !important;
+  }
+</style>
+
+<style>
+  /* Every line is 18 pixels and every character 0.6 em, so the page sits on one grid of cells. */
+  body {
+    --row: 18px;
+    background: var(--night);
+    color: var(--night-ink);
+    font: 14px/var(--row) var(--mono);
+  }
+
+  a {
+    color: var(--night-water);
+  }
+
+  a:hover {
+    color: var(--night-ink);
+  }
+
+  .skip {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    padding: 0 1ch;
+    background: var(--night);
+    transform: translateY(-200%);
+  }
+
+  .skip:focus {
+    transform: none;
+  }
+
+  .page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: clip;
+  }
+
+  .jungle {
+    margin: 0;
+    font: inherit;
+    white-space: pre;
+    user-select: none;
+  }
+
+  .band,
+  .soil {
+    align-self: center;
+    width: max-content;
+  }
+
+  /* The margins hang between the band and the soil (BAND_ROWS and SOIL_ROWS high), behind the page,
+     their lowest row on the soil. */
+  .margins {
+    position: absolute;
+    inset: calc(6 * var(--row)) 0 calc(7 * var(--row));
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .margins pre {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* The page: the pond and the controls beside it, each part laid on the night so the jungle's
+     speckle stops short of the words. */
+  .app {
+    position: relative;
+    flex: 1 0 auto;
+    padding-top: var(--row);
+    width: min(136ch, 100% - 2 * 16px);
+    margin-inline: auto;
+  }
+
+  .app > *,
+  .controls fieldset,
+  .stats,
+  .status {
+    background: var(--night);
+    box-shadow: 0 0 0 1ch var(--night);
+  }
+
+  h1,
+  h2 {
+    margin: 0;
+    font: inherit;
+  }
+
+  .title {
+    display: flex;
+    gap: 2ch;
+    align-items: baseline;
+  }
+
+  /* The title trails a vine as the garden's headings do, by night. */
+  .trail {
+    max-width: 50ch;
+    margin-right: auto;
+  }
+
+  .trail :global(.stem) {
+    color: var(--night-fern);
+  }
+
+  .trail :global(.leaf) {
+    color: var(--night-leaf);
+  }
+
+  .trail :global(.bloom) {
+    color: var(--night-hibiscus);
+  }
+
+  .byline,
+  .lede,
+  .label,
+  legend,
+  .status,
+  .note,
+  .private,
+  .key,
+  .controls label:not(.choice, .toggle) {
+    color: var(--night-muted);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .byline a {
+    color: inherit;
+  }
+
+  .lede {
+    margin-top: var(--row);
+  }
+
+  /* The pond with the stats under it, and the controls beside them. */
+  .work {
+    display: grid;
+    grid-template: 'pond controls' auto 'stats controls' 1fr / 100ch 30ch;
+    gap: 0 6ch;
+    align-items: start;
+    margin-top: calc(4 * var(--row));
+    background: none;
+    box-shadow: none;
+  }
+
+  /* The pond: a frame of dashes and dots round the water, the toucan sitting on it. */
+  .pond {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1ch 1fr 1ch;
+    color: var(--night-frame);
+  }
+
+  .toucan {
+    position: absolute;
+    bottom: 100%;
+    right: 8ch;
+  }
+
+  .edge.top,
+  .edge.bottom {
+    grid-column: 1 / -1;
+    display: flex;
+  }
+
+  .dashes {
+    flex: 1;
+    overflow: hidden;
+    white-space: pre;
+  }
+
+  .edge.side {
+    grid-row: 2 / span 2;
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+    white-space: pre;
+  }
+
+  .edge.left {
+    grid-column: 1;
+  }
+
+  .edge.right {
+    grid-column: 3;
+  }
+
+  .water {
+    position: relative;
+    height: calc(36 * var(--row));
+    margin: 0 1ch;
+    overflow: hidden;
+    color: var(--night-ink);
+  }
+
+  .art {
+    position: absolute;
+    margin: 0;
+    font-family: 'IBM Plex Mono', 'Garden Braille', ui-monospace, monospace;
+    font-size: 10px;
+    line-height: 1.2;
+    white-space: pre;
+  }
+
+  .art.coloured {
+    color: transparent;
+  }
+
+  .colours {
+    position: absolute;
+  }
+
+  .dropping {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    background: color-mix(in srgb, var(--night) 85%, transparent);
+    color: var(--night-accent);
+  }
+
+  :global(body.dragging) .dropping {
+    display: grid;
+  }
+
+  .without {
+    display: grid;
+    gap: var(--row);
+    align-content: center;
+    height: 100%;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .hint {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 1ch;
+    color: var(--night-muted);
+  }
+
+  .pad {
+    color: var(--night-fern);
+  }
+
+  .status {
+    margin-top: var(--row);
+  }
+
+  .status.error {
+    color: var(--night-hibiscus);
+  }
+
+  .pond-side {
+    grid-area: pond;
+  }
+
+  .stats {
+    grid-area: stats;
+    margin-top: calc(2 * var(--row));
+  }
+
+  .stats dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30ch, 1fr));
+    gap: 0 4ch;
+    margin: var(--row) 0 0;
+  }
+
+  .stats dl :global(div) {
+    display: flex;
+    justify-content: space-between;
+    gap: 1ch;
+  }
+
+  .stats :global(dt) {
+    color: var(--night-muted);
+  }
+
+  .stats :global(dd) {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .graph {
+    display: block;
+    width: 100%;
+    height: calc(4 * var(--row));
+    margin-top: var(--row);
+  }
+
+  .key {
+    display: flex;
+    gap: 2ch;
+  }
+
+  .key i {
+    display: inline-block;
+    width: 1ch;
+    height: 1ch;
+    margin-right: 0.5ch;
+  }
+
+  .key .grab {
+    background: var(--night-water);
+  }
+
+  .key .render {
+    background: var(--night-accent);
+  }
+
+  .key .show {
+    background: var(--night-mango);
+  }
+
+  /* The controls: groups of bracketed choices and toggles, and sliders drawn as tracks of dashes. */
+  .controls {
+    grid-area: controls;
+    display: grid;
+    gap: calc(2 * var(--row));
+  }
+
+  fieldset {
+    display: grid;
+    gap: var(--row);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    float: left;
+    padding: 0;
+  }
+
+  legend + * {
+    clear: both;
+  }
+
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1ch;
+    align-items: baseline;
+  }
+
+  .sources {
+    display: grid;
+    grid-template-columns: 13ch 13ch;
+    justify-items: start;
+  }
+
+  button,
+  input {
+    font: inherit;
+    color: inherit;
+  }
+
+  .slider {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 29ch;
+  }
+
+  .track {
+    grid-column: 1 / -1;
+    white-space: pre;
+  }
+
+  .slider input {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--row);
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+  }
+
+  .seed,
+  .own {
+    display: flex;
+    gap: 1ch;
+    align-items: baseline;
+  }
+
+  .seed input,
+  .own input {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px dashed var(--night-frame);
+    background: none;
+  }
+
+  .seed input {
+    width: 10ch;
+  }
+
+  .own input {
+    flex: 1;
+  }
+
+  .note {
+    max-width: 29ch;
+  }
+
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--row) 4ch;
+    margin: calc(3 * var(--row)) 0 calc(2 * var(--row));
+  }
+
+  .foot ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1ch;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .foot a {
+    color: var(--night-ink);
+    text-decoration: none;
+  }
+
+  .foot a[aria-current] {
+    color: var(--night-accent);
+  }
+
+  .foot a:hover {
+    text-decoration: underline;
+  }
+
+  /* Narrower than the pond and the controls side by side: the controls go under the pond, and the
+     water keeps a picture's shape. */
+  @media (max-width: 1190px) {
+    .work {
+      grid-template: 'pond' 'controls' 'stats' / minmax(0, 100ch);
+      gap: calc(3 * var(--row));
+    }
+
+    .stats {
+      margin-top: 0;
+    }
+
+    .water {
+      height: auto;
+      aspect-ratio: 4 / 3;
+    }
+
+    .controls {
+      grid-template-columns: repeat(auto-fill, minmax(30ch, 1fr));
+      gap: calc(2 * var(--row)) 4ch;
+    }
+  }
+
+  /* On a phone the toucan would sit on the words. */
+  @media (max-width: 600px) {
+    .toucan,
+    .pad {
+      display: none;
+    }
+
+    .hint {
+      justify-content: center;
+    }
+
+    .work {
+      margin-top: calc(2 * var(--row));
+    }
+  }
+</style>
