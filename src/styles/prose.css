@@ -2,6 +2,18 @@
    lib/markdown/ shape the HTML these rules draw: callouts, figures, scrolling tables, task boxes
    and links to stubs. Every colour is one of the palette's in garden.css. */
 
+.prose {
+  /* Code is coloured by Shiki's css-variables theme, from these. */
+  --astro-code-foreground: var(--ink);
+  --astro-code-background: var(--sage);
+  --astro-code-token-keyword: var(--canopy);
+  --astro-code-token-string: var(--mango-deep);
+  --astro-code-token-string-expression: var(--mango-deep);
+  --astro-code-token-constant: var(--lagoon-deep);
+  --astro-code-token-comment: var(--muted);
+  --astro-code-token-link: var(--river);
+}
+
 .prose p {
   margin: 0 0 16px;
 }
@@ -55,7 +67,7 @@
   height: auto;
 }
 
-/* Code: Plex on sage, inline and in blocks. Shiki lets the blocks scroll. */
+/* Code: Plex on sage, inline and in blocks. Shiki colours the blocks, and lets them scroll. */
 .prose code {
   padding: 1px 4px;
   border-radius: 3px;
