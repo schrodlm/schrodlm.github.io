@@ -217,3 +217,15 @@ details.callout[open] > summary > .callout-title::after {
   padding: 6px 16px 6px 0;
   vertical-align: top;
 }
+
+/* Task lists: `[x]` and `[ ]` in place of the bullets. */
+.prose .task-list-item {
+  list-style: none;
+}
+
+.task-box {
+  color: var(--canopy);
+  font-family: var(--mono);
+  font-size: 14px;
+  white-space: pre;
+}
