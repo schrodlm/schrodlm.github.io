@@ -13,6 +13,11 @@ export function text(value: string): Child {
   return { type: 'text', value };
 }
 
+export function hasClass(node: Element, name: string): boolean {
+  const classes = node.properties['className'];
+  return Array.isArray(classes) && classes.includes(name);
+}
+
 /** The element children of a node, skipping the whitespace between them. */
 export function elements(node: Element): Element[] {
   return node.children.filter((child): child is Element => child.type === 'element');
