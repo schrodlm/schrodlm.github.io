@@ -1,0 +1,53 @@
+---
+// Braille art: rows of coloured runs (from the braille kit or the herbarium) set in Garden Braille,
+// whose dots sit on one even grid. A cell is `cell` wide and twice that tall; the default, 8 px,
+// makes it 8 × 16 px with its dots on whole pixels. `cell` also takes any CSS length, so a drawing
+// can scale with its container, e.g. `calc(100cqi / 83)` for one 83 cells wide.
+import { TRANSPARENT, type Row } from '../lib/braille';
+
+interface Props {
+  rows: Row[];
+  cell?: number | string;
+  class?: string;
+}
+
+const { rows, cell = 8, class: className } = Astro.props;
+const size = typeof cell === 'number' ? `${cell}px` : cell;
+---
+
+<div class:list={['braille', className]} aria-hidden="true" style={`--braille-cell: ${size}`}>
+  {
+    rows.map((row) => (
+      <span>{row.map((run) => (run.c === TRANSPARENT ? run.t : <span style={`color: ${run.c}`}>{run.t}</span>))}</span>
+    ))
+  }
+</div>
+
+<!-- Global, so the many spans of a drawing carry no scoping attributes. -->
+<style is:global>
+  @font-face {
+    font-family: 'Garden Braille';
+    src: url('../assets/fonts/garden-braille.woff2') format('woff2');
+    font-display: block;
+  }
+
+  .braille {
+    font-family: 'Garden Braille';
+    font-size: calc(2 * var(--braille-cell));
+    line-height: 1;
+    letter-spacing: 0;
+    word-spacing: 0;
+    text-indent: 0;
+    width: max-content;
+    font-kerning: none;
+    font-synthesis: none;
+    user-select: none;
+  }
+
+  /* A row: exactly one cell tall, its characters set as they are. */
+  .braille > span {
+    display: block;
+    height: 1em;
+    white-space: pre;
+  }
+</style>
