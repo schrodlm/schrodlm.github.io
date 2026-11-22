@@ -50,6 +50,11 @@ describe('Page', () => {
     expect(await render({}, { 'footer-art': '<pre>other</pre>' })).not.toContain('data-life="soil"');
   });
 
+  it('spans a band above the header, when a page brings one', async () => {
+    const html = await render({}, { band: '<div class="garden">plants</div>' });
+    expect(html).toMatch(/<div class="garden">plants<\/div>[\s\S]*<header/);
+  });
+
   it('links the herbarium from the footer', async () => {
     expect(await render()).toMatch(/<footer[\s\S]*<a href="\/herbarium\/"[^>]*>Herbarium<\/a>/);
   });
