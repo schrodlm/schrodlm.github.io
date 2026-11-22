@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>replikace</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&amp;text=%E2%A0%80%E2%A0%81%E2%A0%82%E2%A0%83%E2%A0%84%E2%A0%85%E2%A0%86%E2%A0%87%E2%A0%88%E2%A0%89%E2%A0%8A%E2%A0%8B%E2%A0%8C%E2%A0%8D%E2%A0%8E%E2%A0%8F%E2%A0%90%E2%A0%91%E2%A0%92%E2%A0%93%E2%A0%94%E2%A0%95%E2%A0%96%E2%A0%97%E2%A0%98%E2%A0%99%E2%A0%9A%E2%A0%9B%E2%A0%9C%E2%A0%9D%E2%A0%9E%E2%A0%9F%E2%A0%A0%E2%A0%A1%E2%A0%A2%E2%A0%A3%E2%A0%A4%E2%A0%A5%E2%A0%A6%E2%A0%A7%E2%A0%A8%E2%A0%A9%E2%A0%AA%E2%A0%AB%E2%A0%AC%E2%A0%AD%E2%A0%AE%E2%A0%AF%E2%A0%B0%E2%A0%B1%E2%A0%B2%E2%A0%B3%E2%A0%B4%E2%A0%B5%E2%A0%B6%E2%A0%B7%E2%A0%B8%E2%A0%B9%E2%A0%BA%E2%A0%BB%E2%A0%BC%E2%A0%BD%E2%A0%BE%E2%A0%BF%E2%A1%80%E2%A1%81%E2%A1%82%E2%A1%83%E2%A1%84%E2%A1%85%E2%A1%86%E2%A1%87%E2%A1%88%E2%A1%89%E2%A1%8A%E2%A1%8B%E2%A1%8C%E2%A1%8D%E2%A1%8E%E2%A1%8F%E2%A1%90%E2%A1%91%E2%A1%92%E2%A1%93%E2%A1%94%E2%A1%95%E2%A1%96%E2%A1%97%E2%A1%98%E2%A1%99%E2%A1%9A%E2%A1%9B%E2%A1%9C%E2%A1%9D%E2%A1%9E%E2%A1%9F%E2%A1%A0%E2%A1%A1%E2%A1%A2%E2%A1%A3%E2%A1%A4%E2%A1%A5%E2%A1%A6%E2%A1%A7%E2%A1%A8%E2%A1%A9%E2%A1%AA%E2%A1%AB%E2%A1%AC%E2%A1%AD%E2%A1%AE%E2%A1%AF%E2%A1%B0%E2%A1%B1%E2%A1%B2%E2%A1%B3%E2%A1%B4%E2%A1%B5%E2%A1%B6%E2%A1%B7%E2%A1%B8%E2%A1%B9%E2%A1%BA%E2%A1%BB%E2%A1%BC%E2%A1%BD%E2%A1%BE%E2%A1%BF%E2%A2%80%E2%A2%81%E2%A2%82%E2%A2%83%E2%A2%84%E2%A2%85%E2%A2%86%E2%A2%87%E2%A2%88%E2%A2%89%E2%A2%8A%E2%A2%8B%E2%A2%8C%E2%A2%8D%E2%A2%8E%E2%A2%8F%E2%A2%90%E2%A2%91%E2%A2%92%E2%A2%93%E2%A2%94%E2%A2%95%E2%A2%96%E2%A2%97%E2%A2%98%E2%A2%99%E2%A2%9A%E2%A2%9B%E2%A2%9C%E2%A2%9D%E2%A2%9E%E2%A2%9F%E2%A2%A0%E2%A2%A1%E2%A2%A2%E2%A2%A3%E2%A2%A4%E2%A2%A5%E2%A2%A6%E2%A2%A7%E2%A2%A8%E2%A2%A9%E2%A2%AA%E2%A2%AB%E2%A2%AC%E2%A2%AD%E2%A2%AE%E2%A2%AF%E2%A2%B0%E2%A2%B1%E2%A2%B2%E2%A2%B3%E2%A2%B4%E2%A2%B5%E2%A2%B6%E2%A2%B7%E2%A2%B8%E2%A2%B9%E2%A2%BA%E2%A2%BB%E2%A2%BC%E2%A2%BD%E2%A2%BE%E2%A2%BF%E2%A3%80%E2%A3%81%E2%A3%82%E2%A3%83%E2%A3%84%E2%A3%85%E2%A3%86%E2%A3%87%E2%A3%88%E2%A3%89%E2%A3%8A%E2%A3%8B%E2%A3%8C%E2%A3%8D%E2%A3%8E%E2%A3%8F%E2%A3%90%E2%A3%91%E2%A3%92%E2%A3%93%E2%A3%94%E2%A3%95%E2%A3%96%E2%A3%97%E2%A3%98%E2%A3%99%E2%A3%9A%E2%A3%9B%E2%A3%9C%E2%A3%9D%E2%A3%9E%E2%A3%9F%E2%A3%A0%E2%A3%A1%E2%A3%A2%E2%A3%A3%E2%A3%A4%E2%A3%A5%E2%A3%A6%E2%A3%A7%E2%A3%A8%E2%A3%A9%E2%A3%AA%E2%A3%AB%E2%A3%AC%E2%A3%AD%E2%A3%AE%E2%A3%AF%E2%A3%B0%E2%A3%B1%E2%A3%B2%E2%A3%B3%E2%A3%B4%E2%A3%B5%E2%A3%B6%E2%A3%B7%E2%A3%B8%E2%A3%B9%E2%A3%BA%E2%A3%BB%E2%A3%BC%E2%A3%BD%E2%A3%BE%E2%A3%BF&amp;display=block">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+.wide{display:block}
+@media (max-width: 1100px){.wide{display:none}}
+.titleflower{position:absolute;left:-170px;top:-24px}
+@media (max-width: 1100px){.titleflower{position:static;margin:4px 0 6px}}
+.wc-cap{position:absolute;transform:translateY(-50%);font-family:"IBM Plex Mono", ui-monospace, monospace;font-size:12px;line-height:14px;padding:1px 3px;background:rgba(241,236,223,0.88);text-decoration:none}
+.wc-cap:hover,.wc-cap:focus{text-decoration:underline}
+.wc-num{display:none;position:absolute;transform:translateY(-50%);font-family:"IBM Plex Mono", ui-monospace, monospace;font-size:11px;color:#535F52}
+.wc-key{display:none}
+@media (max-width: 600px){.wc-cap,.wc-head{display:none}.wc-num{display:block}.wc-key{display:block}}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+<div class="wide" aria-hidden="true" style="position: absolute; top: 0; left: calc(50% + 404px); pointer-events: none; font-family: 'Noto Sans Symbols 2', 'Apple Braille', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif; font-size: 15.7143px; line-height: 15.7143px; letter-spacing: -0.164em;"><sc-for list="{{vine}}" as="row" hint-placeholder-count="72"><div style="white-space: pre; height: 15.7143px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" aria-current="page" style="color: #1F2B23; text-decoration: none; font-weight: 600;">[&gt;notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[projects]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[courses]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 760px; margin: 0 auto; padding: 80px 24px 80px; position: relative;">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52;"><a href="#" style="color: #535F52;">notes</a> / distributed systems</div>
+<div style="position: relative;"><div class="titleflower" aria-hidden="true" style="font-family: 'Noto Sans Symbols 2', 'Apple Braille', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif; font-size: 15.7143px; line-height: 15.7143px; letter-spacing: -0.164em;"><sc-for list="{{flower}}" as="row" hint-placeholder-count="12"><div style="white-space: pre; height: 15.7143px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div><h1 style="margin: 10px 0 8px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 34px; line-height: 1.2; font-weight: 600; color: #1F2B23;">replikace</h1></div>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52; margin-bottom: 32px;">česky · 4 min · #distributed_system · <span style="font-family: 'Literata', Georgia, serif; font-style: italic;">{{card.latin}}</span></div>
+<p style="margin: 0 0 16px;">Replikace je proces udržování identických kopií dat nebo služeb na více uzlech současně. V distribuovaném systému se jedná o formu <strong>fyzické redundance</strong>.</p>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 56px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Motivace</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailA}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<ul style="margin: 0 0 20px; padding-left: 22px; display: flex; flex-direction: column; gap: 8px;">
+<li><strong>Spolehlivost:</strong> při selhání jednoho uzlu data nezmizí a systém může dál poskytovat službu z jiné kopie.</li>
+<li><strong>Dostupnost:</strong> minimalizuje riziko single point of failure.</li>
+<li><strong>Výkon:</strong> paralelní zpracování požadavků a data fyzicky blíže uživateli.</li>
+</ul>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 56px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Hlavní problém: nekonzistence</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailB}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<p style="margin: 0 0 16px;">Jakmile existuje více kopií, zpráva o změně stavu putuje k ostatním uzlům rychlostí sítě, nikoliv okamžitě. <a href="#">Konzistence</a> je pak klíčová vlastnost: silnější konzistence znamená vyšší latenci a nižší dostupnost (<a href="#">CAP theorem</a>).</p>
+<section aria-label="Neighbourhood" style="margin-top: 64px;">
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 0px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Sousedství</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailC}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<figure style="margin: 0;">
+<div style="width: 100%; max-width: 702px; container-type: inline-size;"><div style="position: relative; width: fit-content;">
+<div aria-hidden="true" style="font-family: 'Noto Sans Symbols 2', 'Apple Braille', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif; font-size: calc(100cqw / 44.488); line-height: 1; letter-spacing: -0.164em;"><sc-for list="{{plate}}" as="row" hint-placeholder-count="20"><div style="white-space: pre; height: 1em;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+<span class="wc-head" aria-hidden="true" style="position: absolute; left: 3%; top: 5%; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #535F52;">linked from</span>
+<span class="wc-head" aria-hidden="true" style="position: absolute; right: 3%; top: 5%; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #535F52;">links to</span>
+<sc-for list="{{caps}}" as="c" hint-placeholder-count="8"><a class="wc-cap" href="#" onMouseEnter="{{c.enter}}" onMouseLeave="{{c.leave}}" onFocus="{{c.enter}}" onBlur="{{c.leave}}" style="{{c.style}}">{{c.title}}</a><span class="wc-num" aria-hidden="true" style="{{c.numStyle}}">{{c.no}}</span></sc-for>
+<sc-for list="{{far}}" as="s" hint-placeholder-count="12"><a href="#" title="{{s.title}}" aria-label="{{s.title}}" style="position: absolute; {{s.style}} width: 14px; height: 14px;"></a></sc-for>
+<span aria-hidden="true" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, 34px); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; font-weight: 600; color: #2B7349; background: rgba(241,236,223,0.88); padding: 0 3px;">replikace</span>
+</div></div>
+<ol class="wc-key" style="margin: 14px 0 0; padding: 0; list-style: none; font-size: 15px;">
+<sc-for list="{{caps}}" as="c" hint-placeholder-count="8"><li style="display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px;"><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; flex: 0 0 16px;">{{c.no}}</span><span style="min-width: 0;"><a href="#">{{c.title}}</a> <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #535F52; white-space: nowrap;">· {{c.how}}</span></span></li></sc-for>
+</ol>
+<figcaption style="margin-top: 10px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.6; color: #535F52;">Solid vines ending in a leaf lead to notes this one links to; dotted vines come from notes that link here. The faint blooms above and below are two steps away.</figcaption>
+</figure>
+</section><div style="margin-top: 56px;"><section aria-label="This page's flower" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 18px 32px; align-items: flex-end; padding: 24px 28px; background: #F7F2E4; border: 1px solid #D8CFBA;">
+<div aria-hidden="true" style="font-family: 'Noto Sans Symbols 2', 'Apple Braille', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif; font-size: 15.7143px; line-height: 15.7143px; letter-spacing: -0.164em;"><sc-for list="{{flower}}" as="row" hint-placeholder-count="12"><div style="white-space: pre; height: 15.7143px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+<div style="flex: 1 1 280px; min-width: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.65;">
+<div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #535F52;">Specimen No. {{card.no}} · Herbarium schrodlmensis</div>
+<div style="font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1.3; color: #1F2B23; margin: 4px 0 2px;">{{card.latin}}</div>
+<div style="color: #535F52; margin-bottom: 12px;">grown from “{{card.slug}}” · planted {{card.date}}</div>
+<sc-for list="{{card.lines}}" as="l" hint-placeholder-count="5"><div style="display: flex; gap: 10px;"><span style="color: #535F52; white-space: pre;">{{l.k}}</span><span style="color: #1F2B23; white-space: pre-wrap;">{{l.v}}</span></div></sc-for>
+</div>
+</section></div>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'Noto Sans Symbols 2', 'Apple Braille', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif; font-size: 15.7143px; line-height: 15.7143px; letter-spacing: -0.164em; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15.7143px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"motion":{"editor":"boolean","default":true,"section":"Flora"},"$preview":{"width":1280,"height":2400}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: -1 };
+
+  componentDidMount() {
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its seed ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split(/[-/]/).filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w) && w !== 'notes' && w !== 'posts');
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The flower's most telling row, as a small mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), rows = p.head.rows;
+    const row = (rows.find((r) => /[@o*]/.test(r)) || rows[0]).trim();
+    return row.split('').map((ch) => ({ t: ch, c: (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1] }));
+  }
+
+  // The museum label: what the seed grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // ---- braille: every character is a 2 × 4 block of dots ----
+
+  // A dot bitmap W × H characters big. Each dot keeps a colour and a weight; a heavier part
+  // (a petal over a stem) wins the dot, and the heaviest colour in a cell colours its character.
+  dots(W, H) {
+    const DW = W * 2, DH = H * 4, col = new Int16Array(DW * DH).fill(-1), wt = new Float32Array(DW * DH), pal = [], at = {};
+    const put = (x, y, c, w) => {
+      x = Math.round(x); y = Math.round(y);
+      if (x < 0 || y < 0 || x >= DW || y >= DH) return;
+      const i = y * DW + x;
+      if (w >= wt[i]) { if (at[c] === undefined) { at[c] = pal.length; pal.push(c); } col[i] = at[c]; wt[i] = w; }
+    };
+    return { W, H, DW, DH, col, wt, pal, put };
+  }
+
+  // Encode the bitmap into rows of coloured runs, the same shape toRows() gives the ASCII band.
+  braille(d) {
+    const BITS = [[0, 0, 1], [0, 1, 2], [0, 2, 4], [1, 0, 8], [1, 1, 16], [1, 2, 32], [0, 3, 64], [1, 3, 128]];
+    const rows = [];
+    for (let cy = 0; cy < d.H; cy++) {
+      const runs = []; let t = '', cur = null;
+      for (let cx = 0; cx < d.W; cx++) {
+        let bits = 0, best = -1, bs = 0; const score = {};
+        for (const [dx, dy, bit] of BITS) {
+          const i = (cy * 4 + dy) * d.DW + cx * 2 + dx, k = d.col[i];
+          if (k < 0) continue;
+          bits |= bit; score[k] = (score[k] || 0) + d.wt[i];
+          if (score[k] > bs) { bs = score[k]; best = k; }
+        }
+        const key = bits ? d.pal[best] : '';
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += String.fromCharCode(0x2800 + bits);
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  line(d, x0, y0, x1, y1, c, w) {
+    const n = Math.ceil(Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0)) * 2) + 1;
+    for (let i = 0; i <= n; i++) d.put(x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n, c, w);
+  }
+
+  disc(d, cx, cy, r, c, w) {
+    for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++)
+      for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++)
+        if ((x - cx) * (x - cx) + (y - cy) * (y - cy) <= r * r + 0.3) d.put(x, y, c, w);
+  }
+
+  ring(d, cx, cy, r, c, w) {
+    const n = Math.ceil(r * 9);
+    for (let i = 0; i < n; i++) { const a = i / n * 2 * Math.PI; d.put(cx + r * Math.cos(a), cy + r * Math.sin(a), c, w); }
+  }
+
+  oval(d, cx, cy, a, b, ang, c, w) {
+    const R = Math.max(a, b) + 1, co = Math.cos(ang), si = Math.sin(ang);
+    for (let y = Math.floor(cy - R); y <= Math.ceil(cy + R); y++)
+      for (let x = Math.floor(cx - R); x <= Math.ceil(cx + R); x++) {
+        const u = (x - cx) * co + (y - cy) * si, v = -(x - cx) * si + (y - cy) * co;
+        if ((u / a) * (u / a) + (v / b) * (v / b) <= 1.08) d.put(x, y, c, w);
+      }
+  }
+
+  // A tapered blade along a quadratic curve: thin at the foot, widest a third of the way, a point at the tip.
+  blade(d, x0, y0, qx, qy, x1, y1, width, c, w) {
+    const n = Math.ceil((Math.hypot(qx - x0, qy - y0) + Math.hypot(x1 - qx, y1 - qy)) * 3) + 2;
+    for (let i = 0; i <= n; i++) {
+      const s = i / n, a = (1 - s) * (1 - s), b = 2 * (1 - s) * s, e = s * s;
+      const x = a * x0 + b * qx + e * x1, y = a * y0 + b * qy + e * y1;
+      const tx = 2 * (1 - s) * (qx - x0) + 2 * s * (x1 - qx), ty = 2 * (1 - s) * (qy - y0) + 2 * s * (y1 - qy), tl = Math.hypot(tx, ty) || 1;
+      const half = width * Math.sqrt(s) * (1 - s) / 0.385 / 2;
+      for (let q = -half; q <= half + 0.01; q += 0.5) d.put(x - ty / tl * q, y + tx / tl * q, c, w);
+    }
+  }
+
+  // The stem as a curve: the ASCII bend, k/h to the 1.6, but continuous, one dot per row.
+  stem(p, x, g, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff, L = p.h * 4, bend = (amp * wind + (p.lean || 0) * 0.8) * 2;
+    const at = (k) => [x + bend * Math.pow(Math.max(0, k) / L, 1.6), g - 1 - k];
+    return { at, L, ang: Math.atan(bend * 1.6 / L) };
+  }
+
+  // One dot per row; where the curve steps a column over, the step is joined, so the stem reads unbroken.
+  drawStem(d, s, c, w) {
+    let px = Math.round(s.at(0)[0]);
+    for (let k = 0; k <= s.L; k++) {
+      const [x, y] = s.at(k), rx = Math.round(x);
+      if (Math.abs(rx - px) === 1 && k > 0) d.put(rx, y + 1, c, w);
+      else if (Math.abs(rx - px) > 1) this.line(d, px, y + 1, rx, y, c, w);
+      d.put(rx, y, c, w); px = rx;
+    }
+  }
+
+  // A leaf: a slim blade arching up and out from the stem; fern pairs are single strokes, like the ASCII \\ /.
+  leaf(d, sx, sy, side, size, wind, c) {
+    if (size < 4) { this.line(d, sx + side, sy - 0.5, sx + side * size + wind * 0.4, sy - size * 0.9, c, 1.5); return; }
+    this.blade(d, sx, sy, sx + side * size * 0.9, sy + 0.4, sx + side * size * 1.1 + wind * 0.7, sy - size * 1.1, 1.3, c, 1.5);
+  }
+
+  // Each head type from heads(), drawn at dot resolution around the stem's tip, tilted with it.
+  head(d, p, tx, ty, ang, k) {
+    k = k || 1;
+    const P = p.petal[1], C = p.center ? p.center[1] : p.petal[1], co = Math.cos(ang), si = Math.sin(ang);
+    const T = (u, v) => [tx + k * (u * co - v * si), ty + k * (u * si + v * co)];
+    const disc = (u, v, r, c, w) => { const [x, y] = T(u, v); this.disc(d, x, y, r * k, c, w); };
+    const oval = (u, v, a, b, an, c, w) => { const [x, y] = T(u, v); this.oval(d, x, y, a * k, b * k, an + ang, c, w); };
+    const ray = (u0, v0, u1, v1, c, w) => { const [a, b] = T(u0, v0), [e, f] = T(u1, v1); this.line(d, a, b, e, f, c, w); };
+    const name = p.head.name;
+    if (name === 'sunburst') {
+      for (let i = 0; i < 12; i++) { const a = i / 12 * 2 * Math.PI; ray(Math.cos(a) * 3, -6 + Math.sin(a) * 3, Math.cos(a) * 6.2, -6 + Math.sin(a) * 6.2, P, 3); }
+      disc(0, -6, 2, C, 3.2);
+    } else if (name === 'star') {
+      for (let i = 0; i < 5; i++) { const a = -Math.PI / 2 + i / 5 * 2 * Math.PI; oval(Math.cos(a) * 3.8, -6 + Math.sin(a) * 3.8, 2.6, 1.5, a, P, 3); }
+      disc(0, -6, 1.3, C, 3.2);
+    } else if (name === 'globe') {
+      const [x, y] = T(0, -6); this.ring(d, x, y, 5 * k, P, 3); this.ring(d, x, y, 4 * k, P, 3);
+      disc(0, -6, 1.8, C, 3.2);
+    } else if (name === 'asterisk') {
+      for (let i = 0; i < 6; i++) { const a = i / 6 * 2 * Math.PI + Math.PI / 2; ray(Math.cos(a) * 1.2, -6 + Math.sin(a) * 1.2, Math.cos(a) * 6, -6 + Math.sin(a) * 6, P, 3); }
+      for (let i = 0; i < 6; i++) { const a = (i + 0.5) / 6 * 2 * Math.PI + Math.PI / 2; const [x, y] = T(Math.cos(a) * 4.5, -6 + Math.sin(a) * 4.5); d.put(x, y, P, 3); }
+    } else if (name === 'tulip') {
+      // a cup with a rounded base and three pointed tepals
+      for (let v = 0; v <= 11; v += 0.5) {
+        const half = 4.2 * Math.sqrt(Math.min(1, v / 3.5));
+        for (let u = -half; u <= half + 0.01; u += 0.5) {
+          const k = Math.abs(u) / 4.2, tip = 7.5 + 3.5 * Math.max(0, 1 - Math.abs(k - 0) * 3.2, 1 - Math.abs(k - 0.9) * 3.2);
+          if (v <= tip) { const [x, y] = T(u, -v); d.put(x, y, P, 3); }
+        }
+      }
+      disc(0, -4.5, 1.1, C, 3.2);
+    } else if (name === 'cluster') {
+      // a raceme: florets on short stalks, alternating sides up a spike, smallest at the tip
+      ray(0, 0, 0, -13, '#2B7349', 1);
+      for (let i = 0; i < 6; i++) {
+        const side = i % 2 ? -1 : 1, v = -1.5 - i * 2.2;
+        ray(0, v + 0.8, side * 1.6, v - 0.2, '#2B7349', 1);
+        disc(side * 3, v - 0.6, i < 3 ? 1.5 : i < 5 ? 1.2 : 0.8, i === 1 || i === 4 ? C : P, 3);
+      }
+      disc(0, -14.5, 1.05, P, 3);
+    } else if (name === 'nodding cup') {
+      // the stem hooks over and the cup hangs from it, mouth down
+      const side = p.lean ? p.lean : 1;
+      for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI, b = (i + 1) / 12 * Math.PI; ray(side * (1 - Math.cos(a)) * 2.6, -Math.sin(a) * 4, side * (1 - Math.cos(b)) * 2.6, -Math.sin(b) * 4, '#2B7349', 1); }
+      const bx = side * 5.2;
+      for (let v = 0; v <= 7; v += 0.5) {
+        const half = 1.4 + 1.6 * Math.pow(v / 7, 0.8) + 1.4 * Math.pow(v / 7, 4);
+        for (let u = -half; u <= half + 0.01; u += 0.5) { if (v > 6 && Math.abs(Math.sin(u * 1.4)) < 0.35) continue; const [x, y] = T(bx + u, v - 0.5); d.put(x, y, P, 3); }
+      }
+      disc(bx, 8.6, 0.8, C, 3.2);
+    } else if (name === 'pollen cup') {
+      for (let v = 0; v <= 4.5; v += 0.5) { const half = Math.sqrt(Math.max(0, 4.5 * 4.5 - (4.5 - v) * (4.5 - v))); for (let u = -half; u <= half + 0.01; u += 0.5) { const [x, y] = T(u, -v); d.put(x, y, P, 3); } }
+      [[-3, -7], [0, -8], [3, -7], [-1.5, -10.5], [1.6, -11], [-4.2, -10], [4, -9.8], [0, -13]].forEach(([u, v]) => { const [x, y] = T(u, v); d.put(x, y, P, 3); });
+    } else if (name === 'orchid') {
+      oval(0, -10, 1.4, 3, 0, P, 3);
+      oval(-4, -7, 1.4, 3.2, -1.1, P, 3);
+      oval(4, -7, 1.4, 3.2, 1.1, P, 3);
+      oval(0, -3.4, 2.8, 2, 0, P, 3);
+      const [x, y] = T(0, -6.4); d.put(x, y, P, 3);
+    } else {
+      disc(0, -5.5, 4.4, P, 3);
+      disc(0, -5.5, 1.9, C, 3.2);
+    }
+  }
+
+  // A post's flower: stem, leaves and head, all bending in the one wind.
+  flower(d, p, x, g, wind) {
+    const s = this.stem(p, x, g, wind);
+    this.drawStem(d, s, '#2B7349', 1);
+    for (const l of p.leaves) {
+      const [sx, sy] = s.at(l.k * 4 + 1);
+      if (l.both) { this.leaf(d, sx, sy, -1, 3, wind, '#3F8A52'); this.leaf(d, sx, sy, 1, 3, wind, '#3F8A52'); }
+      else this.leaf(d, sx, sy, l.side, 4.5, wind, '#3F8A52');
+    }
+    const [tx, ty] = s.at(s.L);
+    this.head(d, p, tx, ty, s.ang);
+  }
+
+  // The unattributed plants: ferns, buds, small florets and grass tufts.
+  filler(d, f, x, g, wind) {
+    const p = f.p, s = this.stem(p, x, g, wind), kind = p.fern ? 'fern' : p.head.rows[0];
+    if (kind === 'fern') {
+      this.drawStem(d, s, '#3F8A52', 1);
+      for (let k = 3; k < s.L - 1; k += 3) {
+        const [sx, sy] = s.at(k), len = 1 + 3 * (1 - k / s.L);
+        this.line(d, sx, sy, sx - len + wind * 0.4, sy - len * 0.6, '#3F8A52', 1.5);
+        this.line(d, sx, sy, sx + len + wind * 0.4, sy - len * 0.6, '#3F8A52', 1.5);
+      }
+      const [tx, ty] = s.at(s.L); d.put(tx + 1, ty, '#3F8A52', 1.5); d.put(tx + 1.5, ty + 1, '#3F8A52', 1.5);
+      return;
+    }
+    if (kind === '*') {
+      // A grass tuft: three slim blades fanned from one foot, the middle one the plant's height.
+      for (let i = -1; i <= 1; i++) {
+        const hgt = s.L * (i ? 0.7 : 1), tip = wind * 1.4 * hgt / 12, out = i * hgt * 0.35;
+        const qx = x + out * 0.3, qy = g - 1 - hgt * 0.6, ex = x + out + tip, ey = g - 1 - hgt;
+        let px = x, py = g - 1;
+        for (let k = 1; k <= 8; k++) { const t = k / 8, bx = (1 - t) * (1 - t) * x + 2 * (1 - t) * t * qx + t * t * ex, by = (1 - t) * (1 - t) * (g - 1) + 2 * (1 - t) * t * qy + t * t * ey; this.line(d, px, py, bx, by, '#5E8E4A', 1); px = bx; py = by; }
+      }
+      return;
+    }
+    this.drawStem(d, s, '#3F8A52', 1);
+    for (const l of p.leaves) { const [sx, sy] = s.at(l.k * 4 + 1); this.leaf(d, sx, sy, l.side, 2.5, wind, '#3F8A52'); }
+    const [tx, ty] = s.at(s.L), c = p.petal[1];
+    if (kind === '@') this.oval(d, tx + Math.sin(s.ang) * 2, ty - 2.2, 1.3, 2.3, s.ang, c, 3);
+    else if (kind === 'o') this.ring(d, tx + Math.sin(s.ang) * 2, ty - 2, 1.6, c, 3);
+    else { for (let i = 0; i < 6; i++) { const a = i / 6 * 2 * Math.PI; d.put(tx + Math.cos(a) * 2.2, ty - 2.6 + Math.sin(a) * 2.2, c, 3); } d.put(tx, ty - 2.6, '#A87400', 4); }
+  }
+
+  // The flower's head, small enough for one character row, as a mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), P = p.petal[1], C = p.center ? p.center[1] : P;
+    const m = {
+      sunburst: ['P.PP.P', '.PCCP.', '.PCCP.', 'P.PP.P'],
+      star: ['..PP..', 'PPCCPP', '..CC..', '.P..P.'],
+      globe: ['.PPPP.', 'P.CC.P', 'P.CC.P', '.PPPP.'],
+      asterisk: ['P.PP.P', '.PPPP.', '.PPPP.', 'P.PP.P'],
+      tulip: ['P.PP.P', 'PPCCPP', 'PPCCPP', '.PPPP.'],
+      cluster: ['.P..P.', 'PPCCPP', '.PCCP.', '..PP..'],
+      'nodding cup': ['.PPPP.', 'PPPPPP', 'P.CC.P', '..CC..'],
+      'pollen cup': ['P..P.P', '.P.P..', 'PPPPPP', '.PPPP.'],
+      orchid: ['..PP..', 'PP..PP', '.PPPP.', '..PP..'],
+      eye: ['.PPPP.', 'PPCCPP', 'PPCCPP', '.PPPP.']
+    }[p.head.name];
+    const d = this.dots(3, 1);
+    m.forEach((row, y) => row.split('').forEach((ch, x) => { if (ch !== '.') d.put(x, y, ch === 'C' ? C : P, ch === 'C' ? 4 : 3); }));
+    return this.braille(d)[0].runs;
+  }
+
+
+  mix(hex, k) {
+    const a = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16)), b = [241, 236, 223];
+    return '#' + a.map((v, i) => Math.round(v * k + b[i] * (1 - k)).toString(16).padStart(2, '0')).join('');
+  }
+
+  // The note's own flower standing in a little soil, for the title and the specimen card.
+  flowerRows(slug) {
+    const p = this.specimen(slug), H = p.h + 5, W = 15, d = this.dots(W, H), g = H * 4 - 3, wind = this.wind();
+    for (let x = 6; x < 25; x++) { if (x % 4 !== 3) d.put(x, g, '#7A5C42', 1); if (x % 5 === 2) d.put(x, g + 2, '#7A5C42', 1); }
+    for (const x of [8, 11, 19, 22]) this.line(d, x, g - 1, x + wind * 0.5, g - 3.5, '#5E8E4A', 1);
+    this.flower(d, p, 15, g, wind);
+    return this.braille(d);
+  }
+
+  // ---- the vine beside the text: one curve hanging from the top, swaying from its foot up ----
+
+  vinePlan() {
+    if (this._vp) return this._vp;
+    const r = this.rng('long-vine'), DH = 72 * 4, ph = [r() * 6.28, r() * 6.28, r() * 6.28];
+    const leaves = [], blooms = [], curls = [];
+    let y = 5, side = r() < 0.5 ? -1 : 1;
+    while (y < DH - 12) {
+      const roll = r();
+      if (roll < 0.11 && y > 24) blooms.push({ y, side, c: ['#C24E39', '#8A4F98', '#A87400', '#2A7099'][Math.floor(r() * 4)] });
+      else if (roll < 0.2) curls.push({ y, side });
+      else leaves.push({ y, side, size: 3.6 + r() * 2.6, c: ['#2B7349', '#3F8A52', '#5E8E4A'][Math.floor(r() * 3)] });
+      side = -side; y += 6 + Math.floor(r() * 8);
+    }
+    blooms.push({ y: DH - 6, side: 0, c: '#C24E39' });
+    this._vp = { DH, ph, leaves, blooms, curls };
+    return this._vp;
+  }
+
+  vineX(y) {
+    const V = this.vinePlan(), sway = (this.wind() - 0.45) * 2.6 * Math.pow(y / V.DH, 1.4);
+    return 16 + 4.2 * Math.sin(y * 0.021 + V.ph[0]) + 2.4 * Math.sin(y * 0.057 + V.ph[1]) + 1.2 * Math.sin(y * 0.13 + V.ph[2]) + sway;
+  }
+
+  vineRows() {
+    const V = this.vinePlan(), d = this.dots(16, 72), t = this.state.tick;
+    let px = Math.round(this.vineX(0));
+    for (let y = 0; y < V.DH - 4; y++) {
+      const x = Math.round(this.vineX(y));
+      if (Math.abs(x - px) === 1 && y > 0) d.put(x, y - 1, '#3F8A52', 1);
+      d.put(x, y, '#3F8A52', 1); px = x;
+    }
+    const tips = [];
+    for (const l of V.leaves) {
+      const sx = this.vineX(l.y), s = l.side, z = l.size;
+      const ang = s * 0.8, cx = sx + s * (1.2 + z * 0.45), cy = l.y + 1.2 + z * 0.42;
+      d.put(sx + s, l.y, l.c, 1.5);
+      this.oval(d, cx, cy, z * 0.62, 1.15, ang, l.c, 1.5);
+      tips.push([cx, cy - 3]);
+    }
+    for (const c of V.curls) {
+      const sx = this.vineX(c.y);
+      for (let a = 0; a < 5.4; a += 0.25) { const rr = 2.6 - a * 0.4; d.put(sx + c.side * (2 + rr * Math.cos(a)), c.y + 1 + rr * Math.sin(a) * c.side, '#5E8E4A', 1.2); }
+    }
+    for (const b of V.blooms) {
+      const bx = this.vineX(b.y) + b.side * 3.2, by = b.y + 1;
+      if (b.side) this.line(d, this.vineX(b.y), b.y, bx, by, '#3F8A52', 1);
+      for (let i = 0; i < 6; i++) { const a = i / 6 * 2 * Math.PI; d.put(bx + Math.cos(a) * 2.1, by + Math.sin(a) * 2.1, b.c, 3); }
+      d.put(bx, by, '#A87400', 3.5);
+    }
+    // Who moves when, on a one-minute cycle, so only one thing on the vine is ever flying:
+    // the butterfly hops leaves at 0-5 s, a bee works a bloom at 17-32 s, the spider drops at 37-52 s.
+    // The ladybug climbs and the caterpillar eats all the time, but too slowly to pull the eye.
+    const cyc = t % 240, lap = Math.floor(t / 240);
+
+    // The caterpillar lies on one leaf and eats it from the tip; the bite grows over five minutes.
+    const ci = V.leaves.reduce((b, l, i) => Math.abs(l.y - V.DH * 0.42) < Math.abs(V.leaves[b].y - V.DH * 0.42) ? i : b, 0);
+    const cl = V.leaves[ci], csx = this.vineX(cl.y), cs = cl.side, ca = cs * 0.8, cz = cl.size * 0.62;
+    const ccx = csx + cs * (1.2 + cl.size * 0.45), ccy = cl.y + 1.2 + cl.size * 0.42, ux = Math.cos(ca), uy = Math.sin(ca);
+    this.rub(d, ccx + ux * cz * 0.95, ccy + uy * cz * 0.95, Math.min(2.4, 0.8 + t / 240 * 0.32));
+    const hump = (t % 10) < 5 ? 1 : 0;
+    for (let k = 0; k < 6; k++) {
+      const lift = (k === 2 || k === 3) ? hump : 0, px = ccx + ux * (cz * 0.45 - k * 1.05) , py = ccy + uy * (cz * 0.45 - k * 1.05) - 1.6 - lift;
+      d.put(px, py, k === 0 ? '#2B4A2B' : k % 2 ? '#8DAA3C' : '#A3B94A', 6);
+    }
+
+    // The butterfly rests on a leaf, slowly opening and closing, and once a minute hops to the next.
+    const rest = tips.filter((_, i) => i % 3 === 1 && V.leaves[i].y > 20 && i !== ci);
+    const a = rest[lap % rest.length], b = rest[(lap + 1) % rest.length];
+    let fx, fy, open;
+    if (cyc >= 20) { fx = b[0]; fy = b[1]; open = (t % 24) < 18; }
+    else { const k = cyc / 20; fx = a[0] + (b[0] - a[0]) * k; fy = a[1] + (b[1] - a[1]) * k - Math.sin(k * Math.PI) * 12; open = t % 2 === 1; }
+    this.butterfly(d, fx, fy, open);
+
+    // The ladybug climbs the stem to the top and walks back down, forever.
+    const span = 2 * (V.DH - 8), q = Math.floor(t * 0.32) % span, ly = 4 + (q < V.DH - 8 ? V.DH - 9 - q : q - (V.DH - 8));
+    const lx = this.vineX(ly);
+    this.disc(d, lx, ly, 1.3, '#C24E39', 6); d.put(lx, ly + (q < V.DH - 8 ? -2 : 2), '#1F2B23', 6);
+
+    // A bee comes to a different bloom each minute and hovers in figure-eights around it.
+    const bl = V.blooms[lap % V.blooms.length];
+    if (cyc >= 70 && cyc < 130) {
+      const k = (cyc - 70) / 60, come = Math.min(1, k * 5, (1 - k) * 5);
+      const bx = this.vineX(bl.y) + bl.side * 3.2 + Math.sin(t * 0.35) * 6 + (1 - come) * 24, by = bl.y - 5 + Math.sin(t * 0.7) * 3 - (1 - come) * 10;
+      this.bee(d, bx, by, t);
+    }
+
+    // The spider lives under a leaf near the top. Once a minute it lets itself down on a thread,
+    // turns a little, and climbs back up.
+    const sl = V.leaves.find((l) => l.y > 30 && l.side !== cl.side) || V.leaves[2];
+    const ssx = this.vineX(sl.y) + sl.side * (1.2 + sl.size * 0.45), ssy = sl.y + 2.5 + sl.size * 0.42;
+    let drop = 2;
+    if (cyc >= 150 && cyc < 210) { const k = (cyc - 150) / 60; drop = 2 + 34 * (k < 0.35 ? k / 0.35 : k < 0.65 ? 1 : (1 - k) / 0.35); }
+    const sway = drop > 4 ? Math.sin(t * 0.25) * Math.min(1.5, drop / 20) : 0;
+    this.line(d, ssx, ssy, ssx + sway, ssy + drop, '#B9AF99', 0.8);
+    this.spider(d, ssx + sway, ssy + drop + 1.5, cyc >= 150 && cyc < 210 ? t : 0);
+    return this.braille(d);
+  }
+
+  // Clear dots, for a bite out of a leaf.
+  rub(d, cx, cy, r) {
+    for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++)
+      for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++)
+        if ((x - cx) * (x - cx) + (y - cy) * (y - cy) <= r * r && x >= 0 && y >= 0 && x < d.DW && y < d.DH) { d.col[y * d.DW + x] = -1; d.wt[y * d.DW + x] = 0; }
+  }
+
+  // A bee: a striped body four dots long, a head, and two wings that flicker.
+  bee(d, x, y, t) {
+    for (let u = -1; u <= 2; u++) for (let v = 0; v <= 1; v++) d.put(x + u, y + v, u % 2 ? '#1F2B23' : '#C99A1E', 6);
+    d.put(x + 3, y, '#1F2B23', 6);
+    for (const u of [0, 1]) d.put(x + u, y - 1 - ((t + u) % 2), '#9DB4BF', 6);
+  }
+
+  // A spider: a round body and four legs a side, which shift while it moves.
+  spider(d, x, y, t) {
+    const S = '#1F2B23', f = t % 2;
+    this.disc(d, x, y, 1.1, S, 6); d.put(x, y - 2, S, 6);
+    for (const s of [-1, 1]) {
+      d.put(x + s * 2, y - 1 - f, S, 6); d.put(x + s * 3, y - 2, S, 6);
+      d.put(x + s * 2, y, S, 6); d.put(x + s * 3, y + f, S, 6);
+      d.put(x + s * 2, y + 1, S, 6); d.put(x + s * 3, y + 2 - f, S, 6);
+      d.put(x + s * 1, y + 2, S, 6); d.put(x + s * 2, y + 3, S, 6);
+    }
+  }
+
+  // An ant: head, thorax and abdomen along its heading, legs ticking under it, maybe carrying a crumb.
+  ant(d, x, y, dx, dy, t, crumb) {
+    const S = '#1F2B23', l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l;
+    d.put(x + ux, y + uy, S, 6); d.put(x, y, S, 6); d.put(x - ux * 1.6, y - uy * 1.6, S, 6);
+    d.put(x - uy * (t % 2 ? 1 : -1), y + ux * (t % 2 ? 1 : -1), S, 5);
+    if (crumb) d.put(x + ux * 2.2, y + uy * 2.2 - 0.6, '#5E8E4A', 6);
+  }
+
+  butterfly(d, x, y, open) {
+    const W = '#8A4F98';
+    for (let k = -1; k <= 1; k++) d.put(x, y + k, '#1F2B23', 6);
+    for (const s of [-1, 1]) {
+      if (open) for (const [u, v] of [[1, -1], [2, -2], [3, -2], [3, -1], [2, -1], [1, 1], [2, 1], [2, 2]]) d.put(x + s * u, y + v, W, 6);
+      else for (const [u, v] of [[1, -1], [1, -2], [2, -2], [1, 1]]) d.put(x + s * u, y + v, W, 6);
+    }
+  }
+
+  // ---- a heading's trail, in ASCII like the heading itself ----
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed), runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // ---- the soil under the footer: grass, mushrooms, a ground line, roots and stones ----
+
+  soil() {
+    const r = this.rng('roots'), W = 190, d = this.dots(W, 8), DW = W * 2, g = 6;
+    for (let x = 0; x < DW; x++) { if (x % 5 !== 4 || r() < 0.4) d.put(x, g, '#7A5C42', 1); if (r() < 0.2) d.put(x, g + 1, '#7A5C42', 1); }
+    for (let x = 0; x < DW; x++) if (r() < 0.16) { const h = 1.5 + r() * 3.5, l = (r() - 0.5) * 2; this.line(d, x, g - 1, x + l, g - h, '#5E8E4A', 1); }
+    const caps = [];
+    for (let i = 0; i < 9; i++) {
+      let mx = 8 + Math.floor(r() * (DW - 16));
+      while (caps.some((c) => Math.abs(c - mx) < 12)) mx = (mx + 13) % (DW - 16) + 8;
+      caps.push(mx);
+      const big = r() < 0.4, top = big ? g - 5 : g - 4;
+      [[-1, 0, 1], [-2, -1, 0, 1, 2], [-3, -2, -1, 0, 1, 2, 3]].slice(0, big ? 3 : 2).forEach((row, k) => row.forEach((u) => d.put(mx + u, top + k, '#C24E39', 3)));
+      for (let y = top + (big ? 3 : 2); y < g; y++) d.put(mx, y, '#A99D84', 3);
+    }
+    let x0 = 6;
+    while (x0 < DW - 6) {
+      let x = x0, dx = 0;
+      const depth = 10 + Math.floor(r() * 18);
+      for (let y = g + 1; y < g + depth && y < 32; y++) {
+        dx = Math.max(-0.8, Math.min(0.8, dx + (r() - 0.5) * 0.7)); x += dx;
+        d.put(x, y, '#5C4636', 1.5);
+        if (r() < 0.12) { const s = r() < 0.5 ? -1 : 1; this.line(d, x, y, x + s * 3, y + 2.5, '#7A5C42', 1); }
+      }
+      x0 += 12 + Math.floor(r() * 20);
+    }
+    for (let i = 0; i < 70; i++) {
+      const x = Math.floor(r() * DW), y = g + 3 + Math.floor(r() * (29 - g));
+      d.put(x, y, '#8C7C66', 1); if (r() < 0.3) { d.put(x + 1, y, '#8C7C66', 1); d.put(x, y + 1, '#8C7C66', 1); d.put(x + 1, y + 1, '#8C7C66', 1); }
+    }
+    this.soilLife(d, g, DW);
+    return this.braille(d);
+  }
+
+  // The snail crosses the whole footer in about ten minutes, leaving a silver trail that fades.
+  // Under the ground, ants carry crumbs down a tunnel to their nest and come back for more.
+  soilLife(d, g, DW) {
+    const t = this.state.tick, sx = (DW * 0.3 + t / 6) % (DW + 30) - 15;
+    for (let k = 1; k < 34; k++) if (k < 14 || k % 2) d.put(sx - 3 - k, g - 1, k < 18 ? '#AEB8BB' : '#CDD2CF', 0.9);
+    for (let x = sx - 3; x <= sx + 4; x++) d.put(x, g - 1, '#9C8A6A', 5);
+    d.put(sx + 4, g - 2, '#9C8A6A', 5); d.put(sx + 5, g - 3, '#9C8A6A', 5); d.put(sx + 3, g - 3, '#9C8A6A', 5); d.put(sx + 4, g - 4 + ((t >> 3) % 2), '#1F2B23', 5);
+    this.ring(d, sx - 0.5, g - 3.5, 2.4, '#A87400', 5.5); d.put(sx - 0.5, g - 3.5, '#A87400', 6); d.put(sx + 0.5, g - 3.5, '#A87400', 6); d.put(sx + 0.5, g - 4.5, '#A87400', 6);
+
+    const nx = Math.round(DW * 0.74), ny = 22, hole = nx - 26;
+    for (let a = 0; a < 6.28; a += 0.18) d.put(nx + Math.cos(a) * 7, ny + Math.sin(a) * 3.2, '#5C4636', 2);
+    for (const [u, v] of [[-3, 1], [-1, 1], [1, 1], [-2, 0], [0, 0.5]]) d.put(nx + u, ny + v, '#E8DFC8', 3);
+    const path = [];
+    for (let x = hole - 60; x < hole; x++) path.push([x, g - 1]);
+    for (let k = 0; k <= 40; k++) { const s = k / 40; path.push([hole + (nx - 7 - hole) * s * s, g + (ny - g) * Math.sin(s * Math.PI / 2)]); }
+    for (let k = 60; k < path.length; k += 2) d.put(path[k][0], path[k][1] + 1, '#8C7C66', 1.2);
+    for (let i = 0; i < 3; i++) {
+      const L = path.length, ph = (t + i * 52) % (2 * L), down = ph < L, k = down ? ph : 2 * L - 1 - ph;
+      const [x, y] = path[k], [x2, y2] = path[Math.min(L - 1, Math.max(0, k + (down ? 1 : -1)))];
+      this.ant(d, x, y, x2 - x || (down ? 1 : -1), y2 - y, t, down);
+    }
+  }
+
+  // ---- the neighbourhood plate ----
+
+  // How large a neighbour's flower is drawn: by how linked it is, like the woodcut's tiers.
+  plateK(n) { return n.role === 'self' ? 1.35 : n.stub ? 0.55 : Math.min(1.05, 0.6 + Math.sqrt(n.deg) * 0.14); }
+
+  // A flower's reach in css px, used to keep vines and captions clear of it.
+  reach(n) { return n.role === 'self' ? 40 : 26 * this.plateK(n); }
+
+  // The note in the middle as its own flower, the notes it links to on the right on solid vines
+  // ending in a leaf-tip, the notes that link here on the left on dotted vines, and notes two steps
+  // away as faint small blooms above and below. Hovering a caption brings its vine up in its colour.
+  notePlate() {
+    const D = this.nd(), W = 83, H = 19, d = this.dots(W, H), DW = W * 2, DH = H * 4, sx = DW / D.PW, sy = DH / D.PH, hov = this.state.hover;
+    const RULE = '#A99D84', grain = this.rng('note-paper');
+    for (let k = 0; k < 45; k++) d.put(7 + grain() * (DW - 14), 7 + grain() * (DH - 14), '#D9CFB9', 0.5);
+    for (let x = 1; x < DW - 1; x++) { d.put(x, 1, RULE, 1); d.put(x, DH - 2, RULE, 1); if (x % 2 === 0 && x > 3 && x < DW - 4) { d.put(x, 3, RULE, 1); d.put(x, DH - 4, RULE, 1); } }
+    for (let y = 1; y < DH - 1; y++) { d.put(1, y, RULE, 1); d.put(DW - 2, y, RULE, 1); if (y % 2 === 0 && y > 3 && y < DH - 4) { d.put(3, y, RULE, 1); d.put(DW - 4, y, RULE, 1); } }
+    for (const [cx, cy] of [[1, 1], [DW - 2, 1], [1, DH - 2], [DW - 2, DH - 2]])
+      for (const [ex, ey] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) d.put(cx + ex, cy + ey, ex || ey ? '#C24E39' : '#A87400', 4);
+
+    const self = D.nodes[0], x0 = self.x * sx, y0 = self.y * sy, paths = [];
+    D.nodes.slice(1).forEach((n, i) => {
+      const x1 = n.x * sx, y1 = n.y * sy, len = Math.hypot(x1 - x0, y1 - y0);
+      const bow = (n.y < self.y ? -1 : 1) * n.side * 0.12 * len;
+      const qx = (x0 + x1) / 2 - (y1 - y0) / len * bow, qy = (y0 + y1) / 2 + (x1 - x0) / len * bow;
+      const pt = (t) => [(1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * qx + t * t * x1, (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * qy + t * t * y1];
+      paths.push({ pt, ra: (this.reach(self) * sx + 4) / len, rb: (this.reach(n) * sx + 4) / len });
+      const hot = hov === i, solid = n.role !== 'in', sp = this.specimen('notes/' + n.slug);
+      const c = hot ? sp.petal[1] : solid ? '#2B7349' : '#7E9A73', w = hot ? 2.5 : 1;
+      const ra = this.reach(self) * sx + 1.5, rb = this.reach(n) * sx + 1.5;
+      let last = '', k = 0;
+      for (let s = 0; s <= 600; s++) {
+        const [x, y] = pt(s / 600), key = Math.round(x) + ',' + Math.round(y);
+        if (key === last) continue;
+        last = key; k++;
+        if (Math.hypot(x - x0, y - y0) < ra || Math.hypot(x - x1, y - y1) < rb) continue;
+        if (solid || hot || k % 2 === 0) d.put(x, y, c, w);
+      }
+      // A leaf-tip where a link arrives: at the neighbour for links out, at the note for links in.
+      const leaf = (t, back) => {
+        const [lx, ly] = pt(t), [bx, by] = pt(t + back * 5 / len), nx = -(ly - by), ny = lx - bx, nl = Math.hypot(nx, ny) || 1;
+        this.blade(d, bx, by, (bx + lx) / 2 + nx / nl * 1.1, (by + ly) / 2 + ny / nl * 1.1, lx, ly, 1.5, hot ? c : solid ? '#3F8A52' : '#7E9A73', w + 0.5);
+      };
+      if (n.role !== 'in') leaf(1 - (rb + 0.5) / len, -1);
+      if (n.role !== 'out') leaf((ra + 0.5) / len, 1);
+    });
+    for (const n of D.far) {
+      const sp = this.specimen('notes/' + n.slug), c = this.mix(sp.petal[1], 0.5), x = n.x * sx, y = n.y * sy;
+      const pat = this.rng('bloom:' + n.slug)() < 0.5 ? [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]] : [[0, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]];
+      for (const [u, v] of pat) d.put(x + u, y + v, u || v ? c : this.mix(sp.center ? sp.center[1] : sp.petal[1], 0.5), 2);
+    }
+    for (const n of D.nodes) {
+      const sp = this.specimen('notes/' + n.slug), k = this.plateK(n), x = n.x * sx, y = n.y * sy;
+      if (n.stub && n.role !== 'self') { this.oval(d, x, y - 0.5, 1.2, 2.2, 0, sp.petal[1], 3); this.line(d, x, y + 1.5, x, y + 3.5, '#5E8E4A', 2); continue; }
+      this.head(d, sp, x, y + 5.5 * k, 0, k);
+    }
+    // A bee walks the note's links: out along a vine to a neighbour, a rest on its flower, back to the
+    // note, then the next. Hovering a caption sends it straight down that vine instead.
+    const t = this.state.tick, fly = (p, k) => { const [x, y] = p.pt(p.ra + (1 - p.ra - p.rb) * k); return [x, y - 3]; };
+    let bx, by;
+    if (hov >= 0) [bx, by] = fly(paths[hov], Math.min(1, (t - (this.state.hoverT || 0)) / 6));
+    else {
+      const leg = Math.floor(t / 60) % paths.length, c = t % 60, p = paths[leg];
+      [bx, by] = c < 10 ? fly(p, c / 10) : c < 40 ? fly(p, 1) : c < 50 ? fly(p, 1 - (c - 40) / 10) : fly(p, 0);
+    }
+    this.bee(d, bx + Math.sin(t * 0.6) * 0.8, by + Math.sin(t * 0.9) * 0.6, t);
+    return this.braille(d);
+  }
+
+  // Captions face outward from each flower; their positions are in % so they track the plate as it
+  // scales. Each also has a number, used on narrow screens where the captions move below the plate.
+  noteCaps() {
+    const D = this.nd(), pct = (v, of) => (100 * v / of).toFixed(2) + '%';
+    return D.nodes.slice(1).map((n, k) => {
+      const r = this.reach(n) * 1.15 + 7;
+      return { no: k + 1, title: n.title, how: n.role === 'out' ? 'links to' : n.role === 'in' ? 'linked from' : 'both ways',
+        enter: () => this.setState({ hover: k, hoverT: this.state.tick }), leave: () => this.setState({ hover: -1 }),
+        style: (n.side > 0 ? 'left: ' + pct(n.x + r, D.PW) + '; text-align: left;' : 'right: ' + pct(D.PW - n.x + r, D.PW) + '; text-align: right;')
+          + ' top: ' + pct(n.y, D.PH) + '; max-width: ' + pct((n.side > 0 ? D.PW - n.x : n.x) - r - 24, D.PW) + ';',
+        numStyle: 'left: ' + pct(n.x + (n.side > 0 ? r - 2 : -r - 6), D.PW) + '; top: ' + pct(n.y, D.PH) + ';' };
+    });
+  }
+
+  farSpots() {
+    const D = this.nd(), pct = (v, of) => (100 * v / of).toFixed(2) + '%';
+    return D.far.map((n) => ({ title: n.title, style: 'left: ' + pct(n.x - 7, D.PW) + '; top: ' + pct(n.y - 7, D.PH) + ';' }));
+  }
+
+  nd() { return {"PW":702,"PH":300,"nodes":[{"slug":"replikace","title":"replikace","x":351,"y":150,"deg":8,"stub":false,"role":"self"},{"slug":"cap-theorem","title":"CAP theorem","x":477,"y":54,"deg":4,"stub":false,"role":"out","side":1},{"slug":"crdt-conflict-free-replicated-data-types","title":"CRDT (conflict-free replicated data types)","x":491,"y":118,"deg":2,"stub":false,"role":"out","side":1},{"slug":"epidemicke-protokoly","title":"epidemické protokoly","x":491,"y":182,"deg":2,"stub":false,"role":"out","side":1},{"slug":"state-machine-replication-smr","title":"state machine replication (SMR)","x":477,"y":246,"deg":6,"stub":false,"role":"out","side":1},{"slug":"quorum-based-koordinace","title":"quorum-based koordinace","x":225,"y":54,"deg":9,"stub":false,"role":"in","side":-1},{"slug":"spolehlivost-distribuovaneho-systemu","title":"spolehlivost distribuovaného systému","x":211,"y":118,"deg":5,"stub":false,"role":"in","side":-1},{"slug":"stavovost-distribuovaneho-systemu","title":"stavovost distribuovaného systému","x":211,"y":182,"deg":5,"stub":false,"role":"in","side":-1},{"slug":"konzistence-distribuovaneho-systemu","title":"konzistence distribuovaného systému","x":225,"y":246,"deg":5,"stub":false,"role":"both","side":-1}],"far":[{"slug":"maekawas-algorithm","title":"Maekawa's algorithm","x":279,"y":68,"deg":3,"stub":false},{"slug":"paxos","title":"paxos","x":292,"y":52,"deg":3,"stub":false},{"slug":"raft","title":"RAFT","x":307,"y":40,"deg":4,"stub":false},{"slug":"vzajemne-vylouceni-v-distribuovanych-systemech","title":"vzájemné vyloučení v distribuovaných systémech","x":324,"y":31,"deg":9,"stub":false},{"slug":"komunikace-v-distribuovanych-systemech","title":"komunikace v distribuovaných systémech","x":342,"y":27,"deg":6,"stub":false},{"slug":"vztah-spolehlivosti-a-stavu-distribuovaneho-systemu","title":"vztah spolehlivosti a stavu distribuovaného systému","x":360,"y":27,"deg":2,"stub":false},{"slug":"detekce-globalniho-stavu","title":"detekce globálního stavu","x":378,"y":31,"deg":6,"stub":false},{"slug":"vztah-mezi-komunikacnimi-modely-a-konzistenci-v-distribuovanych-systemech","title":"vztah mezi komunikačními modely a konzistencí v distribuovaných systémech","x":395,"y":40,"deg":3,"stub":false},{"slug":"load-balancing-v-distribuovanych-systemech","title":"load balancing v distribuovaných systémech","x":410,"y":52,"deg":3,"stub":false},{"slug":"usporadani-komunikace-v-distribuovanych-systemech","title":"uspořádání (komunikace v distribuovaných systémech)","x":423,"y":68,"deg":4,"stub":false},{"slug":"mechanismy-koordinace-v-distribuovanych-systemech","title":"mechanismy koordinace v distribuovaných systémech","x":280,"y":233,"deg":8,"stub":false},{"slug":"permission-based-koordinace","title":"permission-based koordinace","x":295,"y":250,"deg":9,"stub":false},{"slug":"token-based-koordinace","title":"token-based koordinace","x":312,"y":263,"deg":8,"stub":false},{"slug":"distributed-system","title":"distributed system","x":331,"y":271,"deg":13,"stub":false},{"slug":"rpc","title":"RPC","x":351,"y":274,"deg":7,"stub":false},{"slug":"client-server","title":"client-server","x":371,"y":271,"deg":3,"stub":false},{"slug":"modely-konzistence-distribuovaneho-systemu","title":"modely konzistence distribuovaného systému","x":390,"y":263,"deg":5,"stub":false},{"slug":"konsenzus-v-distribuovanych-systemech","title":"konsenzus v distribuovaných systémech","x":407,"y":250,"deg":15,"stub":false},{"slug":"blockchain","title":"blockchain","x":422,"y":233,"deg":3,"stub":false}]}; }
+
+  renderVals() {
+    const card = this.label('notes/replikace', 'N-' + this.specimen('notes/replikace').seed.slice(0, 3).toUpperCase(), 'replikace', 'from the notes');
+    const flower = this.flowerRows('notes/replikace');
+    return { flower, card, vine: this.vineRows(), roots: this.soil(), trailA: this.trail('a-rep'), trailB: this.trail('b-rep'), trailC: this.trail('c-rep'), plate: this.notePlate(), caps: this.noteCaps(), far: this.farSpots() };
+  }
+}
+</script>
+</body>
+</html>

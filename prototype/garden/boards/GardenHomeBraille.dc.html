@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Garden home, braille</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&amp;text=%E2%A0%80%E2%A0%81%E2%A0%82%E2%A0%83%E2%A0%84%E2%A0%85%E2%A0%86%E2%A0%87%E2%A0%88%E2%A0%89%E2%A0%8A%E2%A0%8B%E2%A0%8C%E2%A0%8D%E2%A0%8E%E2%A0%8F%E2%A0%90%E2%A0%91%E2%A0%92%E2%A0%93%E2%A0%94%E2%A0%95%E2%A0%96%E2%A0%97%E2%A0%98%E2%A0%99%E2%A0%9A%E2%A0%9B%E2%A0%9C%E2%A0%9D%E2%A0%9E%E2%A0%9F%E2%A0%A0%E2%A0%A1%E2%A0%A2%E2%A0%A3%E2%A0%A4%E2%A0%A5%E2%A0%A6%E2%A0%A7%E2%A0%A8%E2%A0%A9%E2%A0%AA%E2%A0%AB%E2%A0%AC%E2%A0%AD%E2%A0%AE%E2%A0%AF%E2%A0%B0%E2%A0%B1%E2%A0%B2%E2%A0%B3%E2%A0%B4%E2%A0%B5%E2%A0%B6%E2%A0%B7%E2%A0%B8%E2%A0%B9%E2%A0%BA%E2%A0%BB%E2%A0%BC%E2%A0%BD%E2%A0%BE%E2%A0%BF%E2%A1%80%E2%A1%81%E2%A1%82%E2%A1%83%E2%A1%84%E2%A1%85%E2%A1%86%E2%A1%87%E2%A1%88%E2%A1%89%E2%A1%8A%E2%A1%8B%E2%A1%8C%E2%A1%8D%E2%A1%8E%E2%A1%8F%E2%A1%90%E2%A1%91%E2%A1%92%E2%A1%93%E2%A1%94%E2%A1%95%E2%A1%96%E2%A1%97%E2%A1%98%E2%A1%99%E2%A1%9A%E2%A1%9B%E2%A1%9C%E2%A1%9D%E2%A1%9E%E2%A1%9F%E2%A1%A0%E2%A1%A1%E2%A1%A2%E2%A1%A3%E2%A1%A4%E2%A1%A5%E2%A1%A6%E2%A1%A7%E2%A1%A8%E2%A1%A9%E2%A1%AA%E2%A1%AB%E2%A1%AC%E2%A1%AD%E2%A1%AE%E2%A1%AF%E2%A1%B0%E2%A1%B1%E2%A1%B2%E2%A1%B3%E2%A1%B4%E2%A1%B5%E2%A1%B6%E2%A1%B7%E2%A1%B8%E2%A1%B9%E2%A1%BA%E2%A1%BB%E2%A1%BC%E2%A1%BD%E2%A1%BE%E2%A1%BF%E2%A2%80%E2%A2%81%E2%A2%82%E2%A2%83%E2%A2%84%E2%A2%85%E2%A2%86%E2%A2%87%E2%A2%88%E2%A2%89%E2%A2%8A%E2%A2%8B%E2%A2%8C%E2%A2%8D%E2%A2%8E%E2%A2%8F%E2%A2%90%E2%A2%91%E2%A2%92%E2%A2%93%E2%A2%94%E2%A2%95%E2%A2%96%E2%A2%97%E2%A2%98%E2%A2%99%E2%A2%9A%E2%A2%9B%E2%A2%9C%E2%A2%9D%E2%A2%9E%E2%A2%9F%E2%A2%A0%E2%A2%A1%E2%A2%A2%E2%A2%A3%E2%A2%A4%E2%A2%A5%E2%A2%A6%E2%A2%A7%E2%A2%A8%E2%A2%A9%E2%A2%AA%E2%A2%AB%E2%A2%AC%E2%A2%AD%E2%A2%AE%E2%A2%AF%E2%A2%B0%E2%A2%B1%E2%A2%B2%E2%A2%B3%E2%A2%B4%E2%A2%B5%E2%A2%B6%E2%A2%B7%E2%A2%B8%E2%A2%B9%E2%A2%BA%E2%A2%BB%E2%A2%BC%E2%A2%BD%E2%A2%BE%E2%A2%BF%E2%A3%80%E2%A3%81%E2%A3%82%E2%A3%83%E2%A3%84%E2%A3%85%E2%A3%86%E2%A3%87%E2%A3%88%E2%A3%89%E2%A3%8A%E2%A3%8B%E2%A3%8C%E2%A3%8D%E2%A3%8E%E2%A3%8F%E2%A3%90%E2%A3%91%E2%A3%92%E2%A3%93%E2%A3%94%E2%A3%95%E2%A3%96%E2%A3%97%E2%A3%98%E2%A3%99%E2%A3%9A%E2%A3%9B%E2%A3%9C%E2%A3%9D%E2%A3%9E%E2%A3%9F%E2%A3%A0%E2%A3%A1%E2%A3%A2%E2%A3%A3%E2%A3%A4%E2%A3%A5%E2%A3%A6%E2%A3%A7%E2%A3%A8%E2%A3%A9%E2%A3%AA%E2%A3%AB%E2%A3%AC%E2%A3%AD%E2%A3%AE%E2%A3%AF%E2%A3%B0%E2%A3%B1%E2%A3%B2%E2%A3%B3%E2%A3%B4%E2%A3%B5%E2%A3%B6%E2%A3%B7%E2%A3%B8%E2%A3%B9%E2%A3%BA%E2%A3%BB%E2%A3%BC%E2%A3%BD%E2%A3%BE%E2%A3%BF&amp;display=block">
+<style>
+body{margin:0;background:#F1ECDF}
+a{color:#1D5A8F}a:hover{color:#15466F}
+</style>
+</helmet>
+<div style="background: #F1ECDF; color: #1F2B23; font-family: 'Literata', Georgia, serif; font-size: 17px; line-height: 1.65; position: relative; overflow: hidden;">
+<div style="overflow: hidden; padding-top: 8px; display: flex; justify-content: center; font-family: 'Noto Sans Symbols 2', 'Apple Braille', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif; font-size: 15.7143px; line-height: 15.7143px; letter-spacing: -0.164em;">
+<div style="position: relative;"><div aria-hidden="true"><sc-for list="{{garden}}" as="row" hint-placeholder-count="16"><div style="white-space: pre; height: 15.7143px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+<sc-for list="{{spots}}" as="s" hint-placeholder-count="7"><a href="#" aria-label="{{s.aria}}" onMouseEnter="{{s.enter}}" onMouseLeave="{{s.leave}}" onFocus="{{s.enter}}" onBlur="{{s.leave}}" style="position: absolute; display: block; left: {{s.left}}; top: {{s.top}}; width: {{s.width}}; height: {{s.height}};"></a></sc-for>
+</div>
+</div>
+<div aria-live="polite" style="max-width: 1040px; margin: 0 auto; padding: 8px 24px 0; min-height: 22px; text-align: center; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52;">
+<sc-if value="{{placard.show}}" hint-placeholder-val="{{false}}"><span style="letter-spacing: 0.1em;">No. {{placard.no}}</span> · <span style="font-family: 'Literata', Georgia, serif; font-style: italic; font-size: 14px; color: #1F2B23;">{{placard.latin}}</span> · “{{placard.title}}” · planted {{placard.date}}</sc-if><sc-if value="{{placard.idle}}" hint-placeholder-val="{{true}}">seven posts, seven flowers · hover one to read its label</sc-if>
+</div>
+<nav aria-label="Main" style="max-width: 1040px; margin: 0 auto; padding: 10px 24px 0; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; position: relative;">
+<a href="#" style="color: #1F2B23; text-decoration: none; font-weight: 600; font-size: 18px;">Matěj Schrödl</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px;">
+<a href="#" style="color: #2B7349; text-decoration: none;">[notes]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[posts]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[projects]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[courses]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[about]</a>
+<a href="#" style="color: #2B7349; text-decoration: none;">[cv]</a>
+</div>
+</nav>
+<main style="max-width: 760px; margin: 0 auto; padding: 44px 24px 72px;">
+<p style="margin: 0; font-size: 22px; line-height: 1.45; max-width: 34ch;">My notes, posts and projects, and whatever else I want to write.</p>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 64px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Recent posts</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailPosts}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<div style="display: flex; flex-direction: column; gap: 14px;"><sc-for list="{{list}}" as="p" hint-placeholder-count="7">
+<div style="display: flex; flex-wrap: wrap; gap: 2px 16px; align-items: baseline;"><span aria-hidden="true" style="font-family: 'Noto Sans Symbols 2', 'Apple Braille', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif; font-size: 17.1429px; line-height: 17.1429px; letter-spacing: -0.164em; width: 32px; white-space: pre;"><sc-for list="{{p.mark}}" as="r" hint-placeholder-count="3"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></span><span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #535F52; width: 96px;">{{p.date}}</span><a href="#" style="font-size: 19px;">{{p.title}}</a></div>
+</sc-for></div>
+<div style="display: flex; align-items: baseline; gap: 14px; margin: 72px 0 16px;"><h2 style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 600; color: #2B7349; white-space: nowrap;">Projects</h2><div aria-hidden="true" style="flex: 1; min-width: 0; overflow: hidden; white-space: pre; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px;"><sc-for list="{{trailProjects}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 28px 40px;">
+<div style="flex: 1 1 300px; min-width: 0;"><a href="#" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 16px; font-weight: 600;">rentczecher</a><div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; margin: 2px 0 6px;">Python, TypeScript, Rust · in progress</div><p style="margin: 0; font-size: 16px;">A free, local-first desktop watchdog for Czech real-estate listings.</p></div>
+<div style="flex: 1 1 300px; min-width: 0;"><a href="#" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 16px; font-weight: 600;">Goob the Renderer</a><div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #535F52; margin: 2px 0 6px;">C++23 · in progress</div><p style="margin: 0; font-size: 16px;">Learning project to grasp core ideas of graphical engines.</p></div>
+</div>
+</main>
+<footer style="margin-top: 24px;">
+<div aria-hidden="true" style="overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; line-height: 15px; display: flex; justify-content: center;">
+<div><sc-for list="{{roots}}" as="row" hint-placeholder-count="8"><div style="white-space: pre; height: 15px;"><sc-for list="{{row.runs}}" as="r" hint-placeholder-count="1"><span style="color: {{r.c}}">{{r.t}}</span></sc-for></div></sc-for></div>
+</div>
+<div style="background: #E5DDCA; padding: 20px 24px 28px;">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5C4636;">
+<span>Matěj Schrödl · grown in Obsidian</span>
+<div style="display: flex; gap: 20px;"><a href="#" style="color: #5C4636;">GitHub</a><a href="#" style="color: #5C4636;">RSS</a><a href="#" style="color: #5C4636;">CV</a></div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"motion":{"editor":"boolean","default":true,"section":"Flora"},"$preview":{"width":1280,"height":1500}}'>
+class Component extends DCLogic {
+  state = { tick: 0, hover: -1 };
+
+  componentDidMount() {
+    const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (this.props.motion === false) return;
+      this.setState({ tick: this.state.tick + 1 });
+    }, 250);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  rng(seed) {
+    let h = 1779033703 ^ seed.length;
+    for (let i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  grid(w, h) {
+    const chars = [], cols = [];
+    for (let y = 0; y < h; y++) { chars.push(new Array(w).fill(' ')); cols.push(new Array(w).fill('')); }
+    const put = (x, y, ch, c) => { if (x >= 0 && x < w && y >= 0 && y < h && ch !== ' ') { chars[y][x] = ch; cols[y][x] = c; } };
+    return { chars, cols, put, w, h };
+  }
+
+  toRows(g) {
+    const rows = [];
+    for (let y = 0; y < g.h; y++) {
+      const runs = []; let t = '', cur = null;
+      for (let x = 0; x < g.w; x++) {
+        const ch = g.chars[y][x];
+        const key = ch === ' ' ? '' : g.cols[y][x];
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += ch;
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  // The home page's wind: one gust for every plant, so they all lean the same way.
+  wind() {
+    const t = this.state.tick * 0.25;
+    return 0.75 * Math.sin(t * 0.55) + 0.35 * Math.sin(t * 0.21) + 0.45;
+  }
+
+  // ---- specimens: every post and note grows its own flower from its name ----
+
+  heads() {
+    return [
+      { rows: ['\\|/', '-@-', '/|\\'], genus: 'Radiantia', name: 'sunburst' },
+      { rows: [' * ', '*o*', ' * '], genus: 'Stellaria', name: 'star' },
+      { rows: ['.-.', '(o)', "'-'"], genus: 'Globularia', name: 'globe' },
+      { rows: ['\\ /', '-*-', '/ \\'], genus: 'Asteriscus', name: 'asterisk' },
+      { rows: [' ^ ', '/@\\'], genus: 'Tulipa', name: 'tulip' },
+      { rows: ['o@o', '@o@'], genus: 'Racemosa', name: 'cluster' },
+      { rows: [' , ', '(@)'], genus: 'Nutans', name: 'nodding cup' },
+      { rows: ['.:.', '(*)'], genus: 'Pollinaria', name: 'pollen cup' },
+      { rows: ['{*}'], genus: 'Orchidea', name: 'orchid' },
+      { rows: ['(@)'], genus: 'Ocellus', name: 'eye' }
+    ];
+  }
+
+  specimen(slug) {
+    this._spec = this._spec || {};
+    if (this._spec[slug]) return this._spec[slug];
+    const r = this.rng('flower:' + slug), heads = this.heads();
+    const petals = [['hibiscus', '#C24E39'], ['orchid', '#8A4F98'], ['mango', '#A87400'], ['lagoon', '#2A7099'], ['rose', '#B5476E']];
+    const centers = [['mango', '#A87400'], ['ink', '#1F2B23'], ['hibiscus', '#C24E39']];
+    const head = heads[Math.floor(r() * heads.length)];
+    const petal = petals[Math.floor(r() * petals.length)];
+    let center = centers[Math.floor(r() * centers.length)];
+    if (center[1] === petal[1]) center = centers[1];
+    const h = 6 + Math.floor(r() * 5), stiff = 0.7 + r() * 0.6, habit = r();
+    const lean = habit < 0.33 ? -1 : habit > 0.66 ? 1 : 0;
+    const style = ['fern', 'alternate', 'sparse'][Math.floor(r() * 3)];
+    const leaves = [];
+    for (let k = 1; k < h; k++) {
+      if (style === 'fern' && r() < 0.7) leaves.push({ k, both: true });
+      else if (style === 'alternate' && k % 2 === 1) leaves.push({ k, side: k % 4 === 1 ? -1 : 1 });
+      else if (style === 'sparse' && r() < 0.25) leaves.push({ k, side: r() < 0.5 ? -1 : 1 });
+    }
+    const words = slug.split('-').filter((w) => w.length >= 4 && !/^[0-9]+$/.test(w));
+    const word = words.length ? words[Math.floor(r() * words.length)] : (slug.replace(/[^a-z]/g, '') || 'anonym');
+    const species = word.replace(/[aeiouy]+$/, '') + ['ensis', 'ica', 'alis', 'ia'][Math.floor(r() * 4)];
+    let fnv = 2166136261;
+    for (let i = 0; i < slug.length; i++) { fnv ^= slug.charCodeAt(i); fnv = Math.imul(fnv, 16777619); }
+    const seed = (fnv >>> 0).toString(16).padStart(8, '0');
+    const hasCenter = head.rows.join('').match(/[@o]/) !== null;
+    this._spec[slug] = { slug, head, petal, center: hasCenter ? center : null, h, stiff, lean, style, leaves, latin: head.genus + ' ' + species, seed };
+    return this._spec[slug];
+  }
+
+  // Draw a plant standing at column x with its stem's foot on row base, bending in the wind.
+  drawPlant(g, p, x, base, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff;
+    const off = (k) => Math.round((amp * wind + (p.lean || 0) * 0.8) * Math.pow(k / p.h, 1.6));
+    for (let k = 0; k < p.h; k++) {
+      const d = k === 0 ? 0 : off(k) - off(k - 1);
+      g.put(x + off(k), base - k, d > 0 ? '/' : d < 0 ? '\\' : '|', '#2B7349');
+    }
+    for (const l of p.leaves) {
+      const y = base - l.k, sx = x + off(l.k);
+      if (l.both) { g.put(sx - 1, y, '\\', '#3F8A52'); g.put(sx + 1, y, '/', '#3F8A52'); }
+      else g.put(sx + l.side, y, l.side < 0 ? '\\' : '/', '#3F8A52');
+    }
+    const topX = x + off(p.h);
+    if (p.fern) { g.put(topX, base - p.h, "'", '#3F8A52'); return; }
+    const rows = p.head.rows;
+    rows.forEach((line, i) => {
+      const half = Math.floor(line.length / 2);
+      for (let j = 0; j < line.length; j++) {
+        const ch = line[j];
+        g.put(topX - half + j, base - p.h - (rows.length - 1) + i, ch, (ch === '@' || ch === 'o') && p.center ? p.center[1] : p.petal[1]);
+      }
+    });
+  }
+
+  // A specimen alone, with a little soil under it.
+  specimenRows(slug) {
+    const p = this.specimen(slug), H = p.h + p.head.rows.length + 2, W = 15, g = this.grid(W, H);
+    for (let x = 3; x < 12; x++) { g.put(x, H - 1, x % 2 ? '_' : '.', '#7A5C42'); if (x % 3 === 0) g.put(x, H - 2, ',', '#5E8E4A'); }
+    this.drawPlant(g, p, 7, H - 2, this.wind());
+    return this.toRows(g);
+  }
+
+  // The museum label: what the name grew into.
+  label(slug, no, title, date) {
+    const p = this.specimen(slug);
+    const key = (k) => k + ' ' + '.'.repeat(Math.max(2, 9 - k.length));
+    const habit = p.lean < 0 ? 'leaning west' : p.lean > 0 ? 'leaning east' : 'upright';
+    const leaves = p.leaves.length === 0 ? 'bare stem' : (p.style === 'fern' ? 'fern pairs' : p.style) + ' × ' + p.leaves.length;
+    return {
+      no, title, date, slug, latin: p.latin,
+      lines: [
+        { k: key('head'), v: p.head.name + '   ' + p.head.rows.map((r) => r.trim()).join(' ') },
+        { k: key('petals'), v: p.petal[0] + (p.center ? ', ' + p.center[0] + ' centre' : '') },
+        { k: key('stem'), v: p.h + ' rows, ' + habit },
+        { k: key('leaves'), v: leaves },
+        { k: key('seed'), v: '0x' + p.seed }
+      ]
+    };
+  }
+
+  // ---- the home page's soil and trailing vines, unchanged ----
+
+  roots() {
+    if (this._roots) return this._roots;
+    const r = this.rng('roots');
+    const W = 190, H = 8;
+    const g = this.grid(W, H);
+    for (let x = 0; x < W; x++) {
+      if (r() < 0.4) g.put(x, 0, [',', "'", '"', 'v'][Math.floor(r() * 4)], '#5E8E4A');
+      g.put(x, 1, '_', '#7A5C42');
+    }
+    for (let i = 0; i < 9; i++) {
+      const mx = 4 + Math.floor(r() * (W - 8));
+      g.put(mx - 1, 0, '(', '#C24E39'); g.put(mx, 0, '^', '#C24E39'); g.put(mx + 1, 0, ')', '#C24E39');
+    }
+    let x0 = 4;
+    while (x0 < W - 4) {
+      let x = x0;
+      const len = 3 + Math.floor(r() * 4);
+      for (let y = 2; y < 2 + len && y < H; y++) {
+        const d = r() < 0.3 ? -1 : r() > 0.7 ? 1 : 0;
+        g.put(x, y, d < 0 ? '/' : d > 0 ? '\\' : '|', '#5C4636');
+        if (r() < 0.25) g.put(x + (r() < 0.5 ? -1 : 1), y, r() < 0.5 ? '~' : '.', '#7A5C42');
+        x += d;
+      }
+      x0 += 6 + Math.floor(r() * 10);
+    }
+    for (let i = 0; i < 40; i++) g.put(Math.floor(r() * W), 2 + Math.floor(r() * (H - 2)), r() < 0.5 ? '.' : 'o', '#8C7C66');
+    this._roots = this.toRows(g);
+    return this._roots;
+  }
+
+  trail(seed) {
+    this._trails = this._trails || {};
+    if (this._trails[seed]) return this._trails[seed];
+    const r = this.rng(seed);
+    const runs = [];
+    let t = '';
+    for (let i = 0; i < 140; i++) {
+      const p = r();
+      if (i > 2 && p < 0.07) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: r() < 0.5 ? '&' : '%', c: '#2B7349' }); }
+      else if (i > 2 && p < 0.085) { if (t) runs.push({ t, c: '#3F8A52' }); t = ''; runs.push({ t: '@', c: '#C24E39' }); }
+      else t += r() < 0.8 ? '~' : '-';
+    }
+    if (t) runs.push({ t, c: '#3F8A52' });
+    this._trails[seed] = runs;
+    return runs;
+  }
+
+  // ---- braille: every character is a 2 × 4 block of dots ----
+
+  // A dot bitmap W × H characters big. Each dot keeps a colour and a weight; a heavier part
+  // (a petal over a stem) wins the dot, and the heaviest colour in a cell colours its character.
+  dots(W, H) {
+    const DW = W * 2, DH = H * 4, col = new Int16Array(DW * DH).fill(-1), wt = new Float32Array(DW * DH), pal = [], at = {};
+    const put = (x, y, c, w) => {
+      x = Math.round(x); y = Math.round(y);
+      if (x < 0 || y < 0 || x >= DW || y >= DH) return;
+      const i = y * DW + x;
+      if (w >= wt[i]) { if (at[c] === undefined) { at[c] = pal.length; pal.push(c); } col[i] = at[c]; wt[i] = w; }
+    };
+    return { W, H, DW, DH, col, wt, pal, put };
+  }
+
+  // Encode the bitmap into rows of coloured runs, the same shape toRows() gives the ASCII band.
+  braille(d) {
+    const BITS = [[0, 0, 1], [0, 1, 2], [0, 2, 4], [1, 0, 8], [1, 1, 16], [1, 2, 32], [0, 3, 64], [1, 3, 128]];
+    const rows = [];
+    for (let cy = 0; cy < d.H; cy++) {
+      const runs = []; let t = '', cur = null;
+      for (let cx = 0; cx < d.W; cx++) {
+        let bits = 0, best = -1, bs = 0; const score = {};
+        for (const [dx, dy, bit] of BITS) {
+          const i = (cy * 4 + dy) * d.DW + cx * 2 + dx, k = d.col[i];
+          if (k < 0) continue;
+          bits |= bit; score[k] = (score[k] || 0) + d.wt[i];
+          if (score[k] > bs) { bs = score[k]; best = k; }
+        }
+        const key = bits ? d.pal[best] : '';
+        if (cur === null) cur = key;
+        else if (key !== cur) { runs.push({ t, c: cur || 'transparent' }); t = ''; cur = key; }
+        t += String.fromCharCode(0x2800 + bits);
+      }
+      runs.push({ t, c: cur || 'transparent' });
+      rows.push({ runs });
+    }
+    return rows;
+  }
+
+  line(d, x0, y0, x1, y1, c, w) {
+    const n = Math.ceil(Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0)) * 2) + 1;
+    for (let i = 0; i <= n; i++) d.put(x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n, c, w);
+  }
+
+  disc(d, cx, cy, r, c, w) {
+    for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++)
+      for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++)
+        if ((x - cx) * (x - cx) + (y - cy) * (y - cy) <= r * r + 0.3) d.put(x, y, c, w);
+  }
+
+  ring(d, cx, cy, r, c, w) {
+    const n = Math.ceil(r * 9);
+    for (let i = 0; i < n; i++) { const a = i / n * 2 * Math.PI; d.put(cx + r * Math.cos(a), cy + r * Math.sin(a), c, w); }
+  }
+
+  oval(d, cx, cy, a, b, ang, c, w) {
+    const R = Math.max(a, b) + 1, co = Math.cos(ang), si = Math.sin(ang);
+    for (let y = Math.floor(cy - R); y <= Math.ceil(cy + R); y++)
+      for (let x = Math.floor(cx - R); x <= Math.ceil(cx + R); x++) {
+        const u = (x - cx) * co + (y - cy) * si, v = -(x - cx) * si + (y - cy) * co;
+        if ((u / a) * (u / a) + (v / b) * (v / b) <= 1.08) d.put(x, y, c, w);
+      }
+  }
+
+  // A tapered blade along a quadratic curve: thin at the foot, widest a third of the way, a point at the tip.
+  blade(d, x0, y0, qx, qy, x1, y1, width, c, w) {
+    const n = Math.ceil((Math.hypot(qx - x0, qy - y0) + Math.hypot(x1 - qx, y1 - qy)) * 3) + 2;
+    for (let i = 0; i <= n; i++) {
+      const s = i / n, a = (1 - s) * (1 - s), b = 2 * (1 - s) * s, e = s * s;
+      const x = a * x0 + b * qx + e * x1, y = a * y0 + b * qy + e * y1;
+      const tx = 2 * (1 - s) * (qx - x0) + 2 * s * (x1 - qx), ty = 2 * (1 - s) * (qy - y0) + 2 * s * (y1 - qy), tl = Math.hypot(tx, ty) || 1;
+      const half = width * Math.sqrt(s) * (1 - s) / 0.385 / 2;
+      for (let q = -half; q <= half + 0.01; q += 0.5) d.put(x - ty / tl * q, y + tx / tl * q, c, w);
+    }
+  }
+
+  // The stem as a curve: the ASCII bend, k/h to the 1.6, but continuous, one dot per row.
+  stem(p, x, g, wind) {
+    const amp = (p.h >= 7 ? 1.6 : 1.1) * p.stiff, L = p.h * 4, bend = (amp * wind + (p.lean || 0) * 0.8) * 2;
+    const at = (k) => [x + bend * Math.pow(Math.max(0, k) / L, 1.6), g - 1 - k];
+    return { at, L, ang: Math.atan(bend * 1.6 / L) };
+  }
+
+  // One dot per row; where the curve steps a column over, the step is joined, so the stem reads unbroken.
+  drawStem(d, s, c, w) {
+    let px = Math.round(s.at(0)[0]);
+    for (let k = 0; k <= s.L; k++) {
+      const [x, y] = s.at(k), rx = Math.round(x);
+      if (Math.abs(rx - px) === 1 && k > 0) d.put(rx, y + 1, c, w);
+      else if (Math.abs(rx - px) > 1) this.line(d, px, y + 1, rx, y, c, w);
+      d.put(rx, y, c, w); px = rx;
+    }
+  }
+
+  // A leaf: a slim blade arching up and out from the stem; fern pairs are single strokes, like the ASCII \\ /.
+  leaf(d, sx, sy, side, size, wind, c) {
+    if (size < 4) { this.line(d, sx + side, sy - 0.5, sx + side * size + wind * 0.4, sy - size * 0.9, c, 1.5); return; }
+    this.blade(d, sx, sy, sx + side * size * 0.9, sy + 0.4, sx + side * size * 1.1 + wind * 0.7, sy - size * 1.1, 1.3, c, 1.5);
+  }
+
+  // Each head type from heads(), drawn at dot resolution around the stem's tip, tilted with it.
+  head(d, p, tx, ty, ang, k) {
+    k = k || 1;
+    const P = p.petal[1], C = p.center ? p.center[1] : p.petal[1], co = Math.cos(ang), si = Math.sin(ang);
+    const T = (u, v) => [tx + k * (u * co - v * si), ty + k * (u * si + v * co)];
+    const disc = (u, v, r, c, w) => { const [x, y] = T(u, v); this.disc(d, x, y, r * k, c, w); };
+    const oval = (u, v, a, b, an, c, w) => { const [x, y] = T(u, v); this.oval(d, x, y, a * k, b * k, an + ang, c, w); };
+    const ray = (u0, v0, u1, v1, c, w) => { const [a, b] = T(u0, v0), [e, f] = T(u1, v1); this.line(d, a, b, e, f, c, w); };
+    const name = p.head.name;
+    if (name === 'sunburst') {
+      for (let i = 0; i < 12; i++) { const a = i / 12 * 2 * Math.PI; ray(Math.cos(a) * 3, -6 + Math.sin(a) * 3, Math.cos(a) * 6.2, -6 + Math.sin(a) * 6.2, P, 3); }
+      disc(0, -6, 2, C, 3.2);
+    } else if (name === 'star') {
+      for (let i = 0; i < 5; i++) { const a = -Math.PI / 2 + i / 5 * 2 * Math.PI; oval(Math.cos(a) * 3.8, -6 + Math.sin(a) * 3.8, 2.6, 1.5, a, P, 3); }
+      disc(0, -6, 1.3, C, 3.2);
+    } else if (name === 'globe') {
+      const [x, y] = T(0, -6); this.ring(d, x, y, 5 * k, P, 3); this.ring(d, x, y, 4 * k, P, 3);
+      disc(0, -6, 1.8, C, 3.2);
+    } else if (name === 'asterisk') {
+      for (let i = 0; i < 6; i++) { const a = i / 6 * 2 * Math.PI + Math.PI / 2; ray(Math.cos(a) * 1.2, -6 + Math.sin(a) * 1.2, Math.cos(a) * 6, -6 + Math.sin(a) * 6, P, 3); }
+      for (let i = 0; i < 6; i++) { const a = (i + 0.5) / 6 * 2 * Math.PI + Math.PI / 2; const [x, y] = T(Math.cos(a) * 4.5, -6 + Math.sin(a) * 4.5); d.put(x, y, P, 3); }
+    } else if (name === 'tulip') {
+      // a cup with a rounded base and three pointed tepals
+      for (let v = 0; v <= 11; v += 0.5) {
+        const half = 4.2 * Math.sqrt(Math.min(1, v / 3.5));
+        for (let u = -half; u <= half + 0.01; u += 0.5) {
+          const k = Math.abs(u) / 4.2, tip = 7.5 + 3.5 * Math.max(0, 1 - Math.abs(k - 0) * 3.2, 1 - Math.abs(k - 0.9) * 3.2);
+          if (v <= tip) { const [x, y] = T(u, -v); d.put(x, y, P, 3); }
+        }
+      }
+      disc(0, -4.5, 1.1, C, 3.2);
+    } else if (name === 'cluster') {
+      // a raceme: florets on short stalks, alternating sides up a spike, smallest at the tip
+      ray(0, 0, 0, -13, '#2B7349', 1);
+      for (let i = 0; i < 6; i++) {
+        const side = i % 2 ? -1 : 1, v = -1.5 - i * 2.2;
+        ray(0, v + 0.8, side * 1.6, v - 0.2, '#2B7349', 1);
+        disc(side * 3, v - 0.6, i < 3 ? 1.5 : i < 5 ? 1.2 : 0.8, i === 1 || i === 4 ? C : P, 3);
+      }
+      disc(0, -14.5, 1.05, P, 3);
+    } else if (name === 'nodding cup') {
+      // the stem hooks over and the cup hangs from it, mouth down
+      const side = p.lean ? p.lean : 1;
+      for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI, b = (i + 1) / 12 * Math.PI; ray(side * (1 - Math.cos(a)) * 2.6, -Math.sin(a) * 4, side * (1 - Math.cos(b)) * 2.6, -Math.sin(b) * 4, '#2B7349', 1); }
+      const bx = side * 5.2;
+      for (let v = 0; v <= 7; v += 0.5) {
+        const half = 1.4 + 1.6 * Math.pow(v / 7, 0.8) + 1.4 * Math.pow(v / 7, 4);
+        for (let u = -half; u <= half + 0.01; u += 0.5) { if (v > 6 && Math.abs(Math.sin(u * 1.4)) < 0.35) continue; const [x, y] = T(bx + u, v - 0.5); d.put(x, y, P, 3); }
+      }
+      disc(bx, 8.6, 0.8, C, 3.2);
+    } else if (name === 'pollen cup') {
+      for (let v = 0; v <= 4.5; v += 0.5) { const half = Math.sqrt(Math.max(0, 4.5 * 4.5 - (4.5 - v) * (4.5 - v))); for (let u = -half; u <= half + 0.01; u += 0.5) { const [x, y] = T(u, -v); d.put(x, y, P, 3); } }
+      [[-3, -7], [0, -8], [3, -7], [-1.5, -10.5], [1.6, -11], [-4.2, -10], [4, -9.8], [0, -13]].forEach(([u, v]) => { const [x, y] = T(u, v); d.put(x, y, P, 3); });
+    } else if (name === 'orchid') {
+      oval(0, -10, 1.4, 3, 0, P, 3);
+      oval(-4, -7, 1.4, 3.2, -1.1, P, 3);
+      oval(4, -7, 1.4, 3.2, 1.1, P, 3);
+      oval(0, -3.4, 2.8, 2, 0, P, 3);
+      const [x, y] = T(0, -6.4); d.put(x, y, P, 3);
+    } else {
+      disc(0, -5.5, 4.4, P, 3);
+      disc(0, -5.5, 1.9, C, 3.2);
+    }
+  }
+
+  // A post's flower: stem, leaves and head, all bending in the one wind.
+  flower(d, p, x, g, wind) {
+    const s = this.stem(p, x, g, wind);
+    this.drawStem(d, s, '#2B7349', 1);
+    for (const l of p.leaves) {
+      const [sx, sy] = s.at(l.k * 4 + 1);
+      if (l.both) { this.leaf(d, sx, sy, -1, 3, wind, '#3F8A52'); this.leaf(d, sx, sy, 1, 3, wind, '#3F8A52'); }
+      else this.leaf(d, sx, sy, l.side, 4.5, wind, '#3F8A52');
+    }
+    const [tx, ty] = s.at(s.L);
+    this.head(d, p, tx, ty, s.ang);
+  }
+
+  // The unattributed plants: ferns, buds, small florets and grass tufts.
+  filler(d, f, x, g, wind) {
+    const p = f.p, s = this.stem(p, x, g, wind), kind = p.fern ? 'fern' : p.head.rows[0];
+    if (kind === 'fern') {
+      this.drawStem(d, s, '#3F8A52', 1);
+      for (let k = 3; k < s.L - 1; k += 3) {
+        const [sx, sy] = s.at(k), len = 1 + 3 * (1 - k / s.L);
+        this.line(d, sx, sy, sx - len + wind * 0.4, sy - len * 0.6, '#3F8A52', 1.5);
+        this.line(d, sx, sy, sx + len + wind * 0.4, sy - len * 0.6, '#3F8A52', 1.5);
+      }
+      const [tx, ty] = s.at(s.L); d.put(tx + 1, ty, '#3F8A52', 1.5); d.put(tx + 1.5, ty + 1, '#3F8A52', 1.5);
+      return;
+    }
+    if (kind === '*') {
+      // A grass tuft: three slim blades fanned from one foot, the middle one the plant's height.
+      for (let i = -1; i <= 1; i++) {
+        const hgt = s.L * (i ? 0.7 : 1), tip = wind * 1.4 * hgt / 12, out = i * hgt * 0.35;
+        const qx = x + out * 0.3, qy = g - 1 - hgt * 0.6, ex = x + out + tip, ey = g - 1 - hgt;
+        let px = x, py = g - 1;
+        for (let k = 1; k <= 8; k++) { const t = k / 8, bx = (1 - t) * (1 - t) * x + 2 * (1 - t) * t * qx + t * t * ex, by = (1 - t) * (1 - t) * (g - 1) + 2 * (1 - t) * t * qy + t * t * ey; this.line(d, px, py, bx, by, '#5E8E4A', 1); px = bx; py = by; }
+      }
+      return;
+    }
+    this.drawStem(d, s, '#3F8A52', 1);
+    for (const l of p.leaves) { const [sx, sy] = s.at(l.k * 4 + 1); this.leaf(d, sx, sy, l.side, 2.5, wind, '#3F8A52'); }
+    const [tx, ty] = s.at(s.L), c = p.petal[1];
+    if (kind === '@') this.oval(d, tx + Math.sin(s.ang) * 2, ty - 2.2, 1.3, 2.3, s.ang, c, 3);
+    else if (kind === 'o') this.ring(d, tx + Math.sin(s.ang) * 2, ty - 2, 1.6, c, 3);
+    else { for (let i = 0; i < 6; i++) { const a = i / 6 * 2 * Math.PI; d.put(tx + Math.cos(a) * 2.2, ty - 2.6 + Math.sin(a) * 2.2, c, 3); } d.put(tx, ty - 2.6, '#A87400', 4); }
+  }
+
+  // The flower's head, small enough for one character row, as a mark beside a title.
+  mark(slug) {
+    const p = this.specimen(slug), P = p.petal[1], C = p.center ? p.center[1] : P;
+    const m = {
+      sunburst: ['P.PP.P', '.PCCP.', '.PCCP.', 'P.PP.P'],
+      star: ['..PP..', 'PPCCPP', '..CC..', '.P..P.'],
+      globe: ['.PPPP.', 'P.CC.P', 'P.CC.P', '.PPPP.'],
+      asterisk: ['P.PP.P', '.PPPP.', '.PPPP.', 'P.PP.P'],
+      tulip: ['P.PP.P', 'PPCCPP', 'PPCCPP', '.PPPP.'],
+      cluster: ['.P..P.', 'PPCCPP', '.PCCP.', '..PP..'],
+      'nodding cup': ['.PPPP.', 'PPPPPP', 'P.CC.P', '..CC..'],
+      'pollen cup': ['P..P.P', '.P.P..', 'PPPPPP', '.PPPP.'],
+      orchid: ['..PP..', 'PP..PP', '.PPPP.', '..PP..'],
+      eye: ['.PPPP.', 'PPCCPP', 'PPCCPP', '.PPPP.']
+    }[p.head.name];
+    const d = this.dots(3, 1);
+    m.forEach((row, y) => row.split('').forEach((ch, x) => { if (ch !== '.') d.put(x, y, ch === 'C' ? C : P, ch === 'C' ? 4 : 3); }));
+    return this.braille(d)[0].runs;
+  }
+
+  posts() { return [{"slug": "turing-machine", "title": "Turing machines and whatnot", "date": "2024-12-20", "no": "001"}, {"slug": "what-is-an-instruction", "title": "Instruction 101", "date": "2025-02-14", "no": "002"}, {"slug": "automating-my-site", "title": "Automating my site (Factory must grow)", "date": "2025-08-20", "no": "003"}, {"slug": "an-unexamined-habit", "title": "An unexamined habit", "date": "2025-09-20", "no": "004"}, {"slug": "modernisms-hidden-in-fortran", "title": "Modernisms hidden in Fortran", "date": "2025-09-20", "no": "005"}, {"slug": "why-do-we-write-dots-over-some-letters", "title": "Letters and their dots", "date": "2026-01-28", "no": "006"}, {"slug": "why-is-formal-verification-so-problematic", "title": "Why is formal verification so problematic", "date": "2026-10-19", "no": "007"}]; }
+
+  // The garden: the home page's band of plants, with each post standing in it as its own flower.
+  gardenPlan() {
+    if (this._garden) return this._garden;
+    const r = this.rng('garden'), W = 190, H = 16, posts = this.posts();
+    const span = 132, start = Math.floor((W - span) / 2);
+    const xs = posts.map((p, i) => start + Math.round((i + 0.5) * span / posts.length));
+    const small = [['@'], ['o'], ['*'], ['(@)']], cols = ['#C24E39', '#A87400', '#8A4F98', '#2A7099'];
+    const fillers = [];
+    let x = 2 + Math.floor(r() * 3);
+    while (x < W - 2) {
+      if (!xs.some((px) => Math.abs(px - x) < 5)) {
+        const fern = r() < 0.4, h = 2 + Math.floor(r() * 4), leaves = [];
+        for (let k = 1; k < h; k++) if (fern || r() < 0.3) leaves.push(fern ? { k, both: true } : { k, side: r() < 0.5 ? -1 : 1 });
+        fillers.push({ x, p: { h, stiff: 0.8 + r() * 0.4, leaves, fern, head: { rows: small[Math.floor(r() * small.length)] }, petal: ['', cols[Math.floor(r() * cols.length)]], center: null } });
+      }
+      x += 4 + Math.floor(r() * 5);
+    }
+    const grass = [], soil = [];
+    for (let i = 0; i < W; i++) { if (r() < 0.35) grass.push({ x: i, ch: [',', "'", '"', '`'][Math.floor(r() * 4)] }); soil.push(['_', '.', '_', ',', '_'][Math.floor(r() * 5)]); }
+    this._garden = { W, H, xs, fillers, grass, soil };
+    return this._garden;
+  }
+
+  garden() {
+    const G = this.gardenPlan(), d = this.dots(G.W, G.H), wind = this.wind(), g = G.H * 4 - 3;
+    G.soil.forEach((ch, i) => {
+      const x = i * 2;
+      if (ch === '_') { d.put(x, g, '#7A5C42', 1); d.put(x + 1, g, '#7A5C42', 1); }
+      else if (ch === ',') { d.put(x, g, '#7A5C42', 1); d.put(x + 1, g + 1, '#7A5C42', 1); }
+      else { d.put(x + 1, g, '#7A5C42', 1); d.put(x, g + 2, '#7A5C42', 1); }
+    });
+    for (const gr of G.grass) {
+      const hgt = { ',': 2.5, "'": 3.5, '"': 4.5, '`': 3 }[gr.ch], x = gr.x * 2 + 0.5, tip = wind * 0.5;
+      this.line(d, x, g - 1, x + tip + (gr.ch === ',' ? 1 : 0), g - hgt, '#5E8E4A', 1);
+      if (gr.ch === '"') this.line(d, x + 1, g - 1, x + 1.5 + tip, g - hgt + 1.5, '#5E8E4A', 1);
+    }
+    for (const f of G.fillers) this.filler(d, f, f.x * 2, g, wind);
+    this.posts().forEach((p, i) => this.flower(d, this.specimen(p.slug), G.xs[i] * 2, g, wind));
+    return this.braille(d);
+  }
+
+  // Invisible links over each post's flower; hovering one shows its label on the placard.
+  // Placed in per cent of the band, so they stay on their flowers whatever width the braille font draws at.
+  spots() {
+    const G = this.gardenPlan(), CH = 110 / 7;
+    return this.posts().map((p, i) => {
+      const s = this.specimen(p.slug), tall = s.h + 4;
+      return {
+        aria: p.title + ', ' + s.latin,
+        left: ((G.xs[i] - 4) / G.W * 100).toFixed(3) + '%', top: ((G.H - 1 - tall) * CH).toFixed(2) + 'px',
+        width: (9 / G.W * 100).toFixed(3) + '%', height: (tall * CH).toFixed(2) + 'px',
+        enter: () => this.setState({ hover: i }), leave: () => this.setState({ hover: -1 })
+      };
+    });
+  }
+
+  renderVals() {
+    const posts = this.posts(), h = this.state.hover;
+    const sel = h >= 0 ? posts[h] : null;
+    return {
+      garden: this.garden(), spots: this.spots(), roots: this.roots(), trailPosts: this.trail('posts'), trailProjects: this.trail('projects'),
+      placard: sel ? { show: true, idle: false, no: sel.no, latin: this.specimen(sel.slug).latin, title: sel.title, date: sel.date } : { show: false, idle: true, no: '', latin: '', title: '', date: '' },
+      list: posts.slice().reverse().map((p) => ({ title: p.title, date: p.date, mark: this.mark(p.slug) }))
+    };
+  }
+}
+</script>
+</body>
+</html>
