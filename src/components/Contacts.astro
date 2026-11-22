@@ -1,0 +1,93 @@
+---
+// Where to write to me: real-text links, each beside a small woodcut icon cut cell by cell, one
+// 3 px square per cell as on the plates. No phone number.
+import SectionHeading from './SectionHeading.astro';
+
+// '#' is a cut cell, '.' bare paper.
+const ICONS = {
+  mail: ['###########', '##.......##', '#.#.....#.#', '#..#...#..#', '#...#.#...#', '#....#....#', '#.........#', '###########'],
+  github: ['.#.......#.', '.##.....##.', '.#########.', '###########', '###.###.###', '###.###.###', '###########', '.#########.', '..#######..', '#..#...#...', '.##.....#..'],
+  linkedin: ['###########', '#.#########', '###########', '#.##.#..###', '#.##..##.##', '#.##.###.##', '#.##.###.##', '#.##.###.##', '###########'],
+};
+
+/** The icon as one path of unit squares, one per cut cell. */
+const path = (rows: string[]) =>
+  rows.flatMap((row, y) => [...row].flatMap((cell, x) => (cell === '#' ? [`M${x} ${y}h1v1h-1z`] : []))).join('');
+
+const CONTACTS = [
+  { icon: 'mail', label: 'email', href: 'mailto:matej.schrodl@gmail.com', text: 'matej.schrodl@gmail.com' },
+  { icon: 'github', label: 'GitHub', href: 'https://github.com/schrodlm', text: 'github.com/schrodlm' },
+  { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/matej-schrodl354', text: 'linkedin.com/in/matej-schrodl354' },
+] as const;
+---
+
+<section>
+  <SectionHeading title="Write to me" />
+  <ul class="contacts">
+    {
+      CONTACTS.map(({ icon, label, href, text }) => {
+        const rows = ICONS[icon];
+        const w = rows[0]!.length, h = rows.length;
+        return (
+          <li>
+            <svg class={icon} viewBox={`0 0 ${w} ${h}`} width={w * 3} height={h * 3} shape-rendering="crispEdges" aria-hidden="true">
+              <path d={path(rows)} fill="currentColor" />
+            </svg>
+            <span>
+              <span class="label">{label}</span>
+              <a href={href}>{text}</a>
+            </span>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 40px;
+    margin: 0;
+    padding: 20px 24px;
+    list-style: none;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    font-family: var(--mono);
+  }
+
+  li {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  svg {
+    flex: none;
+  }
+
+  .mail {
+    color: var(--hibiscus);
+  }
+
+  .github {
+    color: var(--ink);
+  }
+
+  .linkedin {
+    color: var(--river);
+  }
+
+  .label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  a {
+    font-size: 14px;
+  }
+</style>

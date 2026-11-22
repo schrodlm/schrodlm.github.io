@@ -1,0 +1,22 @@
+---
+// About: my words from the vault's About note, and where to write to me.
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import AboutWords from '../../components/AboutWords.astro';
+import Contacts from '../../components/Contacts.astro';
+
+const [entry] = await getCollection('about');
+const title = entry?.data.title ?? 'About';
+---
+
+<Page title={title} lang={entry?.data.lang ?? 'en'} section="about">
+  <h1>{title}</h1>
+  <AboutWords entry={entry} />
+  <Contacts />
+</Page>
+
+<style>
+  h1 {
+    margin-bottom: 22px;
+  }
+</style>
