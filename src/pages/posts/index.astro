@@ -1,0 +1,10 @@
+---
+// Every post, the newest first.
+import { getCollection } from 'astro:content';
+import SectionList from '../../layouts/SectionList.astro';
+import { newestFirst } from '../../lib/pages';
+
+const posts = newestFirst(await getCollection('posts'));
+---
+
+<SectionList kind="posts" title="Posts" pages={posts} />
