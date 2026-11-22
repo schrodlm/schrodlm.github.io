@@ -273,6 +273,13 @@ a tunnel to their nest and walking back up for more. It is the same on every
 page.
 _Avoid_: footer (that is the bar below it)
 
+**Pond**:
+The framed water on clascii's page, `/clascii/`, where my ASCII art library
+draws the chosen picture in characters. A change to a setting drops into it
+from the control, and the new art spreads from there as a ring of water. The
+page around it is the jungle at night, the one dark page of the site.
+_Avoid_: canvas, stage, preview (that is the site in progress)
+
 ## Relationships
 
 - The **vault** feeds the site only through a **sync**, which runs the
