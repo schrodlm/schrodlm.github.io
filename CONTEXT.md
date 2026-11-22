@@ -161,6 +161,16 @@ every note as its flower and every link a vine, and a small one on each note
 page showing that note's neighbourhood.
 _Avoid_: note graph, knowledge map
 
+**Neighbourhood**:
+The small graph view at the end of a note's page: the note's head in the
+middle, the notes linking to it on the left on dotted vines, the notes it links
+to on the right on solid vines ending in a leaf, a note linked both ways on the
+shorter side with a leaf at either end, and a few notes two steps away as faint
+small heads above and below. Each neighbour's caption is a link; on a phone the
+captions become a numbered list. Only the best-linked few on each side are
+drawn. A note with no links has none.
+_Avoid_: local graph, related notes, connected notes
+
 **Plate**:
 A picture drawn in pixels rather than characters, engraved like a woodcut in
 the garden's tones, with its text laid over it. The graph view, the desks on
@@ -270,6 +280,8 @@ _Avoid_: footer (that is the bar below it)
 - Each **collection** maps to exactly one vault folder.
 - A **note** links to other notes by **wikilinks**; its **connected notes**
   are those links.
+- A **note**'s **neighbourhood** draws the notes it links to and the notes
+  that link to it; the **graph view** draws every note's links together.
 - A **post** belongs to zero or one **project**, a project has any number of
   posts.
 - A **devlog** belongs to exactly one **project**; a project's devlogs make
