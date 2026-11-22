@@ -152,6 +152,12 @@ pixels, which turns, names its parts, slides one out with its card, and comes
 apart. The parts list beneath it names each part's real model.
 _Avoid_: 3D model, PC model, viewer
 
+**Lamplit desk**:
+The plate on the CV: me in silhouette at a desk at night, writing this CV with
+a quill by an oil lamp, under the caption "me, writing this". Where motion is
+welcome I write it line by line; otherwise the sheet is already written.
+_Avoid_: me plate, hero image, the desk (that is About's)
+
 **Wildflower**:
 A note that nothing links to and that links to nothing. On the garden's plate
 it grows on its own stem, apart from the clusters.
