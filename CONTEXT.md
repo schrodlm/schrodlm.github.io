@@ -38,6 +38,12 @@ Building the site and serving it on GitHub Pages, run on every push to this
 repo, the sync bot's pushes included.
 _Avoid_: sync, publish
 
+**Preview**:
+A build of the site in progress from the vault's real content, served below
+`/site-preview/` from a repository of its own and pushed there by hand. It is
+not the live site.
+_Avoid_: staging, demo
+
 **Wikilink**:
 Obsidian's `[[link]]` between vault notes. A sync turns each one into a link
 to the target's page, or into its plain text when the target is not

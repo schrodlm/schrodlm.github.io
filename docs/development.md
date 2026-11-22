@@ -19,10 +19,63 @@ npm run test:e2e        # screenshot tests, inside Playwright's own image
 ```
 
 `npm run build` reads the collections from `src/content/`; setting
-`CONTENT_DIR` points it elsewhere. The tests only ever use the invented sample
-content in `tests/fixtures/content/`. Screenshots are taken inside Playwright's
-image so they match CI; after an intended visual change, refresh them with
-`npm run test:e2e -- --update-snapshots` and commit them with the change.
+`CONTENT_DIR` points it elsewhere. The images the content embeds sit in the
+content's `assets/img/` folder, and the site serves them at `/assets/img/`,
+in the dev server and in the build alike. The tests only ever use the invented
+sample content in `tests/fixtures/content/`. Screenshots are taken inside
+Playwright's image so they match CI; after an intended visual change, refresh
+them with `npm run test:e2e -- --update-snapshots` and commit them with the
+change.
+
+### A base path
+
+The site lives at the root of its domain. Setting `SITE_BASE` (for example
+`SITE_BASE=/site-preview/`) builds it to be served below that path instead.
+The content's links are site-absolute (`/notes/x/`), so a small plugin in the
+markdown pipeline puts the base in front of them; the pages' own links use
+`import.meta.env.BASE_URL`.
+
+### The CV PDF
+
+The PDF is printed from the built `/cv/` page with the Chromium that
+`@playwright/test` pins, and lands beside it as `dist/cv/cv.pdf`:
+
+```bash
+npx playwright install --only-shell chromium   # once per Playwright version
+npm run build
+npm run pdf
+```
+
+The page brings its own fonts, so the PDF looks the same on every machine and
+needs no system fonts. A build without a `/cv/` page fails the step, and so
+does a page that fails to load a stylesheet, font or image, rather than
+printing a PDF that looks wrong. Run it with the same `SITE_BASE` as the
+build.
+
+### Previewing with real content
+
+The preview is the site in progress, built from the vault's real content and
+served at <https://schrodlm.github.io/site-preview/> from its own repository,
+`schrodlm/site-preview`. It needs Python 3 next to Node.js:
+
+```bash
+scripts/preview.sh <vault-dir> <converter-config>
+```
+
+It converts the vault's committed HEAD with the given converter config, builds
+this repo's committed HEAD from the result below `/site-preview/`, prints the
+CV PDF when there is a CV page, and force-pushes the built site to that
+repository's `gh-pages` branch. The config stays in the vault, and the script
+works in a temporary folder, so no vault content ever lands in this repo.
+`--no-publish` stops before the push and keeps the folder, to look at the
+built site first.
+
+### Deploying the Astro site
+
+`.github/workflows/deploy.yml` builds the site, prints the CV PDF and deploys
+the result to GitHub Pages. Until the Astro site replaces the Jekyll one it
+only runs when started by hand, once it is on `main`; the switch-over moves it
+to every push to `main` in place of `pages.yml`.
 
 ### Redrawing a plate
 
