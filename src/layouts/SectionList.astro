@@ -1,6 +1,6 @@
 ---
 // A section's page that lists its notes or posts: its intro on top when the intros collection has
-// one, named after the section, and then the list.
+// one, named after the section, anything the page adds, and then the list.
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Page from './Page.astro';
 import PageList from '../components/PageList.astro';
@@ -32,6 +32,7 @@ const Intro = intro && (await render(intro)).Content;
       </div>
     )
   }
+  <slot />
   <div class="list">
     <PageList pages={pages} />
   </div>
