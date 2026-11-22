@@ -1,0 +1,28 @@
+---
+// A course's name in a list, in the course's own language: a link to its page when it has a review,
+// plain text when it has none and so no page.
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/base-path';
+import { courseHref, courseName, hasReview } from '../lib/courses';
+
+interface Props {
+  course: CollectionEntry<'courses'>;
+  class?: string;
+}
+
+const { course, class: className } = Astro.props;
+const { title, code, lang } = course.data;
+const name = courseName(title, code);
+---
+
+{
+  hasReview(course) ? (
+    <a class={className} href={withBase(courseHref(course.id), import.meta.env.BASE_URL)} lang={lang}>
+      {name}
+    </a>
+  ) : (
+    <span class={className} lang={lang}>
+      {name}
+    </span>
+  )
+}

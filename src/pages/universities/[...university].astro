@@ -1,0 +1,187 @@
+---
+// A university's page at /universities/<its path>/: its building as a front-on plate, its name, my
+// text about it, then its courses by academic year and semester. The list is built from each
+// course's own university, year and semester. A course without a review is listed without a link.
+import { getCollection, render } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Plate from '../../components/Plate.astro';
+import Prose from '../../components/Prose.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Verdict from '../../components/Verdict.astro';
+import CourseName from '../../components/CourseName.astro';
+import { byYearAndSemester, compactScores, courseFacts } from '../../lib/courses';
+import { universityPlate } from '../../lib/plates';
+
+export async function getStaticPaths() {
+  const universities = await getCollection('universities');
+  const courses = await getCollection('courses');
+  return universities.map((university) => ({
+    params: { university: university.id },
+    props: { university, courses: courses.filter((course) => course.data.university.id === university.id) },
+  }));
+}
+
+const { university, courses } = Astro.props;
+const { title, lang, short_name } = university.data;
+const { Content } = await render(university);
+const years = byYearAndSemester(courses);
+---
+
+<Page title={short_name} description={title} section="courses">
+  <Breadcrumb steps={[{ text: 'courses', href: '/courses/' }, { text: short_name }]} />
+  <div class="building">
+    <Plate plate={universityPlate(university.id, 'wide')} narrow={universityPlate(university.id, 'narrow')} />
+  </div>
+  <h1>{short_name}</h1>
+  <p class="full-name" lang={lang}>{title}</p>
+  <p class="facts">{courseFacts(courses)}</p>
+
+  <div lang={lang}>
+    <Prose><Content /></Prose>
+  </div>
+
+  <section>
+    <SectionHeading title="Courses" />
+    {
+      years.length === 0 ? (
+        <p class="none">No courses yet.</p>
+      ) : (
+        <p class="note">by year and semester · ratings out of 5</p>
+      )
+    }
+    {
+      years.map(({ year, semesters }) => (
+        <section>
+          <h3>{year}</h3>
+          {semesters.map(({ semester, courses: taken }) => (
+            <section>
+              <h4>{semester} semester</h4>
+              <ul class="courses">
+                {taken.map((course) => (
+                  <li>
+                    <span class="code">{course.data.code}</span>
+                    <CourseName course={course} class="name" />
+                    {course.data.ratings && (
+                      <span class="verdict-cell">
+                        <Verdict worth={course.data.ratings.worth_it} />
+                      </span>
+                    )}
+                    <span class="scores">
+                      {course.data.ratings ? compactScores(course.data.ratings) : 'not rated yet'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </section>
+      ))
+    }
+  </section>
+</Page>
+
+<style>
+  .building {
+    margin: 18px 0 30px;
+  }
+
+  h1 {
+    margin: 0 0 4px;
+  }
+
+  .full-name {
+    margin: 0 0 4px;
+    color: var(--muted);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .facts,
+  .note {
+    margin: 0 0 30px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .note {
+    margin: -4px 0 0;
+    font-size: 12px;
+  }
+
+  .none {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  h4 {
+    margin: 14px 0 2px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .courses {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* The code, the name and the verdict on one line, the ratings under the name. On a phone the
+     name gets a line of its own. */
+  li {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 2px 16px;
+    padding: 11px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .code,
+  .scores {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .code {
+    font-size: 13px;
+  }
+
+  /* The name is a link, or plain text for a course with no page; CourseName draws it. */
+  li > :global(.name) {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .verdict-cell {
+    font-size: 12px;
+  }
+
+  .scores {
+    grid-column: 2 / 4;
+  }
+
+  @media (max-width: 560px) {
+    li {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .verdict-cell {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    li > :global(.name),
+    .scores {
+      grid-column: 1 / 3;
+    }
+  }
+</style>
