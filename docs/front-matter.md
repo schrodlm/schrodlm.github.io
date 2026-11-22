@@ -222,7 +222,7 @@ a colon followed by a space must be quoted.
 | `name` | text | yes | My name, the CV's heading. |
 | `headline` | text | yes | The line under it. |
 | `location` | text | yes | |
-| `contacts` | contacts | yes | Any of `email`, `web`, `github` and `linkedin`. There is no phone number: the CV is public. |
+| `contacts` | contacts | yes | Any of `email`, `web`, `github`, `linkedin` and `leetcode`. There is no phone number: the CV is public. |
 | `experience` | list of jobs | no | Shown in the order written. |
 | `education` | list of schools | no | Shown in the order written. |
 | `projects` | list of projects | no | |
@@ -235,6 +235,7 @@ a colon followed by a space must be quoted.
 | `web` | web address |
 | `github` | web address on `https://github.com/` |
 | `linkedin` | web address |
+| `leetcode` | web address |
 
 | Entry | Fields |
 |---|---|
@@ -256,6 +257,7 @@ contacts:
   web: https://example.com
   github: https://github.com/example
   linkedin: https://www.linkedin.com/in/example
+  leetcode: https://leetcode.com/example
 experience:
   - role: C++ Firmware Developer
     organisation: Example Corp
