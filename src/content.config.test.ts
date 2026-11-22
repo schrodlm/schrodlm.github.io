@@ -135,7 +135,7 @@ describe('the schemas', () => {
     ['courses', { course_page: 'example.com' }, 'course_page: must be a web address'],
     ['universities', { short_name: undefined }, 'short_name: is required'],
     ['cv', { contacts: { phone: '+000 000 000' } }, 'contacts.phone: is not allowed'],
-    ['cv', { contacts: { leetcode: 'https://example.com' } }, 'contacts.leetcode: is not a field contacts takes'],
+    ['cv', { contacts: { mastodon: 'https://example.com' } }, 'contacts.mastodon: is not a field contacts takes'],
     ['cv', { experience: [{ ...valid.cv.experience[0], start: '2024-1' }] }, 'experience.0.start: must be a month written YYYY-MM'],
     ['cv', { experience: [{ ...valid.cv.experience[0], end: 'now' }] }, 'experience.0.end: must be a month written YYYY-MM, or present'],
     ['cv', { education: [{ ...valid.cv.education[0], end: '2020-06' }] }, 'education.0.end: must not come before start'],
