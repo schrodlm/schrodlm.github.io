@@ -30,3 +30,10 @@ looks: layouts, includes, styles, scripts, the standalone pages and the CV.
   can expire and must then be renewed there.
 - Unpublishing is automatic for notes, but images, which are only ever copied,
   are not removed.
+
+## Note (2026-11-22)
+
+With the move to Astro ([ADR 2](0002-the-site-is-built-with-astro.md)), the
+sync writes every collection and its images into one folder, `src/content/`,
+and replaces that folder whole instead of `_notes/`, `_posts/`, `_projects/`,
+`_courses/` and `assets/img/`. The decision above stands otherwise.
