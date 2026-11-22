@@ -50,6 +50,10 @@ describe('Page', () => {
     expect(await render({}, { 'footer-art': '<pre>other</pre>' })).not.toContain('data-life="soil"');
   });
 
+  it('links the herbarium from the footer', async () => {
+    expect(await render()).toMatch(/<footer[\s\S]*<a href="\/herbarium\/"[^>]*>Herbarium<\/a>/);
+  });
+
   it('gives a page its canonical address, and the 404 none', async () => {
     expect(await render({}, {}, '/notes/')).toContain('<link rel="canonical" href="https://schrodlm.github.io/notes/">');
     const missing = await render({ canonical: false });
