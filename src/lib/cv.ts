@@ -21,6 +21,7 @@ export interface Contacts {
   web?: string | undefined;
   github?: string | undefined;
   linkedin?: string | undefined;
+  leetcode?: string | undefined;
 }
 
 export interface Contact {
@@ -30,7 +31,7 @@ export interface Contact {
   text: string;
 }
 
-const LABELS = { email: 'Email', web: 'Web', github: 'GitHub', linkedin: 'LinkedIn' } as const;
+const LABELS = { email: 'Email', web: 'Web', github: 'GitHub', linkedin: 'LinkedIn', leetcode: 'LeetCode' } as const;
 
 /** The contacts given, in a fixed order, each with its label. */
 export function contactList(contacts: Contacts): Contact[] {
