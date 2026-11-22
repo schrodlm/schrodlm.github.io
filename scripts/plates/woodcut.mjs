@@ -1,8 +1,6 @@
 // The woodcut toolkit: the palette, a plate to cut into (one pixel per 3 px cell), ordered Bayer
-// tones, a small pixel type, the double-ruled plate mark, and a PNG writer. The drawings in
-// projects.mjs and universities.mjs are cut with these; draw.mjs writes the plates.
-import { deflateSync } from 'node:zlib';
-
+// tones, a small pixel type and the double-ruled plate mark. The drawings in projects.mjs and
+// universities.mjs are cut with these; draw.mjs writes the plates with src/lib/png.ts.
 const hex = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
 
 // The garden's tones (the design brief's palette), and the paper tones a plate is printed with.
@@ -117,40 +115,4 @@ export function frame(P, grainSeed) {
   P.vl(m2, m2, h - 1 - m2, c.rule, 2); P.vl(w - 1 - m2, m2, h - 1 - m2, c.rule, 2);
   for (const [x, y] of [[m1, m1], [w - 1 - m1, m1], [m1, h - 1 - m1], [w - 1 - m1, h - 1 - m1]])
     for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) P.set(x + dx, y + dy, dx || dy ? c.hib : c.mango);
-}
-
-// ---- PNG: 8-bit RGBA, unfiltered rows, one image pixel per cell.
-
-const CRC = new Uint32Array(256).map((_, n) => {
-  let k = n;
-  for (let i = 0; i < 8; i++) k = k & 1 ? 0xEDB88320 ^ (k >>> 1) : k >>> 1;
-  return k >>> 0;
-});
-
-function crc32(buf) {
-  let k = 0xFFFFFFFF;
-  for (const b of buf) k = CRC[(k ^ b) & 0xFF] ^ (k >>> 8);
-  return (k ^ 0xFFFFFFFF) >>> 0;
-}
-
-function chunk(type, body) {
-  const out = Buffer.alloc(12 + body.length);
-  out.writeUInt32BE(body.length, 0);
-  out.write(type, 4, 'latin1');
-  body.copy(out, 8);
-  out.writeUInt32BE(crc32(out.subarray(4, 8 + body.length)), 8 + body.length);
-  return out;
-}
-
-export function png(P) {
-  const ihdr = Buffer.alloc(13);
-  ihdr.writeUInt32BE(P.w, 0); ihdr.writeUInt32BE(P.h, 4);
-  ihdr[8] = 8; ihdr[9] = 6; // 8 bits per channel, RGBA
-  const raw = Buffer.alloc((P.w * 4 + 1) * P.h);
-  const pixels = Buffer.from(P.data.buffer, P.data.byteOffset, P.data.length);
-  for (let y = 0; y < P.h; y++) pixels.copy(raw, y * (P.w * 4 + 1) + 1, y * P.w * 4, (y + 1) * P.w * 4);
-  return Buffer.concat([
-    Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]),
-    chunk('IHDR', ihdr), chunk('IDAT', deflateSync(raw, { level: 9 })), chunk('IEND', Buffer.alloc(0)),
-  ]);
 }
