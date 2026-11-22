@@ -32,6 +32,10 @@ describe('the palette', () => {
     expect(contrast(token(name), token('sage'))).toBeGreaterThanOrEqual(4.5);
   });
 
+  it.each(['night-ink', 'night-muted', 'night-accent', 'night-water', 'night-hibiscus'])("%s, a word on clascii's page, reads at 4.5:1 or better on the night", (name) => {
+    expect(contrast(token(name), token('night'))).toBeGreaterThanOrEqual(4.5);
+  });
+
   it('bark, the footer text, reads at 4.5:1 or better on the footer bar', () => {
     expect(contrast(token('bark'), token('sand-deep'))).toBeGreaterThanOrEqual(4.5);
   });
