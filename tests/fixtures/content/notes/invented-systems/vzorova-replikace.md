@@ -4,7 +4,7 @@ lang: cs
 tags: [vymysleno, ukazka]
 ---
 
-Vymyšlená poznámka ve složce, aby testy viděly drobečkovou navigaci, nadpisy s úponky a stránku v češtině. Odkazuje na [Ukázkovou poznámku](/notes/ukazkova-poznamka/) a na [jednu, která ještě není napsaná](/notes/a-seedling/).
+Vymyšlená poznámka ve složce, aby testy viděly drobečkovou navigaci, nadpisy s úponky a stránku v češtině. Odkazuje na [Ukázkovou poznámku](/notes/ukazkova-poznamka/), na [jednu, která ještě není napsaná](/notes/a-seedling/), na [vzorové kvorum](/notes/invented-systems/sample-quorum/) a na [vzorové hodiny](/notes/sample-clock/).
 
 ## Motivace
 
