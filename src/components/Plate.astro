@@ -1,0 +1,70 @@
+---
+// A woodcut plate, each cell shown as a crisp 3 CSS px square. With `narrow`, a phone gets that plate
+// instead. Text over the plate is real text: a caption below it, or anything passed in the
+// `overlay` slot, laid over the picture. A plate set beside its own name (a card) is
+// `decorative`, with an empty alt, so screen readers skip it.
+import type { Plate } from '../lib/plates';
+
+interface Props {
+  plate: Plate;
+  narrow?: Plate | undefined;
+  caption?: string | undefined;
+  decorative?: boolean;
+}
+
+const SCALE = 3;
+const { plate, narrow, caption, decorative = false } = Astro.props;
+const px = (p: Plate) => ({ w: p.image.width * SCALE, h: p.image.height * SCALE });
+const wide = px(plate);
+const small = narrow ? px(narrow) : wide;
+const size = `--w: ${wide.w}px; --h: ${wide.h}px; --nw: ${small.w}px; --nh: ${small.h}px;`;
+---
+
+<figure class="plate" style={size}>
+  <div class="cut">
+    <picture>
+      {narrow && <source media="(max-width: 760px)" srcset={narrow.image.src} width={small.w} height={small.h} />}
+      <img src={plate.image.src} width={wide.w} height={wide.h} alt={decorative ? '' : plate.alt} decoding="async" />
+    </picture>
+    {Astro.slots.has('overlay') && <div class="overlay"><slot name="overlay" /></div>}
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  /* min-width lets the plate shrink, and so crop, inside a flex or grid item too. */
+  .plate {
+    margin: 0;
+    max-width: 100%;
+    min-width: 0;
+  }
+  /* Narrower than the plate, the box crops it rather than scale it by a fraction. */
+  .cut {
+    position: relative;
+    width: var(--w);
+    height: var(--h);
+    max-width: 100%;
+    overflow: hidden;
+  }
+  img {
+    display: block;
+    width: var(--w);
+    height: var(--h);
+    max-width: none;
+    image-rendering: pixelated;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+  }
+  figcaption {
+    padding-top: 8px;
+  }
+  @media (max-width: 760px) {
+    .cut,
+    img {
+      width: var(--nw);
+      height: var(--nh);
+    }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+// An internal sheet of every woodcut plate, for the screenshot test and for looking at a redrawn
+// plate. Not linked from anywhere, and kept out of search.
+import Plate from '../../components/Plate.astro';
+import { projectPlate, projectsWithPlates, universityPlate, universitiesWithPlates } from '../../lib/plates';
+
+const projects = [...projectsWithPlates, 'a-project-without-a-plate'];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <title>Plates · kit</title>
+  </head>
+  <body>
+    <h1>Plates</h1>
+
+    <h2>Projects</h2>
+    {
+      projects.map((slug) => (
+        <section>
+          <h3>{slug}</h3>
+          <div class="row">
+            <Plate plate={projectPlate(slug, 'card')} caption="card" />
+            <Plate plate={projectPlate(slug, 'wide')} narrow={projectPlate(slug, 'narrow')} caption="header, wide or narrow" />
+          </div>
+        </section>
+      ))
+    }
+
+    <h2>Universities</h2>
+    {
+      universitiesWithPlates.map((slug) => (
+        <section>
+          <h3>{slug}</h3>
+          <div class="row">
+            <Plate plate={universityPlate(slug, 'wide')} narrow={universityPlate(slug, 'narrow')} caption="header, wide or narrow" />
+            <Plate plate={universityPlate(slug, 'narrow')} caption="card" />
+          </div>
+        </section>
+      ))
+    }
+
+    <h2>Text over a plate</h2>
+    <Plate plate={projectPlate('rentczecher', 'wide')} narrow={projectPlate('rentczecher', 'narrow')}>
+      <p slot="overlay" class="over">Five listings found</p>
+    </Plate>
+  </body>
+</html>
+
+<style>
+  /* The garden's sand, until the page shell gives every page its ground. */
+  body {
+    margin: 0 auto;
+    padding: 16px;
+    max-width: 1100px;
+    background: #f1ecdf;
+    font-family: monospace;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    align-items: flex-start;
+  }
+  .over {
+    position: absolute;
+    right: 30px;
+    top: 24px;
+    margin: 0;
+  }
+</style>
