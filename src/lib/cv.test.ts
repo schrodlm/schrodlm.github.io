@@ -15,11 +15,13 @@ describe('contactList', () => {
       linkedin: 'https://www.linkedin.com/in/example/',
       email: 'jane@example.com',
       github: 'https://github.com/example',
+      leetcode: 'https://leetcode.com/example',
     });
     expect(contacts).toEqual([
       { label: 'Email', href: 'mailto:jane@example.com', text: 'jane@example.com' },
       { label: 'GitHub', href: 'https://github.com/example', text: 'github.com/example' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/example/', text: 'linkedin.com/in/example' },
+      { label: 'LeetCode', href: 'https://leetcode.com/example', text: 'leetcode.com/example' },
     ]);
   });
 
