@@ -61,6 +61,7 @@ exclude:
   - scripts/
   # The Astro site, built alongside until it replaces this one
   - src/
+  - public/
   - tests/
   - dist/
   - test-results/

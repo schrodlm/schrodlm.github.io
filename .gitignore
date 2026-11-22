@@ -3,6 +3,8 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+# Except the site's own vendored JavaScript, served as it is (docs/development.md).
+!/public/vendor/
 .claude/worktrees/
 node_modules
 dist
