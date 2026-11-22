@@ -1,7 +1,8 @@
-# Building the Astro site
+# Working on the site
 
-How an agent works on one build issue (label `build`, tracked in #47). Read
-this, `CONTEXT.md`, the ADRs, and the issue with its comments before starting.
+The build is done (#47), and the site lives on `main`. An agent works on it
+one issue at a time: one issue, one branch, one PR into `main`. Read this,
+`CONTEXT.md`, the ADRs, and the issue with its comments before starting.
 
 ## Where the decisions are
 
@@ -22,7 +23,7 @@ this, `CONTEXT.md`, the ADRs, and the issue with its comments before starting.
 
 ## Working on an issue
 
-1. Branch `build/<issue>-<slug>` from the latest `origin/astro`, in your own
+1. Branch `<issue>-<slug>` from the latest `origin/main`, in your own
    worktree.
 2. Use the Node.js version in `.nvmrc`. If `node --version` is older, prepend
    `~/.local/opt/node24/bin` to `PATH`.
@@ -36,9 +37,9 @@ this, `CONTEXT.md`, the ADRs, and the issue with its comments before starting.
    `npm run build:fixtures` and `npm run test:e2e`. Refresh screenshots only
    for changes you meant (`npm run test:e2e -- --update-snapshots`), and
    look at every new or changed screenshot before committing it.
-6. Push the branch and open a PR into `astro` whose body follows the
+6. Push the branch and open a PR into `main` whose body follows the
    `pr` template (Summary, Evidence, Merge Danger) and says `Closes #<issue>`.
-   Put screenshots in the Evidence. Don't merge it; the build lead reviews and
+   Put screenshots in the Evidence. Don't merge it; it is reviewed before it
    merges.
 
 ## Rules of the house
