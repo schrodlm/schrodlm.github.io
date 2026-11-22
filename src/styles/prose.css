@@ -159,3 +159,9 @@ details.callout[open] > summary > .callout-title::after {
 .callout > :nth-last-child(2) {
   margin-bottom: 8px;
 }
+
+/* Math typeset by KaTeX. A wide formula scrolls on its own rather than widening the page. */
+.prose .katex-display {
+  padding: 4px 0;
+  overflow: auto hidden;
+}

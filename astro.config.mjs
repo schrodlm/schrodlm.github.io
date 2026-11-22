@@ -35,6 +35,6 @@ export default defineConfig({
   markdown: {
     // Code is coloured through custom properties, which the prose styles set from the palette.
     shikiConfig: { theme: 'css-variables' },
-    processor: satteri({ hastPlugins: houseStyle({ base }) }),
+    processor: satteri({ features: { math: true }, hastPlugins: houseStyle({ base }) }),
   },
 });
