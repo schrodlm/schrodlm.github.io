@@ -210,10 +210,19 @@ The page that shows every specimen together, like a museum hall.
 _Avoid_: gallery, catalogue, index
 
 **Vine**:
-The single vine that hangs beside the text on a post or note, where a
-butterfly, a ladybug and now and then a bee live. Section headings trail a
-short vine of their own.
+The single vine that hangs beside the text on a post, note or devlog, grown
+from the page's address so each page has its own. A butterfly rests on its
+leaves and a bee on its small blooms, which are part of the vine and not
+flowers. Once a minute each takes a turn to fly to the next leaf or bloom,
+never both at once. Section headings trail a short vine of their own.
 _Avoid_: border, divider, decoration
+
+**Soil**:
+The ground under every page, above the footer bar: grass and mushrooms on
+it, roots and stones in it, and in its middle the ants, carrying crumbs down
+a tunnel to their nest and walking back up for more. It is the same on every
+page.
+_Avoid_: footer (that is the bar below it)
 
 ## Relationships
 
