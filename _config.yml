@@ -59,6 +59,18 @@ exclude:
   - CLAUDE.md
   - docs/
   - scripts/
+  # The Astro site, built alongside until it replaces this one
+  - src/
+  - tests/
+  - dist/
+  - test-results/
+  - package.json
+  - package-lock.json
+  - astro.config.mjs
+  - svelte.config.js
+  - tsconfig.json
+  - vitest.config.ts
+  - playwright.config.ts
 
 # Exclude from processing.
 # The following items will not be processed, by default.
