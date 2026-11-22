@@ -1,0 +1,520 @@
+/* The CV, on screen and in print. On screen it sits in the garden's reading column: Plex for its
+   structure, Literata for its text. In print, and so in the PDF, it is set like the LaTeX CV it
+   replaces: Latin Modern Roman on two A4 pages, my name on the left and my contacts on the right,
+   small-caps section headings over a rule, and skills as "Label: body". */
+
+/* Latin Modern is only used in print, so a screen never loads it. Its licence is beside the fonts. */
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('../assets/fonts/latin-modern/latin-modern-roman-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+  src: url('../assets/fonts/latin-modern/latin-modern-roman-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('../assets/fonts/latin-modern/latin-modern-roman-bold.woff2') format('woff2');
+}
+
+/* An entry, on screen and in print: its title and period on one line, then the rest beneath. */
+.cv-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+}
+
+.cv-entry > * {
+  grid-column: 1 / -1;
+}
+
+.cv-entry > .cv-title {
+  grid-column: 1;
+}
+
+.cv-entry > .cv-period {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+@media screen {
+  .cv-name {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1.15;
+  }
+
+  .cv-headline {
+    margin: 10px 0 0;
+    font-size: 22px;
+    line-height: 1.35;
+  }
+
+  .cv-location,
+  .cv-contacts,
+  .cv-period,
+  .cv-place {
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .cv-location {
+    margin: 6px 0 0;
+    color: var(--muted);
+  }
+
+  .cv-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cv-contacts li {
+    white-space: nowrap;
+  }
+
+  .cv-contacts li:not(:last-child)::after {
+    content: '·';
+    padding: 0 10px;
+    color: var(--muted);
+  }
+
+  .cv-summary {
+    margin: 26px 0 0;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .cv-summary > :first-child {
+    margin-top: 0;
+  }
+
+  .cv-summary > :last-child {
+    margin-bottom: 0;
+  }
+
+  .cv-download {
+    margin: 20px 0 0;
+  }
+
+  .cv-download a {
+    display: inline-block;
+    padding: 7px 12px;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    box-shadow: 3px 3px 0 var(--rule);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .cv-download a:hover {
+    background: var(--paper);
+  }
+
+  .cv-section {
+    margin-top: 56px;
+  }
+
+  /* A section's heading runs a dotted rule to the column's edge, as the CV's prototype has it,
+     rather than trailing a vine: the CV stays plain. */
+  .cv-section h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0 0 4px;
+  }
+
+  .cv-section h2::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .cv-entry {
+    column-gap: 18px;
+    padding: 18px 0 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .cv-section h2 + .cv-entry {
+    border-top: none;
+  }
+
+  .cv-title {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .cv-role,
+  .cv-school .cv-title,
+  .cv strong {
+    font-weight: 600;
+  }
+
+  .cv-period {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .cv-place {
+    margin: 2px 0 0;
+    color: var(--muted);
+  }
+
+  .cv-degree {
+    margin: 2px 0 0;
+    font-size: 16px;
+  }
+
+  .cv-project > p {
+    margin: 0;
+    font-size: 16.5px;
+  }
+
+  /* Bullets: a canopy square, and beneath a bullet its own, hung off a rule. */
+  .cv-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 16.5px;
+    line-height: 1.6;
+  }
+
+  .cv-items > li {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .cv-items > li::before {
+    content: '';
+    position: absolute;
+    top: 0.62em;
+    left: 2px;
+    width: 7px;
+    height: 7px;
+    background: var(--canopy);
+  }
+
+  .cv-items ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 6px 0 0;
+    padding-left: 14px;
+    border-left: 1px solid var(--rule);
+    list-style: none;
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+
+  .cv-items ul li {
+    position: relative;
+    padding-left: 4px;
+  }
+
+  .cv-items ul li::before {
+    content: '–';
+    position: absolute;
+    left: -11px;
+    color: var(--muted);
+  }
+
+  .cv-skills {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px 18px;
+    margin: 14px 0 0;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .cv-skills dt {
+    padding-top: 3px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .cv-skills dd {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .cv-name {
+    font-size: 34px;
+  }
+
+  .cv-headline {
+    font-size: 19px;
+  }
+
+  .cv-summary {
+    font-size: 18px;
+  }
+
+  .cv-contacts {
+    flex-direction: column;
+  }
+
+  .cv-contacts li:not(:last-child)::after {
+    content: none;
+  }
+
+  .cv-entry > .cv-title,
+  .cv-entry > .cv-period {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    justify-self: start;
+  }
+
+  .cv-items {
+    font-size: 16px;
+  }
+
+  .cv-skills {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .cv-skills dd {
+    margin-bottom: 10px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 11mm 14mm;
+  }
+
+  body {
+    background: none;
+  }
+
+  .cv {
+    color: var(--print-ink);
+    font-family: 'Latin Modern Roman', serif;
+    font-size: 10pt;
+    line-height: 1.32;
+    text-rendering: geometricPrecision;
+    hyphens: auto;
+    widows: 1;
+    orphans: 1;
+  }
+
+  .cv h1,
+  .cv h2,
+  .cv h3,
+  .cv a {
+    color: inherit;
+    font-family: inherit;
+  }
+
+  .cv h2,
+  .cv h3 {
+    line-height: inherit;
+  }
+
+  .cv a {
+    text-decoration: none;
+  }
+
+  .cv-download {
+    display: none;
+  }
+
+  /* My name, headline and location on the left; the contacts on the right, each with its label. */
+  .cv-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'name contact'
+      'head contact'
+      'loc  contact';
+    column-gap: 16pt;
+    margin: 0 0 6pt;
+  }
+
+  .cv-name {
+    grid-area: name;
+    margin: 0;
+    font-size: 17pt;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .cv-headline {
+    grid-area: head;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .cv-location {
+    grid-area: loc;
+    margin: 0;
+  }
+
+  .cv-contacts {
+    grid-area: contact;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1pt 12pt;
+    align-self: start;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 9.5pt;
+    text-align: right;
+  }
+
+  .cv-contacts li {
+    white-space: nowrap;
+  }
+
+  .cv-contacts li::before {
+    content: attr(data-label) ': ';
+  }
+
+  .cv-summary {
+    margin: 0 0 4pt;
+    line-height: 1.35;
+  }
+
+  .cv-summary p {
+    margin: 0;
+  }
+
+  /* Sections: a small-caps heading over a rule. */
+  .cv-section {
+    margin: 0 0 5pt;
+  }
+
+  .cv-section h2 {
+    margin: 6pt 0 4pt;
+    padding: 0 0 1pt;
+    border-bottom: 0.5pt solid;
+    font-size: 11pt;
+    font-variant: small-caps;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    break-after: avoid-page;
+  }
+
+  .cv-section:first-of-type h2 {
+    margin-top: 0;
+  }
+
+  /* An entry may break between its bullets, never inside one, and never right after its head. */
+  .cv-entry {
+    column-gap: 8pt;
+    margin: 0 0 6pt;
+  }
+
+  .cv-title,
+  .cv-period,
+  .cv-place,
+  .cv-degree {
+    margin: 0;
+    font-size: inherit;
+    font-weight: 400;
+    break-after: avoid-page;
+  }
+
+  .cv-role,
+  .cv-school .cv-title {
+    font-weight: 700;
+  }
+
+  .cv-period,
+  .cv-degree {
+    font-style: italic;
+  }
+
+  /* A school: its name and place, then its degree and period. */
+  .cv-school > .cv-place {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .cv-school > .cv-degree {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .cv-school > .cv-period {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .cv-project > p {
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  /* Bullets: discs, and circles beneath them. */
+  .cv-items {
+    margin: 2pt 0 0;
+    padding-left: 14pt;
+  }
+
+  .cv-items ul {
+    margin: 2pt 0;
+    padding-left: 14pt;
+  }
+
+  .cv-items li {
+    margin: 0 0 2pt;
+    break-inside: avoid;
+  }
+
+  /* Skills: a bullet each, "Label: body". */
+  .cv-skills {
+    margin: 2pt 0 0;
+    padding-left: 14pt;
+  }
+
+  .cv-skills dt {
+    display: list-item;
+    float: left;
+    margin: 0 4pt 0 0;
+    font-weight: 700;
+    list-style-type: disc;
+  }
+
+  .cv-skills dt::after {
+    content: ':';
+    font-weight: 400;
+  }
+
+  .cv-skills dd {
+    margin: 0 0 1pt;
+  }
+}

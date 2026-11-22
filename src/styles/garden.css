@@ -29,6 +29,9 @@
   --pebble: #8c7c66;
   --wing: #9db4bf;
 
+  /* Print: black ink, as the CV prints. */
+  --print-ink: #000000;
+
   /* Plex for structure (the nav, headings, metadata, labels), Literata for reading. */
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
   --serif: 'Literata', Georgia, serif;
