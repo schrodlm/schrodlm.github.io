@@ -98,3 +98,25 @@ with these parts overridden or added:
 dispatch. It builds the site with Jekyll, renders the CV PDF into the built
 site with Playwright, and deploys the result to GitHub Pages. The PDF exists
 only in the deployed site, never in the repo or in a plain local build.
+
+## The Astro site
+
+The Astro site that replaces the Jekyll one is built on the `astro` branch
+([ADR 2](adr/0002-the-site-is-built-with-astro.md)). It reads normalized
+markdown ([ADR 4](adr/0004-the-site-accepts-only-normalized-markdown.md)) from
+one content folder, `src/content/`, where the sync will write it: a folder per
+collection, and the images the content embeds in `assets/img/`, which the
+site serves at `/assets/img/`.
+
+| Part | What it does |
+|---|---|
+| `astro.config.mjs` | The site's configuration, with the base path from `SITE_BASE` and the markdown pipeline. |
+| `src/lib/base-path.ts` | Puts the base path in front of the content's site-absolute links, when there is one. |
+| `src/lib/content-images.ts` | Serves the content's images at `/assets/img/`, from the dev server and in the build. |
+| `scripts/print-cv-pdf.mjs` | Prints `/cv/` from the built site to `cv/cv.pdf`, beside the page. |
+| `scripts/preview.sh` | Builds the preview from the vault and publishes it. |
+| `.github/workflows/deploy.yml` | The deploy that takes over from `pages.yml` at the switch-over. |
+
+The **preview** shows the site in progress with real content at
+`/site-preview/`. It is published by hand from its own repository,
+`schrodlm/site-preview`, so the live site is untouched until the switch-over.
