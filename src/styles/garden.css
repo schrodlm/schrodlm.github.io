@@ -162,8 +162,9 @@ h3 {
   color: var(--canopy);
 }
 
-/* Read by screen readers, not drawn. */
-.visually-hidden {
+/* Read by screen readers, not drawn. Sätteri gives the heading over a page's footnotes .sr-only. */
+.visually-hidden,
+.sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
