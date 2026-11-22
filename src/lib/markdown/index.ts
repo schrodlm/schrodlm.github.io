@@ -2,6 +2,7 @@ import { satteriHeadingIdsPlugin } from '@astrojs/markdown-satteri';
 import type { HastPluginList } from 'satteri';
 import { basePathPlugin } from '../base-path';
 import { calloutPlugin } from './callouts';
+import { figurePlugin } from './figures';
 import { mathPlugin } from './math';
 
 // How normalized markdown is rendered in the house style: the plugins Sätteri runs over every
@@ -16,6 +17,7 @@ export function houseStyle({ base }: { base: string }): HastPluginList {
     satteriHeadingIdsPlugin(),
     calloutPlugin,
     mathPlugin,
+    figurePlugin,
     // Last, so the plugins before it see the links as the markdown wrote them.
     basePathPlugin(base),
   ];

@@ -165,3 +165,28 @@ details.callout[open] > summary > .callout-title::after {
   padding: 4px 0;
   overflow: auto hidden;
 }
+
+/* Figures: centred in a thin frame, with the alt text as a small caption. */
+.figure {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 28px auto;
+  padding: 8px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.figure img {
+  display: block;
+  margin-inline: auto;
+}
+
+.figure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
