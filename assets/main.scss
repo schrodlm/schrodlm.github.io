@@ -339,7 +339,7 @@
 
   /* --- sections: small-caps heading + rule with consistent rhythm --- */
   .cv-section {
-    margin: 0 0 3pt;
+    margin: 0 0 5pt;
     break-inside: auto;
     h2 {
       font-family: inherit;
@@ -350,13 +350,13 @@
       text-transform: none;
       border-bottom: 0.5pt solid #000;
       padding: 0 0 1pt;
-      margin: 3pt 0 2pt;
+      margin: 6pt 0 4pt;
     }
   }
   .cv-section:first-of-type h2 { margin-top: 0; }
 
   /* --- entries --- */
-  .cv-entry { margin: 0 0 3pt; break-inside: avoid; }
+  .cv-entry { margin: 0 0 6pt; break-inside: avoid; }
   .cv-entry-breakable,
   .cv-entry-breakable *,
   .cv-entry-breakable .cv-bullets,
@@ -388,7 +388,6 @@
   /* Education: school (bold, left) | place (right) ;
      degree (italic, left) | period (italic, right) */
   .cv-edu .cv-entry-head { font-weight: normal; }
-  .cv-edu { margin: 0 0 3pt; }
   .cv-edu-degree-row {
     display: flex;
     justify-content: space-between;
@@ -417,7 +416,7 @@
     list-style-type: disc;
     font-size: 10pt;
   }
-  .cv-bullets li { margin: 0 0 1pt; }
+  .cv-bullets li { margin: 0 0 2pt; }
   .cv-bullets ul {
     list-style-type: circle;
     margin: 2pt 0;
