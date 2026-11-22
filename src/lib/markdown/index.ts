@@ -3,6 +3,7 @@ import type { HastPluginList } from 'satteri';
 import { basePathPlugin } from '../base-path';
 import { calloutPlugin } from './callouts';
 import { figurePlugin } from './figures';
+import { headingTrailPlugin } from './headings';
 import { mathPlugin } from './math';
 import { findStubs, stubLinkPlugin } from './stubs';
 import { tablePlugin } from './tables';
@@ -18,6 +19,8 @@ export function houseStyle({ base, notesDir }: { base: string; notesDir: string 
     // markdown wrote it, before math is typeset or links sprout. Astro runs it again after these
     // plugins, and keeps the ids it finds.
     satteriHeadingIdsPlugin(),
+    // Section headings trail their vine, grown from their text before math or links change it.
+    headingTrailPlugin,
     calloutPlugin,
     mathPlugin,
     figurePlugin,
