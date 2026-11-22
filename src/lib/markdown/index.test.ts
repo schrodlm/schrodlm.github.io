@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { houseStyle } from './index.ts';
 
 async function render(markdown: string, base = '/') {
-  const hastPlugins = houseStyle({ base });
+  const hastPlugins = houseStyle({ base, notesDir: 'no-notes-here' });
   return (await markdownToHtml(markdown, { features: { math: true }, hastPlugins })).html;
 }
 

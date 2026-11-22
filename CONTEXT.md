@@ -80,6 +80,11 @@ A note that exists so others can link to it, with no body written yet. It is
 published like any other note.
 _Avoid_: draft (a draft is unfinished writing, a stub is unwritten)
 
+**Seedling**:
+How a **stub** is drawn: a sprout where its flower would be, and every link to
+it with a dotted underline, a small sprout `,` and a "not written yet" hint.
+_Avoid_: placeholder, empty link
+
 **Post**:
 A dated piece of writing with an argument or a story, longer than a note and
 read on its own. A post may belong to a project.

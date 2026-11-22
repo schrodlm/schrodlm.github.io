@@ -266,3 +266,15 @@ details.callout[open] > summary > .callout-title::after {
   font-family: var(--mono);
   text-decoration: none;
 }
+
+/* A link to a stub is a seedling: a dotted underline and a small sprout. */
+a.stub {
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.stub .sprout {
+  color: var(--fern);
+  font-family: var(--mono);
+  font-weight: 600;
+}
