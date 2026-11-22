@@ -2,9 +2,9 @@ name: Astro checks
 
 on:
   pull_request:
-    branches: [astro]
+    branches: [main, astro]
   push:
-    branches: [astro]
+    branches: [main, astro]
 
 jobs:
   check:
