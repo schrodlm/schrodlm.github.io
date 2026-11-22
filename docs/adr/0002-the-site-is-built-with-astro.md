@@ -33,3 +33,12 @@ instead of Jekyll's dialect, rather than the site parsing Jekyll-isms.
   chore.
 - Existing URLs must be reproduced or redirected deliberately, since nothing
   carries them over automatically.
+
+## Note (2026-11-22)
+
+Astro now renders markdown with Sätteri, which parses in Rust and runs plugins
+over the same mdast and hast trees as remark and rehype, in a plugin format of
+its own. It covers everything normalized markdown needs: GFM tables, task
+lists and footnotes, math, Shiki highlighting and plugins over the HTML. So the
+site's markdown plugins are Sätteri hast plugins rather than remark and rehype
+ones; the decision above stands otherwise.
