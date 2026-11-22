@@ -68,3 +68,25 @@ export function encode(canvas: DotCanvas): Row[] {
   }
   return rows;
 }
+
+/**
+ * Lay a drawing's dots into a larger canvas, its top-left cell at cell (`x`, `y`), each dot in its
+ * run's colour with the given weight. The inverse of `encode`: a drawing laid on a whole cell and
+ * encoded again comes back as it was, where nothing else is drawn. Runs with no dots lay none.
+ */
+export function stamp(canvas: DotCanvas, rows: readonly Row[], x: number, y: number, weight = 1): void {
+  rows.forEach((row, cy) => {
+    let cx = 0;
+    for (const run of row) {
+      for (const ch of run.t) {
+        const bits = ch.charCodeAt(0) - BLANK;
+        for (let dy = 0; dy < 4; dy++) {
+          for (let dx = 0; dx < 2; dx++) {
+            if (bits & BIT[dy]![dx]!) canvas.put((x + cx) * 2 + dx, (y + cy) * 4 + dy, run.c, weight);
+          }
+        }
+        cx++;
+      }
+    }
+  });
+}
