@@ -97,6 +97,10 @@ without one gets the neutral plate. With the Node.js version in `.nvmrc`, an
 unchanged drawing writes the same bytes, so changed PNGs mean a changed
 drawing: refresh the screenshots and commit both with the drawing.
 
+The desk on the About page is the exception: the build draws its resting
+frame from the model in `src/lib/desk/`, the same one the page turns, so it
+has no PNG to redraw. Change the model and build.
+
 ## Running the site
 
 You need Ruby with Bundler:

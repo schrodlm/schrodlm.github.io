@@ -1,0 +1,136 @@
+---
+// My desk as a woodcut plate, with the list of its parts beneath it. The resting frame is drawn at
+// build time (pages/about/desk-[view].png.ts), one image pixel per 3 px cell.
+import { model, PARTS } from '../lib/desk/model';
+import { VIEWS } from '../lib/desk/render';
+import { withBase } from '../lib/base-path';
+
+const SCALE = 3;
+const src = (view: keyof typeof VIEWS) => withBase(`/about/desk-${view}.png`, import.meta.env.BASE_URL);
+const { wide, narrow } = VIEWS;
+const size = `--w: ${wide.w * SCALE}px; --nw: ${narrow.w * SCALE}px;`;
+const no = (n: number) => String(n + 1).padStart(2, '0');
+---
+
+<figure class="desk" style={size}>
+  <figcaption class="head">
+    <span>Tab. I · the desk</span>
+  </figcaption>
+  <div class="plate">
+    <picture>
+      <source media="(max-width: 760px)" srcset={src('narrow')} width={narrow.w * SCALE} height={narrow.h * SCALE} />
+      <img
+        src={src('wide')}
+        width={wide.w * SCALE}
+        height={wide.h * SCALE}
+        alt="A woodcut of my desk: my PC with its side panel off and its parts inside, an ultrawide monitor and a ThinkPad."
+        draggable="false"
+      />
+    </picture>
+  </div>
+  <ol class="parts">
+    {
+      PARTS.map((part, n) => (
+        <li>
+          <span class="part" data-part={part.key} style={`--part: var(--${model.by[part.key]!.ink})`}>
+            <span class="no">{no(n)}</span>
+            <span class="swatch" aria-hidden="true" />
+            <span class="name">{part.name}</span>
+            <span class="model">{part.model}</span>
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  /* On a wide screen the plate is wider than the column and stands out of it on both sides; below
+     that it fits the column, and a phone gets the narrow plate of the tower. */
+  .desk {
+    margin: 0;
+    font-family: var(--mono);
+  }
+
+  @media (min-width: 1100px) {
+    .desk {
+      margin-inline: calc((100% - var(--w)) / 2);
+    }
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px 16px;
+    padding: 0 2px 8px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .plate {
+    max-width: var(--w);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+  }
+
+  /* The parts, with their real models. */
+  .parts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px 12px;
+    max-width: var(--w);
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+
+  .part {
+    display: grid;
+    grid-template-columns: auto 9px 1fr;
+    column-gap: 8px;
+    align-items: baseline;
+    padding: 3px 6px;
+  }
+
+  .no {
+    opacity: 0.8;
+  }
+
+  .swatch {
+    width: 9px;
+    height: 9px;
+    background: var(--part);
+  }
+
+  .name {
+    color: var(--ink);
+  }
+
+  .model {
+    grid-column: 3;
+    font-size: 11px;
+  }
+
+  @media (max-width: 760px) {
+    .plate,
+    .parts {
+      max-width: var(--nw);
+    }
+
+    .parts {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
