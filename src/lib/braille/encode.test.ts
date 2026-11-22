@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createCanvas } from './canvas';
-import { encode } from './encode';
+import { encode, markup } from './encode';
 
 const code = (ch: string) => ch.charCodeAt(0) - 0x2800;
 
@@ -98,5 +98,16 @@ describe('encode', () => {
     const rows = encode(canvas);
     expect(rows).toHaveLength(3);
     for (const row of rows) expect(row.map((r) => r.t).join('')).toHaveLength(7);
+  });
+});
+
+describe('markup', () => {
+  it('sets coloured runs in spans of their colour and leaves empty runs bare', () => {
+    expect(
+      markup([
+        { t: '⠀⠀', c: 'transparent' },
+        { t: '⠁⠂', c: 'var(--fern)' },
+      ]),
+    ).toBe('⠀⠀<span style="color: var(--fern)">⠁⠂</span>');
   });
 });
