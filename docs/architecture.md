@@ -112,8 +112,11 @@ site serves at `/assets/img/`.
 |---|---|
 | `astro.config.mjs` | The site's configuration, with the base path from `SITE_BASE` and the markdown pipeline. |
 | `src/lib/base-path.ts` | Puts the base path in front of the content's site-absolute links, when there is one. |
-| `src/lib/markdown/` | Renders normalized markdown in the house style: callouts, math, figures, tables, task lists and links to **stubs**, as Sätteri plugins. |
+| `src/lib/markdown/` | Renders normalized markdown in the house style: section headings with their trailing vines, callouts, math, figures, tables, task lists and links to **stubs**, as Sätteri plugins. |
 | `src/components/Prose.astro` | Wraps a page's rendered markdown in the prose styles, `src/styles/prose.css`. |
+| `src/pages/notes/`, `src/pages/posts/` | Each **note** at `/notes/<slug>/` and each **post** at `/posts/<slug>/`, laid out by `src/layouts/NoteOrPost.astro` with the page's **flower** and **specimen card**, and the lists at `/notes/` and `/posts/`. A note in a folder keeps the folder in its address, `/notes/<folder>/<slug>/`. |
+| `src/lib/pages.ts` | Where a note or post lives, what its page says of it, and the order of each list. |
+| `src/pages/feed.xml.ts` | The RSS feed of the posts at `/feed.xml`, written by `src/lib/feed.ts`. |
 | `src/lib/content-images.ts` | Serves the content's images at `/assets/img/`, from the dev server and in the build. |
 | `src/pages/courses/` | The **courses home** at `/courses/` and each reviewed course at `/courses/<slug>/`. |
 | `src/pages/universities/` | Each **university page** at `/universities/<slug>/`, under its building's plate. |
