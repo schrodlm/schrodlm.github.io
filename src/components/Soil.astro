@@ -1,0 +1,10 @@
+---
+// The soil above the footer bar, with its ants: the same on every page. The build draws its resting
+// frame.
+import Braille from './Braille.astro';
+import { drawSoil } from '../lib/life/soil';
+---
+
+<div data-life="soil">
+  <Braille rows={drawSoil(0)} />
+</div>
