@@ -1,0 +1,48 @@
+---
+// A section's page that lists its notes or posts: its intro on top when the intros collection has
+// one, named after the section, and then the list.
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Page from './Page.astro';
+import PageList from '../components/PageList.astro';
+import Prose from '../components/Prose.astro';
+import type { Kind } from '../lib/pages';
+
+interface Props {
+  kind: Kind;
+  // The section's title, unless its intro gives one.
+  title: string;
+  pages: CollectionEntry<'notes'>[] | CollectionEntry<'posts'>[];
+}
+
+const { kind, pages } = Astro.props;
+// Looked for among the intros rather than asked for by name, which warns when a section has none.
+const intro = (await getCollection('intros')).find(({ id }) => id === kind);
+const title = intro?.data.title ?? Astro.props.title;
+const Intro = intro && (await render(intro)).Content;
+---
+
+<Page title={title} section={kind}>
+  <h1>{title}</h1>
+  {
+    Intro && (
+      <div class="intro" lang={intro.data.lang}>
+        <Prose>
+          <Intro />
+        </Prose>
+      </div>
+    )
+  }
+  <div class="list">
+    <PageList pages={pages} />
+  </div>
+</Page>
+
+<style>
+  .intro {
+    margin-top: 16px;
+  }
+
+  .list {
+    margin-top: 40px;
+  }
+</style>
