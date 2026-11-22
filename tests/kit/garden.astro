@@ -1,0 +1,25 @@
+---
+// An internal page for the end-to-end tests: the garden map of an invented garden the size of a
+// real one, to show it stays legible at scale. astro.config.mjs adds it at /_kit/garden/ only when
+// the site is built from the sample content, so it never reaches the real site.
+import GardenMap from '../../src/components/GardenMap.astro';
+import Page from '../../src/layouts/Page.astro';
+import { withBase } from '../../src/lib/base-path';
+import { linkGraph } from '../../src/lib/graph';
+import { pagePath } from '../../src/lib/pages';
+import { inventedGarden, inventedPages } from './invented-garden';
+
+const invented = inventedGarden();
+const graph = linkGraph(inventedPages(invented), import.meta.env.BASE_URL);
+const notes = invented.map((note) => ({
+  slug: note.slug,
+  title: note.title,
+  href: withBase(pagePath('notes', note.slug), import.meta.env.BASE_URL),
+  stub: note.stub,
+}));
+---
+
+<Page title="Invented garden">
+  <h1>An invented garden</h1>
+  <GardenMap {graph} {notes} />
+</Page>
