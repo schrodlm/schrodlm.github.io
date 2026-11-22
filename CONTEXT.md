@@ -146,6 +146,12 @@ About and the CV, each project's picture and each faculty's building are drawn
 as plates.
 _Avoid_: canvas, image, illustration
 
+**Desk**:
+The plate on the About page: my desk as a small model drawn in the plate's
+pixels, which turns, names its parts, slides one out with its card, and comes
+apart. The parts list beneath it names each part's real model.
+_Avoid_: 3D model, PC model, viewer
+
 **Wildflower**:
 A note that nothing links to and that links to nothing. On the garden's plate
 it grows on its own stem, apart from the clusters.

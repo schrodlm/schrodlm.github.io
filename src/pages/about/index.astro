@@ -1,9 +1,11 @@
 ---
-// About: my words from the vault's About note, and where to write to me.
+// About: my desk as a plate I can turn, my words from the vault's About note, and where to write
+// to me.
 import { getCollection } from 'astro:content';
 import Page from '../../layouts/Page.astro';
 import AboutWords from '../../components/AboutWords.astro';
 import Contacts from '../../components/Contacts.astro';
+import Desk from '../../components/Desk.astro';
 
 const [entry] = await getCollection('about');
 const title = entry?.data.title ?? 'About';
@@ -11,6 +13,7 @@ const title = entry?.data.title ?? 'About';
 
 <Page title={title} lang={entry?.data.lang ?? 'en'} section="about">
   <h1>{title}</h1>
+  <Desk />
   <AboutWords entry={entry} />
   <Contacts />
 </Page>
