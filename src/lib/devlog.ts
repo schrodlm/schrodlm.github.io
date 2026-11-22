@@ -74,16 +74,26 @@ function topLevelItems(html: string): number {
   ).length;
 }
 
-/** Cuts a devlog's HTML at its top-level section headings. */
+const TRAILED = /\bclass="section-heading"/;
+
+/**
+ * Cuts a devlog's HTML at its top-level section headings. The markdown trails each one's vine
+ * (lib/markdown/headings.ts), wrapping it in a `div.section-heading`; the cut takes the wrapper
+ * and its trail with the heading.
+ */
 export function sections(html: string): Sections {
   const all = tags(html);
   const cuts: { start: number; end: number; id: string; heading: string }[] = [];
   for (const [i, tag] of all.entries()) {
-    if (tag.name !== 'h2' || tag.closing || tag.around.length > 0) continue;
-    const close = all.find((t, j) => j > i && t.name === 'h2' && t.closing && t.around.length === 0);
-    if (!close) continue;
+    if (tag.name !== 'h2' || tag.closing) continue;
+    const wrapper = tag.around.length === 1 && tag.around[0] === 'div' ? all.findLast((t, j) => j < i && t.name === 'div' && !t.closing) : undefined;
+    const trailed = wrapper !== undefined && wrapper.around.length === 0 && TRAILED.test(wrapper.attributes);
+    if (tag.around.length > 0 && !trailed) continue;
+    const close = all.find((t, j) => j > i && t.name === 'h2' && t.closing && t.around.length === tag.around.length);
+    const end = trailed ? all.find((t, j) => j > i && t.name === 'div' && t.closing && t.around.length === 0) : close;
+    if (!close || !end) continue;
     const id = /\bid="([^"]*)"/.exec(tag.attributes)?.[1] ?? '';
-    cuts.push({ start: tag.start, end: close.end, id, heading: html.slice(tag.end, close.start) });
+    cuts.push({ start: trailed ? wrapper.start : tag.start, end: end.end, id, heading: html.slice(tag.end, close.start) });
   }
   return {
     intro: html.slice(0, cuts[0]?.start ?? html.length).trim(),
