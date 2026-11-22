@@ -17,3 +17,21 @@ test('the About page shows the words of its note and where to write to me', asyn
   }
   await expect(page).toHaveScreenshot('about.png', { fullPage: true });
 });
+
+test.describe('without JavaScript', () => {
+  test.use({ javaScriptEnabled: false });
+
+  test('the desk shows its resting frame, each cell 3 CSS pixels, and its parts with their models', async ({ page }) => {
+    await page.goto('/about/');
+    const plate = page.getByRole('img', { name: /^A woodcut of my desk/ });
+    await page.waitForFunction(() => [...document.images].every((i) => i.complete && i.naturalWidth > 0));
+    const [natural, shown] = await plate.evaluate((el: HTMLImageElement) => [
+      [el.naturalWidth, el.naturalHeight],
+      [el.clientWidth, el.clientHeight],
+    ]);
+    expect(shown).toEqual([natural[0]! * 3, natural[1]! * 3]);
+    await expect(page.locator('.parts li')).toHaveCount(12);
+    await expect(page.getByText('MSI GeForce RTX 5070 Ti 16G Ventus 3X OC')).toBeVisible();
+    await expect(page.getByRole('button')).toHaveCount(0);
+  });
+});
