@@ -1,9 +1,10 @@
-// Brings the vine and the soil to life in the browser. The build draws each at tick 0, the resting
-// frame; this redraws them four times a second from the same drawing code, on one clock that starts
-// when the page opens. It only redraws what is on screen, stops while the tab is hidden, and does
-// nothing at all for readers who prefer reduced motion.
+// Brings the garden, the vine and the soil to life in the browser. The build draws each at tick 0,
+// the resting frame; this redraws them four times a second from the same drawing code, on one
+// clock that starts when the page opens. It only redraws what is on screen, stops while the tab is
+// hidden, and does nothing at all for readers who prefer reduced motion.
 import { markup, type Row } from '../lib/braille';
-import { TICK_MS } from '../lib/life/clock';
+import { TICK_MS, wind } from '../lib/life/clock';
+import { drawGarden, planGarden } from '../lib/life/garden';
 import { drawSoil } from '../lib/life/soil';
 import { drawVine, growVine } from '../lib/life/vine';
 
@@ -23,11 +24,15 @@ function paint(art: Art, tick: number): void {
   });
 }
 
-// A drawing on the page: the soil, or a vine grown from its seed.
+// A drawing on the page: the soil, the garden with its posts, or a vine grown from its seed.
 function artOf(element: HTMLElement): Art {
   const rows = [...element.querySelector('.braille')!.children] as HTMLElement[];
   const shown = rows.map((row) => row.innerHTML);
   if (element.dataset.life === 'soil') return { rows, shown, draw: drawSoil };
+  if (element.dataset.life === 'garden') {
+    const garden = planGarden(JSON.parse(element.dataset.posts!));
+    return { rows, shown, draw: (tick) => drawGarden(garden, wind(tick)) };
+  }
   const plan = growVine(element.dataset.seed!);
   return { rows, shown, draw: (tick) => drawVine(plan, tick) };
 }

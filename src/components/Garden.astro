@@ -1,0 +1,175 @@
+---
+// The garden across the top of the home page: every post standing in it as its flower, the oldest
+// on the left, in one wind. Each flower is a link to its post, named by its title and Latin name;
+// pointing at one or focusing it shows its placard under the garden. The build draws the resting
+// frame; scripts/life.ts sways it.
+//
+// The drawing is wider than the window and centred on it, cut off at the window's edges. Where
+// the posts' flowers need more room than the window has, the garden scrolls sideways instead, so
+// every flower can be reached, and the page itself never does.
+import type { CollectionEntry } from 'astro:content';
+import Braille from './Braille.astro';
+import { withBase } from '../lib/base-path';
+import { grow } from '../lib/herbarium';
+import { drawGarden, GARDEN_HEIGHT, planGarden, PLANT_HEIGHT, PLANT_WIDTH } from '../lib/life/garden';
+import { isStub } from '../lib/markdown/is-stub';
+import { isoDay, pagePath, seedName } from '../lib/pages';
+
+interface Props {
+  // The posts, in the order they stand, from the left.
+  posts: CollectionEntry<'posts'>[];
+}
+
+// A braille cell, in pixels: the drawing's, and so its links'.
+const CELL = 8;
+// Cells kept clear either side of the flowers when the garden scrolls, as wide as the page's gutter.
+const EDGE = 3;
+
+const { posts } = Astro.props;
+const planted = posts.map((post) => ({ seed: seedName('posts', post.id), stub: isStub(post.body ?? '') }));
+const plan = planGarden(planted);
+const flowers = plan.flowers.map((flower, i) => {
+  const post = posts[i]!;
+  return {
+    ...flower,
+    href: withBase(pagePath('posts', post.id), import.meta.env.BASE_URL),
+    title: post.data.title,
+    lang: post.data.lang,
+    date: isoDay(post.data.date),
+    specimen: grow(flower.seed),
+  };
+});
+// The cells the flowers stand across, and a little either side, which must always be in reach;
+// with no posts yet, none, in the middle of the drawing.
+const first = plan.flowers.length ? plan.flowers[0]!.x - EDGE : plan.width / 2;
+const bed = plan.flowers.length ? plan.flowers.at(-1)!.x + PLANT_WIDTH + EDGE - first : 0;
+const s = flowers.length === 1 ? '' : 's';
+---
+
+<div class="garden">
+  <div class="scroller">
+    <div class="bed" style={`--bed: ${bed * CELL}px; --first: ${first * CELL}px; height: ${GARDEN_HEIGHT * 2 * CELL}px`}>
+      <div class="band" data-life="garden" data-posts={JSON.stringify(planted)}>
+        <Braille rows={drawGarden(plan, 0)} cell={CELL} />
+        {
+          flowers.map((flower, i) => (
+            <a
+              class="flower"
+              href={flower.href}
+              data-placard={i}
+              style={`left: ${flower.x * CELL}px; width: ${PLANT_WIDTH * CELL}px; height: ${PLANT_HEIGHT * 2 * CELL}px`}
+            >
+              <span class="visually-hidden">
+                <span lang={flower.lang}>{flower.title}</span>
+                {!flower.stub && <>, <i lang="la">{flower.specimen.latin}</i></>}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  {/* The placard repeats what each flower's link is named, so it is for the eyes only. */}
+  <p class="placard" aria-hidden="true">
+    <span class="idle">
+      {flowers.length > 0 && `${flowers.length} post${s}, ${flowers.length} flower${s} · hover one to read its label`}
+    </span>
+    {
+      flowers.map((flower, i) => (
+        <span data-placard={i} hidden>
+          {!flower.stub && (
+            <>
+              <span class="number">No. {flower.specimen.seed}</span> · <i lang="la">{flower.specimen.latin}</i> ·{' '}
+            </>
+          )}
+          “<span lang={flower.lang}>{flower.title}</span>” · planted {flower.date}
+        </span>
+      ))
+    }
+  </p>
+</div>
+
+<script>
+  import '../scripts/life';
+
+  // Show a flower's placard while it is pointed at or focused, and the idle line otherwise.
+  for (const garden of document.querySelectorAll<HTMLElement>('.garden')) {
+    const lines = [...garden.querySelectorAll<HTMLElement>('.placard > span')];
+    const show = (which: string | undefined) => {
+      for (const line of lines) line.hidden = which === undefined ? !line.matches('.idle') : line.dataset.placard !== which;
+    };
+    for (const flower of garden.querySelectorAll<HTMLElement>('.flower')) {
+      // A touch shows no placard: it would only hold up the tap that opens the post.
+      flower.addEventListener('pointerenter', (event) => {
+        if (event.pointerType !== 'touch') show(flower.dataset.placard);
+      });
+      flower.addEventListener('focus', () => show(flower.dataset.placard));
+      // A flower focused from the keyboard keeps its placard; one focused by a click doesn't.
+      flower.addEventListener('pointerleave', () =>
+        show(garden.querySelector<HTMLElement>('.flower:focus-visible')?.dataset.placard),
+      );
+      flower.addEventListener('blur', () => show(undefined));
+    }
+  }
+</script>
+
+<style>
+  /* The flowers scroll sideways when they don't fit the window; the page never does. */
+  .scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-top: 8px;
+  }
+
+  /* As wide as the window, or as the flowers when they need more; it cuts the drawing off there. */
+  .bed {
+    position: relative;
+    width: max(100%, var(--bed));
+    overflow: hidden;
+  }
+
+  /* The drawing, centred on the bed so that its flowers sit in the middle of it. */
+  .band {
+    position: absolute;
+    top: 0;
+    left: calc(50% - var(--bed) / 2 - var(--first));
+  }
+
+  .flower {
+    position: absolute;
+    top: 0;
+  }
+
+  /* Drawn inside the flower's footprint, since the bed cuts off whatever lies outside it. */
+  .flower:focus-visible {
+    outline: 2px solid var(--river);
+    outline-offset: -2px;
+  }
+
+  .placard {
+    width: min(var(--frame), 100% - 2 * var(--gutter));
+    min-height: 22px;
+    margin: 8px auto 0;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .number {
+    letter-spacing: 0.1em;
+  }
+
+  /* A printed home page is its text alone, as every page is. */
+  @media print {
+    .garden {
+      display: none;
+    }
+  }
+
+  .placard i {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink);
+  }
+</style>
