@@ -35,6 +35,12 @@ export default defineConfig({
   markdown: {
     // Code is coloured through custom properties, which the prose styles set from the palette.
     shikiConfig: { theme: 'css-variables' },
-    processor: satteri({ features: { math: true }, hastPlugins: houseStyle({ base }) }),
+    processor: satteri({
+      // Dashes stay as written, so heading ids match the anchors normalized markdown gives, which
+      // are made from the markdown as written: a `--` turned into a dash would lose its hyphens.
+      // Quotes and ellipses are still set typographically.
+      features: { math: true, smartPunctuation: { dashes: false } },
+      hastPlugins: houseStyle({ base }),
+    }),
   },
 });
