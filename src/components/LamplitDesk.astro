@@ -1,0 +1,92 @@
+---
+// The CV's plate: me at a lamplit desk, writing this (src/lib/lamplit-desk.ts draws it). The page
+// shows the still the build draws (pages/cv/lamplit-desk.png.ts), so it is there without
+// JavaScript and under reduced motion; where motion is welcome, a canvas laid over it plays the
+// animation, only while the plate is on screen and the tab is shown. The plate scales down to fit
+// a narrow column, since its caption is in the picture and cropping would cut it. Print leaves it
+// out.
+import { CAPTION, DESK_HEIGHT, DESK_WIDTH } from '../lib/lamplit-desk';
+import { withBase } from '../lib/base-path';
+
+const alt = `A woodcut of me in silhouette at a desk at night, writing this CV with a quill by an oil lamp, captioned “${CAPTION}”.`;
+---
+
+<figure class="lamplit-desk" data-lamplit-desk>
+  <img src={withBase('/cv/lamplit-desk.png', import.meta.env.BASE_URL)} width={DESK_WIDTH * 2} height={DESK_HEIGHT * 2} alt={alt} />
+  <canvas width={DESK_WIDTH} height={DESK_HEIGHT} aria-hidden="true" hidden></canvas>
+</figure>
+
+<script>
+  import { DESK_FPS, DESK_HEIGHT, DESK_WIDTH, STILL_POSE, deskFrame } from '../lib/lamplit-desk';
+
+  const figure = document.querySelector<HTMLElement>('[data-lamplit-desk]');
+  const canvas = figure?.querySelector('canvas');
+  const context = canvas?.getContext('2d');
+  if (figure && canvas && context) {
+    const still = matchMedia('(prefers-reduced-motion: reduce)');
+    // From the still's pose, so the plate doesn't jump when it starts.
+    let frame = STILL_POSE;
+    let onScreen = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    const draw = () => context.putImageData(new ImageData(deskFrame(frame), DESK_WIDTH, DESK_HEIGHT), 0, 0);
+    // The next frame is set after one is drawn, so a slow device drops frames rather than queueing
+    // them; while the clock is stopped the animation pauses rather than skips.
+    const tick = () => {
+      frame++;
+      draw();
+      timer = setTimeout(tick, 1000 / DESK_FPS);
+    };
+    // Run only while the plate is on screen, the tab is shown, and motion is welcome. A reader who
+    // asks for stillness mid-visit gets the still back.
+    const keepTime = () => {
+      const run = onScreen && !document.hidden && !still.matches;
+      if (run && timer === undefined) {
+        draw();
+        canvas.hidden = false;
+        timer = setTimeout(tick, 1000 / DESK_FPS);
+      }
+      if (!run && timer !== undefined) {
+        clearTimeout(timer);
+        timer = undefined;
+      }
+      if (still.matches) canvas.hidden = true;
+    };
+    new IntersectionObserver(([entry]) => {
+      onScreen = entry?.isIntersecting ?? false;
+      keepTime();
+    }).observe(figure);
+    document.addEventListener('visibilitychange', keepTime);
+    still.addEventListener('change', keepTime);
+  }
+</script>
+
+<style>
+  /* As wide as the reading column, which is two pixels a cell. */
+  .lamplit-desk {
+    position: relative;
+    margin: 44px 0 0;
+  }
+
+  img,
+  canvas {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+  }
+
+  img {
+    display: block;
+  }
+
+  canvas {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media print {
+    .lamplit-desk {
+      display: none;
+    }
+  }
+</style>
