@@ -25,6 +25,8 @@
   --orchid: #8a4f98;
   --lagoon: #2a7099;
   --rose: #b5476e;
+  /* The quieter tones of the art: a bee's wings. */
+  --wing: #9db4bf;
 
   /* Plex for structure (the nav, headings, metadata, labels), Literata for reading. */
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
