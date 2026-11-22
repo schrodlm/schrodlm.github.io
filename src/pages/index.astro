@@ -1,17 +1,27 @@
 ---
+// A stand-in home inside the page shell, until the garden is planted here.
 import { getCollection } from 'astro:content';
+import Page from '../layouts/Page.astro';
+import SectionHeading from '../components/SectionHeading.astro';
 
 const notes = await getCollection('notes');
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Matěj Schrödl</title>
-  </head>
-  <body>
-    <h1>Matěj Schrödl</h1>
-    <p>{notes.length} notes.</p>
-  </body>
-</html>
+<Page>
+  <h1 class="visually-hidden">Matěj Schrödl</h1>
+  <p class="intro">
+    This is a place to share interesting knowledge from computer-science I managed to gather and also
+    a place to log my thought processes from my past and ongoing projects.
+  </p>
+  <SectionHeading title="Notes" />
+  <p>{notes.length} {notes.length === 1 ? 'note' : 'notes'} so far. The garden that shows them is still being planted.</p>
+</Page>
+
+<style>
+  .intro {
+    max-width: 30em;
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.4;
+  }
+</style>
