@@ -116,6 +116,8 @@ site serves at `/assets/img/`.
 | `src/components/Prose.astro` | Wraps a page's rendered markdown in the prose styles, `src/styles/prose.css`. |
 | `src/pages/notes/`, `src/pages/posts/` | Each **note** at `/notes/<slug>/` and each **post** at `/posts/<slug>/`, laid out by `src/layouts/NoteOrPost.astro` with the page's **flower** and **specimen card**, and the lists at `/notes/` and `/posts/`. A note in a folder keeps the folder in its address, `/notes/<folder>/<slug>/`. |
 | `src/lib/pages.ts` | Where a note or post lives, what its page says of it, and the order of each list. |
+| `src/lib/graph.ts` | The link graph of the notes, worked out from their rendered HTML at build time: each note's links out, links in and the notes two steps away. |
+| `src/lib/neighbourhood.ts`, `src/components/Neighbourhood.astro` | Lay out and draw a note's **neighbourhood** in braille, at the end of its page, with its captions as links. |
 | `src/pages/feed.xml.ts` | The RSS feed of the posts at `/feed.xml`, written by `src/lib/feed.ts`. |
 | `src/lib/content-images.ts` | Serves the content's images at `/assets/img/`, from the dev server and in the build. |
 | `src/pages/courses/` | The **courses home** at `/courses/` and each reviewed course at `/courses/<slug>/`. |
