@@ -161,6 +161,16 @@ every note as its flower and every link a vine, and a small one on each note
 page showing that note's neighbourhood.
 _Avoid_: note graph, knowledge map
 
+**Garden map**:
+The graph view of the whole garden, at `/graph/`. Every note is its flower's
+head, the better linked the bigger; the best-linked notes, the hubs, sit at
+the middle of their groups with their neighbours in rings round them and are
+named at rest. Only the strongest vines are drawn at rest, a tree through each
+group; hovering or focusing a note brings up all its vines and names its
+neighbours, and following it opens the note. The wildflowers stand in a bed of
+their own at its foot.
+_Avoid_: graph page, network
+
 **Neighbourhood**:
 The small graph view at the end of a note's page: the note's head in the
 middle, the notes linking to it on the left on dotted vines, the notes it links
@@ -191,8 +201,8 @@ welcome I write it line by line; otherwise the sheet is already written.
 _Avoid_: me plate, hero image, the desk (that is About's)
 
 **Wildflower**:
-A note that nothing links to and that links to nothing. On the garden's plate
-it grows on its own stem, apart from the clusters.
+A note that nothing links to and that links to nothing. On the garden map it
+grows on its own stem, in the wildflowers' bed apart from the groups.
 _Avoid_: orphan, isolated note
 
 **CV**:
@@ -294,7 +304,7 @@ _Avoid_: canvas, stage, preview (that is the site in progress)
 - A **note** links to other notes by **wikilinks**; its **connected notes**
   are those links.
 - A **note**'s **neighbourhood** draws the notes it links to and the notes
-  that link to it; the **graph view** draws every note's links together.
+  that link to it; the **garden map** draws every note's links together.
 - A **post** belongs to zero or one **project**, a project has any number of
   posts.
 - A **devlog** belongs to exactly one **project**; a project's devlogs make

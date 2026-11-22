@@ -3,7 +3,7 @@
 // reference links and raw HTML alike). A link counts when it leads to another note that exists;
 // links to headings count as links to their note, and a note linking another twice links it once.
 //
-// A note's page draws its neighbourhood from it, and the graph view draws the whole garden.
+// A note's page draws its neighbourhood from it, and the garden map draws the whole garden.
 import { withBase } from './base-path';
 import { noteSlug } from './markdown/stubs';
 
