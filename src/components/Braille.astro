@@ -3,7 +3,7 @@
 // whose dots sit on one even grid. A cell is `cell` wide and twice that tall; the default, 8 px,
 // makes it 8 × 16 px with its dots on whole pixels. `cell` also takes any CSS length, so a drawing
 // can scale with its container, e.g. `calc(100cqi / 83)` for one 83 cells wide.
-import { TRANSPARENT, type Row } from '../lib/braille';
+import { markup, type Row } from '../lib/braille';
 
 interface Props {
   rows: Row[];
@@ -18,7 +18,7 @@ const size = typeof cell === 'number' ? `${cell}px` : cell;
 <div class:list={['braille', className]} aria-hidden="true" style={`--braille-cell: ${size}`}>
   {
     rows.map((row) => (
-      <span>{row.map((run) => (run.c === TRANSPARENT ? run.t : <span style={`color: ${run.c}`}>{run.t}</span>))}</span>
+      <span set:html={markup(row)} />
     ))
   }
 </div>
