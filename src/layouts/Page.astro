@@ -3,9 +3,10 @@
 // decoration beside it, and the footer with its art above the bar.
 //
 // Slots: the default one is the column; "side" hangs beside the column on wide screens (the vine);
-// "footer-art" sits above the footer bar (the soil). Both are drawings, so they are hidden from
-// screen readers here.
+// "footer-art" sits above the footer bar, the soil unless a page brings its own. Both are drawings,
+// so they are hidden from screen readers here.
 import '../styles/garden.css';
+import Soil from '../components/Soil.astro';
 import { withBase } from '../lib/base-path';
 
 const SECTIONS = ['notes', 'posts', 'projects', 'courses', 'about', 'cv'] as const;
@@ -59,31 +60,33 @@ const nav = SECTIONS.map((name) => {
   <body>
     <a class="skip" href="#text">Skip to the text</a>
     <div class="page">
-      <div class="side" aria-hidden="true">
-        <slot name="side" />
+      <div class="upper">
+        <div class="side" aria-hidden="true">
+          <slot name="side" />
+        </div>
+        <header class="frame masthead">
+          <a class="name" href={link('/')}>{NAME}</a>
+          <nav aria-label="Main">
+            <ul>
+              {
+                nav.map((item) => (
+                  <li>
+                    <a href={item.href} aria-current={item.current}>
+                      {item.current ? `[>${item.name}]` : `[${item.name}]`}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </header>
+        <main id="text" class="column">
+          <slot />
+        </main>
       </div>
-      <header class="frame masthead">
-        <a class="name" href={link('/')}>{NAME}</a>
-        <nav aria-label="Main">
-          <ul>
-            {
-              nav.map((item) => (
-                <li>
-                  <a href={item.href} aria-current={item.current}>
-                    {item.current ? `[>${item.name}]` : `[${item.name}]`}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
-      </header>
-      <main id="text" class="column">
-        <slot />
-      </main>
       <footer>
         <div class="footer-art" aria-hidden="true">
-          <slot name="footer-art" />
+          <slot name="footer-art"><Soil /></slot>
         </div>
         <div class="footer-bar">
           <div class="frame footer-line">
@@ -102,10 +105,18 @@ const nav = SECTIONS.map((name) => {
 
 <style>
   .page {
-    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+  }
+
+  /* Everything above the footer; the side decoration hangs within it, so it never reaches the
+     soil. */
+  .upper {
+    position: relative;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
   }
 
   .frame {
@@ -121,7 +132,8 @@ const nav = SECTIONS.map((name) => {
   }
 
   /* The side decoration hangs just right of the column, from the top of the page, and is cut off
-     at the window's edge. Only the decoration is clipped: text that overflows still scrolls. */
+     at the window's edge and above the footer. Only the decoration is clipped: text that overflows
+     still scrolls. */
   .side {
     position: absolute;
     top: 0;
