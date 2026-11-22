@@ -1,6 +1,8 @@
 ---
-// My desk as a woodcut plate, with the list of its parts beneath it. The resting frame is drawn at
-// build time (pages/about/desk-[view].png.ts), one image pixel per 3 px cell.
+// My desk as a woodcut plate I can turn, with the list of its parts beneath it. The resting frame
+// is drawn at build time (pages/about/desk-[view].png.ts), so the plate, the list and its real
+// models are all here without JavaScript; lib/desk/stage.ts then turns the plate into a model that
+// moves. Controls that only work with the script are marked data-live and stay hidden until it runs.
 import { model, PARTS } from '../lib/desk/model';
 import { VIEWS } from '../lib/desk/render';
 import { withBase } from '../lib/base-path';
@@ -12,21 +14,37 @@ const size = `--w: ${wide.w * SCALE}px; --nw: ${narrow.w * SCALE}px;`;
 const no = (n: number) => String(n + 1).padStart(2, '0');
 ---
 
-<figure class="desk" style={size}>
+<figure class="desk" data-desk style={size}>
   <figcaption class="head">
     <span>Tab. I · the desk</span>
+    <span class="hint" data-live hidden>drag to turn · hover to name · click to slide out</span>
+    <button type="button" class="explode" data-live hidden>[explode]</button>
   </figcaption>
   <div class="plate">
-    <picture>
-      <source media="(max-width: 760px)" srcset={src('narrow')} width={narrow.w * SCALE} height={narrow.h * SCALE} />
-      <img
-        src={src('wide')}
-        width={wide.w * SCALE}
-        height={wide.h * SCALE}
-        alt="A woodcut of my desk: my PC with its side panel off and its parts inside, an ultrawide monitor and a ThinkPad."
-        draggable="false"
-      />
-    </picture>
+    <div class="stage">
+      <picture>
+        <source media="(max-width: 760px)" srcset={src('narrow')} width={narrow.w * SCALE} height={narrow.h * SCALE} />
+        <img
+          src={src('wide')}
+          width={wide.w * SCALE}
+          height={wide.h * SCALE}
+          alt="A woodcut of my desk: my PC with its side panel off and its parts inside, an ultrawide monitor and a ThinkPad."
+          draggable="false"
+        />
+      </picture>
+      <canvas aria-hidden="true" hidden></canvas>
+      <span class="caption" aria-hidden="true" hidden></span>
+    </div>
+    <div class="card" id="desk-card" hidden>
+      <div class="card-head">
+        <span class="card-fig"></span>
+        <button type="button" class="card-close">[put back]</button>
+      </div>
+      <p class="card-model"></p>
+      <p class="card-spec"></p>
+      <p class="card-line" hidden></p>
+    </div>
+    <p class="status visually-hidden" aria-live="polite"></p>
   </div>
   <ol class="parts">
     {
@@ -43,6 +61,12 @@ const no = (n: number) => String(n + 1).padStart(2, '0');
     }
   </ol>
 </figure>
+
+<script>
+  import { mount } from '../lib/desk/stage';
+
+  for (const desk of document.querySelectorAll<HTMLElement>('[data-desk]')) mount(desk);
+</script>
 
 <style>
   /* On a wide screen the plate is wider than the column and stands out of it on both sides; below
@@ -71,18 +95,126 @@ const no = (n: number) => String(n + 1).padStart(2, '0');
     color: var(--muted);
   }
 
+  button {
+    font: inherit;
+    letter-spacing: 0;
+    text-transform: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .explode {
+    padding: 2px 6px;
+    font-size: 13px;
+    color: var(--canopy);
+  }
+
+  .explode:hover,
+  .explode:focus-visible,
+  .card-close:hover,
+  .card-close:focus-visible {
+    background: var(--paper);
+  }
+
   .plate {
+    position: relative;
     max-width: var(--w);
   }
 
-  img {
+  .stage {
+    position: relative;
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+  }
+
+  img,
+  canvas {
     display: block;
     width: 100%;
     height: auto;
     image-rendering: pixelated;
   }
 
-  /* The parts, with their real models. */
+  canvas {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  canvas[hidden] {
+    display: none;
+  }
+
+  /* The lit part's name, over the plate above it (or below it, near the top), framed in its colour. */
+  .caption {
+    position: absolute;
+    translate: -50% calc(-100% - 4px);
+    padding: 1px 5px;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--ink);
+    background: var(--sand);
+    border: 1px solid var(--part);
+  }
+
+  .caption.below {
+    translate: -50% 4px;
+  }
+
+  .card {
+    position: absolute;
+    right: 3.2%;
+    bottom: 5.5%;
+    width: 300px;
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--part);
+  }
+
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .card-close {
+    padding: 0;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .card-model {
+    margin: 4px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .card-spec {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .card-line {
+    margin: 8px 0 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* The parts, with their real models, numbered as the cards are. */
   .parts {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -101,7 +233,11 @@ const no = (n: number) => String(n + 1).padStart(2, '0');
     grid-template-columns: auto 9px 1fr;
     column-gap: 8px;
     align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
     padding: 3px 6px;
+    color: inherit;
+    text-align: left;
   }
 
   .no {
@@ -123,10 +259,26 @@ const no = (n: number) => String(n + 1).padStart(2, '0');
     font-size: 11px;
   }
 
+  button.part:hover,
+  button.part:focus-visible,
+  .part.lit {
+    background: var(--paper);
+  }
+
   @media (max-width: 760px) {
     .plate,
     .parts {
       max-width: var(--nw);
+    }
+
+    .hint {
+      display: none;
+    }
+
+    .card {
+      position: static;
+      width: auto;
+      margin-top: 12px;
     }
 
     .parts {
