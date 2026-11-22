@@ -1,13 +1,12 @@
 # Development
 
-Running the site locally, rendering the CV, and deploying. How the parts fit
-is in [architecture.md](architecture.md).
+How I run, test, preview and deploy the site. How the parts fit is in
+[architecture.md](architecture.md).
 
-## The Astro site
+## Running the site
 
-The Astro site is being built on the `astro` branch, next to the Jekyll files,
-and replaces them when it is done. It needs the Node.js version in `.nvmrc`
-and, for the screenshot tests, Docker.
+The site needs the Node.js version in `.nvmrc` and, for the screenshot tests,
+Docker.
 
 ```bash
 npm ci
@@ -16,18 +15,21 @@ npm run check           # type-check
 npm test                # unit tests
 npm run build:fixtures  # build from the sample content in tests/fixtures/
 npm run test:e2e        # screenshot tests, inside Playwright's own image
+npm run build           # build from src/content/, as the deploy does
 ```
 
-`npm run build` reads the collections from `src/content/`; setting
-`CONTENT_DIR` points it elsewhere. The images the content embeds sit in the
-content's `assets/img/` folder, and the site serves them at `/assets/img/`,
-in the dev server and in the build alike. The tests only ever use the invented
-sample content in `tests/fixtures/content/`. Screenshots are taken inside
+`npm run build` reads the collections from `src/content/`, which the sync
+writes; setting `CONTENT_DIR` points it elsewhere. A clone without content
+still builds, warning that each collection is empty, but has no CV page to
+print. The images the content embeds sit in the content's `assets/img/`
+folder, and the site serves them at `/assets/img/`, in the dev server and in
+the build alike. The tests only ever use the invented sample content in
+`tests/fixtures/content/`. Screenshots are taken inside
 Playwright's image so they match CI; after an intended visual change, refresh
 them with `npm run test:e2e -- --update-snapshots` and commit them with the
 change.
 
-### A base path
+## A base path
 
 The site lives at the root of its domain. Setting `SITE_BASE` (for example
 `SITE_BASE=/site-preview/`) builds it to be served below that path instead.
@@ -35,7 +37,7 @@ The content's links are site-absolute (`/notes/x/`), so a small plugin in the
 markdown pipeline puts the base in front of them; the pages' own links use
 `import.meta.env.BASE_URL`.
 
-### The CV PDF
+## The CV PDF
 
 The PDF is printed from the built `/cv/` page with the Chromium that
 `@playwright/test` pins, and lands beside it as `dist/cv/cv.pdf`:
@@ -55,9 +57,9 @@ wrong. Run it with the same `SITE_BASE` as the build. The end-to-end tests
 print it from the sample CV and check it fits on one or two A4 pages; to
 check the real CV still fits on two, build the preview and look at its PDF.
 
-### Previewing with real content
+## Previewing with real content
 
-The preview is the site in progress, built from the vault's real content and
+The preview is a branch's site, built from the vault's real content and
 served at <https://schrodlm.github.io/site-preview/> from its own repository,
 `schrodlm/site-preview`. It needs Python 3 next to Node.js:
 
@@ -73,14 +75,13 @@ works in a temporary folder, so no vault content ever lands in this repo.
 `--no-publish` stops before the push and keeps the folder, to look at the
 built site first.
 
-### Deploying the Astro site
+## Deploying
 
-`.github/workflows/deploy.yml` builds the site, prints the CV PDF and deploys
-the result to GitHub Pages. Until the Astro site replaces the Jekyll one it
-only runs when started by hand, once it is on `main`; the switch-over moves it
-to every push to `main` in place of `pages.yml`.
+Pushing to `main` deploys: `.github/workflows/deploy.yml` builds the site,
+prints the CV PDF and deploys the result to GitHub Pages. It also runs from
+*Actions → Deploy the site → Run workflow*. Follow a run with `gh run watch`.
 
-### Redrawing a plate
+## Redrawing a plate
 
 The woodcut plates (the projects' pictures and the faculty buildings) are
 drawn by code in `scripts/plates/` and kept as PNGs in `src/assets/plates/`,
@@ -106,7 +107,7 @@ has no PNG to redraw. Change the model and build. So is the CV's lamplit
 desk: the build draws its still from `src/lib/lamplit-desk.ts`, the same
 drawing the page animates.
 
-### Updating clascii
+## Updating clascii
 
 The page at `/clascii/` runs my ASCII art library,
 [clascii](https://github.com/schrodlm/clascii), from its built JavaScript.
@@ -129,55 +130,3 @@ the screenshot tests: a new build may draw the same picture differently.
 Once clascii is on npm, the site installs it as a dependency at an exact
 version instead, and the vendored folder goes.
 
-## Running the site
-
-You need Ruby with Bundler:
-
-```bash
-bundle install
-bundle exec jekyll serve --livereload
-```
-
-The site is served at <http://127.0.0.1:4000>. A change to `_config.yml` needs
-a restart. The build's known warnings are tracked as `bug` issues; any other
-warning is new.
-
-## Rendering the CV PDF
-
-The PDF is printed from the built site with Playwright, and needs Node.js. The
-workflow in `.github/workflows/pages.yml` is the reference for the exact
-steps:
-
-```bash
-bundle exec jekyll build
-npm install --no-save playwright
-npx playwright install chromium
-node scripts/render-cv-pdf.mjs
-```
-
-The CV is set in Latin Modern (`fonts-lmodern` on Debian and Ubuntu). Without
-it, the PDF falls back to another serif. The print styles are the
-`@media print` block in `assets/main.scss`. Check them in a browser with
-"emulate print media", or by printing `/cv.html`.
-
-## Changing content
-
-The collections (`_notes/`, `_posts/`, `_projects/`, `_courses/`) and
-`assets/img/` are written by the sync, and the next sync overwrites any edit
-made here. Change content in the vault. Change how content looks in the
-layouts, includes and styles of this repo.
-
-To preview vault content before it is pushed, run the converter with the
-vault's config against a scratch clone of this repo, then build that clone.
-Never commit the generated content.
-
-## Deploying
-
-Pushing to `main` deploys. It also runs from *Actions → Build and deploy site
-→ Run workflow*. Follow a run with `gh run watch`.
-
-## Files the build leaves out
-
-`_config.yml`'s `exclude:` keeps the repository's own documentation and
-tooling out of the published site. Jekyll copies any other file without front
-matter to the site as it is, so add new docs or tooling there.
