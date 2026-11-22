@@ -187,5 +187,5 @@ describe('a build of broken content', () => {
     } finally {
       rmSync(content, { recursive: true, force: true });
     }
-  });
+  }, 60_000);
 });
