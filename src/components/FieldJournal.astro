@@ -1,0 +1,160 @@
+---
+// A project's field journal: every devlog, newest first and grouped by month, each with its date,
+// its session number, its title and the first sentence of its Summary, strung on a stem.
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/base-path';
+import { gist } from '../lib/devlog';
+import { byMonth, day, inOrder } from '../lib/projects';
+
+interface Props {
+  devlogs: CollectionEntry<'devlogs'>[];
+}
+
+const { devlogs } = Astro.props;
+const months = byMonth(devlogs);
+const ordered = inOrder(devlogs);
+const [first, last] = [ordered[0]!, ordered.at(-1)!];
+
+// The stem runs down beside an entry, as far as the entry is tall.
+const STEM = '|\n'.repeat(40);
+---
+
+<div class="journal">
+<p class="span">
+  {devlogs.length} working {devlogs.length === 1 ? 'session' : 'sessions'}, newest first · {day(first.data.date)}
+  {devlogs.length > 1 && ` to ${day(last.data.date)}`}
+</p>
+{
+  months.map((month) => (
+    <section class="month">
+      <h3>
+        <span class="node" aria-hidden="true">|</span>
+        {month.name}
+      </h3>
+      <ol>
+        {month.sessions.map((devlog) => (
+          <li>
+            <span class="node" aria-hidden="true">
+              *<span class="stem">{STEM}</span>
+            </span>
+            <span class="when">
+              {day(devlog.data.date)} <span class="number">#{devlog.data.session}</span>
+            </span>
+            <span class="what">
+              <a href={withBase(`/devlogs/${devlog.id}/`, import.meta.env.BASE_URL)}>{devlog.data.title}</a>
+              <span class="gist">{gist(devlog.rendered?.html ?? '', devlog.data.lang)}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))
+}
+</div>
+
+<style>
+  .span {
+    margin: -4px 0 22px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .month + .month {
+    margin-top: 10px;
+  }
+
+  h3 {
+    display: flex;
+    gap: 14px;
+    margin: 0;
+    padding: 4px 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 18px;
+    position: relative;
+    padding: 2px 0 16px 28px;
+  }
+
+  .node {
+    width: 14px;
+    flex: 0 0 auto;
+    font-family: var(--mono);
+    font-size: 13px;
+    text-align: center;
+    color: var(--fern);
+  }
+
+  li .node {
+    position: absolute;
+    top: 0;
+    bottom: -2px;
+    left: 0;
+    padding-top: 5px;
+    line-height: 15px;
+    font-weight: 600;
+    color: var(--canopy);
+  }
+
+  .stem {
+    position: absolute;
+    top: 22px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: pre;
+    font-weight: 400;
+    color: var(--fern);
+  }
+
+  /* The stem ends at the journal's first session. */
+  .month:last-child li:last-child .stem {
+    display: none;
+  }
+
+  .when {
+    flex: 0 0 132px;
+    padding-top: 4px;
+    font-family: var(--mono);
+    font-size: 13px;
+    white-space: nowrap;
+    color: var(--muted);
+  }
+
+  .number {
+    color: var(--ink);
+  }
+
+  .what {
+    flex: 1 1 320px;
+    min-width: 0;
+  }
+
+  .what a {
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  .gist {
+    display: block;
+    margin-top: 2px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+</style>

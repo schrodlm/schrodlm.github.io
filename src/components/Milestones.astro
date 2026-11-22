@@ -1,0 +1,129 @@
+---
+// A project's milestones as a progress list: a bar of one cell per milestone, `[####>······]`, and
+// the milestones in order, the one in progress marked.
+import { stages as stagesOf, type Milestone } from '../lib/projects';
+
+interface Props {
+  milestones: Milestone[];
+}
+
+const { milestones } = Astro.props;
+const stages = stagesOf(milestones);
+const MARK = { done: '#', current: '>', todo: '·' };
+const BOX = { done: '[x]', current: '[>]', todo: '[ ]' };
+---
+
+<p class="progress">
+  <span class="bar" aria-hidden="true">[{stages.map((stage) => <span class={`cell-${stage}`}>{MARK[stage]}</span>)}]</span>
+  <span class="tally">{stages.filter((stage) => stage === 'done').length} of {milestones.length} done</span>
+</p>
+<ul class="milestones">
+  {
+    milestones.map((milestone, i) => {
+      const stage = stages[i]!;
+      return (
+        <li class={stage}>
+          <span class="box" aria-hidden="true">
+            {BOX[stage]}
+          </span>
+          <span class="title">
+            {milestone.title}
+            {stage === 'done' && <span class="visually-hidden">(done)</span>}
+            {stage === 'current' && <span class="tag">in progress</span>}
+          </span>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  .progress {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 14px;
+    margin: 0 0 14px;
+    font-family: var(--mono);
+    font-size: 16px;
+  }
+
+  .bar {
+    letter-spacing: 3px;
+    white-space: pre;
+  }
+
+  .cell-done {
+    color: var(--canopy);
+  }
+
+  .cell-todo {
+    color: var(--pebble);
+  }
+
+  .tally {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .milestones {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    gap: 12px;
+    margin: 0 -10px;
+    padding: 7px 10px;
+    border-radius: 3px;
+  }
+
+  .box {
+    flex: 0 0 30px;
+    padding-top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    white-space: pre;
+    color: var(--muted);
+  }
+
+  .title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  li.done .box {
+    color: var(--canopy);
+  }
+
+  li.done .title {
+    color: var(--muted);
+  }
+
+  li.current {
+    background: var(--sage);
+  }
+
+  li.current .box {
+    color: var(--ink);
+  }
+
+  .tag {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 0 7px;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    vertical-align: 2px;
+  }
+</style>
