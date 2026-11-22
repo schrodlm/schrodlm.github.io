@@ -33,10 +33,10 @@ test("a project's page shows its write-up, milestones, field journal and posts",
   await expect(page).toHaveScreenshot('project.png', { fullPage: true });
 });
 
-test('a project with nothing to list leaves out the jump bar and its parts', async ({ page }) => {
+test('a project leaves out the parts it has nothing for, and their jumps', async ({ page }) => {
   await open(page, '/projects/finished-sample/');
-  await expect(page.getByRole('navigation', { name: 'On this page' })).toHaveCount(0);
-  await expect(page.locator('#milestones, #journal, #posts')).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'On this page' }).getByRole('link')).toHaveText(['posts · 1']);
+  await expect(page.locator('#milestones, #journal')).toHaveCount(0);
 });
 
 test('a devlog shows its trail, its sections with their counts, and its neighbours', async ({ page }) => {
