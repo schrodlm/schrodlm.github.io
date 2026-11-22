@@ -252,4 +252,23 @@ const nav = SECTIONS.map((name) => {
       padding-block: 48px 64px;
     }
   }
+
+  /* A printed page is its text alone, across the paper. */
+  @media print {
+    .page {
+      min-height: 0;
+    }
+
+    .side,
+    .masthead,
+    .skip,
+    footer {
+      display: none;
+    }
+
+    .column {
+      width: auto;
+      padding: 0;
+    }
+  }
 </style>
