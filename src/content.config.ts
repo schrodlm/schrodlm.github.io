@@ -221,6 +221,7 @@ const cv = defineCollection({
           web: url.optional(),
           github: githubUrl.optional(),
           linkedin: url.optional(),
+          leetcode: url.optional(),
           phone: z
             .never({ error: 'is not allowed: the CV is public, so it carries no phone number' })
             .optional(),
