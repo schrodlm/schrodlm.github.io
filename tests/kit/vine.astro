@@ -1,0 +1,25 @@
+---
+// An internal page for the screenshot tests: the vine beside a column of invented text, in the page
+// shell with its soil. astro.config.mjs adds it at /_kit/vine/ only when the site is built from the
+// sample content, so it never reaches the real site.
+import Page from '../../src/layouts/Page.astro';
+import SectionHeading from '../../src/components/SectionHeading.astro';
+import Vine from '../../src/components/Vine.astro';
+
+const paragraph =
+  'This is invented text standing in for a note, long enough to show the vine hanging beside it. The vine stays in the margin and never crosses into the column, and the bugs that live on it keep to the vine.';
+---
+
+<Page title="Vine">
+  <Vine slot="side" />
+  <h1>A page with a vine</h1>
+  <p>{paragraph}</p>
+  <SectionHeading title="The butterfly" />
+  <p>{paragraph}</p>
+  <p>{paragraph}</p>
+  <SectionHeading title="The bee" />
+  <p>{paragraph}</p>
+  <p>{paragraph}</p>
+  <SectionHeading title="The ants" />
+  <p>{paragraph}</p>
+</Page>
