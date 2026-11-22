@@ -14,9 +14,9 @@ const contentDir = process.env.CONTENT_DIR ?? 'src/content';
 
 const notesDir = resolve(fileURLToPath(new URL('.', import.meta.url)), contentDir, 'notes');
 
-// The kit's internal pages, for the screenshot tests: the braille kit, the vine in the page shell
-// and a note of every construct. Added only when the site is built from the sample content, so
-// they never reach the real site.
+// The kit's internal pages, for the screenshot tests: the braille kit, the vine in the page shell,
+// a note of every construct and the garden map of an invented garden the size of a real one.
+// Added only when the site is built from the sample content, so they never reach the real site.
 const kit = {
   name: 'braille-kit',
   hooks: {
@@ -24,6 +24,7 @@ const kit = {
       injectRoute({ pattern: '/_kit', entrypoint: './tests/kit/index.astro' });
       injectRoute({ pattern: '/_kit/vine', entrypoint: './tests/kit/vine.astro' });
       injectRoute({ pattern: '/_kit/prose', entrypoint: './tests/kit/prose.astro' });
+      injectRoute({ pattern: '/_kit/garden', entrypoint: './tests/kit/garden.astro' });
     },
   },
 };
