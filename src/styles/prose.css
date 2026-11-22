@@ -88,3 +88,74 @@
   padding: 0;
   font-size: inherit;
 }
+
+/* Callouts: a rule above in the type's colour, carrying its glyph, and a rule below. The rules are
+   art, so they use the bright colour; the title uses its deep, readable twin. */
+.callout {
+  --callout-art: var(--lagoon);
+  --callout-word: var(--lagoon-deep);
+  margin: 28px 0;
+}
+
+.callout-important {
+  --callout-art: var(--hibiscus);
+  --callout-word: var(--hibiscus-deep);
+}
+
+.callout-tip {
+  --callout-art: var(--fern);
+  --callout-word: var(--canopy);
+}
+
+.callout-warning {
+  --callout-art: var(--mango);
+  --callout-word: var(--mango-deep);
+}
+
+.callout-rule {
+  display: block;
+  overflow: hidden;
+  color: var(--callout-art);
+  font-family: var(--mono);
+  font-size: 14px;
+  white-space: pre;
+}
+
+/* Long enough to cross the widest column; the box clips what it doesn't need. */
+.callout-rule::after {
+  content: '----------------------------------------------------------------------------------------------------';
+}
+
+summary.callout-head {
+  display: block;
+  cursor: pointer;
+}
+
+summary.callout-head::-webkit-details-marker {
+  display: none;
+}
+
+.callout-title {
+  display: block;
+  padding: 8px 18px 4px;
+  color: var(--callout-word);
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+details.callout > summary > .callout-title::after {
+  content: ' [+]' / '';
+}
+
+details.callout[open] > summary > .callout-title::after {
+  content: ' [-]' / '';
+}
+
+.callout > :not(.callout-head, .callout-rule) {
+  margin-inline: 18px;
+}
+
+.callout > :nth-last-child(2) {
+  margin-bottom: 8px;
+}

@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import svelte from '@astrojs/svelte';
-import { basePathPlugin } from './src/lib/base-path.ts';
 import contentImages from './src/lib/content-images.ts';
+import { houseStyle } from './src/lib/markdown/index.ts';
 
 // The site lives at the root of schrodlm.github.io. The preview is served below a base path, which
 // SITE_BASE sets (see docs/development.md).
@@ -35,6 +35,6 @@ export default defineConfig({
   markdown: {
     // Code is coloured through custom properties, which the prose styles set from the palette.
     shikiConfig: { theme: 'css-variables' },
-    processor: satteri({ hastPlugins: [basePathPlugin(base)] }),
+    processor: satteri({ hastPlugins: houseStyle({ base }) }),
   },
 });
