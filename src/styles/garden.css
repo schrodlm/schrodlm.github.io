@@ -136,7 +136,7 @@ a:hover {
 }
 
 /* Headings are set in Plex. A page's title is ink, section headings and subheadings canopy;
-   section headings trail a vine (components/SectionHeading.astro), subheadings stay plain. */
+   section headings trail a vine (below), subheadings stay plain. */
 h1,
 h2,
 h3 {
@@ -160,6 +160,40 @@ h3 {
   margin: 36px 0 10px;
   font-size: 17px;
   color: var(--canopy);
+}
+
+/* A section heading trails a short vine across the rest of the column, whether it is written into
+   a page or comes from the markdown. */
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 56px 0 16px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  min-width: 0;
+}
+
+.trail {
+  flex: 1 0 4ch;
+  overflow: hidden;
+  white-space: pre;
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.trail .stem {
+  color: var(--fern);
+}
+
+.trail .leaf {
+  color: var(--canopy);
+}
+
+.trail .bloom {
+  color: var(--hibiscus);
 }
 
 /* Read by screen readers, not drawn. Sätteri gives the heading over a page's footnotes .sr-only. */
