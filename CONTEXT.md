@@ -153,6 +153,22 @@ The one-line glimpse of a flower shown beside a page's title in a list, so
 the list and the garden match.
 _Avoid_: icon, bullet
 
+**Form**:
+One of the three ways a flower is drawn: the whole plant, its head alone at a
+given size, or its mark. Each form has a fixed footprint.
+_Avoid_: variant, view
+
+**Wind**:
+The one number, from -1 to 1, that poses every plant at a moment. The site
+moves it over time, so the garden sways; 0 is still air.
+_Avoid_: breeze, sway
+
+**Construction tape**:
+What stands in for every flower until my `herbarium` library is published: a
+striped box at each form's footprint, every trait of it labelled "under
+construction".
+_Avoid_: placeholder flower, dummy
+
 **Herbarium**:
 The page that shows every specimen together, like a museum hall.
 _Avoid_: gallery, catalogue, index
