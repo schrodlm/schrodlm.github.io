@@ -1,0 +1,140 @@
+---
+// The session trail under a devlog's title: the project's sessions as stepping stones, this one lit,
+// each stone a link to its session, with the month written beneath the first stone of each month. A
+// phone gets its own, shorter plate (lib/session-trail.ts).
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/base-path';
+import { png } from '../lib/png';
+import { day } from '../lib/projects';
+import { CELL, TRAIL_HEIGHT, TRAIL_WIDTH, WATER, drawTrail, layTrail } from '../lib/session-trail';
+
+interface Props {
+  project: string;
+  /** The project's sessions, in order. */
+  sessions: CollectionEntry<'devlogs'>[];
+  /** The index of this session among them. */
+  current: number;
+}
+
+const { project, sessions, current } = Astro.props;
+const yearMonth = (date: Date) => day(date).slice(0, 7);
+const month = (date: Date) => date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' }).toLowerCase();
+// A link over a stone is a fingertip wide and twice as tall, centred on the stone.
+const STONE = { w: 24, h: 48 };
+
+const plates = (['wide', 'narrow'] as const).map((size) => {
+  const width = TRAIL_WIDTH[size];
+  const { first, xs } = layTrail(sessions.length, current, width);
+  const image = png({ w: width, h: TRAIL_HEIGHT, data: drawTrail(width, xs, current - first) });
+  const stones = xs.map((x, i) => {
+    const devlog = sessions[first + i]!;
+    const starts = i === 0 || yearMonth(sessions[first + i - 1]!.data.date) !== yearMonth(devlog.data.date);
+    return { devlog, left: (x + 0.5) * CELL - STONE.w / 2, month: starts ? month(devlog.data.date) : undefined };
+  });
+  return { size, width: width * CELL, src: `data:image/png;base64,${image.toString('base64')}`, stones };
+});
+---
+
+<nav class="trail" aria-label={`Sessions of ${project}`}>
+  <p class="label" aria-hidden="true"><span>field journal</span><span>session {sessions[current]!.data.session} of {sessions.at(-1)!.data.session}</span></p>
+  {
+    plates.map((plate) => (
+      <div class:list={['strip', plate.size]} style={`width: ${plate.width}px; --top: ${(WATER + 0.5) * CELL - STONE.h / 2}px`}>
+        <img src={plate.src} alt="" width={plate.width} height={TRAIL_HEIGHT * CELL} />
+        {plate.stones.map(({ devlog, left }) => (
+          <a
+            class="stone"
+            href={withBase(`/devlogs/${devlog.id}/`, import.meta.env.BASE_URL)}
+            style={`left: ${left}px`}
+            title={`#${devlog.data.session} · ${day(devlog.data.date)} · ${devlog.data.title}`}
+            aria-label={`Session ${devlog.data.session}: ${devlog.data.title}`}
+            aria-current={devlog === sessions[current] ? 'page' : undefined}
+          />
+        ))}
+        <div class="months" aria-hidden="true">
+          {plate.stones.map(
+            ({ left, month: name }) => name && <span style={`left: ${left + STONE.w / 2}px`}>{name}</span>,
+          )}
+        </div>
+      </div>
+    ))
+  }
+</nav>
+
+<style>
+  .trail {
+    margin: 0 0 30px;
+  }
+
+  .label {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0;
+    padding: 0 2px 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Narrower than the plate, the strip crops it, as a plate is cropped. */
+  .strip {
+    position: relative;
+    max-width: 100%;
+    height: 114px;
+    overflow: hidden;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    image-rendering: pixelated;
+  }
+
+  .stone {
+    position: absolute;
+    top: var(--top);
+    width: 24px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  .stone:hover,
+  .stone:focus-visible {
+    outline: 2px solid var(--river);
+    outline-offset: -4px;
+  }
+
+  .months {
+    position: absolute;
+    top: 98px;
+    right: 0;
+    left: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .months span {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .narrow {
+    display: none;
+  }
+
+  @media (max-width: 760px) {
+    .wide {
+      display: none;
+    }
+
+    .narrow {
+      display: block;
+    }
+  }
+</style>
