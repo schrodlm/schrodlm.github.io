@@ -1,0 +1,32 @@
+---
+// A post, at /posts/<slug>/, with no date in the address. The breadcrumb carries its date and, when
+// it belongs to one, its project.
+import { getCollection, getEntry, render } from 'astro:content';
+import NoteOrPost from '../../layouts/NoteOrPost.astro';
+import { withBase } from '../../lib/base-path';
+import { isoDay, pagePath } from '../../lib/pages';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const project = post.data.project && (await getEntry(post.data.project));
+const { Content } = await render(post);
+---
+
+<NoteOrPost entry={post}>
+  <Fragment slot="crumbs">
+    {` · ${isoDay(post.data.date)}`}
+    {
+      project && (
+        <>
+          {' · part of '}
+          <a href={withBase(pagePath('projects', project.id), import.meta.env.BASE_URL)}>{project.data.title}</a>
+        </>
+      )
+    }
+  </Fragment>
+  <Content />
+</NoteOrPost>
