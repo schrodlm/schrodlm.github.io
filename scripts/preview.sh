@@ -48,7 +48,7 @@ echo "Building the site below $BASE"
 cd "$tmp/site"
 npm ci --silent
 SITE_BASE=$BASE CONTENT_DIR="$tmp/content" npm run build
-# The site in progress may not have its CV page yet; the preview then has no PDF.
+# Content without a CV note has no CV page; the preview then has no PDF.
 if [[ -f dist/cv/index.html ]]; then
   npx playwright install --only-shell chromium
   SITE_BASE=$BASE npm run --silent pdf
