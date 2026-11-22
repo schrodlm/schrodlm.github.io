@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+
+const notes = await getCollection('notes');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Matěj Schrödl</title>
+  </head>
+  <body>
+    <h1>Matěj Schrödl</h1>
+    <p>{notes.length} notes.</p>
+  </body>
+</html>
