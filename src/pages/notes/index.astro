@@ -1,0 +1,10 @@
+---
+// Every note, from A to Z by title.
+import { getCollection } from 'astro:content';
+import SectionList from '../../layouts/SectionList.astro';
+import { byTitle } from '../../lib/pages';
+
+const notes = byTitle(await getCollection('notes'));
+---
+
+<SectionList kind="notes" title="Notes" pages={notes} />

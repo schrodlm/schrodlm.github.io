@@ -1,0 +1,76 @@
+---
+// A list of notes or posts, as on the home garden's boards: each title with its flower's mark, so
+// the list and the garden match, and a post's date beside it. A stub shows a seedling's mark.
+import type { CollectionEntry } from 'astro:content';
+import Braille from './Braille.astro';
+import { withBase } from '../lib/base-path';
+import { isoDay, pagePath } from '../lib/pages';
+import { drawPageFlower } from '../lib/seedling';
+
+interface Props {
+  pages: CollectionEntry<'notes'>[] | CollectionEntry<'posts'>[];
+}
+
+const items = Astro.props.pages.map((page) => ({
+  href: withBase(pagePath(page.collection, page.id), import.meta.env.BASE_URL),
+  title: page.data.title,
+  lang: page.data.lang,
+  date: 'date' in page.data ? isoDay(page.data.date) : undefined,
+  mark: drawPageFlower(page.collection, page.id, page.body ?? '', 'mark'),
+}));
+---
+
+<ul>
+  {
+    items.map((item) => (
+      <li>
+        <Braille rows={item.mark} class="mark" />
+        {item.date && <span class="date">{item.date}</span>}
+        <a href={item.href} lang={item.lang}>
+          {item.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 16px;
+  }
+
+  li > :global(.mark) {
+    flex: 0 0 32px;
+  }
+
+  .date {
+    flex: 0 0 96px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  a {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+
+  /* On a phone a post's title goes under its mark and date, every one alike, however short. */
+  @media (max-width: 600px) {
+    .date + a {
+      flex-basis: 100%;
+    }
+  }
+</style>
