@@ -23,6 +23,15 @@ const BIT = [
 ] as const;
 
 /**
+ * A row as HTML: runs with no dots as bare characters, the rest each in a span of its colour. The
+ * Braille component renders rows with it at build time, and the garden's life redraws them with it
+ * in the browser, so the two always match.
+ */
+export function markup(row: Row): string {
+  return row.map((run) => (run.c === TRANSPARENT ? run.t : `<span style="color: ${run.c}">${run.t}</span>`)).join('');
+}
+
+/**
  * Encode a dot canvas as braille, one row of runs per line of cells. A cell takes the colour whose
  * dots in it weigh the most; a tie goes to the colour met first, reading the cell's dots row by
  * row. Neighbouring cells of one colour share a run, and empty cells make transparent runs.
