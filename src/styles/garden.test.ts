@@ -24,8 +24,12 @@ function contrast(a: string, b: string): number {
 }
 
 describe('the palette', () => {
-  it.each(['ink', 'muted', 'canopy', 'river', 'river-deep', 'earth', 'bark'])('%s reads at 4.5:1 or better on sand', (name) => {
+  it.each(['ink', 'muted', 'canopy', 'river', 'river-deep', 'earth', 'bark', 'mango-deep', 'hibiscus-deep', 'lagoon-deep'])('%s reads at 4.5:1 or better on sand', (name) => {
     expect(contrast(token(name), token('sand'))).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it.each(['ink', 'muted', 'canopy', 'river', 'mango-deep', 'lagoon-deep'])('%s, a colour of code, reads at 4.5:1 or better on sage', (name) => {
+    expect(contrast(token(name), token('sage'))).toBeGreaterThanOrEqual(4.5);
   });
 
   it('bark, the footer text, reads at 4.5:1 or better on the footer bar', () => {
