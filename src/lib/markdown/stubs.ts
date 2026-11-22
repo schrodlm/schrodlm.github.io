@@ -2,19 +2,13 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { defineHastPlugin } from 'satteri';
 import { h, text } from './hast';
+import { isStub } from './is-stub';
 
 // A stub is a note with no body yet. A link to one is drawn as a seedling: a dotted underline, a
 // small sprout after it and a "not written yet" hint. Which notes are stubs is worked out from the
 // notes folder itself, the one the notes collection reads, since the markdown is rendered before
 // the collections can be asked. The folder is read once per build: the dev server, and Astro's
 // cache of pages that haven't changed, keep their seedlings until a fresh build.
-
-const FRONT_MATTER = /^---\r?\n[\s\S]*?\r?\n---[ \t]*(?:\r?\n|$)/;
-
-/** Whether a note's markdown has nothing below its front matter. */
-export function isStub(markdown: string): boolean {
-  return markdown.replace(/^\uFEFF/, '').replace(FRONT_MATTER, '').trim() === '';
-}
 
 /** The slugs of the stubs in a notes folder, such as `cap-theorem` or `distributed/raft`. */
 export function findStubs(dir: string): Set<string> {

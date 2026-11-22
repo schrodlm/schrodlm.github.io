@@ -3,21 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { markdownToHtml } from 'satteri';
 import { afterEach, describe, expect, it } from 'vitest';
-import { findStubs, isStub, noteSlug, stubLinkPlugin } from './stubs.ts';
-
-describe('isStub', () => {
-  it.each([
-    ['---\ntitle: A\n---\n', true],
-    ['---\ntitle: A\n---', true],
-    ['---\ntitle: A\n---\n\n  \n', true],
-    ['---\r\ntitle: A\r\n---\r\n', true],
-    ['\uFEFF---\ntitle: A\n---\n', true],
-    ['---\ntitle: A\n---\nA body.\n', false],
-    ['---\ntitle: A\n---\n---\n', false],
-  ])('%j is a stub: %s', (markdown, stub) => {
-    expect(isStub(markdown)).toBe(stub);
-  });
-});
+import { findStubs, noteSlug, stubLinkPlugin } from './stubs.ts';
 
 describe('findStubs', () => {
   let dir: string | undefined;

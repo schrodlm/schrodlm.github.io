@@ -3,7 +3,7 @@
 // for, so a stub's page and its line in a list are laid out as a flower's would be.
 import { blade, createCanvas, encode, line, type Row } from './braille';
 import { draw, grow, type Form } from './herbarium';
-import { isStub } from './markdown/stubs';
+import { isStub } from './markdown/is-stub';
 import { seedName, type Kind } from './pages';
 
 const STEM = { colour: 'var(--fern)' };
