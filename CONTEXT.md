@@ -208,10 +208,15 @@ filling a cell and a half point half of one, with the number beside it.
 _Avoid_: bar, stars, progress bar
 
 **Garden**:
-The band of ASCII plants across the top of the home page, swaying in one
-wind. Every post stands in it as its own flower, among plants that belong to
-no page.
+The band of plants across the top of the home page, swaying in one wind.
+Every post stands in it as its own flower, the oldest on the left, among
+ferns, sprigs and grass that belong to no page.
 _Avoid_: header, banner, canopy
+
+**Placard**:
+The line under the **garden** naming the flower pointed at or focused: its
+specimen number, its Latin name, its post's title and the day it was planted.
+_Avoid_: tooltip, caption, label (that is the specimen card's)
 
 **Flower**:
 The ASCII plant a post or note grows from its seed. Every page has exactly
@@ -255,7 +260,8 @@ construction".
 _Avoid_: placeholder flower, dummy
 
 **Herbarium**:
-The page that shows every specimen together, like a museum hall.
+The page that shows every specimen together, like a museum hall: the specimen
+card of every post and note that has its flower, linked from the footer.
 _Avoid_: gallery, catalogue, index
 
 **Vine**:
