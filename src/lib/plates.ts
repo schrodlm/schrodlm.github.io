@@ -1,7 +1,8 @@
 // The woodcut plates, found by slug. The pictures are drawn by scripts/plates/ into
 // src/assets/plates/<group>/<slug>.<size>.png, one image pixel per cell; this file says what each
 // one shows. A project or university is matched to its plate by its own slug, so nothing in the
-// content names a plate; one without a plate of its own gets the neutral plate.
+// content names a plate; one without a plate of its own gets the neutral plate. A project still
+// filed under an older name finds its plate through ALIASES.
 import type { ImageMetadata } from 'astro';
 
 export interface Plate {
@@ -26,6 +27,11 @@ const PROJECTS: Record<string, string> = {
   [NEUTRAL]: 'green hills under a pale sky, a path winding away past a signpost',
 };
 
+// Projects whose page is still named as they were before a rename, and the plate they now have.
+const ALIASES: Record<string, string> = {
+  'ascii-art-generator': 'clascii',
+};
+
 const UNIVERSITIES: Record<string, string> = {
   'fit-cvut': 'the ČVUT building in Dejvice, its terracotta wings and white ribbon-windowed centre behind the pylon',
   mff: 'the faculty’s palace on Malostranské náměstí beside St Nicholas, a tram at the stop',
@@ -44,7 +50,8 @@ export const projectsWithPlates = Object.keys(PROJECTS).filter((slug) => slug !=
 export const universitiesWithPlates = Object.keys(UNIVERSITIES);
 
 export function projectPlate(slug: string, size: ProjectPlateSize): Plate {
-  const key = Object.hasOwn(PROJECTS, slug) ? slug : NEUTRAL;
+  const named = Object.hasOwn(ALIASES, slug) ? ALIASES[slug]! : slug;
+  const key = Object.hasOwn(PROJECTS, named) ? named : NEUTRAL;
   return load('projects', key, size, PROJECTS[key]!);
 }
 
