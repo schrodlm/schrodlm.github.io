@@ -130,7 +130,7 @@
 .cv-header {
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .cv-name {
@@ -139,9 +139,20 @@
   margin: 0 0 4px;
 }
 
+.cv-headline {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0 0 2px;
+}
+
 .cv-location {
   color: #666;
   margin: 0 0 12px;
+}
+
+.cv-summary {
+  font-size: 1.05rem;
+  margin: 0 0 24px;
 }
 
 .cv-contact {
@@ -291,6 +302,7 @@
     grid-template-columns: 1fr auto;
     grid-template-areas:
       "name    contact"
+      "head    contact"
       "loc     contact";
     column-gap: 16pt;
     row-gap: 0;
@@ -304,7 +316,9 @@
     margin: 0;
     line-height: 1.1;
   }
+  .cv-headline { grid-area: head; color: #000; margin: 0; font-size: 10pt; white-space: nowrap; }
   .cv-location { grid-area: loc; color: #000; margin: 0; font-size: 10pt; }
+  .cv-summary { margin: 0 0 4pt; font-size: 10pt; line-height: 1.35; }
 
   .cv-contact {
     grid-area: contact;
@@ -319,7 +333,7 @@
     align-self: start;
     font-size: 9.5pt;
   }
-  .cv-contact li { color: #000; }
+  .cv-contact li { color: #000; white-space: nowrap; }
   .cv-contact li::after { content: none !important; }
   .cv-contact li::before { content: attr(data-label) ": "; }
 
