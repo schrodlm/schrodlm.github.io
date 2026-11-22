@@ -1,6 +1,7 @@
 ---
 // The specimen card that closes a note or a post, like a museum label: the page's flower drawn
 // again, its specimen number and Latin name, the name it grew from, and the traits its seed chose.
+// In the herbarium, where cards hang side by side, each also names its page and links to it.
 import Braille from './Braille.astro';
 import { isoDay } from '../lib/pages';
 import { draw, label, type Specimen } from '../lib/herbarium';
@@ -9,18 +10,28 @@ interface Props {
   specimen: Specimen;
   // The day a post was published; a note has none.
   planted?: Date | undefined;
+  // The page the flower grew on, for a card hung in the herbarium rather than at the page's end.
+  page?: { title: string; href: string; lang: string };
 }
 
-const { specimen, planted } = Astro.props;
+const { specimen, planted, page } = Astro.props;
 // Each trait's name is followed by dots out to one width, so the values line up as on a label.
 const key = (name: string) => `${name} ${'.'.repeat(Math.max(2, 9 - name.length))}`;
 ---
 
-<section class="card" aria-label="This page's flower">
+{/* In the herbarium a card is one of many, so it doesn't make itself a landmark. */}
+<section class:list={['card', { hung: page }]} aria-label={page ? undefined : "This page's flower"}>
   <Braille rows={draw(specimen, { wind: 0, form: 'plant' })} />
   <div class="label">
     <p class="number">Specimen No. {specimen.seed} · Herbarium schrodlmensis</p>
     <p class="latin" lang="la">{specimen.latin}</p>
+    {
+      page && (
+        <p class="page">
+          “<a href={page.href} lang={page.lang}>{page.title}</a>”
+        </p>
+      )
+    }
     <p class="grown">grown from “{specimen.name}”{planted && ` · planted ${isoDay(planted)}`}</p>
     <dl>
       {
@@ -45,6 +56,13 @@ const key = (name: string) => `${name} ${'.'.repeat(Math.max(2, 9 - name.length)
     padding: 24px 28px;
     border: 1px solid var(--rule);
     background: var(--paper);
+  }
+
+  /* In the herbarium the cards stand in rows, with no text above them to keep clear of; a card
+     stretched to its row's height keeps its flower and label at the top. */
+  .hung {
+    align-content: flex-start;
+    margin-top: 0;
   }
 
   .label {
@@ -74,6 +92,10 @@ const key = (name: string) => `${name} ${'.'.repeat(Math.max(2, 9 - name.length)
     font-size: 24px;
     font-style: italic;
     line-height: 1.3;
+  }
+
+  .page {
+    font-size: 14px;
   }
 
   .grown {
