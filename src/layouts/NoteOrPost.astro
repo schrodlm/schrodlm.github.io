@@ -5,7 +5,7 @@
 // and has no specimen card until its flower grows.
 //
 // Slots: the default one is the rendered text; "crumbs" follows the section's link in the
-// breadcrumb.
+// breadcrumb; "neighbourhood" stands between the text and the card, for a note's neighbourhood.
 import type { CollectionEntry } from 'astro:content';
 import Page from './Page.astro';
 import Braille from '../components/Braille.astro';
@@ -47,7 +47,7 @@ const meta = [languageName(lang), ...(stub ? [] : [`${readingMinutes(body)} min`
     {!stub && <> · <i lang="la">{specimen.latin}</i></>}
   </p>
   {stub ? <p class="unwritten">Not written yet.</p> : <Prose><slot /></Prose>}
-  {/* A note's neighbourhood, once it is drawn, stands here, between the text and the card. */}
+  <slot name="neighbourhood" />
   {!stub && <SpecimenCard specimen={specimen} planted={'date' in entry.data ? entry.data.date : undefined} />}
 </Page>
 
