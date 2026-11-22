@@ -1,0 +1,25 @@
+---
+// A project's status, drawn as a box: [~] in progress, [x] finished. It takes the size of the line
+// it sits in.
+import type { Status } from '../lib/projects';
+
+interface Props {
+  status: Status;
+}
+
+const { status } = Astro.props;
+---
+
+<span class:list={['status', { finished: status === 'finished' }]}>{status === 'finished' ? '[x]' : '[~]'} {status}</span>
+
+<style>
+  .status {
+    font-family: var(--mono);
+    white-space: nowrap;
+    color: var(--canopy);
+  }
+
+  .finished {
+    color: var(--muted);
+  }
+</style>

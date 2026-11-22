@@ -1,0 +1,68 @@
+---
+// The projects list at /projects/: its intro, if I wrote one, then a card for every project, in
+// progress first and the most recently worked on first.
+import { getCollection, render } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Prose from '../../components/Prose.astro';
+import { latest, listOrder } from '../../lib/projects';
+
+const devlogs = await getCollection('devlogs');
+const projects = listOrder(
+  (await getCollection('projects')).map((project) => ({
+    ...project,
+    latest: latest(devlogs.filter((devlog) => devlog.data.project.id === project.id)),
+  })),
+);
+// Looked for in the collection, as getEntry would warn when there is none.
+const intro = (await getCollection('intros')).find((page) => page.id === 'projects');
+const Intro = intro && (await render(intro)).Content;
+const inProgress = projects.filter((project) => project.data.status === 'in progress').length;
+---
+
+<Page title="Projects" section="projects">
+  <h1>Projects</h1>
+  <p class="tally">
+    {projects.length} {projects.length === 1 ? 'project' : 'projects'} · {inProgress} in progress · {projects.length - inProgress} finished
+  </p>
+  {Intro && <div class="intro"><Prose><Intro /></Prose></div>}
+  <div class="cards">
+    {
+      projects.map((project) => (
+        <ProjectCard project={project} latest={project.latest} />
+      ))
+    }
+  </div>
+</Page>
+
+<style>
+  h1 {
+    margin-top: 0;
+  }
+
+  .tally {
+    margin: 0 0 28px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .intro {
+    margin-bottom: 32px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 342px));
+    justify-content: space-between;
+    gap: 52px 28px;
+    margin-top: 48px;
+  }
+
+  @media (max-width: 760px) {
+    .cards {
+      grid-template-columns: minmax(0, 342px);
+      justify-content: start;
+    }
+  }
+</style>
