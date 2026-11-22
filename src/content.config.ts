@@ -94,7 +94,16 @@ const single = (folder: string) =>
 
 const notes = defineCollection({
   loader: pages('notes'),
-  schema: strict(pageFields, 'a note'),
+  schema: strict(
+    {
+      ...pageFields,
+      date: isoDate.optional(),
+      source: url.optional(),
+      references: z.array(url).optional(),
+      related_course: text.optional(),
+    },
+    'a note',
+  ),
 });
 
 const posts = defineCollection({

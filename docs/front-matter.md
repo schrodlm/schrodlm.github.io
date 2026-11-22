@@ -78,13 +78,21 @@ schema first; otherwise the build fails on it.
 
 ## Notes
 
-Nothing beyond the fields of every page.
+| Field | Form | Required | Notes |
+|---|---|---|---|
+| `date` | date | no | The day I wrote it. |
+| `source` | web address | no | What the note is drawn from, such as a lecture recording. |
+| `references` | list of web addresses | no | Further sources. |
+| `related_course` | text | no | The code of the course the note belongs to, such as `NSWI028`. |
+
+The site keeps these but doesn't show them yet.
 
 ```yaml
 ---
 title: Teorém CAP
 lang: cs
 tags: [distributed-systems]
+related_course: NSWI035
 ---
 ```
 
