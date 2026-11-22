@@ -8,10 +8,12 @@ interface Props {
   title?: string | undefined;
   description: string;
   // False for a page with no address of its own (the 404): no canonical link, and kept out of search.
-  canonical: boolean;
+  canonical?: boolean;
+  // The garden is light; a page drawn at night (clascii's) asks the browser for dark controls.
+  colorScheme?: 'light' | 'dark';
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical = true, colorScheme = 'light' } = Astro.props;
 const fullTitle = title ? `${title} · ${NAME}` : NAME;
 const canonicalUrl = canonical && Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 ---
@@ -19,7 +21,7 @@ const canonicalUrl = canonical && Astro.site ? new URL(Astro.url.pathname, Astro
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light" />
+  <meta name="color-scheme" content={colorScheme} />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
