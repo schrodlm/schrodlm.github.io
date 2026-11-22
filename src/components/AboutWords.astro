@@ -2,6 +2,7 @@
 // The About page's words: the body of its note in the vault, or, until that note exists, a line
 // saying the words are still to come.
 import { render, type CollectionEntry } from 'astro:content';
+import Prose from './Prose.astro';
 
 interface Props {
   entry: CollectionEntry<'about'> | undefined;
@@ -12,7 +13,7 @@ const Content = entry && (await render(entry)).Content;
 ---
 
 <div class="words">
-  {Content ? <div class="prose"><Content /></div> : <p class="to-come">The words for this page are still to come.</p>}
+  {Content ? <Prose><Content /></Prose> : <p class="to-come">The words for this page are still to come.</p>}
 </div>
 
 <style>
