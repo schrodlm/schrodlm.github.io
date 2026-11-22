@@ -1,3 +1,5 @@
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import svelte from '@astrojs/svelte';
@@ -9,6 +11,8 @@ import { houseStyle } from './src/lib/markdown/index.ts';
 const base = process.env.SITE_BASE ?? '/';
 // The sync writes the content into src/content/; CONTENT_DIR points elsewhere (see src/content.config.ts).
 const contentDir = process.env.CONTENT_DIR ?? 'src/content';
+
+const notesDir = resolve(fileURLToPath(new URL('.', import.meta.url)), contentDir, 'notes');
 
 // The kit's internal pages, for the screenshot tests: the braille kit, and the vine in the page
 // shell. Added only when the site is built from the sample content, so they never reach the real
@@ -40,7 +44,7 @@ export default defineConfig({
       // are made from the markdown as written: a `--` turned into a dash would lose its hyphens.
       // Quotes and ellipses are still set typographically.
       features: { math: true, smartPunctuation: { dashes: false } },
-      hastPlugins: houseStyle({ base }),
+      hastPlugins: houseStyle({ base, notesDir }),
     }),
   },
 });
