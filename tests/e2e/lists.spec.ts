@@ -13,6 +13,7 @@ test('the notes list every note from A to Z under their intro, each with its mar
   await expect(links).toHaveText([
     'A seedling',
     'Every construct',
+    'Lone sample',
     'Sample clock',
     'Sample consensus',
     'Sample note',
@@ -21,7 +22,7 @@ test('the notes list every note from A to Z under their intro, each with its mar
     'Vzorová replikace',
   ]);
   await expect(links.last()).toHaveAttribute('href', '/notes/invented-systems/vzorova-replikace/');
-  await expect(page.locator('main li .mark')).toHaveCount(8);
+  await expect(page.locator('main li .mark')).toHaveCount(9);
   await expect(page).toHaveScreenshot('notes.png', { fullPage: true });
 });
 
