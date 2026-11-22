@@ -45,7 +45,7 @@ const valid = {
     name: 'Jane Placeholder',
     headline: 'Invented engineer',
     location: 'Exampleville',
-    contacts: { email: 'jane@example.com', github: 'https://github.com/example' },
+    contacts: { email: 'jane@example.com', github: 'https://github.com/example', leetcode: 'https://leetcode.com/example' },
     experience: [
       {
         role: 'Engineer',
@@ -136,6 +136,7 @@ describe('the schemas', () => {
     ['universities', { short_name: undefined }, 'short_name: is required'],
     ['cv', { contacts: { phone: '+000 000 000' } }, 'contacts.phone: is not allowed'],
     ['cv', { contacts: { mastodon: 'https://example.com' } }, 'contacts.mastodon: is not a field contacts takes'],
+    ['cv', { contacts: { leetcode: 'leetcode.com/example' } }, 'contacts.leetcode: must be a web address'],
     ['cv', { experience: [{ ...valid.cv.experience[0], start: '2024-1' }] }, 'experience.0.start: must be a month written YYYY-MM'],
     ['cv', { experience: [{ ...valid.cv.experience[0], end: 'now' }] }, 'experience.0.end: must be a month written YYYY-MM, or present'],
     ['cv', { education: [{ ...valid.cv.education[0], end: '2020-06' }] }, 'education.0.end: must not come before start'],
