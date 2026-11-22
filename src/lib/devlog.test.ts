@@ -48,6 +48,21 @@ describe('a devlog cut into sections', () => {
     expect(cut[0]!.html).toContain('<!-- <h2 id="old">Old</h2> -->');
   });
 
+  test('cuts at a heading the markdown trailed, taking its wrapper and trail with it', () => {
+    const trailed = (id: string) =>
+      `<div class="section-heading"><h2 id="${id}">${id}</h2><span class="trail" aria-hidden="true"><span class="stem">~~</span></span></div>`;
+    const { intro, sections: cut } = sections(
+      `<p>Lede.</p>${trailed('done')}<ul><li>1</li></ul><div class="other"><h2 id="boxed">Boxed</h2></div>${trailed('next')}<p>Soon.</p>`,
+    );
+    expect(intro).toBe('<p>Lede.</p>');
+    expect(cut.map(({ id, heading }) => [id, heading])).toEqual([
+      ['done', 'done'],
+      ['next', 'next'],
+    ]);
+    expect(cut[0]!.html).toBe('<ul><li>1</li></ul><div class="other"><h2 id="boxed">Boxed</h2></div>');
+    expect(cut[1]!.html).toBe('<p>Soon.</p>');
+  });
+
   test('is all intro without a heading', () => {
     expect(sections('<p>Just words.</p>')).toEqual({ intro: '<p>Just words.</p>', sections: [] });
   });
