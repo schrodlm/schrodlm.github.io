@@ -1,7 +1,7 @@
 ---
 // The vine that hangs beside the text, with its butterfly and bee, for the page shell's side slot.
 // It grows from the page's address (without the base path, so the preview grows the same vine),
-// unless given a seed of its own. The build draws its resting frame.
+// unless given a seed of its own. The build draws its resting frame; scripts/life.ts animates it.
 import Braille from './Braille.astro';
 import { drawVine, growVine } from '../lib/life/vine';
 
@@ -15,3 +15,7 @@ const { seed = Astro.url.pathname.slice(import.meta.env.BASE_URL.replace(/\/+$/,
 <div data-life="vine" data-seed={seed}>
   <Braille rows={drawVine(growVine(seed), 0)} />
 </div>
+
+<script>
+  import '../scripts/life';
+</script>
