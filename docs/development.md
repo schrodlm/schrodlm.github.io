@@ -106,6 +106,29 @@ has no PNG to redraw. Change the model and build. So is the CV's lamplit
 desk: the build draws its still from `src/lib/lamplit-desk.ts`, the same
 drawing the page animates.
 
+### Updating clascii
+
+The page at `/clascii/` runs my ASCII art library,
+[clascii](https://github.com/schrodlm/clascii), from its built JavaScript.
+Until clascii is on npm the site keeps that build itself, in
+`public/vendor/clascii/<version>-<commit>/`: the package's `main.mjs` and
+`index.d.ts` with clascii's `LICENSE`, the folder named after the version in
+its `package.json` and the commit it was built from. Only that page loads it.
+To update it, in a clone of clascii at the commit to use:
+
+```bash
+cd js/package && npm ci && cd ../..   # once, the package's build tools
+sbt js/npmPackage                     # writes js/package/main.mjs
+```
+
+Copy `js/package/main.mjs`, `js/package/index.d.ts` and `LICENSE` into a new
+folder named for that version and commit, delete the old folder, and point
+the paths in `src/lib/clascii/library.ts` at the new one. Run the checks and
+the screenshot tests: a new build may draw the same picture differently.
+
+Once clascii is on npm, the site installs it as a dependency at an exact
+version instead, and the vendored folder goes.
+
 ## Running the site
 
 You need Ruby with Bundler:
