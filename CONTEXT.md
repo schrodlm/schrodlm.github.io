@@ -111,6 +111,13 @@ A project's devlogs together, newest first and grouped by month, on the
 project's page.
 _Avoid_: changelog, log, timeline
 
+**Session trail**:
+The strip under a devlog's title: its project's sessions as stepping stones
+across a stream, drawn as a plate, with this session's stone lit and each
+stone a link to its session. When there are more sessions than fit, it shows
+the ones around this one.
+_Avoid_: timeline, pager, progress bar
+
 **Course**:
 A review of one university course I took: when, where, how hard, how
 useful, whether it was worth it, and the materials I made for it.
