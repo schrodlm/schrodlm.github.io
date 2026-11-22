@@ -1,0 +1,243 @@
+---
+// The frame every page shares: the header with my name and the nav, the reading column, the side
+// decoration beside it, and the footer with its art above the bar.
+//
+// Slots: the default one is the column; "side" hangs beside the column on wide screens (the vine);
+// "footer-art" sits above the footer bar (the soil). Both are drawings, so they are hidden from
+// screen readers here.
+import '../styles/garden.css';
+import { withBase } from '../lib/base-path';
+
+const SECTIONS = ['notes', 'posts', 'projects', 'courses', 'about', 'cv'] as const;
+export type Section = (typeof SECTIONS)[number];
+
+interface Props {
+  // The page's own name; the tab reads "<title> · Matěj Schrödl", or just my name when left out.
+  title?: string;
+  description?: string;
+  lang?: string;
+  // The section of the nav this page belongs to, shown as [>section].
+  section?: Section;
+  // False for a page with no address of its own (the 404): no canonical link, and kept out of search.
+  canonical?: boolean;
+}
+
+const NAME = 'Matěj Schrödl';
+// Every internal link goes through here, so the site also works below a base path (the preview).
+const link = (path: string) => withBase(path, import.meta.env.BASE_URL);
+
+const {
+  title,
+  description = 'This is a place to share interesting knowledge from computer-science I managed to gather and also a place to log my thought processes from my past and ongoing projects.',
+  lang = 'en',
+  section,
+  canonical = true,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${NAME}` : NAME;
+const canonicalUrl = canonical && Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const here = Astro.url.pathname;
+const nav = SECTIONS.map((name) => {
+  const href = link(`/${name}/`);
+  const current: 'page' | 'true' | undefined = name === section ? (here === href ? 'page' : 'true') : undefined;
+  return { name, href, current };
+});
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {!canonical && <meta name="robots" content="noindex" />}
+    <link rel="alternate" type="application/rss+xml" title={NAME} href={link('/feed.xml')} />
+  </head>
+  <body>
+    <a class="skip" href="#text">Skip to the text</a>
+    <div class="page">
+      <div class="side" aria-hidden="true">
+        <slot name="side" />
+      </div>
+      <header class="frame masthead">
+        <a class="name" href={link('/')}>{NAME}</a>
+        <nav aria-label="Main">
+          <ul>
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={item.current}>
+                    {item.current ? `[>${item.name}]` : `[${item.name}]`}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </header>
+      <main id="text" class="column">
+        <slot />
+      </main>
+      <footer>
+        <div class="footer-art" aria-hidden="true">
+          <slot name="footer-art" />
+        </div>
+        <div class="footer-bar">
+          <div class="frame footer-line">
+            <span>{NAME} · grown in Obsidian</span>
+            <ul>
+              <li><a href="https://github.com/schrodlm">GitHub</a></li>
+              <li><a href={link('/feed.xml')}>RSS</a></li>
+              <li><a href={link('/cv/')}>CV</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  .page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .frame {
+    width: min(var(--frame), 100% - 2 * var(--gutter));
+    margin-inline: auto;
+  }
+
+  .column {
+    flex: 1 0 auto;
+    width: min(var(--column), 100% - 2 * var(--gutter));
+    margin-inline: auto;
+    padding-block: 80px;
+  }
+
+  /* The side decoration hangs just right of the column, from the top of the page, and is cut off
+     at the window's edge. Only the decoration is clipped: text that overflows still scrolls. */
+  .side {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% + var(--column) / 2 + var(--gutter));
+    right: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px 24px;
+    padding-top: 30px;
+    font-family: var(--mono);
+  }
+
+  .masthead a {
+    text-decoration: none;
+  }
+
+  .masthead a:hover {
+    text-decoration: underline;
+  }
+
+  .name,
+  .name:hover {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav ul {
+    gap: 6px 16px;
+    font-size: 14px;
+  }
+
+  nav a,
+  nav a:hover {
+    color: var(--canopy);
+  }
+
+  nav a[aria-current] {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 24px;
+  }
+
+  .footer-art {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .footer-bar {
+    padding: 20px 0 28px;
+    background: var(--sand-deep);
+  }
+
+  .footer-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px 24px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--bark);
+  }
+
+  .footer-line ul {
+    gap: 20px;
+  }
+
+  .footer-line a,
+  .footer-line a:hover {
+    color: var(--bark);
+  }
+
+  .skip {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1;
+    padding: 4px 8px;
+    background: var(--paper);
+    font-family: var(--mono);
+    font-size: 14px;
+    transform: translateY(-200%);
+  }
+
+  .skip:focus {
+    transform: none;
+  }
+
+  @media (max-width: 1100px) {
+    .side {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .column {
+      padding-block: 48px 64px;
+    }
+  }
+</style>
