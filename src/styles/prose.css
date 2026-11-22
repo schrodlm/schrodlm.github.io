@@ -229,3 +229,40 @@ details.callout[open] > summary > .callout-title::after {
   font-size: 14px;
   white-space: pre;
 }
+
+/* Footnotes: small numbers in the text, the notes at the end under a thin rule. */
+.prose [data-footnote-ref] {
+  font-family: var(--mono);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.prose sup {
+  line-height: 0;
+}
+
+.prose .footnotes {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 15px;
+}
+
+.prose .footnotes ol {
+  margin: 0;
+}
+
+.prose .footnotes li::marker {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.prose .footnotes p {
+  margin: 0 0 6px;
+}
+
+.prose [data-footnote-backref] {
+  font-family: var(--mono);
+  text-decoration: none;
+}
