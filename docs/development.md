@@ -24,6 +24,26 @@ content in `tests/fixtures/content/`. Screenshots are taken inside Playwright's
 image so they match CI; after an intended visual change, refresh them with
 `npm run test:e2e -- --update-snapshots` and commit them with the change.
 
+### Redrawing a plate
+
+The woodcut plates (the projects' pictures and the faculty buildings) are
+drawn by code in `scripts/plates/` and kept as PNGs in `src/assets/plates/`,
+one image pixel per cell. Redrawing them needs only Node.js:
+
+```bash
+npm run plates                  # redraw every plate
+npm run plates -- rentczecher   # redraw only the plates of the drawings named
+```
+
+Each project's drawing sits under its slug in `scripts/plates/projects.mjs`,
+the buildings in `universities.mjs`, and the palette and shared tools in
+`woodcut.mjs`. To redraw a plate, change its drawing, run the script and look
+at `/kit/plates/` in `npm run dev`. To give a project its own plate, add a
+drawing under its slug and say what it shows in `src/lib/plates.ts`; a project
+without one gets the neutral plate. With the Node.js version in `.nvmrc`, an
+unchanged drawing writes the same bytes, so changed PNGs mean a changed
+drawing: refresh the screenshots and commit both with the drawing.
+
 ## Running the site
 
 You need Ruby with Bundler:
