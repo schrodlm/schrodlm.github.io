@@ -8,6 +8,7 @@ contacts:
   web: https://example.com
   github: https://github.com/example
   linkedin: https://www.linkedin.com/in/example
+  leetcode: https://leetcode.com/example
 experience:
   - role: Sample Engineer
     organisation: Example Corp
