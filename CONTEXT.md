@@ -34,12 +34,12 @@ decided by folder, not by a flag on the note.
 _Avoid_: public, live
 
 **Deploy**:
-Building the site and serving it on GitHub Pages, run on every push to this
-repo, the sync bot's pushes included.
+Building the site and serving it on GitHub Pages, run on every push to
+`main`, the sync bot's pushes included.
 _Avoid_: sync, publish
 
 **Preview**:
-A build of the site in progress from the vault's real content, served below
+A build of a branch's site from the vault's real content, served below
 `/site-preview/` from a repository of its own and pushed there by hand. It is
 not the live site.
 _Avoid_: staging, demo
@@ -149,11 +149,6 @@ The text above a section's list, such as the courses home's or the home
 page's. It is a page of its own in the intros collection, named after its
 section.
 _Avoid_: landing page, front page
-
-**Connected notes**:
-The list under a note of the notes it links to. Only outgoing links, from that
-one note. The code calls it the "note graph", which it is not.
-_Avoid_: graph, note graph
 
 **Graph view**:
 The map of how notes link, drawn as plates: one of the whole garden, with
@@ -294,15 +289,14 @@ The framed water on clascii's page, `/clascii/`, where my ASCII art library
 draws the chosen picture in characters. A change to a setting drops into it
 from the control, and the new art spreads from there as a ring of water. The
 page around it is the jungle at night, the one dark page of the site.
-_Avoid_: canvas, stage, preview (that is the site in progress)
+_Avoid_: canvas, stage, preview (that is a branch's site with real content)
 
 ## Relationships
 
 - The **vault** feeds the site only through a **sync**, which runs the
   **converter**; a **deploy** then serves the result.
 - Each **collection** maps to exactly one vault folder.
-- A **note** links to other notes by **wikilinks**; its **connected notes**
-  are those links.
+- A **note** links to other notes by **wikilinks**.
 - A **note**'s **neighbourhood** draws the notes it links to and the notes
   that link to it; the **garden map** draws every note's links together.
 - A **post** belongs to zero or one **project**, a project has any number of
