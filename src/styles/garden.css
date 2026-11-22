@@ -7,6 +7,8 @@
   --sand-deep: #e5ddca;
   --paper: #f7f2e4;
   --rule: #d8cfba;
+  /* The soft green under code. */
+  --sage: #e3e8d6;
 
   /* Words. Each reads at 4.5:1 or better on sand. */
   --ink: #1f2b23;
@@ -16,6 +18,11 @@
   --river-deep: #15466f;
   --earth: #7a5c42;
   --bark: #5c4636;
+  /* The jungle colours darkened until they can carry words, for a callout's title and for code,
+     where they also read at 4.5:1 or better on sage. */
+  --mango-deep: #6e4e00;
+  --hibiscus-deep: #9e3b29;
+  --lagoon-deep: #235f82;
 
   /* The bright jungle colours, for the art only, never for words. */
   --fern: #3f8a52;
