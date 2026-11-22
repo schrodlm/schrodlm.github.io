@@ -32,5 +32,9 @@ export default defineConfig({
     contentImages({ dir: `${contentDir}/assets/img` }),
     ...(process.env.CONTENT_DIR === 'tests/fixtures/content' ? [kit] : []),
   ],
-  markdown: { processor: satteri({ hastPlugins: [basePathPlugin(base)] }) },
+  markdown: {
+    // Code is coloured through custom properties, which the prose styles set from the palette.
+    shikiConfig: { theme: 'css-variables' },
+    processor: satteri({ hastPlugins: [basePathPlugin(base)] }),
+  },
 });
