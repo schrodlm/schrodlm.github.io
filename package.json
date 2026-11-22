@@ -9,7 +9,8 @@
     "check": "astro check",
     "test": "vitest run --passWithNoTests",
     "build:fixtures": "CONTENT_DIR=tests/fixtures/content astro build",
-    "test:e2e": "scripts/e2e.sh"
+    "test:e2e": "scripts/e2e.sh",
+    "plates": "node scripts/plates/draw.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
