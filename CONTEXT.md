@@ -52,9 +52,17 @@ _Avoid_: admonition, alert
 ### What the site holds
 
 **Collection**:
-One kind of content with its own section of the site: notes, posts, projects
-and courses. Each maps to one vault folder.
+One kind of content, read from its own folder and held to its own schema:
+notes, posts, projects, devlogs, courses and universities, and the CV, the
+About page and the intros. Notes, posts, projects and courses each have a
+section of the site. Each maps to one vault folder.
 _Avoid_: category, section, type
+
+**Front matter**:
+The YAML fields at the top of a page. Each collection takes a fixed set,
+listed in `docs/front-matter.md`; a field in the wrong form, or one the
+collection doesn't take, fails the build and names the file and the field.
+_Avoid_: metadata, properties (Obsidian's word)
 
 **Note**:
 One self-contained piece of knowledge, usually a single concept, linked to
@@ -72,25 +80,47 @@ read on its own. A post may belong to a project.
 _Avoid_: blog, article, note
 
 **Project**:
-A write-up of something I built, with its language, its status and its
-repository. Posts written along the way belong to it.
+A write-up of something I built, with its languages, its status, its
+repository and its milestones. Posts written along the way belong to it.
 _Avoid_: portfolio item, repo
+
+**Milestone**:
+One step of a project's plan, done or not. The first one not done is the one
+in progress.
+_Avoid_: goal, task
+
+**Devlog**:
+The record of one working session on one project, numbered within it, in the
+same sections every time: Summary, Goal, Done, Decisions, Problems and
+surprises, Learned, Next, References.
+_Avoid_: session log, diary, post (a post is read on its own)
+
+**Field journal**:
+A project's devlogs together, newest first and grouped by month, on the
+project's page.
+_Avoid_: changelog, log, timeline
 
 **Course**:
 A review of one university course I took: when, where, how hard, how
 useful, whether it was worth it, and the materials I made for it.
 _Avoid_: subject, class, předmět
 
+**Rating**:
+A course's score for its difficulty, its usefulness or its teaching, from 1
+to 5 in half steps. A course has all three with its worth-it verdict, or none
+and is *not rated yet*.
+_Avoid_: grade, mark (a mark is a flower's glimpse), stars
+
 **University page**:
-A course-collection page introducing one university and
-linking its courses. It is not itself a course and is left out of the course
-list.
+A page introducing one university, its own collection, listing its courses
+by academic year and semester. It is not itself a course.
 _Avoid_: hub, landing page
 
 **Intro**:
-The text shown above a collection's list on its section page, kept as a page
-of that collection that is itself left out of the list.
-_Avoid_: landing page (the field's name), front page
+The text above a section's list, such as the courses home's or the home
+page's. It is a page of its own in the intros collection, named after its
+section.
+_Avoid_: landing page, front page
 
 **Connected notes**:
 The list under a note of the notes it links to. Only outgoing links, from that
@@ -171,6 +201,9 @@ _Avoid_: border, divider, decoration
   are those links.
 - A **post** belongs to zero or one **project**, a project has any number of
   posts.
-- A **course** belongs to one university, whose **university page** links it.
+- A **devlog** belongs to exactly one **project**; a project's devlogs make
+  its **field journal**.
+- A **course** belongs to one university, whose **university page** links it,
+  and has three **ratings** or none.
 - Every **post** and **note** grows one **flower** from its **seed**; the
   **herbarium** shows each as a **specimen**, and the **garden** shows the posts.
