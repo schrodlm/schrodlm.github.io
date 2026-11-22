@@ -42,7 +42,7 @@ export const butterflyTurn = (tick: number): Turn => turn(tick, BUTTERFLY);
 /** The bee's turn: a rest on a bloom, and once a round a visit to the next bloom. */
 export const beeTurn = (tick: number): Turn => turn(tick, BEE);
 
-/** The wind at a tick, from -1 to 1: two slow swells, still at tick 0. The vine sways in it. */
+/** The wind at a tick, from -1 to 1: two slow swells, still at tick 0. The garden and the vine sway in it. */
 export function wind(tick: number): number {
   const s = tick / 4;
   return 0.7 * Math.sin(s * 0.55) + 0.3 * Math.sin(s * 0.21);
