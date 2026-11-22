@@ -1,0 +1,37 @@
+---
+// The graph view of the whole garden, at /graph/: every note as its flower, every link a vine,
+// from the same link graph the notes' neighbourhoods are drawn from. It belongs to the notes.
+import { getCollection } from 'astro:content';
+import GardenMap from '../../components/GardenMap.astro';
+import Page from '../../layouts/Page.astro';
+import { withBase } from '../../lib/base-path';
+import { linkGraph } from '../../lib/graph';
+import { isStub } from '../../lib/markdown/is-stub';
+import { pagePath } from '../../lib/pages';
+
+const entries = await getCollection('notes');
+const graph = linkGraph(
+  entries.map((note) => ({ slug: note.id, html: note.rendered?.html ?? '' })),
+  import.meta.env.BASE_URL,
+);
+const notes = entries.map((note) => ({
+  slug: note.id,
+  title: note.data.title,
+  lang: note.data.lang,
+  href: withBase(pagePath('notes', note.id), import.meta.env.BASE_URL),
+  stub: isStub(note.body ?? ''),
+}));
+---
+
+<Page title="The garden map" section="notes" description="Every note in my garden as a flower, and every link between them as a vine.">
+  <h1>The garden map</h1>
+  <p class="lede">All my notes as one garden: each note is a flower and each link a vine.</p>
+  <GardenMap {graph} {notes} />
+</Page>
+
+<style>
+  .lede {
+    margin: 0 0 28px;
+    color: var(--muted);
+  }
+</style>
