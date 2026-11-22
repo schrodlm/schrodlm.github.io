@@ -36,6 +36,22 @@
   --pebble: #8c7c66;
   --wing: #9db4bf;
 
+  /* The jungle at night: clascii's page at /clascii/, the one page on a dark ground. Its words
+     read at 4.5:1 or better on the night; the rest is for its art only. */
+  --night: #0e1712;
+  --night-ink: #ece5d3;
+  --night-muted: #a3ae9f;
+  --night-accent: #8fd19e;
+  --night-water: #6fb3d9;
+  --night-hibiscus: #e07a5f;
+  --night-mango: #e3b341;
+  --night-frame: #4a5e50;
+  --night-leaf: #2f5e3e;
+  --night-fern: #3b6e48;
+  --night-moss: #56703f;
+  --night-bark: #6e5846;
+  --night-far: #22362a;
+
   /* Print: black ink, as the CV prints. */
   --print-ink: #000000;
 
