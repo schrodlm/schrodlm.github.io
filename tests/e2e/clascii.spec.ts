@@ -24,9 +24,7 @@ test('the generator draws plasma in the pond, with every control beside it', asy
     await expect(settings.getByRole('radio', { name: new RegExp(`^\\[?>?${name}\\]?$`) })).toBeAttached();
   for (const name of ['flip ↕', 'flip ↔', 'invert', 'colours']) await expect(settings.getByRole('checkbox', { name })).toBeAttached();
   await expect(page.getByRole('link', { name: '[>projects]' })).toHaveAttribute('aria-current', 'true');
-  // The timings differ on every run, so the stats and their graph are masked, in the night's colour.
-  const mask = [page.locator('[data-stats], [data-graph]')];
-  await expect(page).toHaveScreenshot('clascii.png', { fullPage: true, mask, maskColor: '#0e1712' });
+  await expect(page).toHaveScreenshot('clascii.png', { fullPage: true });
 });
 
 test('choosing another table of characters redraws the art in them', async ({ page }) => {
