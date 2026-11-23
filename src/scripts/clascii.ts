@@ -247,12 +247,6 @@ function spreadFrom(next: Art, element: Element | undefined) {
   spreading = requestAnimationFrame(step);
 }
 
-// The last frames' timings in milliseconds: the stats average the latest 30, the graph shows them all.
-const FRAMES = 120;
-const frames: { grab: number; render: number; show: number }[] = [];
-let lastFrame = performance.now();
-let fps = 0;
-
 let clascii: Awaited<ReturnType<typeof load>> | undefined;
 
 /**
@@ -263,11 +257,7 @@ function draw(element?: Element, drop = false) {
   size = measure(isBraille(controls().characters) ? '⣿' : 'M', art);
   const options = settings(controls(), size, { width: water.clientWidth, height: water.clientHeight });
   try {
-    const t0 = performance.now();
-    const shrunk = pixels(options.maxColumns!);
-    const t1 = performance.now();
-    const result = clascii!.render(shrunk, options);
-    const t2 = performance.now();
+    const result = clascii!.render(pixels(options.maxColumns!), options);
     if (spreading) cancelAnimationFrame(spreading);
     spreading = undefined;
     if (drop && !running && !still.matches) spreadFrom(result, element);
@@ -275,17 +265,11 @@ function draw(element?: Element, drop = false) {
       show(result, result.lines);
       onShow = { art: result, lines: result.lines };
     }
-    const t3 = performance.now();
-    frames.push({ grab: t1 - t0, render: t2 - t1, show: t3 - t2 });
-    if (frames.length > FRAMES) frames.shift();
-    if (running) fps = 0.9 * fps + 0.1 * (1000 / (t3 - lastFrame));
-    lastFrame = t3;
     const name = source === 'plasma' ? `plasma, seed ${input('seed').value}` : `your ${source}`;
     status.classList.remove('error');
     status.textContent = `${name} · ${result.columns} × ${result.rows}`;
     const label = `ASCII art of ${name}, ${result.columns} by ${result.rows} characters`;
     if (art.getAttribute('aria-label') !== label) art.setAttribute('aria-label', label);
-    showStats(shrunk, result, options.colors ?? false);
   } catch (error) {
     fail(error);
   }
@@ -296,72 +280,6 @@ function fail(error: unknown) {
   status.classList.add('error');
   status.textContent = error instanceof Error ? error.message : String(error);
   get('data-alert').textContent = status.textContent;
-}
-
-// ---- Stats ---------------------------------------------------------------------------------------
-
-const average = (list: typeof frames, key: 'grab' | 'render' | 'show') => list.reduce((sum, f) => sum + f[key], 0) / Math.max(1, list.length);
-const ms = (value: number) => `${value.toFixed(1)} ms`;
-
-function showStats(shrunk: Pixels, result: Art, coloured: boolean) {
-  const recent = frames.slice(-30);
-  const [grabbing, rendering, showing] = (['grab', 'render', 'show'] as const).map((key) => average(recent, key)) as [number, number, number];
-  const total = grabbing + rendering + showing;
-  const worst = Math.max(...frames.map((f) => f.grab + f.render + f.show));
-  const [width, height] = picture ? [picture.width, picture.height] : [video.videoWidth, video.videoHeight];
-  const characters = result.columns * result.rows;
-  const rows: [string, string][] = [
-    ['frame rate', running ? `${fps.toFixed(0)} fps` : 'still'],
-    ['frame', ms(total)],
-    ['worst frame', ms(worst)],
-    ['of 60 fps budget', `${Math.round((total / (1000 / 60)) * 100)} %`],
-    ['grab', ms(grabbing)],
-    ['render', ms(rendering)],
-    [coloured ? 'paint' : 'show', ms(showing)],
-    ['picture', `${width}×${height}`],
-    ['shrunk to', `${shrunk.width}×${shrunk.height}`],
-    ['art', `${result.columns}×${result.rows}`],
-    ['characters', characters.toLocaleString('en')],
-    ['px per character', ((shrunk.width * shrunk.height) / characters).toFixed(1)],
-  ];
-  get('data-stats').replaceChildren(
-    ...rows.map(([name, value]) => {
-      const row = document.createElement('div');
-      row.append(Object.assign(document.createElement('dt'), { textContent: name }), Object.assign(document.createElement('dd'), { textContent: value }));
-      return row;
-    }),
-  );
-  drawGraph();
-}
-
-/** The last frames as stacked bars, grab at the bottom, under a dashed line at a 60 fps frame. */
-function drawGraph() {
-  const graph = get<HTMLCanvasElement>('data-graph');
-  const scale = devicePixelRatio || 1;
-  graph.width = graph.clientWidth * scale;
-  graph.height = graph.clientHeight * scale;
-  const pen = graph.getContext('2d')!;
-  pen.scale(scale, scale);
-  const width = graph.clientWidth, height = graph.clientHeight;
-  const budget = 1000 / 60;
-  const top = Math.max(budget * 1.5, ...frames.map((f) => f.grab + f.render + f.show));
-  const bar = width / FRAMES;
-  frames.forEach((f, i) => {
-    let y = height;
-    for (const [key, colour] of [['grab', 'water'], ['render', 'accent'], ['show', 'mango']] as const) {
-      const h = (f[key] / top) * height;
-      pen.fillStyle = tone(colour);
-      pen.fillRect(i * bar, y - h, Math.max(1, bar - 0.5), h);
-      y -= h;
-    }
-  });
-  pen.strokeStyle = tone('muted');
-  pen.setLineDash([3, 3]);
-  const line = height - (budget / top) * height;
-  pen.beginPath();
-  pen.moveTo(0, line);
-  pen.lineTo(width, line);
-  pen.stroke();
 }
 
 // ---- Sources -------------------------------------------------------------------------------------
@@ -392,7 +310,6 @@ function choose(name: Source) {
   source = name;
   document.querySelectorAll<HTMLElement>('[data-source]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.source === name)));
   get('data-seed-row').hidden = name !== 'plasma';
-  frames.length = 0;
 }
 
 function showPlasma(element?: Element) {
