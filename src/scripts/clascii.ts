@@ -1,7 +1,7 @@
-// Runs clascii on its page (src/pages/clascii/index.astro): loads the library, turns the chosen
-// picture into characters with the settings the controls make, and keeps the jungle around the pond
-// alive. Every picture stays in the browser: a file is read where it is, the camera goes straight
-// into a <video>, and nothing is sent anywhere.
+// Runs clascii on its showcase (src/pages/showcase/clascii/index.astro): loads the library, turns
+// the chosen picture into characters with the settings the controls make, and keeps the jungle
+// around the pond alive. Every picture stays in the browser: a file is read where it is, the camera
+// goes straight into a <video>, and nothing is sent anywhere.
 //
 // It follows clascii's own demo, with every one of its controls, in the page's design: a change
 // drops into the pond and the new art spreads from where it fell, unless the reader prefers reduced

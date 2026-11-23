@@ -109,8 +109,9 @@ drawing the page animates.
 
 ## Updating clascii
 
-The page at `/clascii/` runs my ASCII art library,
+The showcase at `/showcase/clascii/` runs my ASCII art library,
 [clascii](https://github.com/schrodlm/clascii), from its built JavaScript.
+The library's own demo is published by its repo at `/clascii/`.
 Until clascii is on npm the site keeps that build itself, in
 `public/vendor/clascii/<version>-<commit>/`: the package's `main.mjs` and
 `index.d.ts` with clascii's `LICENSE`, the folder named after the version in

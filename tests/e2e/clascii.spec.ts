@@ -4,7 +4,7 @@ const art = (page: Page) => page.locator('[data-art]');
 
 /** Opens the generator and waits for the library to draw the plasma it starts with, seed 7. */
 async function open(page: Page) {
-  await page.goto('/clascii/');
+  await page.goto('/showcase/clascii/');
   await page.evaluate(() => document.fonts.ready);
   await expect(page.locator('[data-status]')).toHaveText(/^plasma, seed 7 · \d+ × \d+$/);
 }
@@ -73,7 +73,7 @@ test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
   test('the pond says what it would do and where the library lives', async ({ page }) => {
-    await page.goto('/clascii/');
+    await page.goto('/showcase/clascii/');
     // Playwright's text and role queries skip <noscript>, so the note is found by its class.
     const note = page.locator('.without');
     await expect(note).toBeVisible();
@@ -91,5 +91,5 @@ test('the generator never scrolls sideways, even on a small phone', async ({ pag
 
 test("a project's write-up links to the generator", async ({ page }) => {
   await page.goto('/projects/finished-sample/');
-  await expect(page.getByRole('link', { name: 'try it' })).toHaveAttribute('href', '/clascii/');
+  await expect(page.getByRole('link', { name: 'try it' })).toHaveAttribute('href', '/showcase/clascii/');
 });
