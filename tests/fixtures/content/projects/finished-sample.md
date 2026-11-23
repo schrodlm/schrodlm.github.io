@@ -7,4 +7,4 @@ languages: [C]
 
 A short write-up of an invented, finished project.
 
-Its invented demo runs on this site: [try it](/clascii/).
+Its invented demo runs on this site: [try it](/showcase/clascii/).

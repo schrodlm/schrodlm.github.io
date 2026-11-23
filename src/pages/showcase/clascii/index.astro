@@ -1,16 +1,16 @@
 ---
-// clascii, my ASCII art library, running at /clascii/: a pond in a jungle at night, where a picture
-// (generated plasma, an image, a video or the camera) is drawn in characters, with every control of
-// clascii's own demo beside it. The library and the drawing run in the browser
+// The showcase of clascii, my ASCII art library, at /showcase/clascii/: a pond in a jungle at night,
+// where a picture (generated plasma, an image, a video or the camera) is drawn in characters, with
+// every control of clascii's own demo beside it. The library and the drawing run in the browser
 // (src/scripts/clascii.ts), so nothing leaves it. The build draws the jungle's resting frame and the
 // page around the pond; without JavaScript the pond says what it would do and where the library is.
-import '../../styles/garden.css';
-import Head from '../../components/Head.astro';
-import { withBase } from '../../lib/base-path';
-import { shown, track } from '../../lib/clascii/controls';
-import { drawBand, drawMargins, drawSoil, html, WIDTH } from '../../lib/clascii/jungle';
-import { nav as navFor } from '../../lib/site';
-import { trail } from '../../lib/trail';
+import '../../../styles/garden.css';
+import Head from '../../../components/Head.astro';
+import { withBase } from '../../../lib/base-path';
+import { shown, track } from '../../../lib/clascii/controls';
+import { drawBand, drawMargins, drawSoil, html, WIDTH } from '../../../lib/clascii/jungle';
+import { nav as navFor } from '../../../lib/site';
+import { trail } from '../../../lib/trail';
 
 const REPO = 'https://github.com/schrodlm/clascii';
 const link = (path: string) => withBase(path, import.meta.env.BASE_URL);
@@ -219,7 +219,7 @@ const greys = [
       <pre class="jungle soil" aria-hidden="true" set:html={soil} />
     </div>
     <script>
-      import '../../scripts/clascii';
+      import '../../../scripts/clascii';
     </script>
   </body>
 </html>
@@ -227,7 +227,7 @@ const greys = [
 <style is:global>
   @font-face {
     font-family: 'Garden Braille';
-    src: url('../../assets/fonts/garden-braille.woff2') format('woff2');
+    src: url('../../../assets/fonts/garden-braille.woff2') format('woff2');
     font-display: block;
   }
 

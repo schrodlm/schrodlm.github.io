@@ -284,11 +284,18 @@ a tunnel to their nest and walking back up for more. It is the same on every
 page.
 _Avoid_: footer (that is the bar below it)
 
+**Showcase**:
+A page of the site that runs one of my libraries in the garden's design, at
+`/showcase/<library>/`. It shows what the library does and leaves out how
+fast it does it. The library's own demo, which its repo publishes, is a
+separate page.
+_Avoid_: demo (that is the repo's page)
+
 **Pond**:
-The framed water on clascii's page, `/clascii/`, where my ASCII art library
-draws the chosen picture in characters. A change to a setting drops into it
-from the control, and the new art spreads from there as a ring of water. The
-page around it is the jungle at night, the one dark page of the site.
+The framed water on clascii's showcase, where my ASCII art library draws the
+chosen picture in characters. A change to a setting drops into it from the
+control, and the new art spreads from there as a ring of water. The page
+around it is the jungle at night, the one dark page of the site.
 _Avoid_: canvas, stage, preview (that is a branch's site with real content)
 
 ## Relationships
