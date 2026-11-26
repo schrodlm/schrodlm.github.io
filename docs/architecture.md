@@ -46,8 +46,9 @@ flowchart LR
 
 A workflow in the vault runs the converter over the vault's published folders,
 writes the result into `src/content/` of this repo, and pushes it to `main` as
-*Obsidian Sync Bot*. It pushes with an access token rather than
-`GITHUB_TOKEN`, so the push triggers this repo's deploy.
+*Obsidian Sync Bot*. It pushes with a deploy key, which can write to this repo
+and nothing else and never expires, so the push triggers this repo's deploy,
+as a push with `GITHUB_TOKEN` would not.
 
 Three consequences shape all work here:
 

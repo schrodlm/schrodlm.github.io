@@ -37,3 +37,8 @@ With the move to Astro ([ADR 2](0002-the-site-is-built-with-astro.md)), the
 sync writes every collection and its images into one folder, `src/content/`,
 and replaces that folder whole instead of `_notes/`, `_posts/`, `_projects/`,
 `_courses/` and `assets/img/`. The decision above stands otherwise.
+
+## Note (2026-11-26)
+
+The sync pushes with a deploy key on this repo instead of an access token, so
+its credential no longer expires and can write nowhere else.
