@@ -92,7 +92,9 @@ test('the shell links every section and serves its own fonts', async ({ page }) 
   await page.evaluate(() => document.fonts.ready);
 
   const nav = page.getByRole('navigation', { name: 'Main' });
-  for (const section of ['notes', 'posts', 'projects', 'courses', 'about', 'cv']) {
+  const sections = ['about', 'notes', 'posts', 'projects', 'courses', 'cv'];
+  await expect(nav.getByRole('link')).toHaveText(sections.map((section) => `[${section}]`));
+  for (const section of sections) {
     await expect(nav.getByRole('link', { name: `[${section}]` })).toHaveAttribute('href', `/${section}/`);
   }
   expect(fonts.length).toBeGreaterThan(0);

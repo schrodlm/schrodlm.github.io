@@ -5,7 +5,7 @@ import { withBase } from './base-path';
 
 export const NAME = 'Matěj Schrödl';
 
-const SECTIONS = ['notes', 'posts', 'projects', 'courses', 'about', 'cv'] as const;
+const SECTIONS = ['about', 'notes', 'posts', 'projects', 'courses', 'cv'] as const;
 export type Section = (typeof SECTIONS)[number];
 
 interface NavItem {
