@@ -13,8 +13,8 @@ _Avoid_: second brain, Obsidian (the editor)
 
 **Sync**:
 One run that regenerates the site's content from the vault, triggered by a
-push to the vault. A sync replaces every collection whole, so content removed
-from the vault disappears from the site.
+push to the vault or run by hand. A sync replaces every collection whole, so
+content removed from the vault disappears from the site.
 _Avoid_: import, export, deploy
 
 **Converter**:

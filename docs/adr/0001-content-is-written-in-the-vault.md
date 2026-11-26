@@ -37,3 +37,14 @@ With the move to Astro ([ADR 2](0002-the-site-is-built-with-astro.md)), the
 sync writes every collection and its images into one folder, `src/content/`,
 and replaces that folder whole instead of `_notes/`, `_posts/`, `_projects/`,
 `_courses/` and `assets/img/`. The decision above stands otherwise.
+
+## Note (2026-11-26)
+
+The sync pushes with a deploy key on this repo instead of an access token, so
+its credential no longer expires and can write nowhere else.
+
+Until now the sync converted over the old content, which replaced only the
+folders it maps, not `src/content/` whole as the note above says. It now
+converts into an empty folder and replaces `src/content/` with it, so the
+folder of a mapping I remove leaves the site with the next sync. Images a page
+no longer embeds already did.
