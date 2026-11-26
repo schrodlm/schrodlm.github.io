@@ -63,7 +63,8 @@ Three consequences shape all work here:
 - **A page the site can't accept fails the deploy.** Every collection has a
   strict schema ([front-matter.md](front-matter.md)); a field in the wrong
   form fails the build and names the file, and the site that is live stays
-  as it was.
+  as it was. The page is public in this repo all the same, from the moment
+  the sync pushes it.
 
 ## The site
 
